@@ -183,7 +183,7 @@
                                 <asp:Label ID="Label12" runat="server" Text="装订类型"></asp:Label>
                             </td>
                             <td class="auto-style24">
-                                <asp:DropDownList ID="DropDownList3" runat="server" Height="31px" style="text-align: left" Width="107px">
+                                <asp:DropDownList ID="DropDownList3" runat="server" Height="30px" style="text-align: left" Width="107px">
                                 </asp:DropDownList>
                             </td>
                         </tr>
@@ -226,7 +226,7 @@
                                 <asp:Label ID="Label14" runat="server" Text="图书语种"></asp:Label>
                             </td>
                             <td class="auto-style24">
-                                <asp:DropDownList ID="DropDownList4" runat="server" Height="16px" Width="107px">
+                                <asp:DropDownList ID="DropDownList4" runat="server" Height="30px" Width="107px">
                                 </asp:DropDownList>
                             </td>
                         </tr>
@@ -250,7 +250,7 @@
                                 <asp:Label ID="Label15" runat="server" Text="是否有光盘"></asp:Label>
                             </td>
                             <td class="auto-style32">
-                                <asp:DropDownList ID="DropDownList5" runat="server" Height="279px" style="text-align: left" Width="63px">
+                                <asp:DropDownList ID="DropDownList5" runat="server" Height="30px" style="text-align: left" Width="63px">
                                 </asp:DropDownList>
                             </td>
                             <td class="auto-style29"></td>

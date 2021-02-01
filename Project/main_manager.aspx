@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="main.aspx.cs" Inherits="首页" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="main_manager.aspx.cs" Inherits="首页" %>
 
 <!DOCTYPE html>
 
