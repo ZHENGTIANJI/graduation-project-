@@ -21,13 +21,13 @@
                     <asp:Button ID="btbookstock" runat="server" OnClick="btbookstock_Click" style="text-align: center" Text="图书入库" />
                 </td>
                 <td style="text-align: center">
-                    <asp:Button ID="Button4" runat="server" Text="期刊入库" />
+                    <asp:Button ID="Button4" runat="server" Text="期刊入库" OnClick="Button4_Click" />
                 </td>
                 <td style="text-align: center">
-                    <asp:Button ID="Button2" runat="server" Text="资料入库" />
+                    <asp:Button ID="Button2" runat="server" Text="资料入库" OnClick="Button2_Click" />
                 </td>
                 <td style="text-align: center">
-                    <asp:Button ID="Button3" runat="server" Text="论文入库" />
+                    <asp:Button ID="Button3" runat="server" Text="论文入库" OnClick="Button3_Click" />
                 </td>
             </tr>
             <tr>

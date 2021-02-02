@@ -16,4 +16,16 @@ public partial class 首页 : System.Web.UI.Page
         Response.Redirect("stockmanagement/bookstock.aspx");
 
     }
+    protected void Button4_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("stockmanagement/journalstock.aspx");
+    }
+    protected void Button2_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("stockmanagement/datastock.aspx");
+    }
+    protected void Button3_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("stockmanagement/paperstock.aspx");
+    }
 }

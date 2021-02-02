@@ -18,7 +18,7 @@ public partial class 登录 : System.Web.UI.Page
         if(havethisuser(txtuid.Text.Trim(),txtpsw.Text.Trim()))
         {
             Session["uid"] = txtuid.Text.Trim();
-            Response.Redirect("main.aspx");
+            Response.Redirect("main_manager.aspx");
 
         }
         else
