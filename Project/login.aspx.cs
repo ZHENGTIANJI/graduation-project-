@@ -30,8 +30,8 @@ public partial class 登录 : System.Web.UI.Page
     {
 
         DataSet dst=new DataSet();
-        SqlConnection cnn = new SqlConnection("Data Source=(local);Initial Catalog=档案室信息管理系统;Integrated Security=True");
-        SqlDataAdapter adpt = new SqlDataAdapter("select * from users where uid='" + uid + "' and psw='" + psw + "'", cnn);
+        SqlConnection cnn = new SqlConnection("Data Source=(local);Initial Catalog=档案室信息管理系统1.0;Integrated Security=True");
+        SqlDataAdapter adpt = new SqlDataAdapter("select * from users where id='" + uid + "' and psw='" + psw + "'", cnn);
         adpt.Fill(dst);
 
         return dst.Tables[0].Rows.Count > 0;
