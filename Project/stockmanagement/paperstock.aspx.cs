@@ -11,4 +11,8 @@ public partial class stockmanagement_paperstock : System.Web.UI.Page
     {
 
     }
+    protected void btok_Click(object sender, EventArgs e)
+    {
+
+    }
 }

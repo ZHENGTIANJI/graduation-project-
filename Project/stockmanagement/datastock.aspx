@@ -65,25 +65,25 @@
                     <asp:Label ID="Label1" runat="server" Text="二维码编码"></asp:Label>
                 </td>
                 <td class="auto-style4">
-                    <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txtQR" runat="server"></asp:TextBox>
                 </td>
                 <td class="auto-style6">
                     <asp:Label ID="Label2" runat="server" Text="资料名称"></asp:Label>
                 </td>
                 <td class="auto-style8">
-                    <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txtname" runat="server"></asp:TextBox>
                 </td>
                 <td class="auto-style6">
                     <asp:Label ID="Label11" runat="server" Text="编著日期"></asp:Label>
                 </td>
                 <td class="auto-style10">
-                    <asp:TextBox ID="TextBox10" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txtcompiledt" runat="server"></asp:TextBox>
                 </td>
                 <td class="auto-style6">
                     <asp:Label ID="Label3" runat="server" Text="资料类别"></asp:Label>
                 </td>
                 <td class="auto-style12">
-                    <asp:DropDownList ID="DropDownList3" runat="server">
+                    <asp:DropDownList ID="dt" runat="server" DataSourceID="SqlDataSource1" DataTextField="dtname" DataValueField="dtname">
                     </asp:DropDownList>
                 </td>
                 <td class="auto-style3">&nbsp;</td>
@@ -93,25 +93,25 @@
                     <asp:Label ID="Label4" runat="server" Text="编著单位"></asp:Label>
                 </td>
                 <td class="auto-style5">
-                    <asp:TextBox ID="TextBox4" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txtunit" runat="server"></asp:TextBox>
                 </td>
                 <td class="auto-style7">
                     <asp:Label ID="Label7" runat="server" Text="入库日期"></asp:Label>
                 </td>
                 <td class="auto-style9">
-                    <asp:TextBox ID="TextBox5" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txtstockdt" runat="server"></asp:TextBox>
                 </td>
                 <td class="auto-style7">
                     <asp:Label ID="Label9" runat="server" Text="存放位置"></asp:Label>
                 </td>
                 <td class="auto-style11">
-                    <asp:TextBox ID="TextBox9" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txtlocation" runat="server"></asp:TextBox>
                 </td>
                 <td class="auto-style7">
                     <asp:Label ID="Label10" runat="server" Text="语言种类"></asp:Label>
                 </td>
                 <td class="auto-style13">
-                    <asp:DropDownList ID="DropDownList1" runat="server">
+                    <asp:DropDownList ID="language" runat="server" DataSourceID="SqlDataSource2" DataTextField="lname" DataValueField="lname">
                     </asp:DropDownList>
                 </td>
                 <td>&nbsp;</td>
@@ -121,25 +121,25 @@
                     <asp:Label ID="Label6" runat="server" Text="分类号"></asp:Label>
                 </td>
                 <td class="auto-style5">
-                    <asp:TextBox ID="TextBox6" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txtcn" runat="server"></asp:TextBox>
                 </td>
                 <td class="auto-style7">
                     <asp:Label ID="Label5" runat="server" Text="作者"></asp:Label>
                 </td>
                 <td class="auto-style9">
-                    <asp:TextBox ID="TextBox7" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txtauthor" runat="server"></asp:TextBox>
                 </td>
                 <td class="auto-style7">
                     <asp:Label ID="Label8" runat="server" Text="备注"></asp:Label>
                 </td>
                 <td class="auto-style11">
-                    <asp:TextBox ID="TextBox8" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txtnote" runat="server"></asp:TextBox>
                 </td>
                 <td class="auto-style7">
                     <asp:Label ID="Label12" runat="server" Text="专业"></asp:Label>
                 </td>
                 <td class="auto-style13">
-                    <asp:DropDownList ID="DropDownList2" runat="server">
+                    <asp:DropDownList ID="major" runat="server" DataSourceID="SqlDataSource3" DataTextField="mname" DataValueField="mname">
                     </asp:DropDownList>
                 </td>
                 <td>&nbsp;</td>
@@ -149,25 +149,29 @@
                     <asp:Label ID="Label13" runat="server" Text="开本"></asp:Label>
                 </td>
                 <td class="auto-style5">
-                    <asp:TextBox ID="TextBox11" runat="server"></asp:TextBox>
-                </td>
-                <td class="auto-style7">
-                    <asp:Label ID="Label15" runat="server" Text="价格"></asp:Label>
-                </td>
-                <td class="auto-style9">
-                    <asp:TextBox ID="TextBox12" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txtformat" runat="server"></asp:TextBox>
                 </td>
                 <td class="auto-style7">
                     <asp:Label ID="Label16" runat="server" Text="页数"></asp:Label>
                 </td>
-                <td class="auto-style11">
-                    <asp:TextBox ID="TextBox13" runat="server"></asp:TextBox>
+                <td class="auto-style9">
+                    <asp:TextBox ID="txtnumberofpage" runat="server"></asp:TextBox>
                 </td>
+                <td class="auto-style7">
+                    &nbsp;</td>
+                <td class="auto-style11">
+                    &nbsp;</td>
                 <td class="auto-style7">&nbsp;</td>
                 <td class="auto-style13">&nbsp;</td>
-                <td>&nbsp;</td>
+                <td>
+                    <asp:Button ID="btok" runat="server" OnClick="btok_Click" Text="保存" />
+                    <asp:Button ID="btclear" runat="server" OnClick="btclear_Click" Text="清空" />
+                </td>
             </tr>
         </table>
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:档案室信息管理系统ConnectionString %>" SelectCommand="SELECT * FROM [data_type]"></asp:SqlDataSource>
+        <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:档案室信息管理系统ConnectionString %>" SelectCommand="SELECT * FROM [language]"></asp:SqlDataSource>
+        <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:档案室信息管理系统ConnectionString %>" SelectCommand="SELECT * FROM [major]"></asp:SqlDataSource>
     </form>
 </body>
 </html>

@@ -11,7 +11,7 @@
     <form id="form1" runat="server">
     <div>
     
-        <asp:Button ID="Button1" runat="server" Text="论文上传" OnClick="Button1_Click" />
+        <asp:Button ID="Button1" runat="server" Text="论文数据上传" OnClick="Button1_Click" />
     
     </div>
     </form>

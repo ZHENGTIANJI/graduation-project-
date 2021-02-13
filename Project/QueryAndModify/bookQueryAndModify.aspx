@@ -54,7 +54,7 @@
         .auto-style17 {
             height: 23px;
             text-align: left;
-            width: 110px;
+            width: 188px;
         }
         .auto-style22 {
             height: 23px;
@@ -66,7 +66,7 @@
             text-align: right;
         }
         .auto-style18 {
-            width: 110px;
+            width: 188px;
         }
         .auto-style28 {
             width: 112px;
@@ -81,7 +81,7 @@
             height: 23px;
         }
         .auto-style20 {
-            width: 110px;
+            width: 188px;
             height: 23px;
         }
         .auto-style26 {
@@ -100,7 +100,7 @@
             height: 31px;
         }
         .auto-style30 {
-            width: 110px;
+            width: 188px;
             height: 31px;
         }
         .auto-style31 {
@@ -204,7 +204,7 @@
                 <td>&nbsp;</td>
             </tr>
         </table>
-        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" OnRowUpdating="GridView1_RowUpdating" style="margin-top: 0px" OnRowDeleting="GridView1_RowDeleting">
+        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" style="margin-top: 0px" OnRowDeleting="GridView1_RowDeleting">
             <Columns>
                 <asp:BoundField DataField="name" HeaderText="图书名称" SortExpression="name" />
                 <asp:BoundField DataField="btname" HeaderText="图书类型" SortExpression="btname" />
@@ -256,6 +256,7 @@ left join binding_type on book.binding_type_id=binding_type.bitid
                             </td>
                             <td class="auto-style17">
                                 <asp:TextBox ID="txtQR" runat="server" style="text-align: left"></asp:TextBox>
+                                <asp:Button ID="Button1" runat="server" Text="扫描" />
                             </td>
                             <td class="auto-style26">
                     <asp:Label ID="Label21" runat="server" Text="图书类别"></asp:Label>

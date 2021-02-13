@@ -384,7 +384,9 @@
                 <td class="auto-style11">
                     <asp:TextBox ID="TextBox25" runat="server"></asp:TextBox>
                 </td>
-                <td class="auto-style7">&nbsp;</td>
+                <td class="auto-style7">
+                    <asp:Button ID="btok" runat="server" OnClick="btok_Click" Text="保存" />
+                </td>
                 <td class="auto-style13">&nbsp;</td>
                 <td>&nbsp;</td>
             </tr>

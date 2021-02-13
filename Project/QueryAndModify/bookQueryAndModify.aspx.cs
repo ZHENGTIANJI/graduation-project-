@@ -17,38 +17,6 @@ public partial class QueryAndModify_bookQueryAndModify : System.Web.UI.Page
     {
         ExecuteQuery();
     }
-    protected void GridView1_RowUpdating(object sender, GridViewUpdateEventArgs e)
-    {
-        int num = e.RowIndex;
-        String name=GridView1.Rows[num].Cells[0].Text.ToString();
-        String btname=GridView1.Rows[num].Cells[1].Text.ToString();
-        String booknumber=GridView1.Rows[num].Cells[2].Text.ToString();
-        String author=GridView1.Rows[num].Cells[3].Text.ToString();
-        String stockdt=GridView1.Rows[num].Cells[4].Text.ToString();
-        String format=GridView1.Rows[num].Cells[5].Text.ToString();
-        String numberofpage=GridView1.Rows[num].Cells[6].Text.ToString();
-        String location=GridView1.Rows[num].Cells[7].Text.ToString();
-        String CD=GridView1.Rows[num].Cells[8].Text.ToString();
-        String status=GridView1.Rows[num].Cells[9].Text.ToString();
-        String teacher=GridView1.Rows[num].Cells[10].Text.ToString();
-        String number=GridView1.Rows[num].Cells[11].Text.ToString();
-        String major=GridView1.Rows[num].Cells[12].Text.ToString();
-        String QR=GridView1.Rows[num].Cells[13].Text.ToString();
-        String language=GridView1.Rows[num].Cells[14].Text.ToString();
-        String publisher=GridView1.Rows[num].Cells[15].Text.ToString();
-        String publishdt=GridView1.Rows[num].Cells[16].Text.ToString();                
-        String price=GridView1.Rows[num].Cells[17].Text.ToString();
-        String bindingtype=GridView1.Rows[num].Cells[18].Text.ToString();
-        String note=GridView1.Rows[num].Cells[19].Text.ToString();
-        
-        SqlConnection cnn = new SqlConnection("Data Source=(local);Initial Catalog=档案室信息管理系统1.0;Integrated Security=True");
-        SqlCommand cmd = cnn.CreateCommand();
-        cmd.CommandText="update book set name='"+name+"'";
-        cnn.Open();
-        cmd.ExecuteNonQuery();
-        cnn.Close();
-
-    }
 
     protected void GridView1_RowDeleting(object sender, GridViewDeleteEventArgs e)
     {
@@ -73,7 +41,7 @@ public partial class QueryAndModify_bookQueryAndModify : System.Web.UI.Page
         txtprice.Text = GridView1.Rows[num].Cells[17].Text.ToString();
         bindingtype.SelectedItem.Value = GridView1.Rows[num].Cells[18].Text.ToString();
         txtnote.Text = GridView1.Rows[num].Cells[19].Text.ToString();
-        Session["id"] = GridView1.Rows[num].Cells[20].Text.ToString();
+        Session["bookid"] = GridView1.Rows[num].Cells[20].Text.ToString();
         txtclassnumber.Text = GridView1.Rows[num].Cells[20].Text.ToString();
        
     }
@@ -111,7 +79,7 @@ public partial class QueryAndModify_bookQueryAndModify : System.Web.UI.Page
         int majorid = (int)dst2.Tables[0].Rows[0]["mid"];
         int bitid = (int)dst3.Tables[0].Rows[0]["bitid"];
         int lid = (int)dst4.Tables[0].Rows[0]["lid"];
-        int id = Convert.ToInt32(Session["id"]);
+        int id = Convert.ToInt32(Session["bookid"]);
 
         cmd.CommandText = "update book set name='" + txtname.Text + "',book_type_id='"+btid+"',book_number='"+txtbooknumber.Text+"',major_type_id='"+majorid+"',QR_code='"+txtQR.Text+"',publisher='"+txtpub.Text+"',publish_dt='"+txtpubdt.Text+"',author='"+txtauthor.Text+"',stock_dt='"+txtstockdt.Text+"',teacher='"+txtteacher.Text+"',number='"+txtnumber.Text+"',CD='"+CD.SelectedItem.Text+"',location='"+txtlocation.Text+"',status='"+status.SelectedItem.Text+"',format='"+txtformat.Text+"',price='"+int.Parse(txtprice.Text)+"',number_of_page='"+int.Parse(txtnumberofpage.Text)+"',binding_type_id='"+bitid+"',language='"+lid+"',note='"+txtnote.Text+"' where id='"+id+"'";
         cnn.Open();
