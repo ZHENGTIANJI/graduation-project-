@@ -44,6 +44,9 @@
         .auto-style14 {
             width: 141px;
         }
+        .auto-style15 {
+            width: 101px;
+        }
     </style>
 </head>
 <body>
@@ -57,6 +60,7 @@
                 <td class="auto-style3">&nbsp;</td>
                 <td class="auto-style4">&nbsp;</td>
                 <td class="auto-style3">&nbsp;</td>
+                <td class="auto-style15">&nbsp;</td>
                 <td>&nbsp;</td>
             </tr>
             <tr>
@@ -64,7 +68,7 @@
                     <asp:Label ID="Label1" runat="server" Text="期刊名称"></asp:Label>
                 </td>
                 <td class="auto-style2">
-                    <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="journalname" runat="server"></asp:TextBox>
                 </td>
                 <td class="auto-style3">
                     <asp:Label ID="Label2" runat="server" Text="期刊类型"></asp:Label>
@@ -76,9 +80,12 @@
                 <td class="auto-style3">
                     <asp:Label ID="Label3" runat="server" Text="专业类型"></asp:Label>
                 </td>
-                <td>
+                <td class="auto-style15">
                     <asp:DropDownList ID="mt" runat="server" DataSourceID="SqlDataSource2" DataTextField="mname" DataValueField="mname">
                     </asp:DropDownList>
+                </td>
+                <td>
+                    <asp:Button ID="query" runat="server" OnClick="query_Click" Text="查询" />
                 </td>
             </tr>
             <tr>
@@ -87,13 +94,43 @@
                 <td class="auto-style3">&nbsp;</td>
                 <td class="auto-style4">&nbsp;</td>
                 <td class="auto-style3">&nbsp;</td>
+                <td class="auto-style15">&nbsp;</td>
                 <td>&nbsp;</td>
             </tr>
         </table>
     
     </div>
+        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="id">
+            <Columns>
+                <asp:BoundField DataField="id" HeaderText="ID" InsertVisible="False" ReadOnly="True" SortExpression="id" />
+                <asp:BoundField DataField="name" HeaderText="期刊名称" SortExpression="name" />
+                <asp:BoundField DataField="journal_type_id" HeaderText="期刊类型" SortExpression="journal_type_id" />
+                <asp:BoundField DataField="grade" HeaderText="期刊等级" SortExpression="grade" />
+                <asp:BoundField DataField="publish_dt" HeaderText="出版日期" SortExpression="publish_dt" />
+                <asp:BoundField DataField="stock_dt" HeaderText="入库日期" SortExpression="stock_dt" />
+                <asp:BoundField DataField="major_id" HeaderText="专业" SortExpression="major_id" />
+                <asp:BoundField DataField="period_type" HeaderText="期刊周期" SortExpression="period_type" />
+                <asp:BoundField DataField="office_name" HeaderText="杂志社名称" SortExpression="office_name" />
+                <asp:BoundField DataField="QR_code" HeaderText="二维码编码" SortExpression="QR_code" />
+                <asp:BoundField DataField="language" HeaderText="期刊语种" SortExpression="language" />
+                <asp:BoundField DataField="class_number" HeaderText="分类号" SortExpression="class_number" />
+                <asp:BoundField DataField="location" HeaderText="存放位置" SortExpression="location" />
+                <asp:BoundField DataField="number" HeaderText="数量" SortExpression="number" />
+                <asp:BoundField DataField="address" HeaderText="杂志社地址" SortExpression="address" />
+                <asp:BoundField DataField="organization" HeaderText="检索机构" SortExpression="organization" />
+                <asp:BoundField DataField="status" HeaderText="库存状况" SortExpression="status" />
+                <asp:BoundField DataField="period_number" HeaderText="周期数" SortExpression="period_number" />
+                <asp:BoundField DataField="note" HeaderText="备注" SortExpression="note" />
+                <asp:TemplateField HeaderText="操作" ShowHeader="False">
+                    <ItemTemplate>
+                        <a href="javascript:__doPostBack('ctl00$LinkButton1','')">编辑</a>
+                    </ItemTemplate>
+                </asp:TemplateField>
+            </Columns>
+        </asp:GridView>
         <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:档案室信息管理系统ConnectionString %>" SelectCommand="SELECT * FROM [journal_type]"></asp:SqlDataSource>
         <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:档案室信息管理系统ConnectionString %>" SelectCommand="SELECT * FROM [major]"></asp:SqlDataSource>
+        <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:档案室信息管理系统ConnectionString %>" SelectCommand="SELECT * FROM [journal]"></asp:SqlDataSource>
         <table style="width:100%;">
             <tr>
                 <td class="auto-style7">

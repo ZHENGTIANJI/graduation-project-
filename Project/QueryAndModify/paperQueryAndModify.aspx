@@ -19,6 +19,54 @@
         .auto-style4 {
             width: 100px;
         }
+        .auto-style5 {
+            width: 74px;
+        }
+        .auto-style6 {
+            height: 20px;
+        }
+        .auto-style39 {
+            width: 81px;
+        }
+        .auto-style40 {
+            height: 20px;
+            width: 81px;
+        }
+        .auto-style41 {
+            width: 141px;
+        }
+        .auto-style42 {
+            height: 20px;
+            width: 141px;
+        }
+        .auto-style44 {
+            height: 20px;
+            width: 65px;
+        }
+        .auto-style45 {
+            width: 65px;
+        }
+        .auto-style46 {
+            width: 80px;
+        }
+        .auto-style47 {
+            height: 20px;
+            width: 80px;
+        }
+        .auto-style48 {
+            width: 145px;
+        }
+        .auto-style49 {
+            height: 20px;
+            width: 145px;
+        }
+        .auto-style51 {
+            height: 20px;
+            width: 68px;
+        }
+        .auto-style52 {
+            width: 68px;
+        }
     </style>
 </head>
 <body>
@@ -30,6 +78,7 @@
                 <td class="auto-style3">&nbsp;</td>
                 <td class="auto-style4">&nbsp;</td>
                 <td class="auto-style3">&nbsp;</td>
+                <td class="auto-style5">&nbsp;</td>
                 <td>&nbsp;</td>
             </tr>
             <tr>
@@ -49,9 +98,12 @@
                 <td class="auto-style3">
                     <asp:Label ID="Label3" runat="server" Text="专业类型"></asp:Label>
                 </td>
-                <td>
+                <td class="auto-style5">
                     <asp:DropDownList ID="majortype" runat="server" DataSourceID="SqlDataSource2" DataTextField="mname" DataValueField="mname">
                     </asp:DropDownList>
+                </td>
+                <td>
+                    <asp:Button ID="query" runat="server" OnClick="query_Click" Text="查询" />
                 </td>
             </tr>
             <tr>
@@ -60,6 +112,7 @@
                 <td class="auto-style3">&nbsp;</td>
                 <td class="auto-style4">&nbsp;</td>
                 <td class="auto-style3">&nbsp;</td>
+                <td class="auto-style5">&nbsp;</td>
                 <td>&nbsp;</td>
             </tr>
         </table>
@@ -90,6 +143,153 @@
             </Columns>
         </asp:GridView>
         <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:档案室信息管理系统ConnectionString %>" SelectCommand="SELECT * FROM [paper]"></asp:SqlDataSource>
+        <table style="width:100%;">
+            <tr>
+                <td>&nbsp;</td>
+                <td class="auto-style39">
+                    <asp:Label ID="Label37" runat="server" Text="论文名称"></asp:Label>
+                </td>
+                <td class="auto-style41">
+                    <asp:TextBox ID="TextBox27" runat="server"></asp:TextBox>
+                </td>
+                <td class="auto-style45">
+                    <asp:Label ID="Label42" runat="server" Text="论文类别"></asp:Label>
+                </td>
+                <td class="auto-style46">
+                    <asp:DropDownList ID="DropDownList9" runat="server">
+                    </asp:DropDownList>
+                </td>
+                <td class="auto-style45">
+                    <asp:Label ID="Label46" runat="server" Text="分类号"></asp:Label>
+                </td>
+                <td class="auto-style48">
+                    <asp:TextBox ID="TextBox33" runat="server"></asp:TextBox>
+                </td>
+                <td class="auto-style52">
+                    <asp:Label ID="Label52" runat="server" Text="指导教师"></asp:Label>
+                </td>
+                <td>
+                    <asp:TextBox ID="TextBox38" runat="server"></asp:TextBox>
+                </td>
+            </tr>
+            <tr>
+                <td class="auto-style6"></td>
+                <td class="auto-style40">
+                    <asp:Label ID="Label38" runat="server" Text="二维码编码"></asp:Label>
+                </td>
+                <td class="auto-style42">
+                    <asp:TextBox ID="TextBox28" runat="server"></asp:TextBox>
+                </td>
+                <td class="auto-style44">
+                    <asp:Label ID="Label43" runat="server" Text="专业"></asp:Label>
+                </td>
+                <td class="auto-style47">
+                    <asp:DropDownList ID="DropDownList10" runat="server">
+                    </asp:DropDownList>
+                </td>
+                <td class="auto-style44">
+                    <asp:Label ID="Label47" runat="server" Text="编著日期"></asp:Label>
+                </td>
+                <td class="auto-style49">
+                    <asp:TextBox ID="TextBox34" runat="server"></asp:TextBox>
+                </td>
+                <td class="auto-style51">
+                    <asp:Label ID="Label53" runat="server" Text="职称"></asp:Label>
+                </td>
+                <td class="auto-style6">
+                    <asp:DropDownList ID="DropDownList13" runat="server">
+                    </asp:DropDownList>
+                </td>
+            </tr>
+            <tr>
+                <td class="auto-style6">&nbsp;</td>
+                <td class="auto-style40">
+                    <asp:Label ID="Label39" runat="server" Text="作者"></asp:Label>
+                </td>
+                <td class="auto-style42">
+                    <asp:TextBox ID="TextBox29" runat="server"></asp:TextBox>
+                </td>
+                <td class="auto-style44">
+                    <asp:Label ID="Label44" runat="server" Text="语言种类"></asp:Label>
+                </td>
+                <td class="auto-style47">
+                    <asp:DropDownList ID="DropDownList11" runat="server">
+                    </asp:DropDownList>
+                </td>
+                <td class="auto-style44">
+                    <asp:Label ID="Label48" runat="server" Text="入库日期"></asp:Label>
+                </td>
+                <td class="auto-style49">
+                    <asp:TextBox ID="TextBox35" runat="server"></asp:TextBox>
+                </td>
+                <td class="auto-style51">
+                    <asp:Label ID="Label54" runat="server" Text="备注"></asp:Label>
+                </td>
+                <td class="auto-style6">
+                    <asp:TextBox ID="TextBox39" runat="server"></asp:TextBox>
+                </td>
+            </tr>
+            <tr>
+                <td class="auto-style6">&nbsp;</td>
+                <td class="auto-style40">
+                    <asp:Label ID="Label40" runat="server" Text="开本"></asp:Label>
+                </td>
+                <td class="auto-style42">
+                    <asp:TextBox ID="TextBox30" runat="server"></asp:TextBox>
+                </td>
+                <td class="auto-style44">
+                    <asp:Label ID="Label45" runat="server" Text="学制"></asp:Label>
+                </td>
+                <td class="auto-style47">
+                    <asp:DropDownList ID="DropDownList12" runat="server">
+                    </asp:DropDownList>
+                </td>
+                <td class="auto-style44">
+                    <asp:Label ID="Label49" runat="server" Text="答辩日期"></asp:Label>
+                </td>
+                <td class="auto-style49">
+                    <asp:TextBox ID="TextBox36" runat="server"></asp:TextBox>
+                </td>
+                <td class="auto-style51">&nbsp;</td>
+                <td class="auto-style6">&nbsp;</td>
+            </tr>
+            <tr>
+                <td class="auto-style6">&nbsp;</td>
+                <td class="auto-style40">
+                    <asp:Label ID="Label41" runat="server" Text="页数"></asp:Label>
+                </td>
+                <td class="auto-style42">
+                    <asp:TextBox ID="TextBox31" runat="server"></asp:TextBox>
+                </td>
+                <td class="auto-style44">
+                    <asp:Label ID="Label51" runat="server" Text="存放位置"></asp:Label>
+                </td>
+                <td class="auto-style47">
+                    <asp:TextBox ID="TextBox32" runat="server"></asp:TextBox>
+                </td>
+                <td class="auto-style44">
+                    <asp:Label ID="Label50" runat="server" Text="研究方向"></asp:Label>
+                </td>
+                <td class="auto-style49">
+                    <asp:TextBox ID="TextBox37" runat="server"></asp:TextBox>
+                </td>
+                <td class="auto-style51">&nbsp;</td>
+                <td class="auto-style6">
+                    <asp:Button ID="btok" runat="server" OnClick="btok_Click" style="height: 21px" Text="保存" />
+                </td>
+            </tr>
+            <tr>
+                <td class="auto-style6"></td>
+                <td class="auto-style40"></td>
+                <td class="auto-style42"></td>
+                <td class="auto-style44"></td>
+                <td class="auto-style47"></td>
+                <td class="auto-style44"></td>
+                <td class="auto-style49"></td>
+                <td class="auto-style51">&nbsp;</td>
+                <td class="auto-style6">&nbsp;</td>
+            </tr>
+        </table>
     </form>
 </body>
 </html>

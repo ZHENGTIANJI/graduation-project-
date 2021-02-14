@@ -26,4 +26,12 @@ public partial class QueryAndModify_paperQueryAndModify : System.Web.UI.Page
         GridView1.DataSource = dst.Tables[0];
         GridView1.DataBind();
     }
+    protected void query_Click(object sender, EventArgs e)
+    {
+        ExecuteQuery();
+    }
+    protected void btok_Click(object sender, EventArgs e)
+    {
+
+    }
 }
