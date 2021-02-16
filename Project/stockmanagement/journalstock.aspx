@@ -12,10 +12,6 @@
             height: 20px;
             text-align: right;
         }
-        .auto-style4 {
-            height: 20px;
-            width: 115px;
-        }
         .auto-style6 {
             width: 64px;
             height: 20px;
@@ -38,9 +34,6 @@
         .auto-style1 {
             width: 80px;
             text-align: right;
-        }
-        .auto-style5 {
-            width: 115px;
         }
         .auto-style7 {
             width: 64px;
@@ -73,6 +66,13 @@
         }
         .auto-style21 {
             width: 180px;
+        }
+        .auto-style22 {
+            height: 20px;
+            width: 243px;
+        }
+        .auto-style23 {
+            width: 243px;
         }
     </style>
 </head>
@@ -135,8 +135,9 @@
                 <td class="auto-style2">
                     <asp:Label ID="Label1" runat="server" Text="二维码编码"></asp:Label>
                 </td>
-                <td class="auto-style4">
+                <td class="auto-style22">
                     <asp:TextBox ID="txtQR" runat="server"></asp:TextBox>
+                    <asp:Button ID="Button1" runat="server" Text="扫描" />
                 </td>
                 <td class="auto-style2">
                     <asp:Label ID="Label2" runat="server" Text="期刊名称"></asp:Label>
@@ -165,7 +166,7 @@
                 <td class="auto-style1">
                     <asp:Label ID="Label4" runat="server" Text="检索机构"></asp:Label>
                 </td>
-                <td class="auto-style5">
+                <td class="auto-style23">
                     <asp:TextBox ID="txtorgan" runat="server"></asp:TextBox>
                 </td>
                 <td class="auto-style1">
@@ -195,7 +196,7 @@
                 <td class="auto-style1">
                     <asp:Label ID="Label6" runat="server" Text="分类号"></asp:Label>
                 </td>
-                <td class="auto-style5">
+                <td class="auto-style23">
                     <asp:TextBox ID="txtcn" runat="server"></asp:TextBox>
                 </td>
                 <td class="auto-style1">
@@ -225,7 +226,7 @@
                 <td class="auto-style1">
                     <asp:Label ID="Label13" runat="server" Text="开本"></asp:Label>
                 </td>
-                <td class="auto-style5">
+                <td class="auto-style23">
                     <asp:TextBox ID="txtformat" runat="server"></asp:TextBox>
                 </td>
                 <td class="auto-style1">
@@ -252,7 +253,7 @@
                 <td class="auto-style1">
                     <asp:Label ID="Label23" runat="server" Text="出版社地址"></asp:Label>
                 </td>
-                <td class="auto-style5">
+                <td class="auto-style23">
                     <asp:TextBox ID="txtaddress" runat="server"></asp:TextBox>
                 </td>
                 <td class="auto-style1">
