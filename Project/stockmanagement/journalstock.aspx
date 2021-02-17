@@ -242,9 +242,12 @@
                     <asp:TextBox ID="txtnote" runat="server"></asp:TextBox>
                 </td>
                 <td class="auto-style7">
-                    &nbsp;</td>
+                    <asp:Label ID="Label24" runat="server" Text="检索机构"></asp:Label>
+                </td>
                 <td class="auto-style13">
-                    &nbsp;</td>
+                    <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="SqlDataSource5" DataTextField="organname" DataValueField="organname">
+                    </asp:DropDownList>
+                </td>
                 <td>&nbsp;</td>
             </tr>
             <tr>
@@ -276,6 +279,7 @@
         <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:档案室信息管理系统ConnectionString %>" SelectCommand="SELECT * FROM [major]"></asp:SqlDataSource>
         <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:档案室信息管理系统ConnectionString %>" SelectCommand="SELECT * FROM [language]"></asp:SqlDataSource>
         <asp:SqlDataSource ID="SqlDataSource4" runat="server" ConnectionString="<%$ ConnectionStrings:档案室信息管理系统ConnectionString %>" SelectCommand="SELECT * FROM [journal_grade]"></asp:SqlDataSource>
+        <asp:SqlDataSource ID="SqlDataSource5" runat="server" ConnectionString="<%$ ConnectionStrings:档案室信息管理系统ConnectionString %>" SelectCommand="SELECT * FROM [organization]"></asp:SqlDataSource>
     </form>
 </body>
 </html>
