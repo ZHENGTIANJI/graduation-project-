@@ -163,7 +163,7 @@
                     <asp:Label ID="Label55" runat="server" Text="论文类型"></asp:Label>
                 </td>
                 <td class="auto-style46">
-                    <asp:DropDownList ID="pt" runat="server" DataSourceID="SqlDataSource1" DataTextField="ptname" DataValueField="ptname">
+                    <asp:DropDownList ID="pt" runat="server" DataSourceID="SqlDataSource1" DataTextField="ptname" DataValueField="ptname" AutoPostBack="True">
                     </asp:DropDownList>
                 </td>
                 <td class="auto-style45">
@@ -191,7 +191,7 @@
                     <asp:Label ID="Label43" runat="server" Text="专业"></asp:Label>
                 </td>
                 <td class="auto-style47">
-                    <asp:DropDownList ID="mj" runat="server" DataSourceID="SqlDataSource4" DataTextField="mname" DataValueField="mname">
+                    <asp:DropDownList ID="mj" runat="server" DataSourceID="SqlDataSource4" DataTextField="mname" DataValueField="mname" AutoPostBack="True">
                     </asp:DropDownList>
                 </td>
                 <td class="auto-style44">
@@ -223,7 +223,7 @@
                     <asp:Label ID="Label44" runat="server" Text="语言种类"></asp:Label>
                 </td>
                 <td class="auto-style47">
-                    <asp:DropDownList ID="language" runat="server" DataSourceID="SqlDataSource3" DataTextField="lname" DataValueField="lname">
+                    <asp:DropDownList ID="language" runat="server" DataSourceID="SqlDataSource3" DataTextField="lname" DataValueField="lname" AutoPostBack="True">
                     </asp:DropDownList>
                 </td>
                 <td class="auto-style44">
@@ -251,7 +251,7 @@
                     <asp:Label ID="Label45" runat="server" Text="学制"></asp:Label>
                 </td>
                 <td class="auto-style47">
-                    <asp:DropDownList ID="xuezhi" runat="server">
+                    <asp:DropDownList ID="xuezhi" runat="server" AutoPostBack="True">
                         <asp:ListItem>二年制</asp:ListItem>
                         <asp:ListItem>三年制</asp:ListItem>
                         <asp:ListItem>四年制</asp:ListItem>

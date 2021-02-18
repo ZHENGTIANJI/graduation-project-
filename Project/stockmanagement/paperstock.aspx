@@ -57,10 +57,10 @@
         }
         .auto-style16 {
             height: 20px;
-            width: 141px;
+            width: 222px;
         }
         .auto-style17 {
-            width: 141px;
+            width: 222px;
         }
         .auto-style18 {
             width: 64px;
@@ -108,6 +108,7 @@
                 </td>
                 <td class="auto-style16">
                     <asp:TextBox ID="txtQR" runat="server"></asp:TextBox>
+                    <asp:Button ID="scan" runat="server" OnClick="scan_Click" Text="扫描" />
                 </td>
                 <td class="auto-style6">
                     <asp:Label ID="Label3" runat="server" Text="论文类别"></asp:Label>
@@ -164,10 +165,10 @@
                 <td class="auto-style15">
                     &nbsp;</td>
                 <td class="auto-style1">
-                    <asp:Label ID="Label4" runat="server" Text="编著单位"></asp:Label>
+                    <asp:Label ID="Label16" runat="server" Text="页数"></asp:Label>
                 </td>
                 <td class="auto-style17">
-                    <asp:TextBox ID="txt" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txtnumberofpage" runat="server"></asp:TextBox>
                 </td>
                 <td class="auto-style7">
                     <asp:Label ID="Label7" runat="server" Text="入库日期"></asp:Label>
@@ -194,7 +195,7 @@
                     <asp:Label ID="Label5" runat="server" Text="作者"></asp:Label>
                 </td>
                 <td class="auto-style17">
-                    <asp:TextBox ID="txtauthor" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txtauthor" runat="server" style="margin-right: 3px"></asp:TextBox>
                 </td>
                 <td class="auto-style7">
                     <asp:Label ID="Label6" runat="server" Text="答辩日期"></asp:Label>
@@ -206,7 +207,7 @@
                     <asp:Label ID="Label38" runat="server" Text="指导教师"></asp:Label>
                 </td>
                 <td class="auto-style11">
-                    <asp:TextBox ID="txtadvisor" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txtadviser" runat="server"></asp:TextBox>
                 </td>
                 <td class="auto-style7">
                     &nbsp;</td>
@@ -221,7 +222,7 @@
                     <asp:Label ID="Label13" runat="server" Text="开本"></asp:Label>
                 </td>
                 <td class="auto-style17">
-                    <asp:TextBox ID="txtformat" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txtformat" runat="server" Width="140px"></asp:TextBox>
                 </td>
                 <td class="auto-style7">
                     <asp:Label ID="Label15" runat="server" Text="研究方向"></asp:Label>
@@ -247,16 +248,16 @@
                 <td class="auto-style15">
                     &nbsp;</td>
                 <td class="auto-style1">
-                    <asp:Label ID="Label16" runat="server" Text="页数"></asp:Label>
+                    <asp:Label ID="Label42" runat="server" Text="分类号"></asp:Label>
                 </td>
                 <td class="auto-style17">
-                    <asp:TextBox ID="txtnumberofpage" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txtcn" runat="server"></asp:TextBox>
                 </td>
                 <td class="auto-style7">
                     <asp:Label ID="Label40" runat="server" Text="语言种类"></asp:Label>
                 </td>
                 <td class="auto-style9">
-                    <asp:DropDownList ID="language" runat="server">
+                    <asp:DropDownList ID="language" runat="server" DataSourceID="SqlDataSource3" DataTextField="lname" DataValueField="lname">
                     </asp:DropDownList>
                 </td>
                 <td class="auto-style19">
@@ -271,7 +272,30 @@
                 <td class="auto-style13">&nbsp;</td>
                 <td>&nbsp;</td>
             </tr>
+            <tr>
+                <td class="auto-style15">
+                    &nbsp;</td>
+                <td class="auto-style1">
+                    &nbsp;</td>
+                <td class="auto-style17">
+                    &nbsp;</td>
+                <td class="auto-style7">
+                    &nbsp;</td>
+                <td class="auto-style9">
+                    &nbsp;</td>
+                <td class="auto-style19">
+                    &nbsp;</td>
+                <td class="auto-style11">
+                    &nbsp;</td>
+                <td class="auto-style7">
+                    &nbsp;</td>
+                <td class="auto-style13">&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
         </table>
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:档案室信息管理系统ConnectionString %>" SelectCommand="SELECT * FROM [paper_type]"></asp:SqlDataSource>
+        <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:档案室信息管理系统ConnectionString %>" SelectCommand="SELECT * FROM [major]"></asp:SqlDataSource>
+        <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:档案室信息管理系统ConnectionString %>" SelectCommand="SELECT * FROM [language]"></asp:SqlDataSource>
     </form>
 </body>
 </html>

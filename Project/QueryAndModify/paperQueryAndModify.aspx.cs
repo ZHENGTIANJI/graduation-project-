@@ -57,7 +57,7 @@ public partial class QueryAndModify_paperQueryAndModify : System.Web.UI.Page
         //int gid = (int)dst5.Tables[0].Rows[0]["gid"];
         int id = Convert.ToInt32(Session["paperid"]);
 
-        cmd.CommandText = "update paper set name='" + txtname.Text +"',zhicheng='"+zhicheng.SelectedItem.Value+ "',shenhe='" + shenhe.SelectedItem.Value  + "',paper_type_id='" + ptid + "',major_id='" + majorid + "',QR_code='" + txtQR.Text + "',write_dt='" + txtwritedt.Text + "',xuezhi='" + xuezhi.SelectedItem.Value+"',dabian_dt='" + txtdabiandt.Text  + "',adviser='" + txtadviser.Text + "',direction='" + txtdirection.Text + "',stock_dt='" + txtstockdt.Text + "',class_number='" + txtcn.Text + "',number='" + txtnumber.Text + "',location='" + txtlocation.Text + "',status='" + status.SelectedItem.Text + "',format='" + txtformat.Text + "',number_of_page='" + int.Parse(txtnumberofpage.Text) + "',language='" + lid + "',note='" + txtnote.Text +  "' where id='" + id + "'";
+        cmd.CommandText = "update paper set name='" + txtname.Text +"',zhicheng='"+zhicheng.SelectedItem.Text+ "',shenhe='" + shenhe.SelectedItem.Text  + "',paper_type_id='" + ptid + "',major_id='" + majorid + "',QR_code='" + txtQR.Text + "',write_dt='" + txtwritedt.Text + "',xuezhi='" + xuezhi.SelectedItem.Text+"',dabian_dt='" + txtdabiandt.Text  + "',adviser='" + txtadviser.Text + "',direction='" + txtdirection.Text + "',stock_dt='" + txtstockdt.Text + "',class_number='" + txtcn.Text + "',number='" + txtnumber.Text + "',location='" + txtlocation.Text + "',status='" + status.SelectedItem.Text + "',format='" + txtformat.Text + "',number_of_page='" + int.Parse(txtnumberofpage.Text) + "',language='" + lid + "',note='" + txtnote.Text +  "' where id='" + id + "'";
         cnn.Open();
         cmd.ExecuteNonQuery();
         cnn.Close();
@@ -67,22 +67,29 @@ public partial class QueryAndModify_paperQueryAndModify : System.Web.UI.Page
     {
         int num = e.RowIndex;
         txtname.Text = GridView1.Rows[num].Cells[0].Text.ToString();
-        pt.SelectedItem.Value = GridView1.Rows[num].Cells[1].Text.ToString();
+        pt.SelectedIndex = -1;
+        pt.Items.FindByText( GridView1.Rows[num].Cells[1].Text.ToString()).Selected = true;
         txtauthor.Text=GridView1.Rows[num].Cells[2].Text.ToString();
-        xuezhi.SelectedItem.Value = GridView1.Rows[num].Cells[3].Text.ToString();
-        mj.SelectedItem.Value = GridView1.Rows[num].Cells[4].Text.ToString();
+        xuezhi.SelectedIndex = -1;
+        xuezhi.Items.FindByText(GridView1.Rows[num].Cells[3].Text.ToString()).Selected=true;
+        mj.SelectedIndex = -1;
+        mj.Items.FindByText(GridView1.Rows[num].Cells[4].Text.ToString()).Selected = true;
         txtdirection.Text = GridView1.Rows[num].Cells[5].Text.ToString();
         txtstockdt.Text = GridView1.Rows[num].Cells[6].Text.Trim().ToString();
         txtQR.Text = GridView1.Rows[num].Cells[7].Text.ToString();
         txtlocation.Text = GridView1.Rows[num].Cells[8].Text.ToString();
-        status.SelectedItem.Value = GridView1.Rows[num].Cells[9].Text.ToString();
+        status.SelectedIndex = -1;
+        status.Items.FindByText(GridView1.Rows[num].Cells[9].Text.ToString()).Selected = true;
         txtadviser.Text= GridView1.Rows[num].Cells[10].Text.ToString();
-        zhicheng.SelectedItem.Value = GridView1.Rows[num].Cells[11].Text.ToString();
+        zhicheng.SelectedIndex = -1;
+        zhicheng.Items.FindByText(GridView1.Rows[num].Cells[11].Text.ToString()).Selected = true;
         txtdabiandt.Text = GridView1.Rows[num].Cells[12].Text.ToString();
         txtcn.Text = GridView1.Rows[num].Cells[13].Text.ToString();
-        shenhe.SelectedItem.Value = GridView1.Rows[num].Cells[14].Text.ToString();
+        shenhe.SelectedIndex = -1;
+        shenhe.Items.FindByText(GridView1.Rows[num].Cells[14].Text.ToString()).Selected = true;
         txtwritedt.Text = GridView1.Rows[num].Cells[15].Text.ToString();
-        language.SelectedItem.Value = GridView1.Rows[num].Cells[16].Text.ToString();
+        language.SelectedIndex = -1;
+        language.Items.FindByText(GridView1.Rows[num].Cells[16].Text.ToString()).Selected = true;
         txtformat.Text = GridView1.Rows[num].Cells[17].Text.ToString();
         txtnumberofpage.Text = GridView1.Rows[num].Cells[18].Text.ToString();
         txtnumber.Text = GridView1.Rows[num].Cells[19].Text.ToString();
