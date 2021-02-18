@@ -104,8 +104,8 @@
                 <asp:BoundField DataField="gradename" HeaderText="期刊等级" SortExpression="gradename" />
                 <asp:BoundField DataField="mname" HeaderText="专业" SortExpression="mname" />
                 <asp:BoundField DataField="QR_code" HeaderText="二维码编码" SortExpression="QR_code" />
-                <asp:BoundField DataField="publish_dt" HeaderText="出版日期" SortExpression="publish_dt" />
-                <asp:BoundField DataField="stock_dt" HeaderText="入库日期" SortExpression="stock_dt" />
+                <asp:BoundField DataField="publish_dt" HeaderText="出版日期" SortExpression="publish_dt" DataFormatString="{0:yyyy-MM-dd}" />
+                <asp:BoundField DataField="stock_dt" HeaderText="入库日期" SortExpression="stock_dt" DataFormatString="{0:yyyy-MM-dd}" />
                 <asp:BoundField DataField="period_type" HeaderText="期刊周期" SortExpression="period_type" />
                 <asp:BoundField DataField="office_name" HeaderText="杂志社名称" SortExpression="office_name" />
                 <asp:BoundField DataField="lname" HeaderText="期刊语种" SortExpression="lname" />

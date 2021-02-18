@@ -106,12 +106,12 @@
                 <asp:BoundField DataField="dtname" HeaderText="资料类型名称" />
                 <asp:BoundField DataField="QR_code" HeaderText="二维码" SortExpression="QR_code" />
                 <asp:BoundField DataField="unit" HeaderText="编著单位" SortExpression="unit" />
-                <asp:BoundField DataField="stock_dt" HeaderText="入库日期" SortExpression="stock_dt" />
+                <asp:BoundField DataField="stock_dt" HeaderText="入库日期" SortExpression="stock_dt" DataFormatString="{0:yyyy-MM-dd}" />
                 <asp:BoundField DataField="location" HeaderText="存放位置" SortExpression="location" />
                 <asp:BoundField DataField="number" HeaderText="库存数量" SortExpression="number" />
                 <asp:BoundField DataField="class_number" HeaderText="分类号" SortExpression="class_number" />
                 <asp:BoundField DataField="lname" HeaderText="资料语种" SortExpression="language" />
-                <asp:BoundField DataField="compile_dt" HeaderText="编著日期" SortExpression="compile_dt" />
+                <asp:BoundField DataField="compile_dt" HeaderText="编著日期" SortExpression="compile_dt" DataFormatString="{0:yyyy-MM-dd}" />
                 <asp:BoundField DataField="format" HeaderText="开本" SortExpression="format" />
                 <asp:BoundField DataField="number_of_page" HeaderText="页数" SortExpression="number_of_page" />
                 <asp:BoundField DataField="author" HeaderText="作者" SortExpression="author" />

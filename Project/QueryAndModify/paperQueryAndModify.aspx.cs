@@ -39,25 +39,25 @@ public partial class QueryAndModify_paperQueryAndModify : System.Web.UI.Page
         DataSet dst5 = new DataSet();
 
         SqlConnection cnn = new SqlConnection("Data Source=(local);Initial Catalog=档案室信息管理系统1.0;Integrated Security=True");
-        SqlDataAdapter adptdt = new SqlDataAdapter("select jtid from journal_type where jtname='" + journaltype.SelectedItem.Text + "'", cnn);
-        SqlDataAdapter adptmajor = new SqlDataAdapter("select mid from major where mname='" + major.SelectedItem.Text + "'", cnn);
-        SqlDataAdapter adptorgan = new SqlDataAdapter("select organid from organization where organname='" + organ.SelectedItem.Value + "'", cnn);
+        SqlDataAdapter adptdt = new SqlDataAdapter("select ptid from paper_type where ptname='" + pt.SelectedItem.Text + "'", cnn);
+        SqlDataAdapter adptmajor = new SqlDataAdapter("select mid from major where mname='" + mj.SelectedItem.Text + "'", cnn);
+        //SqlDataAdapter adptorgan = new SqlDataAdapter("select organid from organization where organname='" + organ.SelectedItem.Value + "'", cnn);
         SqlDataAdapter adptlanguage = new SqlDataAdapter("select lid from language where lname='" + language.SelectedItem.Text + "'", cnn);
-        SqlDataAdapter adptgrade = new SqlDataAdapter("select gid from journal_grade where gradename='" + grade.SelectedItem.Text + "'", cnn);
+        //SqlDataAdapter adptgrade = new SqlDataAdapter("select gid from journal_grade where gradename='" + grade.SelectedItem.Text + "'", cnn);
         SqlCommand cmd = cnn.CreateCommand();
         adptdt.Fill(dst1);
         adptmajor.Fill(dst2);
-        adptorgan.Fill(dst3);
+        //adptorgan.Fill(dst3);
         adptlanguage.Fill(dst4);
-        adptgrade.Fill(dst5);
-        int jtid = (int)dst1.Tables[0].Rows[0]["jtid"];
+        //adptgrade.Fill(dst5);
+        int ptid = (int)dst1.Tables[0].Rows[0]["ptid"];
         int majorid = (int)dst2.Tables[0].Rows[0]["mid"];
-        int or = (int)dst3.Tables[0].Rows[0]["organid"];
+        //int or = (int)dst3.Tables[0].Rows[0]["organid"];
         int lid = (int)dst4.Tables[0].Rows[0]["lid"];
-        int gid = (int)dst5.Tables[0].Rows[0]["gid"];
-        int id = Convert.ToInt32(Session["journalid"]);
+        //int gid = (int)dst5.Tables[0].Rows[0]["gid"];
+        int id = Convert.ToInt32(Session["paperid"]);
 
-        cmd.CommandText = "update journal set name='" + txtname.Text + "',organizationid='" + or + "',gradeid='" + gid + "',journal_type_id='" + jtid + "',major_id='" + majorid + "',QR_code='" + txtQR.Text + "',publish_dt='" + txtpubdt.Text + "',office_name='" + txtoffname.Text + "',period_number='" + txtperiod.Text + "',period_type='" + periodtype.SelectedItem.Value + "',stock_dt='" + txtstockdt.Text + "',class_number='" + txtcn.Text + "',number='" + txtnumber.Text + "',location='" + txtlocation.Text + "',status='" + status.SelectedItem.Text + "',format='" + txtformat.Text + "',number_of_page='" + int.Parse(txtnumberofpage.Text) + "',language='" + lid + "',note='" + txtnote.Text + "',address='" + txtaddress.Text + "' where id='" + id + "'";
+        cmd.CommandText = "update paper set name='" + txtname.Text +"',zhicheng='"+zhicheng.SelectedItem.Value+ "',shenhe='" + shenhe.SelectedItem.Value  + "',paper_type_id='" + ptid + "',major_id='" + majorid + "',QR_code='" + txtQR.Text + "',write_dt='" + txtwritedt.Text + "',xuezhi='" + xuezhi.SelectedItem.Value+"',dabian_dt='" + txtdabiandt.Text  + "',adviser='" + txtadviser.Text + "',direction='" + txtdirection.Text + "',stock_dt='" + txtstockdt.Text + "',class_number='" + txtcn.Text + "',number='" + txtnumber.Text + "',location='" + txtlocation.Text + "',status='" + status.SelectedItem.Text + "',format='" + txtformat.Text + "',number_of_page='" + int.Parse(txtnumberofpage.Text) + "',language='" + lid + "',note='" + txtnote.Text +  "' where id='" + id + "'";
         cnn.Open();
         cmd.ExecuteNonQuery();
         cnn.Close();
@@ -72,11 +72,11 @@ public partial class QueryAndModify_paperQueryAndModify : System.Web.UI.Page
         xuezhi.SelectedItem.Value = GridView1.Rows[num].Cells[3].Text.ToString();
         mj.SelectedItem.Value = GridView1.Rows[num].Cells[4].Text.ToString();
         txtdirection.Text = GridView1.Rows[num].Cells[5].Text.ToString();
-        txtstockdt.Text = GridView1.Rows[num].Cells[6].Text.ToString();
+        txtstockdt.Text = GridView1.Rows[num].Cells[6].Text.Trim().ToString();
         txtQR.Text = GridView1.Rows[num].Cells[7].Text.ToString();
         txtlocation.Text = GridView1.Rows[num].Cells[8].Text.ToString();
         status.SelectedItem.Value = GridView1.Rows[num].Cells[9].Text.ToString();
-        txtadvisor.Text= GridView1.Rows[num].Cells[10].Text.ToString();
+        txtadviser.Text= GridView1.Rows[num].Cells[10].Text.ToString();
         zhicheng.SelectedItem.Value = GridView1.Rows[num].Cells[11].Text.ToString();
         txtdabiandt.Text = GridView1.Rows[num].Cells[12].Text.ToString();
         txtcn.Text = GridView1.Rows[num].Cells[13].Text.ToString();
@@ -87,6 +87,6 @@ public partial class QueryAndModify_paperQueryAndModify : System.Web.UI.Page
         txtnumberofpage.Text = GridView1.Rows[num].Cells[18].Text.ToString();
         txtnumber.Text = GridView1.Rows[num].Cells[19].Text.ToString();
         txtnote.Text = GridView1.Rows[num].Cells[20].Text.ToString();
-        Session["journalid"] = GridView1.Rows[num].Cells[21].Text.ToString();
+        Session["paperid"] = GridView1.Rows[num].Cells[21].Text.ToString();
     }
 }

@@ -124,16 +124,16 @@
                 <asp:BoundField DataField="xuezhi" HeaderText="学制" SortExpression="xuezhi" />
                 <asp:BoundField DataField="mname" HeaderText="专业类型" SortExpression="mname" />
                 <asp:BoundField DataField="direction" HeaderText="研究方向" SortExpression="direction" />
-                <asp:BoundField DataField="stock_dt" HeaderText="入库日期" SortExpression="stock_dt" />
+                <asp:BoundField DataField="stock_dt" HeaderText="入库日期" SortExpression="stock_dt" DataFormatString="{0:yyyy-MM-dd}" />
                 <asp:BoundField DataField="QR_code" HeaderText="二维码编码" SortExpression="QR_code" />
                 <asp:BoundField DataField="location" HeaderText="存放位置" SortExpression="location" />
                 <asp:BoundField DataField="status" HeaderText="库存状况" SortExpression="status" />
                 <asp:BoundField DataField="adviser" HeaderText="指导老师" SortExpression="adviser" />
                 <asp:BoundField DataField="zhicheng" HeaderText="职称" SortExpression="zhicheng" />
-                <asp:BoundField DataField="dabian_dt" HeaderText="答辩日期" SortExpression="dabian_dt" />
+                <asp:BoundField DataField="dabian_dt" HeaderText="答辩日期" SortExpression="dabian_dt" DataFormatString="{0:yyyy-MM-dd}" />
                 <asp:BoundField DataField="class_number" HeaderText="分类号" SortExpression="class_number" />
                 <asp:BoundField DataField="shenhe" HeaderText="审核状态" SortExpression="shenhe" />
-                <asp:BoundField DataField="write_dt" HeaderText="编著时间" SortExpression="write_dt" />
+                <asp:BoundField DataField="write_dt" HeaderText="编著时间" SortExpression="write_dt" DataFormatString="{0:yyyy-MM-dd}" />
                 <asp:BoundField DataField="lname" HeaderText="语言" SortExpression="lname" />
                 <asp:BoundField DataField="format" HeaderText="开本" SortExpression="format" />
                 <asp:BoundField DataField="number_of_page" HeaderText="页数" SortExpression="number_of_page" />
@@ -176,7 +176,7 @@
                     <asp:Label ID="Label52" runat="server" Text="指导教师"></asp:Label>
                 </td>
                 <td>
-                    <asp:TextBox ID="txtadvisor" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txtadviser" runat="server"></asp:TextBox>
                 </td>
             </tr>
             <tr>
