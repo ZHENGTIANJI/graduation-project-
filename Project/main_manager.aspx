@@ -46,10 +46,10 @@
             </tr>
             <tr>
                 <td style="text-align: center">
-                    <asp:Button ID="Button5" runat="server" Text="剔旧" />
+                    <asp:Button ID="delete" runat="server" Text="剔旧" OnClick="delete_Click" />
                 </td>
                 <td style="text-align: center">
-                    <asp:Button ID="Button10" runat="server" Text="统计信息" />
+                    <asp:Button ID="statistics" runat="server" Text="统计信息" OnClick="statistics_Click" />
                 </td>
                 <td>&nbsp;</td>
                 <td>&nbsp;</td>

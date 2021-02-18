@@ -28,4 +28,12 @@ public partial class 首页 : System.Web.UI.Page
     {
         Response.Redirect("stockmanagement/paperstock.aspx");
     }
+    protected void delete_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("delete.aspx");
+    }
+    protected void statistics_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("statistics.aspx");
+    }
 }

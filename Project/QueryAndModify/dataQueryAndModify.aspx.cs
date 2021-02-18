@@ -17,20 +17,24 @@ public partial class QueryAndModify_dataQueryAndModify : System.Web.UI.Page
     {
         int num = e.RowIndex;
         txtname.Text = GridView1.Rows[num].Cells[0].Text.ToString();
-        dt.SelectedItem.Value = GridView1.Rows[num].Cells[1].Text.ToString();
+        dt.SelectedIndex = -1;
+        dt.Items.FindByText(GridView1.Rows[num].Cells[1].Text.ToString()).Selected = true;
         txtQR.Text = GridView1.Rows[num].Cells[2].Text.ToString();
         txtunit.Text = GridView1.Rows[num].Cells[3].Text.ToString();
         txtstockdt.Text = GridView1.Rows[num].Cells[4].Text.ToString();
         txtlocation.Text = GridView1.Rows[num].Cells[5].Text.ToString();
         txtnumber.Text = GridView1.Rows[num].Cells[6].Text.ToString();
         txtcn.Text = GridView1.Rows[num].Cells[7].Text.ToString();
-        language.SelectedItem.Value = GridView1.Rows[num].Cells[8].Text.ToString();
+        language.SelectedIndex = -1;
+        language.Items.FindByText(GridView1.Rows[num].Cells[8].Text.ToString()).Selected = true;
         txtcompiledt.Text = GridView1.Rows[num].Cells[9].Text.ToString();
         txtformat.Text = GridView1.Rows[num].Cells[10].Text.ToString();
         txtnumberofpage.Text = GridView1.Rows[num].Cells[11].Text.ToString();
         txtauthor.Text = GridView1.Rows[num].Cells[12].Text.ToString();
-        major.SelectedItem.Value = GridView1.Rows[num].Cells[13].Text.ToString();
-        status.SelectedItem.Value=GridView1.Rows[num].Cells[14].Text.ToString();
+        major.SelectedIndex = -1;
+        major.Items.FindByText(GridView1.Rows[num].Cells[13].Text.ToString()).Selected = true;
+        status.SelectedIndex = -1;
+        status.Items.FindByText(GridView1.Rows[num].Cells[14].Text.ToString()).Selected = true;
         txtnote.Text = GridView1.Rows[num].Cells[15].Text.ToString();
         Session["dataid"] = GridView1.Rows[num].Cells[16].Text.ToString();
     }

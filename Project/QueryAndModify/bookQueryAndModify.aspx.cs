@@ -22,27 +22,32 @@ public partial class QueryAndModify_bookQueryAndModify : System.Web.UI.Page
     {
         int num = e.RowIndex;
         txtname.Text = GridView1.Rows[num].Cells[0].Text.ToString();
-        bt.SelectedItem.Value = GridView1.Rows[num].Cells[1].Text.ToString();
+        bt.SelectedIndex = -1;
+        bt.Items.FindByText(GridView1.Rows[num].Cells[1].Text.ToString()).Selected = true;
         txtbooknumber.Text = GridView1.Rows[num].Cells[2].Text.ToString();
         txtauthor.Text = GridView1.Rows[num].Cells[3].Text.ToString();
         txtstockdt.Text = GridView1.Rows[num].Cells[4].Text.ToString();
         txtformat.Text = GridView1.Rows[num].Cells[5].Text.ToString();
         txtnumberofpage.Text = GridView1.Rows[num].Cells[6].Text.ToString();
         txtlocation.Text = GridView1.Rows[num].Cells[7].Text.ToString();
-        CD.SelectedItem.Value = GridView1.Rows[num].Cells[8].Text.ToString();
-        status.SelectedItem.Value = GridView1.Rows[num].Cells[9].Text.ToString();
+        CD.SelectedIndex = -1;
+        CD.Items.FindByText(GridView1.Rows[num].Cells[8].Text.ToString()).Selected = true;
+        status.SelectedIndex = -1;
+        status.Items.FindByText(GridView1.Rows[num].Cells[9].Text.ToString()).Selected = true;
         txtteacher.Text = GridView1.Rows[num].Cells[10].Text.ToString();
         txtnumber.Text = GridView1.Rows[num].Cells[11].Text.ToString();
-        major1.SelectedItem.Value = GridView1.Rows[num].Cells[12].Text.ToString();
+        major1.SelectedIndex = -1;
+        major1.Items.FindByText(GridView1.Rows[num].Cells[12].Text.ToString()).Selected = true;
         txtQR.Text = GridView1.Rows[num].Cells[13].Text.ToString();
-        language.SelectedItem.Value = GridView1.Rows[num].Cells[14].Text.ToString();
+        language.SelectedIndex = -1;
+        language.Items.FindByText(GridView1.Rows[num].Cells[14].Text.ToString()).Selected = true;
         txtpub.Text = GridView1.Rows[num].Cells[15].Text.ToString();
         txtpubdt.Text = GridView1.Rows[num].Cells[16].Text.ToString();
         txtprice.Text = GridView1.Rows[num].Cells[17].Text.ToString();
-        bindingtype.SelectedItem.Value = GridView1.Rows[num].Cells[18].Text.ToString();
+        bindingtype.SelectedIndex = -1;
+        bindingtype.Items.FindByText(GridView1.Rows[num].Cells[18].Text.ToString()).Selected = true;
         txtnote.Text = GridView1.Rows[num].Cells[19].Text.ToString();
         Session["bookid"] = GridView1.Rows[num].Cells[20].Text.ToString();
-        txtclassnumber.Text = GridView1.Rows[num].Cells[20].Text.ToString();
        
     }
     void ExecuteQuery()
