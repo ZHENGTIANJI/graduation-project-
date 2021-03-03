@@ -35,29 +35,18 @@
                 <td>&nbsp;</td>
             </tr>
         </table>
-        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="btname" BackColor="White" BorderColor="#DEDFDE" BorderStyle="None" BorderWidth="1px" CellPadding="4" ForeColor="Black" GridLines="Vertical">
-            <AlternatingRowStyle BackColor="White" />
+        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="btname">
             <Columns>
-                <asp:BoundField DataField="btname" HeaderText="类别名称" InsertVisible="False" ReadOnly="True" SortExpression="bitid" />
-                <asp:BoundField DataField="number" HeaderText="数目" SortExpression="bitname" />
-            </Columns>
-            <FooterStyle BackColor="#CCCC99" />
-            <HeaderStyle BackColor="#6B696B" Font-Bold="True" ForeColor="White" />
-            <PagerStyle BackColor="#F7F7DE" ForeColor="Black" HorizontalAlign="Right" />
-            <RowStyle BackColor="#F7F7DE" />
-            <SelectedRowStyle BackColor="#CE5D5A" Font-Bold="True" ForeColor="White" />
-            <SortedAscendingCellStyle BackColor="#FBFBF2" />
-            <SortedAscendingHeaderStyle BackColor="#848384" />
-            <SortedDescendingCellStyle BackColor="#EAEAD3" />
-            <SortedDescendingHeaderStyle BackColor="#575357" />
-        </asp:GridView>
-        <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" DataKeyNames="mid">
-            <Columns>
-                <asp:BoundField DataField="mname" HeaderText="专业名称" SortExpression="mname" />
+                <asp:BoundField DataField="btname" HeaderText="类别名称" InsertVisible="False" ReadOnly="True" SortExpression="btname" />
                 <asp:BoundField DataField="number" HeaderText="数目" SortExpression="number" />
             </Columns>
         </asp:GridView>
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:档案室信息管理系统ConnectionString %>" SelectCommand="SELECT * FROM [major]"></asp:SqlDataSource>
+        <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" >
+            <Columns>
+                <asp:BoundField DataField="mname" HeaderText="专业名称" SortExpression="mname" />
+                <asp:BoundField DataField="mnumber" HeaderText="数目" SortExpression="mnumber" />
+            </Columns>
+        </asp:GridView>
     </form>
 </body>
 </html>

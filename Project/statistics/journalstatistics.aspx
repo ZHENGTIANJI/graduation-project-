@@ -6,12 +6,54 @@
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
+    <style type="text/css">
+        .auto-style1 {
+            width: 82px;
+        }
+        .auto-style2 {
+            width: 152px;
+        }
+    </style>
 </head>
 <body>
     <form id="form1" runat="server">
     <div>
     
+        <table style="width:100%;">
+            <tr>
+                <td class="auto-style1">
+                    <asp:Label ID="Label1" runat="server" Text="期刊总数目"></asp:Label>
+                </td>
+                <td class="auto-style2">
+                    <asp:TextBox ID="journalnumber" runat="server"></asp:TextBox>
+                </td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td class="auto-style1">&nbsp;</td>
+                <td class="auto-style2">&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td class="auto-style1">&nbsp;</td>
+                <td class="auto-style2">&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+        </table>
+    
     </div>
+        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False">
+            <Columns>
+                <asp:BoundField DataField="jtname" HeaderText="期刊类型名称" />
+                <asp:BoundField DataField="number" HeaderText="数目" />
+            </Columns>
+        </asp:GridView>
+        <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False">
+            <Columns>
+                <asp:BoundField DataField="mname" HeaderText="专业名称" />
+                <asp:BoundField DataField="number" HeaderText="数目" />
+            </Columns>
+        </asp:GridView>
     </form>
 </body>
 </html>
