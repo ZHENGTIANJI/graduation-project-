@@ -7,23 +7,16 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
     <style type="text/css">
-        .auto-style1 {
-            width: 64px;
-        }
         .auto-style2 {
             width: 150px;
-        }
-        .auto-style3 {
-            width: 70px;
+            text-align: left;
         }
         .auto-style4 {
             width: 100px;
+            text-align: left;
         }
         .auto-style8 {
             width: 149px;
-        }
-        .auto-style9 {
-            width: 80px;
         }
         .auto-style10 {
             width: 224px;
@@ -37,12 +30,39 @@
         }
         .auto-style15 {
             width: 101px;
+            text-align: left;
         }
         .auto-style16 {
             width: 81px;
         }
         .auto-style17 {
             width: 87px;
+        }
+        .auto-style18 {
+            width: 106px;
+        }
+        .auto-style19 {
+            width: 106px;
+            text-align: right;
+        }
+        .auto-style20 {
+            width: 94px;
+            text-align: right;
+        }
+        .auto-style21 {
+            width: 94px;
+        }
+        .auto-style22 {
+            width: 80px;
+            text-align: right;
+        }
+        .auto-style23 {
+            width: 86px;
+            text-align: right;
+        }
+        .auto-style24 {
+            width: 82px;
+            text-align: right;
         }
     </style>
 </head>
@@ -52,33 +72,33 @@
     
         <table style="width:100%;">
             <tr>
-                <td class="auto-style1">&nbsp;</td>
+                <td class="auto-style22">&nbsp;</td>
                 <td class="auto-style2">&nbsp;</td>
-                <td class="auto-style3">&nbsp;</td>
+                <td class="auto-style23">&nbsp;</td>
                 <td class="auto-style4">&nbsp;</td>
-                <td class="auto-style3">&nbsp;</td>
+                <td class="auto-style24">&nbsp;</td>
                 <td class="auto-style15">&nbsp;</td>
                 <td>&nbsp;</td>
             </tr>
             <tr>
-                <td class="auto-style1">
-                    <asp:Label ID="Label1" runat="server" Text="期刊名称"></asp:Label>
+                <td class="auto-style22">
+                    <asp:Label ID="Label1" runat="server" Text="期刊名称" style="text-align: right"></asp:Label>
                 </td>
                 <td class="auto-style2">
-                    <asp:TextBox ID="journalname" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="journalname" runat="server" style="text-align: left"></asp:TextBox>
                 </td>
-                <td class="auto-style3">
-                    <asp:Label ID="Label2" runat="server" Text="期刊类型"></asp:Label>
+                <td class="auto-style23">
+                    <asp:Label ID="Label2" runat="server" Text="期刊类型" style="text-align: right"></asp:Label>
                 </td>
                 <td class="auto-style4">
-                    <asp:DropDownList ID="jt" runat="server" DataSourceID="SqlDataSource1" DataTextField="jtname" DataValueField="jtname">
+                    <asp:DropDownList ID="jt" runat="server" DataSourceID="SqlDataSource1" DataTextField="jtname" DataValueField="jtname" style="text-align: left">
                     </asp:DropDownList>
                 </td>
-                <td class="auto-style3">
-                    <asp:Label ID="Label3" runat="server" Text="专业类型"></asp:Label>
+                <td class="auto-style24">
+                    <asp:Label ID="Label3" runat="server" Text="专业类型" style="text-align: right"></asp:Label>
                 </td>
                 <td class="auto-style15">
-                    <asp:DropDownList ID="mt" runat="server" DataSourceID="SqlDataSource2" DataTextField="mname" DataValueField="mname">
+                    <asp:DropDownList ID="mt" runat="server" DataSourceID="SqlDataSource2" DataTextField="mname" DataValueField="mname" style="text-align: left">
                     </asp:DropDownList>
                 </td>
                 <td>
@@ -86,11 +106,11 @@
                 </td>
             </tr>
             <tr>
-                <td class="auto-style1">&nbsp;</td>
+                <td class="auto-style22">&nbsp;</td>
                 <td class="auto-style2">&nbsp;</td>
-                <td class="auto-style3">&nbsp;</td>
+                <td class="auto-style23">&nbsp;</td>
                 <td class="auto-style4">&nbsp;</td>
-                <td class="auto-style3">&nbsp;</td>
+                <td class="auto-style24">&nbsp;</td>
                 <td class="auto-style15">&nbsp;</td>
                 <td>&nbsp;</td>
             </tr>
@@ -136,11 +156,11 @@
         <asp:SqlDataSource ID="SqlDataSource7" runat="server"></asp:SqlDataSource>
         <table style="width:100%;">
             <tr>
-                <td class="auto-style9">
+                <td class="auto-style21">
                     &nbsp;</td>
                 <td class="auto-style8">
                     &nbsp;</td>
-                <td class="auto-style9">
+                <td class="auto-style18">
                     &nbsp;</td>
                 <td class="auto-style10">
                     &nbsp;</td>
@@ -155,13 +175,13 @@
                 <td>&nbsp;</td>
             </tr>
             <tr>
-                <td class="auto-style9">
+                <td class="auto-style20">
                     <asp:Label ID="Label4" runat="server" Text="期刊名称"></asp:Label>
                 </td>
                 <td class="auto-style8">
                     <asp:TextBox ID="txtname" runat="server"></asp:TextBox>
                 </td>
-                <td class="auto-style9">
+                <td class="auto-style19">
                     <asp:Label ID="Label5" runat="server" Text="二维码编码"></asp:Label>
                 </td>
                 <td class="auto-style10">
@@ -182,13 +202,13 @@
                 <td>&nbsp;</td>
             </tr>
             <tr>
-                <td class="auto-style9">
+                <td class="auto-style20">
                     <asp:Label ID="Label9" runat="server" Text="杂志社名称"></asp:Label>
                 </td>
                 <td class="auto-style8">
                     <asp:TextBox ID="txtoffname" runat="server"></asp:TextBox>
                 </td>
-                <td class="auto-style9">
+                <td class="auto-style19">
                     <asp:Label ID="Label6" runat="server" Text="期刊类型"></asp:Label>
                 </td>
                 <td class="auto-style10">
@@ -206,13 +226,13 @@
                 <td>&nbsp;</td>
             </tr>
             <tr>
-                <td class="auto-style9">
+                <td class="auto-style20">
                     <asp:Label ID="Label10" runat="server" Text="入库日期"></asp:Label>
                 </td>
                 <td class="auto-style8">
                     <asp:TextBox ID="txtstockdt" runat="server"></asp:TextBox>
                 </td>
-                <td class="auto-style9">
+                <td class="auto-style19">
                     <asp:Label ID="Label7" runat="server" Text="期刊语言"></asp:Label>
                 </td>
                 <td class="auto-style10">
@@ -237,13 +257,13 @@
                 <td>&nbsp;</td>
             </tr>
             <tr>
-                <td class="auto-style9">
+                <td class="auto-style20">
                     <asp:Label ID="Label11" runat="server" Text="存放位置"></asp:Label>
                 </td>
                 <td class="auto-style8">
                     <asp:TextBox ID="txtlocation" runat="server"></asp:TextBox>
                 </td>
-                <td class="auto-style9">
+                <td class="auto-style19">
                     <asp:Label ID="Label8" runat="server" Text="专业类型"></asp:Label>
                 </td>
                 <td class="auto-style10">
@@ -274,13 +294,13 @@
                 <td>&nbsp;</td>
             </tr>
             <tr>
-                <td class="auto-style9">
+                <td class="auto-style20">
                     <asp:Label ID="Label21" runat="server" Text="出版日期"></asp:Label>
                 </td>
                 <td class="auto-style8">
                     <asp:TextBox ID="txtpubdt" runat="server"></asp:TextBox>
                 </td>
-                <td class="auto-style9">
+                <td class="auto-style19">
                     <asp:Label ID="Label22" runat="server" Text="期刊等级"></asp:Label>
                 </td>
                 <td class="auto-style10">
@@ -299,13 +319,13 @@
                     &nbsp;</td>
             </tr>
             <tr>
-                <td class="auto-style9">
+                <td class="auto-style20">
                     <asp:Label ID="Label19" runat="server" Text="库存数量"></asp:Label>
                 </td>
                 <td class="auto-style8">
                     <asp:TextBox ID="txtnumber" runat="server"></asp:TextBox>
                 </td>
-                <td class="auto-style9">
+                <td class="auto-style19">
                     <asp:Label ID="Label16" runat="server" Text="库存状况"></asp:Label>
                 </td>
                 <td class="auto-style10">

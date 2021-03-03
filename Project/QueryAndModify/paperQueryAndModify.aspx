@@ -7,14 +7,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
     <style type="text/css">
-        .auto-style1 {
-            width: 64px;
-        }
         .auto-style2 {
             width: 150px;
-        }
-        .auto-style3 {
-            width: 70px;
         }
         .auto-style4 {
             width: 100px;
@@ -27,10 +21,12 @@
         }
         .auto-style39 {
             width: 81px;
+            text-align: right;
         }
         .auto-style40 {
             height: 20px;
             width: 81px;
+            text-align: right;
         }
         .auto-style41 {
             width: 141px;
@@ -42,9 +38,11 @@
         .auto-style44 {
             height: 20px;
             width: 65px;
+            text-align: right;
         }
         .auto-style45 {
             width: 65px;
+            text-align: right;
         }
         .auto-style46 {
             width: 80px;
@@ -63,9 +61,47 @@
         .auto-style51 {
             height: 20px;
             width: 68px;
+            text-align: right;
         }
         .auto-style52 {
             width: 68px;
+            text-align: right;
+        }
+        .auto-style53 {
+            height: 24px;
+        }
+        .auto-style54 {
+            width: 81px;
+            text-align: right;
+            height: 24px;
+        }
+        .auto-style55 {
+            width: 141px;
+            height: 24px;
+        }
+        .auto-style56 {
+            width: 65px;
+            height: 24px;
+        }
+        .auto-style57 {
+            width: 80px;
+            height: 24px;
+        }
+        .auto-style58 {
+            width: 145px;
+            height: 24px;
+        }
+        .auto-style59 {
+            width: 68px;
+            height: 24px;
+        }
+        .auto-style60 {
+            width: 81px;
+            height: 24px;
+        }
+        .auto-style61 {
+            width: 80px;
+            text-align: right;
         }
     </style>
 </head>
@@ -73,29 +109,29 @@
     <form id="form1" runat="server">
         <table style="width:100%;">
             <tr>
-                <td class="auto-style1">&nbsp;</td>
+                <td class="auto-style46">&nbsp;</td>
                 <td class="auto-style2">&nbsp;</td>
-                <td class="auto-style3">&nbsp;</td>
+                <td class="auto-style61">&nbsp;</td>
                 <td class="auto-style4">&nbsp;</td>
-                <td class="auto-style3">&nbsp;</td>
+                <td class="auto-style61">&nbsp;</td>
                 <td class="auto-style5">&nbsp;</td>
                 <td>&nbsp;</td>
             </tr>
             <tr>
-                <td class="auto-style1">
+                <td class="auto-style61">
                     <asp:Label ID="Label1" runat="server" Text="论文名称"></asp:Label>
                 </td>
                 <td class="auto-style2">
                     <asp:TextBox ID="papername" runat="server"></asp:TextBox>
                 </td>
-                <td class="auto-style3">
+                <td class="auto-style61">
                     <asp:Label ID="Label56" runat="server" Text="论文类型"></asp:Label>
                 </td>
                 <td class="auto-style4">
                     <asp:DropDownList ID="papertype" runat="server" DataSourceID="SqlDataSource1" DataTextField="ptname" DataValueField="ptname">
                     </asp:DropDownList>
                 </td>
-                <td class="auto-style3">
+                <td class="auto-style61">
                     <asp:Label ID="Label3" runat="server" Text="专业类型"></asp:Label>
                 </td>
                 <td class="auto-style5">
@@ -107,11 +143,11 @@
                 </td>
             </tr>
             <tr>
-                <td class="auto-style1">&nbsp;</td>
+                <td class="auto-style61">&nbsp;</td>
                 <td class="auto-style2">&nbsp;</td>
-                <td class="auto-style3">&nbsp;</td>
+                <td class="auto-style61">&nbsp;</td>
                 <td class="auto-style4">&nbsp;</td>
-                <td class="auto-style3">&nbsp;</td>
+                <td class="auto-style61">&nbsp;</td>
                 <td class="auto-style5">&nbsp;</td>
                 <td>&nbsp;</td>
             </tr>
@@ -152,6 +188,25 @@
         <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:档案室信息管理系统ConnectionString %>" SelectCommand="SELECT * FROM [language]"></asp:SqlDataSource>
         <table style="width:100%;">
             <tr>
+                <td class="auto-style53"></td>
+                <td class="auto-style54">
+                </td>
+                <td class="auto-style55">
+                </td>
+                <td class="auto-style56">
+                </td>
+                <td class="auto-style57">
+                </td>
+                <td class="auto-style60">
+                </td>
+                <td class="auto-style58">
+                </td>
+                <td class="auto-style59">
+                </td>
+                <td class="auto-style53">
+                </td>
+            </tr>
+            <tr>
                 <td>&nbsp;</td>
                 <td class="auto-style39">
                     <asp:Label ID="Label37" runat="server" Text="论文名称"></asp:Label>
@@ -166,7 +221,7 @@
                     <asp:DropDownList ID="pt" runat="server" DataSourceID="SqlDataSource1" DataTextField="ptname" DataValueField="ptname" AutoPostBack="True">
                     </asp:DropDownList>
                 </td>
-                <td class="auto-style45">
+                <td class="auto-style39">
                     <asp:Label ID="Label46" runat="server" Text="分类号"></asp:Label>
                 </td>
                 <td class="auto-style48">
@@ -194,7 +249,7 @@
                     <asp:DropDownList ID="mj" runat="server" DataSourceID="SqlDataSource4" DataTextField="mname" DataValueField="mname" AutoPostBack="True">
                     </asp:DropDownList>
                 </td>
-                <td class="auto-style44">
+                <td class="auto-style40">
                     <asp:Label ID="Label47" runat="server" Text="编著日期"></asp:Label>
                 </td>
                 <td class="auto-style49">
@@ -226,7 +281,7 @@
                     <asp:DropDownList ID="language" runat="server" DataSourceID="SqlDataSource3" DataTextField="lname" DataValueField="lname" AutoPostBack="True">
                     </asp:DropDownList>
                 </td>
-                <td class="auto-style44">
+                <td class="auto-style40">
                     <asp:Label ID="Label48" runat="server" Text="入库日期"></asp:Label>
                 </td>
                 <td class="auto-style49">
@@ -257,7 +312,7 @@
                         <asp:ListItem>四年制</asp:ListItem>
                     </asp:DropDownList>
                 </td>
-                <td class="auto-style44">
+                <td class="auto-style40">
                     <asp:Label ID="Label49" runat="server" Text="答辩日期"></asp:Label>
                 </td>
                 <td class="auto-style49">
@@ -280,7 +335,7 @@
                 <td class="auto-style47">
                     <asp:TextBox ID="txtlocation" runat="server"></asp:TextBox>
                 </td>
-                <td class="auto-style44">
+                <td class="auto-style40">
                     <asp:Label ID="Label50" runat="server" Text="研究方向"></asp:Label>
                 </td>
                 <td class="auto-style49">
@@ -308,7 +363,7 @@
                 <td class="auto-style47">
                     <asp:TextBox ID="txtnumber" runat="server"></asp:TextBox>
                 </td>
-                <td class="auto-style44">
+                <td class="auto-style40">
                     <asp:Label ID="Label59" runat="server" Text="审核状态"></asp:Label>
                 </td>
                 <td class="auto-style49">

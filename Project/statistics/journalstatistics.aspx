@@ -22,7 +22,7 @@
         <table style="width:100%;">
             <tr>
                 <td class="auto-style1">
-                    <asp:Label ID="Label1" runat="server" Text="期刊总数目"></asp:Label>
+                    <asp:Label ID="Label1" runat="server" Text="期刊总册目"></asp:Label>
                 </td>
                 <td class="auto-style2">
                     <asp:TextBox ID="journalnumber" runat="server"></asp:TextBox>

@@ -19,7 +19,7 @@ public partial class 统计分析_journalstatistics : System.Web.UI.Page
     {
         DataSet dst1 = new DataSet();
         SqlConnection cnn = new SqlConnection("Data Source=(local);Initial Catalog=档案室信息管理系统1.0;Integrated Security=True");
-        SqlDataAdapter adpt = new SqlDataAdapter("select count(*) as totalnumber from book", cnn);
+        SqlDataAdapter adpt = new SqlDataAdapter("select count(*) as totalnumber from journal", cnn);
         adpt.Fill(dst1);
         journalnumber.Text = dst1.Tables[0].Rows[0]["totalnumber"].ToString();
     }

@@ -33,7 +33,7 @@
             width: 149px;
         }
         .auto-style9 {
-            width: 80px;
+            width: 101px;
         }
         .auto-style10 {
             width: 224px;
