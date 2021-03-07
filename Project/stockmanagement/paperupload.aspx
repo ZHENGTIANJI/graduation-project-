@@ -149,11 +149,9 @@
                     <asp:TextBox ID="txt" runat="server"></asp:TextBox>
                 </td>
                 <td class="auto-style7">
-                    <asp:Label ID="Label7" runat="server" Text="入库日期"></asp:Label>
-                </td>
+                    &nbsp;</td>
                 <td class="auto-style9">
-                    <asp:TextBox ID="txtstockdt" runat="server"></asp:TextBox>
-                </td>
+                    &nbsp;</td>
                 <td class="auto-style7">
                     <asp:Label ID="Label9" runat="server" Text="存放位置"></asp:Label>
                 </td>

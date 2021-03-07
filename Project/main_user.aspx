@@ -9,11 +9,25 @@
 </head>
 <body>
     <form id="form1" runat="server">
-    <div>
-    
-        <asp:Button ID="Button1" runat="server" Text="论文数据上传" OnClick="Button1_Click" />
-    
-    </div>
+        <table style="width:100%;">
+            <tr>
+                <td style="text-align: center">
+        <asp:ImageButton ID="ImageButton1" runat="server" Height="42px" ImageUrl="~/imgs/捕获3.PNG" OnClick="ImageButton1_Click" Width="121px" />
+                </td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+        </table>
     </form>
 </body>
 </html>

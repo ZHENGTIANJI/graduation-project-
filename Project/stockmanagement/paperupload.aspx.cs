@@ -49,10 +49,16 @@ public partial class stockmanagement_paperupload : System.Web.UI.Page
         {
             num = 1;
         }
-
-        cmd.CommandText = "INSERT INTO paper(name, adviser,paper_type_id, major_id, QR_code, direction, write_dt, author, stock_dt, shenhe, dabian_dt, xuezhi, status, number, format, number_of_page,language,note,zhicheng) VALUES ('" + txtname.Text + "'," +txtadviser+","+ ptid + "," + majorid + ",'" + "1111111" + "','" + txtdirection.Text + "','" + txtwritedt.Text + "','" + txtauthor.Text + "','" + txtstockdt.Text + "','" + "待审核" + "','" + txtdabiandt.Text + "','" + xuezhi.SelectedItem.Value + "'," +  "'库存'," + num + ",'" + txtformat.Text + "','" + txtnumberofpage.Text + "',"  + lid + ",'" + txtnote.Text +"','"+zhicheng.SelectedItem.Value+ "')";
+        String stockdt=DateTime.Now.ToString("yyyy-MM-dd");   
+        cmd.CommandText = "INSERT INTO paper(name, adviser,paper_type_id, major_id, QR_code, direction, write_dt, author, stock_dt, shenhe, dabian_dt, xuezhi, status, number, format, number_of_page,language,note,zhicheng) VALUES ('" + txtname.Text + "'," +txtadviser+","+ ptid + "," + majorid + ",'" + "1111111" + "','" + txtdirection.Text + "','" + txtwritedt.Text + "','" + txtauthor.Text + "','" + stockdt + "','" + "待审核" + "','" + txtdabiandt.Text + "','" + xuezhi.SelectedItem.Value + "'," +  "'库存'," + num + ",'" + txtformat.Text + "','" + txtnumberofpage.Text + "',"  + lid + ",'" + txtnote.Text +"','"+zhicheng.SelectedItem.Value+ "')";
         cnn.Open();
         cmd.ExecuteNonQuery();
         cnn.Close();
+    }
+    protected String generate_QR_code()
+    {
+        String QR_code=DateTime.Now.ToString("yyyy");
+
+        return QR_code;
     }
 }
