@@ -52,11 +52,18 @@ public partial class QueryAndModify_journalQueryAndModify : System.Web.UI.Page
         int lid = (int)dst4.Tables[0].Rows[0]["lid"];
         int gid = (int)dst5.Tables[0].Rows[0]["gid"];
         int id = Convert.ToInt32(Session["journalid"]);
-
-        cmd.CommandText = "update journal set name='" + txtname.Text +"',organizationid='"+or+ "',gradeid='"+gid+"',journal_type_id='" + jtid + "',major_id='" + majorid + "',QR_code='" + txtQR.Text + "',publish_dt='" + txtpubdt.Text +"',office_name='" + txtoffname.Text + "',period_number='" + txtperiod.Text +"',period_type='"+periodtype.SelectedItem.Value+ "',stock_dt='" + txtstockdt.Text + "',class_number='" + txtcn.Text + "',number='" + txtnumber.Text + "',location='" + txtlocation.Text + "',status='" + status.SelectedItem.Text + "',format='" + txtformat.Text + "',number_of_page='" + int.Parse(txtnumberofpage.Text) + "',language='" + lid + "',note='" + txtnote.Text +"',address='"+txtaddress.Text+ "' where id='" + id + "'";
-        cnn.Open();
-        cmd.ExecuteNonQuery();
-        cnn.Close();
+        try
+        {
+            cmd.CommandText = "update journal set name='" + txtname.Text + "',organizationid='" + or + "',gradeid='" + gid + "',journal_type_id='" + jtid + "',major_id='" + majorid + "',QR_code='" + txtQR.Text + "',publish_dt='" + txtpubdt.Text + "',office_name='" + txtoffname.Text + "',period_number='" + txtperiod.Text + "',period_type='" + periodtype.SelectedItem.Value + "',stock_dt='" + txtstockdt.Text + "',class_number='" + txtcn.Text + "',number='" + txtnumber.Text + "',location='" + txtlocation.Text + "',status='" + status.SelectedItem.Text + "',format='" + txtformat.Text + "',number_of_page='" + int.Parse(txtnumberofpage.Text) + "',language='" + lid + "',note='" + txtnote.Text + "',address='" + txtaddress.Text + "' where id='" + id + "'";
+            cnn.Open();
+            cmd.ExecuteNonQuery();
+            cnn.Close();
+        }
+        catch (Exception)
+        {
+            ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "", "alert('保存失败！');", true);
+        }
+        
         ExecuteQuery();
     }
     protected void query_Click(object sender, EventArgs e)

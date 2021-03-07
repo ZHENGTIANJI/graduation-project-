@@ -32,13 +32,6 @@
         .auto-style7 {
             width: 71px;
         }
-        .auto-style8 {
-            height: 20px;
-            width: 32px;
-        }
-        .auto-style9 {
-            width: 32px;
-        }
         .auto-style10 {
             height: 20px;
             width: 43px;
@@ -140,6 +133,14 @@
             text-align: right;
             height: 31px;
         }
+        .auto-style49 {
+            height: 20px;
+            width: 47px;
+        }
+        .auto-style50 {
+            width: 47px;
+            text-align: right;
+        }
     </style>
 </head>
 <body>
@@ -150,7 +151,7 @@
                 <td class="auto-style4"></td>
                 <td class="auto-style2"></td>
                 <td class="auto-style6">&nbsp;</td>
-                <td class="auto-style8">&nbsp;</td>
+                <td class="auto-style49">&nbsp;</td>
                 <td class="auto-style10">&nbsp;</td>
                 <td class="auto-style1">&nbsp;</td>
             </tr>
@@ -168,7 +169,7 @@
                     <asp:DropDownList ID="booktype" runat="server" DataSourceID="SqlDataSource2" DataTextField="btname" DataValueField="btname">
                     </asp:DropDownList>
                 </td>
-                <td class="auto-style9">
+                <td class="auto-style50">
                     <asp:Label ID="Label3" runat="server" Text="专业"></asp:Label>
                 </td>
                 <td class="auto-style11">
@@ -184,7 +185,7 @@
                 <td class="auto-style5">&nbsp;</td>
                 <td class="auto-style3">&nbsp;</td>
                 <td class="auto-style7">&nbsp;</td>
-                <td class="auto-style9">&nbsp;</td>
+                <td class="auto-style50">&nbsp;</td>
                 <td class="auto-style11">&nbsp;</td>
                 <td>&nbsp;</td>
             </tr>

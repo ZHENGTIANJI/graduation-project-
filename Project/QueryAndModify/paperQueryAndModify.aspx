@@ -7,6 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
     <style type="text/css">
+        .hidden { display:none;}
         .auto-style2 {
             width: 150px;
         }
@@ -175,7 +176,11 @@
                 <asp:BoundField DataField="number_of_page" HeaderText="页数" SortExpression="number_of_page" />
                 <asp:BoundField DataField="number" HeaderText="库存数目" SortExpression="number" />
                 <asp:BoundField DataField="note" HeaderText="备注" SortExpression="note" />
-                <asp:BoundField DataField="id" HeaderText="ID" InsertVisible="False" ReadOnly="True" SortExpression="id" />
+                <asp:BoundField DataField="id" HeaderText="ID" SortExpression="id" >
+                    <HeaderStyle CssClass="hidden" />
+                    <ItemStyle  CssClass="hidden" />
+                    <FooterStyle CssClass="hidden" />
+                </asp:BoundField>
                 <asp:TemplateField HeaderText="操作" ShowHeader="False">
                     <ItemTemplate>
                         <asp:LinkButton ID="LinkButton1" runat="server" CausesValidation="False" CommandName="Delete" Text="编辑"></asp:LinkButton>

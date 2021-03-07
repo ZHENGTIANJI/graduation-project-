@@ -85,11 +85,17 @@ public partial class QueryAndModify_bookQueryAndModify : System.Web.UI.Page
         int bitid = (int)dst3.Tables[0].Rows[0]["bitid"];
         int lid = (int)dst4.Tables[0].Rows[0]["lid"];
         int id = Convert.ToInt32(Session["bookid"]);
-
-        cmd.CommandText = "update book set name='" + txtname.Text + "',book_type_id='"+btid+"',book_number='"+txtbooknumber.Text+"',major_type_id='"+majorid+"',QR_code='"+txtQR.Text+"',publisher='"+txtpub.Text+"',publish_dt='"+txtpubdt.Text+"',author='"+txtauthor.Text+"',stock_dt='"+txtstockdt.Text+"',teacher='"+txtteacher.Text+"',number='"+txtnumber.Text+"',CD='"+CD.SelectedItem.Text+"',location='"+txtlocation.Text+"',status='"+status.SelectedItem.Text+"',format='"+txtformat.Text+"',price='"+int.Parse(txtprice.Text)+"',number_of_page='"+int.Parse(txtnumberofpage.Text)+"',binding_type_id='"+bitid+"',language='"+lid+"',note='"+txtnote.Text+"' where id='"+id+"'";
-        cnn.Open();
-        cmd.ExecuteNonQuery();
-        cnn.Close();
+        try { 
+            cmd.CommandText = "update book set name='" + txtname.Text + "',book_type_id='"+btid+"',book_number='"+txtbooknumber.Text+"',major_type_id='"+majorid+"',QR_code='"+txtQR.Text+"',publisher='"+txtpub.Text+"',publish_dt='"+txtpubdt.Text+"',author='"+txtauthor.Text+"',stock_dt='"+txtstockdt.Text+"',teacher='"+txtteacher.Text+"',number='"+txtnumber.Text+"',CD='"+CD.SelectedItem.Text+"',location='"+txtlocation.Text+"',status='"+status.SelectedItem.Text+"',format='"+txtformat.Text+"',price='"+int.Parse(txtprice.Text)+"',number_of_page='"+int.Parse(txtnumberofpage.Text)+"',binding_type_id='"+bitid+"',language='"+lid+"',note='"+txtnote.Text+"' where id='"+id+"'";
+            cnn.Open();
+            cmd.ExecuteNonQuery();
+            cnn.Close();
+        }
+        catch (Exception)
+        {
+            ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "", "alert('保存失败！');", true);
+        }
+        
         ExecuteQuery();
     }
 }

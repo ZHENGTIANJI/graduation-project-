@@ -56,11 +56,18 @@ public partial class QueryAndModify_paperQueryAndModify : System.Web.UI.Page
         int lid = (int)dst4.Tables[0].Rows[0]["lid"];
         //int gid = (int)dst5.Tables[0].Rows[0]["gid"];
         int id = Convert.ToInt32(Session["paperid"]);
-
-        cmd.CommandText = "update paper set name='" + txtname.Text +"',zhicheng='"+zhicheng.SelectedItem.Text+ "',shenhe='" + shenhe.SelectedItem.Text  + "',paper_type_id='" + ptid + "',major_id='" + majorid + "',QR_code='" + txtQR.Text + "',write_dt='" + txtwritedt.Text + "',xuezhi='" + xuezhi.SelectedItem.Text+"',dabian_dt='" + txtdabiandt.Text  + "',adviser='" + txtadviser.Text + "',direction='" + txtdirection.Text + "',stock_dt='" + txtstockdt.Text + "',class_number='" + txtcn.Text + "',number='" + txtnumber.Text + "',location='" + txtlocation.Text + "',status='" + status.SelectedItem.Text + "',format='" + txtformat.Text + "',number_of_page='" + int.Parse(txtnumberofpage.Text) + "',language='" + lid + "',note='" + txtnote.Text +  "' where id='" + id + "'";
-        cnn.Open();
-        cmd.ExecuteNonQuery();
-        cnn.Close();
+        try
+        {
+            cmd.CommandText = "update paper set name='" + txtname.Text + "',zhicheng='" + zhicheng.SelectedItem.Text + "',shenhe='" + shenhe.SelectedItem.Text + "',paper_type_id='" + ptid + "',major_id='" + majorid + "',QR_code='" + txtQR.Text + "',write_dt='" + txtwritedt.Text + "',xuezhi='" + xuezhi.SelectedItem.Text + "',dabian_dt='" + txtdabiandt.Text + "',adviser='" + txtadviser.Text + "',direction='" + txtdirection.Text + "',stock_dt='" + txtstockdt.Text + "',class_number='" + txtcn.Text + "',number='" + txtnumber.Text + "',location='" + txtlocation.Text + "',status='" + status.SelectedItem.Text + "',format='" + txtformat.Text + "',number_of_page='" + int.Parse(txtnumberofpage.Text) + "',language='" + lid + "',note='" + txtnote.Text + "' where id='" + id + "'";
+            cnn.Open();
+            cmd.ExecuteNonQuery();
+            cnn.Close();
+        }
+        catch (Exception)
+        {
+            ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "", "alert('保存失败！');", true);
+        }
+        
         ExecuteQuery();
     }
     protected void GridView1_RowDeleting(object sender, GridViewDeleteEventArgs e)

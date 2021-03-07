@@ -73,11 +73,17 @@ public partial class QueryAndModify_dataQueryAndModify : System.Web.UI.Page
         int majorid = (int)dst2.Tables[0].Rows[0]["mid"];
         int lid = (int)dst4.Tables[0].Rows[0]["lid"];
         int id = Convert.ToInt32(Session["dataid"]);
-
-        cmd.CommandText = "update data set name='" + txtname.Text + "',data_type_id='" + dtid +"',major_id='" + majorid + "',QR_code='" + txtQR.Text + "',unit='" + txtunit.Text + "',compile_dt='" + txtcompiledt.Text + "',author='" + txtauthor.Text + "',stock_dt='" + txtstockdt.Text + "',class_number='" + txtcn.Text + "',number='" + txtnumber.Text + "',location='" + txtlocation.Text + "',status='" + status.SelectedItem.Text + "',format='" + txtformat.Text + "',number_of_page='" + int.Parse(txtnumberofpage.Text) +"',language='" + lid + "',note='" + txtnote.Text + "' where id='" + id + "'";
-        cnn.Open();
-        cmd.ExecuteNonQuery();
-        cnn.Close();
+        try
+        {
+            cmd.CommandText = "update data set name='" + txtname.Text + "',data_type_id='" + dtid + "',major_id='" + majorid + "',QR_code='" + txtQR.Text + "',unit='" + txtunit.Text + "',compile_dt='" + txtcompiledt.Text + "',author='" + txtauthor.Text + "',stock_dt='" + txtstockdt.Text + "',class_number='" + txtcn.Text + "',number='" + txtnumber.Text + "',location='" + txtlocation.Text + "',status='" + status.SelectedItem.Text + "',format='" + txtformat.Text + "',number_of_page='" + int.Parse(txtnumberofpage.Text) + "',language='" + lid + "',note='" + txtnote.Text + "' where id='" + id + "'";
+            cnn.Open();
+            cmd.ExecuteNonQuery();
+            cnn.Close();
+        }
+        catch (Exception)
+        {
+            ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "", "alert('保存失败！');", true);
+        }
         ExecuteQuery();
     }
 }
