@@ -51,10 +51,11 @@
         .auto-style22 {
             width: 145px;
             height: 20px;
+            text-align: right;
         }
         .auto-style23 {
             width: 145px;
-            text-align: left;
+            text-align: right;
         }
         .auto-style24 {
             width: 129px;
