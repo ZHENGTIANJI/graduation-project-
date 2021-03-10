@@ -11,7 +11,20 @@ public partial class QueryAndModify_journalQueryAndModify : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (Session["uid"] == null)
+        {
+            Response.Redirect("../login.aspx");
+        }
+        String strmajor = "";
+        String strjournaltype = "";
+        String strjournalname = journalname.Text.ToString().Trim();
 
+        DataSet dst = new DataSet();
+        SqlConnection cnn = new SqlConnection("Data Source=(local);Initial Catalog=档案室信息管理系统1.0;Integrated Security=True");
+        SqlDataAdapter adpt = new SqlDataAdapter("SELECT [id],[number_of_page], [office_name], [period_type],[period_number], [address],[format], [location], [stock_dt], [number], [name],[publish_dt], [jtname], [mname], [QR_code], [class_number],[organname], [status], [note], [lname],[gradename] FROM [journal] left join journal_grade on journal.gradeid=journal_grade.gid left join organization on journal.organizationid=organization.organid left join journal_type on journal.journal_type_id=journal_type.jtid left join major on journal.major_id=major.mid left join language on journal.language=language.lid where name like '%" + strjournalname + "%' and mname like '%" + strmajor + "%' and jtname like '%" + strjournaltype + "%'", cnn);
+        adpt.Fill(dst);
+        GridView1.DataSource = dst.Tables[0];
+        GridView1.DataBind();
     }
     void ExecuteQuery()
     {
@@ -101,5 +114,40 @@ public partial class QueryAndModify_journalQueryAndModify : System.Web.UI.Page
         txtformat.Text = GridView1.Rows[num].Cells[18].Text.ToString();
         txtnote.Text = GridView1.Rows[num].Cells[19].Text.ToString();
         Session["journalid"] = GridView1.Rows[num].Cells[20].Text.ToString();
+    }
+    protected void GridViewHistory_PageIndexChanging(object sender, GridViewPageEventArgs e)
+    {
+        GridView1.PageIndex = e.NewPageIndex;
+        ExecuteQuery();
+    }
+    protected void Button_search_Click(object sender, EventArgs e)
+    {
+        ExecuteQuery();
+    }
+    protected void lb_firstpage_Click(object sender, EventArgs e)
+    {
+        this.GridView1.PageIndex = 0;
+        ExecuteQuery();
+    }
+    protected void lb_previouspage_Click(object sender, EventArgs e)
+    {
+        if (this.GridView1.PageIndex > 0)
+        {
+            this.GridView1.PageIndex--;
+            ExecuteQuery();
+        }
+    }
+    protected void lb_nextpage_Click(object sender, EventArgs e)
+    {
+        if (this.GridView1.PageIndex < this.GridView1.PageCount)
+        {
+            this.GridView1.PageIndex++;
+            ExecuteQuery();
+        }
+    }
+    protected void lb_lastpage_Click(object sender, EventArgs e)
+    {
+        this.GridView1.PageIndex = this.GridView1.PageCount;
+        ExecuteQuery();
     }
 }

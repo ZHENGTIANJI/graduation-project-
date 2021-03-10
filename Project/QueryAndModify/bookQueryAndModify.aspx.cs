@@ -11,7 +11,25 @@ public partial class QueryAndModify_bookQueryAndModify : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (Session["uid"] == null)
+        {
+            Response.Redirect("../login.aspx");
+        }
+        if (GridView1.Rows.Count == 0)
+        {
+            
+            String strmajor = "";
+            String strbooktype = "";
+            String strbookname = bookname.Text.ToString().Trim();
 
+            DataSet dst = new DataSet();
+            SqlConnection cnn = new SqlConnection("Data Source=(local);Initial Catalog=档案室信息管理系统1.0;Integrated Security=True");
+            SqlDataAdapter adpt = new SqlDataAdapter("SELECT [id],[number_of_page], [book_number], [CD], [format], [location], [stock_dt], [teacher], [number], [name], [btname], [mname], [QR_code], [publisher], [publish_dt], [author], [price], [status], [note], [lname], [bitname] FROM [book] left join book_type on book.book_type_id=book_type.btid left join major on book.major_type_id=major.mid left join language on book.language=language.lid left join binding_type on book.binding_type_id=binding_type.bitid where name like '%" + strbookname + "%' and mname like '%" + strmajor + "%' and btname like '%" + strbooktype + "%'", cnn);
+            adpt.Fill(dst);
+            GridView1.DataSource = dst.Tables[0];
+            GridView1.DataBind();
+        }
+        
     }
     protected void query_Click(object sender, EventArgs e)
     {
@@ -96,6 +114,41 @@ public partial class QueryAndModify_bookQueryAndModify : System.Web.UI.Page
             ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "", "alert('保存失败！');", true);
         }
         
+        ExecuteQuery();
+    }
+    protected void GridViewHistory_PageIndexChanging(object sender, GridViewPageEventArgs e)
+    {
+        GridView1.PageIndex = e.NewPageIndex;
+        ExecuteQuery();
+    }
+    protected void Button_search_Click(object sender, EventArgs e)
+    {
+        ExecuteQuery();
+    }
+    protected void lb_firstpage_Click(object sender, EventArgs e)
+    {
+        this.GridView1.PageIndex = 0;
+        ExecuteQuery();
+    }
+    protected void lb_previouspage_Click(object sender, EventArgs e)
+    {
+        if (this.GridView1.PageIndex > 0)
+        {
+            this.GridView1.PageIndex--;
+            ExecuteQuery();
+        }
+    }
+    protected void lb_nextpage_Click(object sender, EventArgs e)
+    {
+        if (this.GridView1.PageIndex < this.GridView1.PageCount)
+        {
+            this.GridView1.PageIndex++;
+            ExecuteQuery();
+        }
+    }
+    protected void lb_lastpage_Click(object sender, EventArgs e)
+    {
+        this.GridView1.PageIndex = this.GridView1.PageCount;
         ExecuteQuery();
     }
 }

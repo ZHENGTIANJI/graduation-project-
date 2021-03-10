@@ -9,7 +9,10 @@ public partial class 首页 : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        if (Session["uid"] == null)
+        {
+            Response.Redirect("../login.aspx");
+        }
     }
     protected void btbookstock_Click(object sender, EventArgs e)
     {

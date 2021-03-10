@@ -11,7 +11,10 @@ public partial class stockmanagement_paperstock : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        if (Session["uid"] == null)
+        {
+            Response.Redirect("../login.aspx");
+        }
     }
     protected void btok_Click(object sender, EventArgs e)
     {
@@ -49,11 +52,20 @@ public partial class stockmanagement_paperstock : System.Web.UI.Page
         {
             num = 1;
         }
+        if (txtname.Text == "" || txtstockdt.Text == "" || txtQR.Text == "")
+        {
+            ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "", "alert('保存失败！');", true);
+        }
+        else
+        {
+            cmd.CommandText = "update paper set name='" + txtname.Text + "',zhicheng='" + zhicheng.SelectedItem.Text + "',shenhe='" + "已审核" + "',paper_type_id='" + ptid + "',major_id='" + majorid + "',QR_code='" + txtQR.Text + "',write_dt='" + txtwritedt.Text + "',xuezhi='" + xuezhi.SelectedItem.Text + "',dabian_dt='" + txtdabiandt.Text + "',adviser='" + txtadviser.Text + "',direction='" + txtdirection.Text + "',stock_dt='" + txtstockdt.Text + "',class_number='" + txtcn.Text + "',location='" + txtlocation.Text + "',format='" + txtformat.Text + "',number_of_page='" + int.Parse(txtnumberofpage.Text) + "',language='" + lid + "',note='" + txtnote.Text + "' where QR_code='" + txtQR.Text + "'";
+            cnn.Open();
+            cmd.ExecuteNonQuery();
+            cnn.Close();
+            ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "", "alert('保存成功！');", true);
+        }
 
-        cmd.CommandText = "update paper set name='" + txtname.Text + "',zhicheng='" + zhicheng.SelectedItem.Text + "',shenhe='" + "已审核" + "',paper_type_id='" + ptid + "',major_id='" + majorid + "',QR_code='" + txtQR.Text + "',write_dt='" + txtwritedt.Text + "',xuezhi='" + xuezhi.SelectedItem.Text + "',dabian_dt='" + txtdabiandt.Text + "',adviser='" + txtadviser.Text + "',direction='" + txtdirection.Text + "',stock_dt='" + txtstockdt.Text + "',class_number='" + txtcn.Text + "',location='" + txtlocation.Text +  "',format='" + txtformat.Text + "',number_of_page='" + int.Parse(txtnumberofpage.Text) + "',language='" + lid + "',note='" + txtnote.Text + "' where QR_code='" + txtQR.Text + "'";
-        cnn.Open();
-        cmd.ExecuteNonQuery();
-        cnn.Close();
+        
     }
     protected void scan_Click(object sender, EventArgs e)
     {

@@ -11,7 +11,11 @@ public partial class stockmanagement_paperupload : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        /*
+        if (Session["uid"] == null)
+        {
+            Response.Redirect("../login.aspx");
+        }*/
     }
     protected void upload_Click(object sender, EventArgs e)
     {
@@ -49,16 +53,36 @@ public partial class stockmanagement_paperupload : System.Web.UI.Page
         {
             num = 1;
         }
-        String stockdt=DateTime.Now.ToString("yyyy-MM-dd");   
-        cmd.CommandText = "INSERT INTO paper(name, adviser,paper_type_id, major_id, QR_code, direction, write_dt, author, stock_dt, shenhe, dabian_dt, xuezhi, status, number, format, number_of_page,language,note,zhicheng) VALUES ('" + txtname.Text + "'," +txtadviser+","+ ptid + "," + majorid + ",'" + "1111111" + "','" + txtdirection.Text + "','" + txtwritedt.Text + "','" + txtauthor.Text + "','" + stockdt + "','" + "待审核" + "','" + txtdabiandt.Text + "','" + xuezhi.SelectedItem.Value + "'," +  "'库存'," + num + ",'" + txtformat.Text + "','" + txtnumberofpage.Text + "',"  + lid + ",'" + txtnote.Text +"','"+zhicheng.SelectedItem.Value+ "')";
-        cnn.Open();
-        cmd.ExecuteNonQuery();
-        cnn.Close();
+        String stockdt=DateTime.Now.ToString("yyyy-MM-dd");
+        if (txtname.Text == "")
+        {
+            ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "", "alert('保存失败！');", true);
+        }
+        else
+        {
+            String QR = generate_QR_code();
+            cmd.CommandText = "INSERT INTO paper(name, adviser,paper_type_id, major_id, QR_code, direction, write_dt, author, stock_dt, shenhe, dabian_dt, xuezhi, status, number, format, number_of_page,language,note,zhicheng) VALUES ('" + txtname.Text + "','" + txtadviser.Text + "'," + ptid + "," + majorid + ",'" + QR + "','" + txtdirection.Text + "','" + txtwritedt.Text + "','" + txtauthor.Text + "','" + stockdt + "','" + "待审核" + "','" + txtdabiandt.Text + "','" + xuezhi.SelectedItem.Value + "'," + "'库存'," + num + ",'" + txtformat.Text + "','" + txtnumberofpage.Text + "'," + lid + ",'" + txtnote.Text + "','" + zhicheng.SelectedItem.Value + "')";
+            cnn.Open();
+            cmd.ExecuteNonQuery();
+            cnn.Close();
+            ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "", "alert('保存成功！');", true);
+        }
+        
     }
     protected String generate_QR_code()
     {
+        DataSet dst = new DataSet();
+        SqlConnection cnn = new SqlConnection("Data Source=(local);Initial Catalog=档案室信息管理系统1.0;Integrated Security=True");
+        SqlDataAdapter adpt = new SqlDataAdapter("select count(*)+1 as totalnumber from paper", cnn);
+        adpt.Fill(dst);
+        String number=dst.Tables[0].Rows[0]["totalnumber"].ToString();
         String QR_code=DateTime.Now.ToString("yyyy");
-
+        QR_code += "1" ;
+        for (int i = 0; i < (4 - number.Length); i++)
+        {
+            QR_code += "0";
+        }
+        QR_code += number;
         return QR_code;
     }
 }

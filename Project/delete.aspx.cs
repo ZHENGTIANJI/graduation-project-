@@ -11,7 +11,10 @@ public partial class delete : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        if (Session["uid"] == null)
+        {
+            Response.Redirect("../login.aspx");
+        }
     }
     protected void del_Click(object sender, EventArgs e)
     {

@@ -11,6 +11,10 @@ public partial class stockmanagement_journalstock : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (Session["uid"] == null)
+        {
+            Response.Redirect("../login.aspx");
+        }
 
     }
     protected void btok_Click(object sender, EventArgs e)
@@ -49,11 +53,20 @@ public partial class stockmanagement_journalstock : System.Web.UI.Page
         {
             num = 1;
         }
+        if (txtname.Text == "" || txtQR.Text == "" || txtstockdt.Text == "")
+        {
+            ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "", "alert('保存失败！');", true);
+        }
+        else
+        {
+            cmd.CommandText = "INSERT INTO journal(name, journal_type_id, major_id, QR_code, publish_dt, office_name, period_number, stock_dt, location, class_number, status, number, format, number_of_page,language,note,organization,period_type,address,grade) VALUES ('" + txtname.Text + "'," + jtid + "," + majorid + ",'" + txtQR.Text + "','" + txtpubdt.Text + "','" + txtoffname.Text + "','" + txtpn.Text + "','" + txtstockdt.Text + "','" + txtlocation.Text + "','" + txtcn.Text + "','库存'," + num + ",'" + txtformat.Text + "','" + txtnumberofpage.Text + "'," + lid + ",'" + txtnote.Text + "','" + txtorgan.Text + "','" + period.SelectedItem.Value + "','" + txtaddress.Text + "','" + grade1 + "')";
+            cnn.Open();
+            cmd.ExecuteNonQuery();
+            cnn.Close();
+            ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "", "alert('保存成功！');", true);
+        }
 
-        cmd.CommandText = "INSERT INTO journal(name, journal_type_id, major_id, QR_code, publish_dt, office_name, period_number, stock_dt, location, class_number, status, number, format, number_of_page,language,note,organization,period_type,address,grade) VALUES ('" + txtname.Text + "'," + jtid + "," + majorid + ",'" + txtQR.Text + "','" + txtpubdt.Text + "','" + txtoffname.Text + "','" + txtpn.Text + "','" + txtstockdt.Text + "','" + txtlocation.Text + "','" + txtcn.Text + "','库存'," + num + ",'" + txtformat.Text + "','" + txtnumberofpage.Text + "'," + lid + ",'" + txtnote.Text + "','" + txtorgan.Text +"','"+period.SelectedItem.Value+ "','"+txtaddress.Text+"','"+grade1+"')";
-        cnn.Open();
-        cmd.ExecuteNonQuery();
-        cnn.Close();
+        
     }
     protected void btclear_Click(object sender, EventArgs e)
     {
