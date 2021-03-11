@@ -6,6 +6,8 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
 using System.Data.SqlClient;
+using System.Web.UI.DataVisualization.Charting;
+using System.Drawing;
 
 
 public partial class 统计分析_bookstatistics : System.Web.UI.Page
@@ -15,6 +17,8 @@ public partial class 统计分析_bookstatistics : System.Web.UI.Page
         totalnumber();
         typenumber();
         majornumber();
+        chart();
+        
     }
     protected void totalnumber()
     {
@@ -76,5 +80,15 @@ public partial class 统计分析_bookstatistics : System.Web.UI.Page
         }
         GridView2.DataSource = dst2.Tables[0];
         GridView2.DataBind();
+    }
+    protected void chart()
+    {
+        Chart1.Series.Clear();
+        Series s1 = new Series();
+        s1.Name = "序列名";
+        Chart1.Series.Add(s1);
+        List<int> Hdop = new List<int> { 1, 2, 3, 4, 5, 6, 7 };//x轴
+        List<int> Vdop = new List<int> { 1, 2, 3, 4, 5, 6, 7 };//y轴 可以是时间各种
+        Chart1.Series["序列名"].Points.DataBindXY(Hdop, Vdop);
     }
 }

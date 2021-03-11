@@ -8,7 +8,8 @@
     <title></title>
     <style type="text/css">
         .auto-style1 {
-            width: 89px;
+            width: 101px;
+            text-align: right;
         }
     </style>
 </head>
@@ -79,6 +80,17 @@
                 <asp:BoundField DataField="mnumber" HeaderText="数目" SortExpression="mnumber" />
             </Columns>
         </asp:GridView>
+        <asp:Chart ID="Chart1" runat="server">
+            <Series>
+                <asp:Series Name="Series1">
+                </asp:Series>
+            </Series>
+            <ChartAreas>
+                <asp:ChartArea Name="ChartArea1">
+                </asp:ChartArea>
+            </ChartAreas>
+        </asp:Chart>
     </form>
 </body>
 </html>
+
