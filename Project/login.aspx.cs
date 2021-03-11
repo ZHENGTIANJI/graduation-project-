@@ -17,9 +17,14 @@ public partial class 登录 : System.Web.UI.Page
     {
         if(havethisuser(txtuid.Text.Trim(),txtpsw.Text.Trim()))
         {
-            Session["uid"] = txtuid.Text.Trim();
-            Response.Redirect("main_manager.aspx");
-
+            if ((int)Session["uid"] == 0)
+            {
+                Response.Redirect("main_manager.aspx");
+            }
+            else
+            {
+                Response.Redirect("main_user.aspx");
+            }
         }
         else
         {
@@ -33,6 +38,10 @@ public partial class 登录 : System.Web.UI.Page
         SqlConnection cnn = new SqlConnection("Data Source=(local);Initial Catalog=档案室信息管理系统1.0;Integrated Security=True");
         SqlDataAdapter adpt = new SqlDataAdapter("select * from users where id='" + uid + "' and psw='" + psw + "'", cnn);
         adpt.Fill(dst);
+        if (dst.Tables[0].Rows.Count > 0)
+        {
+            Session["uid"] = dst.Tables[0].Rows[0]["user_class"].ToString() == "管理员" ? 0 : 1;
+        }
 
         return dst.Tables[0].Rows.Count > 0;
     }

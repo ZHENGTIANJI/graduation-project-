@@ -29,7 +29,7 @@ public partial class stockmanagement_paperupload : System.Web.UI.Page
         SqlDataAdapter adptmajor = new SqlDataAdapter("select mid from major where mname='" + major.SelectedItem.Text + "'", cnn);
         //SqlDataAdapter adptbindingtype = new SqlDataAdapter("select bitid from binding_type where bitname='" + bindingtype.SelectedItem.Text + "'", cnn);
         SqlDataAdapter adptlanguage = new SqlDataAdapter("select lid from language where lname='" + language.SelectedItem.Text + "'", cnn);
-        SqlDataAdapter adptnum = new SqlDataAdapter("select number from paper where name='" + txtname.Text + "'", cnn);
+        SqlDataAdapter adptnum = new SqlDataAdapter("select count(name) as number from paper where name='" + txtname.Text + "' and author='"+txtauthor.Text+"'", cnn);
         SqlCommand cmd = cnn.CreateCommand();
         adptpt.Fill(dst1);
         adptmajor.Fill(dst2);
@@ -41,31 +41,34 @@ public partial class stockmanagement_paperupload : System.Web.UI.Page
         //int bitid = (int)dst3.Tables[0].Rows[0]["bitid"];
         int lid = (int)dst4.Tables[0].Rows[0]["lid"];
         int num;
-        if (dst5.Tables[0].Rows.Count > 0)
+        if ((int)dst5.Tables[0].Rows[0]["number"] == 1)
         {
-            num = (int)dst5.Tables[0].Rows[0]["number"] + 1;
+            /*num = (int)dst5.Tables[0].Rows[0]["number"] + 1;
             cmd.CommandText = "update paper set number='" + num + "' where name='" + txtname.Text + "'";
             cnn.Open();
             cmd.ExecuteNonQuery();
-            cnn.Close();
+            cnn.Close();*/
+            ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "", "alert('您之前已经提交，请不要重复提交！');", true);
+            
         }
         else
         {
             num = 1;
-        }
-        String stockdt=DateTime.Now.ToString("yyyy-MM-dd");
-        if (txtname.Text == "")
-        {
-            ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "", "alert('保存失败！');", true);
-        }
-        else
-        {
-            String QR = generate_QR_code();
-            cmd.CommandText = "INSERT INTO paper(name, adviser,paper_type_id, major_id, QR_code, direction, write_dt, author, stock_dt, shenhe, dabian_dt, xuezhi, status, number, format, number_of_page,language,note,zhicheng) VALUES ('" + txtname.Text + "','" + txtadviser.Text + "'," + ptid + "," + majorid + ",'" + QR + "','" + txtdirection.Text + "','" + txtwritedt.Text + "','" + txtauthor.Text + "','" + stockdt + "','" + "待审核" + "','" + txtdabiandt.Text + "','" + xuezhi.SelectedItem.Value + "'," + "'库存'," + num + ",'" + txtformat.Text + "','" + txtnumberofpage.Text + "'," + lid + ",'" + txtnote.Text + "','" + zhicheng.SelectedItem.Value + "')";
-            cnn.Open();
-            cmd.ExecuteNonQuery();
-            cnn.Close();
-            ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "", "alert('保存成功！');", true);
+        
+            String stockdt=DateTime.Now.ToString("yyyy-MM-dd");
+            if (txtname.Text == "")
+            {
+                ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "", "alert('保存失败！');", true);
+            }
+            else
+            {
+                String QR = generate_QR_code();
+                cmd.CommandText = "INSERT INTO paper(name, adviser,paper_type_id, major_id, QR_code, direction, write_dt, author, stock_dt, shenhe, dabian_dt, xuezhi, status, number, format, number_of_page,language,note,zhicheng) VALUES ('" + txtname.Text + "','" + txtadviser.Text + "'," + ptid + "," + majorid + ",'" + QR + "','" + txtdirection.Text + "','" + txtwritedt.Text + "','" + txtauthor.Text + "','" + stockdt + "','" + "待审核" + "','" + txtdabiandt.Text + "','" + xuezhi.SelectedItem.Value + "'," + "'库存'," + num + ",'" + txtformat.Text + "','" + txtnumberofpage.Text + "'," + lid + ",'" + txtnote.Text + "','" + zhicheng.SelectedItem.Value + "')";
+                cnn.Open();
+                cmd.ExecuteNonQuery();
+                cnn.Close();
+                ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "", "alert('保存成功！');", true);
+            }
         }
         
     }

@@ -49,7 +49,7 @@
         <table style="width: 100%; height: 745px;">
             <tr>
                 <td class="auto-style1">
-                    <asp:Panel ID="Panel1" runat="server" BackImageUrl="~/imgs/1.PNG" Height="812px" Width="1311px">
+                    <asp:Panel ID="Panel1" runat="server" BackImageUrl="~/imgs/1.PNG" Height="100%" Width="100%">
                         <table style="width:100%;">
                             <tr>
                                 <td class="auto-style16">

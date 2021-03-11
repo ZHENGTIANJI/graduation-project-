@@ -263,7 +263,7 @@
                     <asp:TextBox ID="txtnote" runat="server"></asp:TextBox>
                 </td>
                 <td class="auto-style7">
-                    <asp:Button ID="upload" runat="server" OnClick="upload_Click" Text="提交" />
+                    <asp:Button ID="upload" runat="server" OnClick="upload_Click" Text="提交" OnClientClick="return confirm('只允许提交一次，确定提交吗?')"/>
                 </td>
                 <td class="auto-style13">&nbsp;</td>
                 <td>&nbsp;</td>

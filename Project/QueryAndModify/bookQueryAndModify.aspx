@@ -169,7 +169,7 @@
                 <asp:MenuItem Text="统计分析" Value="统计分析">
                     <asp:MenuItem NavigateUrl="~/statistics/bookstatistics.aspx" Text="图书统计" Value="图书统计"></asp:MenuItem>
                     <asp:MenuItem NavigateUrl="~/statistics/journalstatistics.aspx" Text="期刊统计" Value="期刊统计"></asp:MenuItem>
-                    <asp:MenuItem NavigateUrl="~/stockmanagement/datastock.aspx" Text="资料统计" Value="资料统计"></asp:MenuItem>
+                    <asp:MenuItem NavigateUrl="~/QueryAndModify/dataQueryAndModify.aspx" Text="资料统计" Value="资料统计"></asp:MenuItem>
                     <asp:MenuItem NavigateUrl="~/statistics/paperstatistics.aspx" Text="论文统计" Value="论文统计"></asp:MenuItem>
                 </asp:MenuItem>
             </Items>
@@ -223,7 +223,7 @@
             </tr>
         </table>
         <div style="overflow-y: scroll; width: 2000px">
-        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" style="margin-top: 0px" OnRowDeleting="GridView1_RowDeleting" AllowPaging="true" PageSize="5" onpageindexchanging="GridViewHistory_PageIndexChanging">
+        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" style="margin-top: 0px" OnRowDeleting="GridView1_RowDeleting" AllowPaging="true" PageSize="10" onpageindexchanging="GridViewHistory_PageIndexChanging">
             <Columns>
                 <asp:BoundField DataField="name" HeaderText="图书名称" SortExpression="name" />
                 <asp:BoundField DataField="btname" HeaderText="图书类型" SortExpression="btname" />

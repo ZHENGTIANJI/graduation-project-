@@ -9,10 +9,10 @@ public partial class main_user : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (Session["uid"] == null)
+        /*if (Session["uid"] == null)
         {
-            Response.Redirect("../login.aspx");
-        }
+            Response.Redirect("login.aspx");
+        }*/
     }
     protected void ImageButton1_Click(object sender, ImageClickEventArgs e)
     {
