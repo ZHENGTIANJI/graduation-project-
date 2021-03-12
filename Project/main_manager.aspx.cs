@@ -9,7 +9,7 @@ public partial class 首页 : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (Session["uid"] == null)
+        if (Session["uid"] == null||(int)Session["uid"] !=0)
         {
             Response.Redirect("../login.aspx");
         }

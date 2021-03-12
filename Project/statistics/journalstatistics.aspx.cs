@@ -11,6 +11,10 @@ public partial class 统计分析_journalstatistics : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (Session["uid"] == null || (int)Session["uid"] != 0)
+        {
+            Response.Redirect("../login.aspx");
+        }
         totalnumber();
         typenumber();
         majornumber();

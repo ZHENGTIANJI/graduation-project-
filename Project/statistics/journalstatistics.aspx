@@ -43,7 +43,7 @@
                 <asp:MenuItem Text="统计分析" Value="统计分析">
                     <asp:MenuItem NavigateUrl="~/statistics/bookstatistics.aspx" Text="图书统计" Value="图书统计"></asp:MenuItem>
                     <asp:MenuItem NavigateUrl="~/statistics/journalstatistics.aspx" Text="期刊统计" Value="期刊统计"></asp:MenuItem>
-                    <asp:MenuItem NavigateUrl="~/QueryAndModify/dataQueryAndModify.aspx" Text="资料统计" Value="资料统计"></asp:MenuItem>
+                    <asp:MenuItem NavigateUrl="~/statistics/datastatistics.aspx" Text="资料统计" Value="资料统计"></asp:MenuItem>
                     <asp:MenuItem NavigateUrl="~/statistics/paperstatistics.aspx" Text="论文统计" Value="论文统计"></asp:MenuItem>
                 </asp:MenuItem>
             </Items>
