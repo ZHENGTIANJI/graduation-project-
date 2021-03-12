@@ -87,12 +87,10 @@ public partial class 统计分析_bookstatistics : System.Web.UI.Page
     }
     protected void chart()
     {
-        Chart1.Series.Clear();
-        Series s1 = new Series();
-        s1.Name = "序列名";
-        Chart1.Series.Add(s1);
         List<int> Hdop = new List<int> { 1, 2, 3, 4, 5, 6, 7 };//x轴
         List<int> Vdop = new List<int> { 1, 2, 3, 4, 5, 6, 7 };//y轴 可以是时间各种
-        Chart1.Series["序列名"].Points.DataBindXY(Hdop, Vdop);
+        Chart1.Series[0]["PieLabelStyle"] = "Outside";//将文字移到外侧
+        Chart1.Series[0]["PieLineColor"] = "Black";//绘制黑色的连线。
+        Chart1.Series[0].Points.DataBindXY(Hdop, Vdop);
     }
 }

@@ -18,6 +18,7 @@ public partial class 统计分析_paperstatistics : System.Web.UI.Page
         totalnumber();
         typenumber();
         majornumber();
+        chart();
     }
     protected void totalnumber()
     {
@@ -80,5 +81,13 @@ public partial class 统计分析_paperstatistics : System.Web.UI.Page
         }
         GridView2.DataSource = dst2.Tables[0];
         GridView2.DataBind();
+    }
+    protected void chart()
+    {
+        List<int> Hdop = new List<int> { 1, 2, 3, 4, 5, 6, 7 };//x轴
+        List<int> Vdop = new List<int> { 1, 2, 3, 4, 5, 6, 7 };//y轴 可以是时间各种
+        Chart1.Series[0]["PieLabelStyle"] = "Outside";//将文字移到外侧
+        Chart1.Series[0]["PieLineColor"] = "Black";//绘制黑色的连线。
+        Chart1.Series[0].Points.DataBindXY(Hdop, Vdop);
     }
 }

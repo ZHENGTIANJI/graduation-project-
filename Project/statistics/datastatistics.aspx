@@ -80,6 +80,20 @@
                 <asp:BoundField DataField="number" HeaderText="数目" />
             </Columns>
         </asp:GridView>
+        <asp:Chart ID="Chart1" runat="server">
+            <Series>
+                <asp:Series ChartType="Line" Legend="Legend1" Name="Series1">
+                </asp:Series>
+            </Series>
+            <ChartAreas>
+                <asp:ChartArea Name="ChartArea1">
+                </asp:ChartArea>
+            </ChartAreas>
+            <Legends>
+                <asp:Legend Enabled="False" Name="Legend1">
+                </asp:Legend>
+            </Legends>
+        </asp:Chart>
     </form>
 </body>
 </html>

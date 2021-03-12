@@ -82,13 +82,17 @@
         </asp:GridView>
         <asp:Chart ID="Chart1" runat="server">
             <Series>
-                <asp:Series Name="Series1">
+                <asp:Series Name="Series1" ChartType="Line" IsValueShownAsLabel="True" Legend="Legend1">
                 </asp:Series>
             </Series>
             <ChartAreas>
                 <asp:ChartArea Name="ChartArea1">
                 </asp:ChartArea>
             </ChartAreas>
+            <Legends>
+                <asp:Legend Enabled="False" Name="Legend1">
+                </asp:Legend>
+            </Legends>
         </asp:Chart>
     </form>
 </body>
