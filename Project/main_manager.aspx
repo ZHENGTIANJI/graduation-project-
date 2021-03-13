@@ -6,41 +6,96 @@
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
-    </head>
+    <style>
+        ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+            height: 55px;
+        }
+
+li {
+  float: left;
+}
+
+li a, .dropbtn {
+  display: inline-block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover, .dropdown:hover .dropbtn {
+  background-color: red;
+}
+
+li.dropdown {
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a:hover {background-color: #f1f1f1;}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+</style>
+</head>
 <body>
-    <form id="form1" runat="server">
-        <asp:Menu ID="Menu1" runat="server" BackColor="#B5C7DE" DynamicHorizontalOffset="2" Font-Names="Verdana" Font-Size="0.8em" ForeColor="#284E98" StaticSubMenuIndent="10px">
-            <DynamicHoverStyle BackColor="#284E98" ForeColor="White" />
-            <DynamicMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px" />
-            <DynamicMenuStyle BackColor="#B5C7DE" />
-            <DynamicSelectedStyle BackColor="#507CD1" />
-            <Items>
-                <asp:MenuItem Text="入库管理" Value="入库管理">
-                    <asp:MenuItem NavigateUrl="~/stockmanagement/bookstock.aspx" Text="图书入库" Value="图书入库"></asp:MenuItem>
-                    <asp:MenuItem NavigateUrl="~/stockmanagement/journalstock.aspx" Text="期刊入库" Value="期刊入库"></asp:MenuItem>
-                    <asp:MenuItem NavigateUrl="~/stockmanagement/datastock.aspx" Text="资料入库" Value="资料入库"></asp:MenuItem>
-                    <asp:MenuItem NavigateUrl="~/stockmanagement/paperstock.aspx" Text="论文入库" Value="论文入库"></asp:MenuItem>
-                </asp:MenuItem>
-                <asp:MenuItem Text="信息查改" Value="信息查改">
-                    <asp:MenuItem NavigateUrl="~/QueryAndModify/bookQueryAndModify.aspx" Text="图书查改" Value="图书查改"></asp:MenuItem>
-                    <asp:MenuItem NavigateUrl="~/QueryAndModify/journalQueryAndModify.aspx" Text="期刊查改" Value="期刊查改"></asp:MenuItem>
-                    <asp:MenuItem NavigateUrl="~/QueryAndModify/dataQueryAndModify.aspx" Text="资料查改" Value="资料查改"></asp:MenuItem>
-                    <asp:MenuItem NavigateUrl="~/QueryAndModify/paperQueryAndModify.aspx" Text="论文查改" Value="论文查改"></asp:MenuItem>
-                </asp:MenuItem>
-                <asp:MenuItem Text="剔旧" Value="剔旧">
-                    <asp:MenuItem NavigateUrl="~/delete.aspx" Text="图书剔旧" Value="图书剔旧"></asp:MenuItem>
-                </asp:MenuItem>
-                <asp:MenuItem Text="统计分析" Value="统计分析">
-                    <asp:MenuItem NavigateUrl="~/statistics/bookstatistics.aspx" Text="图书统计" Value="图书统计"></asp:MenuItem>
-                    <asp:MenuItem NavigateUrl="~/statistics/journalstatistics.aspx" Text="期刊统计" Value="期刊统计"></asp:MenuItem>
-                    <asp:MenuItem NavigateUrl="~/statistics/datastatistics.aspx" Text="资料统计" Value="资料统计"></asp:MenuItem>
-                    <asp:MenuItem NavigateUrl="~/statistics/paperstatistics.aspx" Text="论文统计" Value="论文统计"></asp:MenuItem>
-                </asp:MenuItem>
-            </Items>
-            <StaticHoverStyle BackColor="#284E98" ForeColor="White" />
-            <StaticMenuItemStyle Font-Size="Large" HorizontalPadding="5px" VerticalPadding="2px" />
-            <StaticSelectedStyle BackColor="#507CD1" />
-        </asp:Menu>
-    </form>
+   <ul>
+  <li><a href="/main_manager.aspx">首页</a></li>
+  <li class="dropdown">
+      <a href="javascript:void(0)" class="dropbtn">入库管理</a>
+      <div class="dropdown-content">
+      <a href="stockmanagement/bookstock.aspx">图书入库</a>
+      <a href="stockmanagement/datastock.aspx">资料入库</a>
+      <a href="stockmanagement/journalstock.aspx">期刊入库</a>
+      <a href="stockmanagement/paperstock.aspx">论文入库</a>
+    </div>
+  </li>
+  <li class="dropdown">
+    <a href="javascript:void(0)" class="dropbtn">资料查改</a>
+    <div class="dropdown-content">
+      <a href="QueryAndModify/bookQueryAndModify.aspx">图书查改</a>
+      <a href="QueryAndModify/journalQueryAndModify.aspx">期刊查改</a>
+      <a href="QueryAndModify/dataQueryAndModify.aspx">资料查改</a>
+      <a href="QueryAndModify/paperQueryAndModify.aspx">论文查改</a>
+    </div>
+  </li>
+  <li class="dropdown">
+    <a href="javascript:void(0)" class="dropbtn">统计分析</a>
+    <div class="dropdown-content">
+      <a href="statistics/bookstatistics.aspx">图书统计</a>
+      <a href="statistics/journalstatistics.aspx">期刊统计</a>
+      <a href="statistics/datastatistics.aspx">资料统计</a>
+      <a href="statistics/paperstatistics.aspx">论文统计</a>
+    </div>
+  </li>
+    <li><a href="/delete.aspx">剔旧</a></li>
+</ul>
+
+<h1>矿业学院档案室信息管理系统</h1>
+
+<p></p>
+
 </body>
 </html>
