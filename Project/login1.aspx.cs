@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 using System.Data.SqlClient;
 using System.Data;
 
-public partial class 登录 : System.Web.UI.Page
+public partial class login1 : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -15,7 +15,7 @@ public partial class 登录 : System.Web.UI.Page
     }
     protected void btok_Click(object sender, EventArgs e)
     {
-        if(havethisuser(txtuid.Text.Trim(),txtpsw.Text.Trim()))
+        if (havethisuser(txtuid.Text.Trim(), txtpsw.Text.Trim()))
         {
             if ((int)Session["uid"] == 0)
             {
@@ -34,7 +34,7 @@ public partial class 登录 : System.Web.UI.Page
     bool havethisuser(string uid, string psw)
     {
 
-        DataSet dst=new DataSet();
+        DataSet dst = new DataSet();
         SqlConnection cnn = new SqlConnection("Data Source=(local);Initial Catalog=档案室信息管理系统1.0;Integrated Security=True");
         SqlDataAdapter adpt = new SqlDataAdapter("select * from users where id='" + uid + "' and psw='" + psw + "'", cnn);
         adpt.Fill(dst);
