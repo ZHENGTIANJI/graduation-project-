@@ -15,15 +15,19 @@ public partial class QueryAndModify_dataQueryAndModify : System.Web.UI.Page
         {
             Response.Redirect("../login.aspx");
         }
-        String strmajor = "";
-        String strdatatype = "";
-        String strdataname = dataname.Text.ToString().Trim();
-        DataSet dst = new DataSet();
-        SqlConnection cnn = new SqlConnection("Data Source=(local);Initial Catalog=档案室信息管理系统1.0;Integrated Security=True");
-        SqlDataAdapter adpt = new SqlDataAdapter("SELECT [id],[number_of_page], [compile_dt], [unit], [format], [location], [stock_dt], [number], [name], [dtname], [mname], [QR_code], [class_number], [author], [status], [note], [lname] FROM [data] left join data_type on data.data_type_id=data_type.dtid left join major on data.major_id=major.mid left join language on data.language=language.lid where name like '%" + strdataname + "%' and mname like '%" + strmajor + "%' and dtname like '%" + strdatatype + "%'", cnn);
-        adpt.Fill(dst);
-        GridView1.DataSource = dst.Tables[0];
-        GridView1.DataBind();
+        if (!IsPostBack)
+        {
+            String strmajor = "";
+            String strdatatype = "";
+            String strdataname = dataname.Text.ToString().Trim();
+            DataSet dst = new DataSet();
+            SqlConnection cnn = new SqlConnection("Data Source=(local);Initial Catalog=档案室信息管理系统1.0;Integrated Security=True");
+            SqlDataAdapter adpt = new SqlDataAdapter("SELECT [id],[number_of_page], [compile_dt], [unit], [format], [location], [stock_dt], [number], [name], [dtname], [mname], [QR_code], [class_number], [author], [status], [note], [lname] FROM [data] left join data_type on data.data_type_id=data_type.dtid left join major on data.major_id=major.mid left join language on data.language=language.lid where name like '%" + strdataname + "%' and mname like '%" + strmajor + "%' and dtname like '%" + strdatatype + "%'", cnn);
+            adpt.Fill(dst);
+            GridView1.DataSource = dst.Tables[0];
+            GridView1.DataBind();
+        }
+        
     }
     protected void GridView1_RowDeleting(object sender, GridViewDeleteEventArgs e)
     {
@@ -33,13 +37,17 @@ public partial class QueryAndModify_dataQueryAndModify : System.Web.UI.Page
         dt.Items.FindByText(GridView1.Rows[num].Cells[1].Text.ToString()).Selected = true;
         txtQR.Text = GridView1.Rows[num].Cells[2].Text.ToString();
         txtunit.Text = GridView1.Rows[num].Cells[3].Text.ToString();
-        txtstockdt.Text = GridView1.Rows[num].Cells[4].Text.ToString();
+        stock_year.Text = GridView1.Rows[num].Cells[4].Text.ToString().Substring(0, 4);
+        stock_month.Text = GridView1.Rows[num].Cells[4].Text.ToString().Substring(5, 2);
+        stock_day.Text = GridView1.Rows[num].Cells[4].Text.ToString().Substring(8, 2);
         txtlocation.Text = GridView1.Rows[num].Cells[5].Text.ToString();
         txtnumber.Text = GridView1.Rows[num].Cells[6].Text.ToString();
         txtcn.Text = GridView1.Rows[num].Cells[7].Text.ToString();
         language.SelectedIndex = -1;
         language.Items.FindByText(GridView1.Rows[num].Cells[8].Text.ToString()).Selected = true;
-        txtcompiledt.Text = GridView1.Rows[num].Cells[9].Text.ToString();
+        write_year.Text = GridView1.Rows[num].Cells[9].Text.ToString().Substring(0, 4);
+        write_month.Text = GridView1.Rows[num].Cells[9].Text.ToString().Substring(5, 2);
+        write_day.Text = GridView1.Rows[num].Cells[9].Text.ToString().Substring(8, 2);
         txtformat.Text = GridView1.Rows[num].Cells[10].Text.ToString();
         txtnumberofpage.Text = GridView1.Rows[num].Cells[11].Text.ToString();
         txtauthor.Text = GridView1.Rows[num].Cells[12].Text.ToString();
@@ -87,7 +95,9 @@ public partial class QueryAndModify_dataQueryAndModify : System.Web.UI.Page
         int id = Convert.ToInt32(Session["dataid"]);
         try
         {
-            cmd.CommandText = "update data set name='" + txtname.Text + "',data_type_id='" + dtid + "',major_id='" + majorid + "',QR_code='" + txtQR.Text + "',unit='" + txtunit.Text + "',compile_dt='" + txtcompiledt.Text + "',author='" + txtauthor.Text + "',stock_dt='" + txtstockdt.Text + "',class_number='" + txtcn.Text + "',number='" + txtnumber.Text + "',location='" + txtlocation.Text + "',status='" + status.SelectedItem.Text + "',format='" + txtformat.Text + "',number_of_page='" + int.Parse(txtnumberofpage.Text) + "',language='" + lid + "',note='" + txtnote.Text + "' where id='" + id + "'";
+            String stockdt = stock_year.Text + "-" + stock_month.Text + "-" + stock_day.Text;
+            String writekdt = write_year.Text + "-" + write_month.Text + "-" + write_day.Text;
+            cmd.CommandText = "update data set name='" + txtname.Text + "',data_type_id='" + dtid + "',major_id='" + majorid + "',QR_code='" + txtQR.Text + "',unit='" + txtunit.Text + "',compile_dt='" + writekdt + "',author='" + txtauthor.Text + "',stock_dt='" + stockdt + "',class_number='" + txtcn.Text + "',number='" + txtnumber.Text + "',location='" + txtlocation.Text + "',status='" + status.SelectedItem.Text + "',format='" + txtformat.Text + "',number_of_page='" + int.Parse(txtnumberofpage.Text) + "',language='" + lid + "',note='" + txtnote.Text + "' where id='" + id + "'";
             cnn.Open();
             cmd.ExecuteNonQuery();
             cnn.Close();

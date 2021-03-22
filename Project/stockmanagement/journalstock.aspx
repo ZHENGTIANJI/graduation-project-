@@ -58,51 +58,23 @@ li.dropdown {
 .dropdown:hover .dropdown-content {
   display: block;
 }
-        .auto-style6 {
-            width: 64px;
-            height: 20px;
-        }
         .auto-style3 {
             height: 20px;
-        }
-        .auto-style1 {
-            width: 253px;
-            text-align: right;
-        }
-        .auto-style9 {
-            width: 140px;
-        }
-        .auto-style11 {
-            width: 135px;
-        }
-        .auto-style13 {
-            width: 60px;
-        }
-        .auto-style16 {
-            width: 84px;
-            text-align: right;
+            width: 105px;
         }
         .auto-style17 {
             width: 89px;
         }
         .auto-style18 {
-            width: 398px;
+            width: 322px;
             text-align: left;
-        }
-        .auto-style19 {
-            width: 15px;
         }
         .auto-style21 {
-            width: 180px;
+            width: 29px;
             text-align: left;
         }
-        .auto-style22 {
-            height: 20px;
-            width: 253px;
-            text-align: right;
-        }
         .auto-style23 {
-            width: 231px;
+            width: 210px;
         }
         .auto-style27 {
             width: 201px;
@@ -123,29 +95,60 @@ li.dropdown {
             text-align: right;
         }
         .auto-style32 {
-            width: 74px;
             height: 20px;
             text-align: right;
         }
         .auto-style33 {
-            width: 74px;
             text-align: right;
         }
         .auto-style34 {
             height: 20px;
-            width: 231px;
+            width: 210px;
         }
-        .auto-style35 {
+        .auto-style38 {
             height: 20px;
-            width: 270px;
+            width: 283px;
             text-align: right;
         }
-        .auto-style36 {
-            width: 270px;
+        .auto-style39 {
+            width: 283px;
             text-align: right;
         }
-        .auto-style37 {
-            width: 138px;
+        .auto-style44 {
+            width: 94px;
+            text-align: right;
+        }
+        .auto-style47 {
+            height: 20px;
+            width: 176px;
+        }
+        .auto-style48 {
+            width: 176px;
+        }
+        .auto-style49 {
+            height: 20px;
+            width: 187px;
+        }
+        .auto-style50 {
+            width: 187px;
+        }
+        .auto-style51 {
+            width: 105px;
+            text-align: center;
+        }
+        .auto-style52 {
+            text-align: center;
+        }
+        .auto-style53 {
+            width: 373px;
+        }
+        .auto-style54 {
+            height: 20px;
+            width: 264px;
+            text-align: right;
+        }
+        .auto-style55 {
+            width: 264px;
             text-align: right;
         }
     </style>
@@ -185,26 +188,35 @@ li.dropdown {
     <form id="form1" runat="server">
         <table style="width:100%;">
             <tr>
-                <td class="auto-style37">&nbsp;</td>
-                <td class="auto-style21">&nbsp;</td>
-                <td class="auto-style16">&nbsp;</td>
-                <td class="auto-style18">
-                    <h1 style="width: 451px">
+                <td class="auto-style53">&nbsp;</td>
+                <td class="auto-style52">&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td class="auto-style53">&nbsp;</td>
+                <td class="auto-style52">
+                    <h1 style="width: 451px; text-align: center;">
                         <asp:Label ID="Label18" runat="server" Text="学院资料室期刊入库管理"></asp:Label>
                     </h1>
                 </td>
-                <td class="auto-style17">&nbsp;</td>
-                <td class="auto-style19">&nbsp;</td>
+                <td>&nbsp;</td>
             </tr>
             <tr>
-                <td class="auto-style37">
+                <td class="auto-style53">&nbsp;</td>
+                <td class="auto-style52">&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+        </table>
+        <table style="width:100%;">
+            <tr>
+                <td class="auto-style31">
                     <asp:Label ID="Label3" runat="server" Text="期刊类别"></asp:Label>
                 </td>
                 <td class="auto-style21">
                     <asp:DropDownList ID="jt" runat="server" DataSourceID="SqlDataSource1" DataTextField="jtname" DataValueField="jtname">
                     </asp:DropDownList>
                 </td>
-                <td class="auto-style16">
+                <td class="auto-style44">
                     <asp:Label ID="Label17" runat="server" Text="出版周期"></asp:Label>
                 </td>
                 <td class="auto-style18">
@@ -232,24 +244,28 @@ li.dropdown {
             <tr>
                 <td class="auto-style32">
                     &nbsp;</td>
-                <td class="auto-style22">
+                <td class="auto-style38">
                     <asp:Label ID="Label1" runat="server" Text="二维码编码"></asp:Label>
                 </td>
                 <td class="auto-style34">
                     <asp:TextBox ID="txtQR" runat="server"></asp:TextBox>
-                    <asp:Button ID="Button1" runat="server" Text="扫描" />
                 </td>
-                <td class="auto-style35">
+                <td class="auto-style54">
                     <asp:Label ID="Label2" runat="server" Text="期刊名称"></asp:Label>
                 </td>
-                <td class="auto-style6">
+                <td class="auto-style49">
                     <asp:TextBox ID="txtname" runat="server"></asp:TextBox>
                 </td>
                 <td class="auto-style27">
                     <asp:Label ID="Label11" runat="server" Text="出版日期"></asp:Label>
                 </td>
-                <td class="auto-style6">
-                    <asp:TextBox ID="txtpubdt" runat="server"></asp:TextBox>
+                <td class="auto-style47">
+                    <asp:TextBox ID="pub_year" runat="server" Width="40px"></asp:TextBox>
+                    <asp:Label ID="Label28" runat="server" Text="年"></asp:Label>
+                    <asp:TextBox ID="pub_month" runat="server" Width="16px"></asp:TextBox>
+                    <asp:Label ID="Label29" runat="server" Text="月"></asp:Label>
+                    <asp:TextBox ID="pub_day" runat="server" Width="16px"></asp:TextBox>
+                    <asp:Label ID="Label30" runat="server" Text="日"></asp:Label>
                 </td>
                 <td class="auto-style30">
                     <asp:Label ID="Label22" runat="server" Text="期刊等级"></asp:Label>
@@ -262,28 +278,28 @@ li.dropdown {
             <tr>
                 <td class="auto-style33">
                     &nbsp;</td>
-                <td class="auto-style1">
-                    <asp:Label ID="Label4" runat="server" Text="检索机构"></asp:Label>
+                <td class="auto-style39">
+                    <asp:Label ID="Label6" runat="server" Text="分类号"></asp:Label>
                 </td>
                 <td class="auto-style23">
-                    <asp:TextBox ID="txtorgan" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txtcn" runat="server"></asp:TextBox>
                 </td>
-                <td class="auto-style36">
-                    <asp:Label ID="Label7" runat="server" Text="入库日期"></asp:Label>
+                <td class="auto-style55">
+                    <asp:Label ID="Label5" runat="server" Text="出版社名称"></asp:Label>
                 </td>
-                <td class="auto-style9">
-                    <asp:TextBox ID="txtstockdt" runat="server"></asp:TextBox>
+                <td class="auto-style50">
+                    <asp:TextBox ID="txtoffname" runat="server"></asp:TextBox>
                 </td>
                 <td class="auto-style28">
                     <asp:Label ID="Label9" runat="server" Text="存放位置"></asp:Label>
                 </td>
-                <td class="auto-style11">
+                <td class="auto-style48">
                     <asp:TextBox ID="txtlocation" runat="server"></asp:TextBox>
                 </td>
                 <td class="auto-style31">
                     <asp:Label ID="Label21" runat="server" Text="期刊语种"></asp:Label>
                 </td>
-                <td class="auto-style13">
+                <td class="auto-style51">
                     <asp:DropDownList ID="language" runat="server" DataSourceID="SqlDataSource3" DataTextField="lname" DataValueField="lname">
                     </asp:DropDownList>
                 </td>
@@ -292,28 +308,28 @@ li.dropdown {
             <tr>
                 <td class="auto-style33">
                     &nbsp;</td>
-                <td class="auto-style1">
-                    <asp:Label ID="Label6" runat="server" Text="分类号"></asp:Label>
+                <td class="auto-style39">
+                    <asp:Label ID="Label13" runat="server" Text="开本"></asp:Label>
                 </td>
                 <td class="auto-style23">
-                    <asp:TextBox ID="txtcn" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txtformat" runat="server"></asp:TextBox>
                 </td>
-                <td class="auto-style36">
-                    <asp:Label ID="Label5" runat="server" Text="出版社名称"></asp:Label>
+                <td class="auto-style55">
+                    <asp:Label ID="Label15" runat="server" Text="价格"></asp:Label>
                 </td>
-                <td class="auto-style9">
-                    <asp:TextBox ID="txtoffname" runat="server"></asp:TextBox>
+                <td class="auto-style50">
+                    <asp:TextBox ID="txtprice" runat="server"></asp:TextBox>
                 </td>
                 <td class="auto-style28">
                     <asp:Label ID="Label16" runat="server" Text="页数"></asp:Label>
                 </td>
-                <td class="auto-style11">
+                <td class="auto-style48">
                     <asp:TextBox ID="txtnumberofpage" runat="server"></asp:TextBox>
                 </td>
                 <td class="auto-style31">
                     <asp:Label ID="Label12" runat="server" Text="专业"></asp:Label>
                 </td>
-                <td class="auto-style13">
+                <td class="auto-style51">
                     <asp:DropDownList ID="major" runat="server" DataSourceID="SqlDataSource2" DataTextField="mname" DataValueField="mname">
                     </asp:DropDownList>
                 </td>
@@ -322,29 +338,27 @@ li.dropdown {
             <tr>
                 <td class="auto-style33">
                     &nbsp;</td>
-                <td class="auto-style1">
-                    <asp:Label ID="Label13" runat="server" Text="开本"></asp:Label>
+                <td class="auto-style39">
+                    <asp:Label ID="Label23" runat="server" Text="出版社地址"></asp:Label>
                 </td>
                 <td class="auto-style23">
-                    <asp:TextBox ID="txtformat" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txtaddress" runat="server"></asp:TextBox>
                 </td>
-                <td class="auto-style36">
-                    <asp:Label ID="Label15" runat="server" Text="价格"></asp:Label>
-                </td>
-                <td class="auto-style9">
-                    <asp:TextBox ID="txtprice" runat="server"></asp:TextBox>
-                </td>
+                <td class="auto-style55">
+                    &nbsp;</td>
+                <td class="auto-style50">
+                    &nbsp;</td>
                 <td class="auto-style28">
                     <asp:Label ID="Label8" runat="server" Text="备注"></asp:Label>
                 </td>
-                <td class="auto-style11">
+                <td class="auto-style48">
                     <asp:TextBox ID="txtnote" runat="server"></asp:TextBox>
                 </td>
                 <td class="auto-style31">
                     <asp:Label ID="Label24" runat="server" Text="检索机构"></asp:Label>
                 </td>
-                <td class="auto-style13">
-                    <asp:DropDownList ID="DropDownList1" runat="server" DataSourceID="SqlDataSource5" DataTextField="organname" DataValueField="organname">
+                <td class="auto-style51">
+                    <asp:DropDownList ID="organ" runat="server" DataSourceID="SqlDataSource5" DataTextField="organname" DataValueField="organname">
                     </asp:DropDownList>
                 </td>
                 <td>&nbsp;</td>
@@ -352,24 +366,23 @@ li.dropdown {
             <tr>
                 <td class="auto-style33">
                     &nbsp;</td>
-                <td class="auto-style1">
-                    <asp:Label ID="Label23" runat="server" Text="出版社地址"></asp:Label>
-                </td>
-                <td class="auto-style23">
-                    <asp:TextBox ID="txtaddress" runat="server"></asp:TextBox>
-                </td>
-                <td class="auto-style36">
+                <td class="auto-style39">
                     &nbsp;</td>
-                <td class="auto-style9">
+                <td class="auto-style23">
+                    &nbsp;</td>
+                <td class="auto-style55">
+                    &nbsp;</td>
+                <td class="auto-style50">
                     &nbsp;</td>
                 <td class="auto-style28">
                     &nbsp;</td>
-                <td class="auto-style11">
+                <td class="auto-style48">
                     &nbsp;</td>
                 <td class="auto-style31">&nbsp;</td>
-                <td class="auto-style13">&nbsp;</td>
-                <td>
+                <td class="auto-style51">
                     <asp:Button ID="btok" runat="server" OnClick="btok_Click" Text="保存" />
+                    </td>
+                <td>
                     <asp:Button ID="btclear" runat="server" OnClick="btclear_Click" Text="清空" />
                 </td>
             </tr>

@@ -20,7 +20,7 @@ public partial class delete : System.Web.UI.Page
     {
         SqlConnection cnn = new SqlConnection("Data Source=(local);Initial Catalog=档案室信息管理系统1.0;Integrated Security=True");
         SqlCommand cmd = cnn.CreateCommand();
-        cmd.CommandText = "delete from table paper where QR_code='" +txtQR.Text+ "'";
+        cmd.CommandText = "delete from paper where QR_code='" +txtQR.Text+ "'";
         cnn.Open();
         cmd.ExecuteNonQuery();
         cnn.Close();

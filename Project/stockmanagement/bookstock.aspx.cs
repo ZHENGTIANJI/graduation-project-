@@ -52,10 +52,11 @@ public partial class bookstock : System.Web.UI.Page
         {
             num = 1;
         }
-        if(txtname.Text==""||txtQR.Text==""||txtstockdt.Text==""){
+        if(txtname.Text==""||txtQR.Text==""){
             ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "", "alert('保存失败！');", true);
         }else{
-            cmd.CommandText = "INSERT INTO book(name, book_type_id, major_type_id, QR_code, publisher, publish_dt, author, stock_dt, teacher, CD, location, book_number, status, number, format, price, number_of_page, binding_type_id,language,note) VALUES ('" + txtname.Text + "'," + btid + "," + majorid + ",'"+txtQR.Text+"','"+txtpub.Text+"','"+txtpubdt.Text+"','"+txtauthor.Text+"','"+txtstockdt.Text+"','"+txtteacher.Text+"','"+CD.SelectedItem.Text+"','"+txtlocation.Text+"','"+txtbooknumber.Text+"','库存',"+num+",'"+txtformat.Text+"','"+txtprice.Text+"','"+txtnumberofpage.Text+"',"+bitid+","+lid+",'"+txtnote.Text+"')";
+            String stockdt = DateTime.Now.ToString("yyyy-MM-dd");
+            cmd.CommandText = "INSERT INTO book(name, book_type_id, major_type_id, QR_code, publisher, publish_dt, author, stock_dt, teacher, CD, location, book_number, status, number, format, price, number_of_page, binding_type_id,language,note) VALUES ('" + txtname.Text + "'," + btid + "," + majorid + ",'"+txtQR.Text+"','"+txtpub.Text+"','"+pub_year.Text+"-"+pub_month.Text+"-"+pub_day.Text+"','"+txtauthor.Text+"','"+stockdt+"','"+txtteacher.Text+"','"+CD.SelectedItem.Text+"','"+txtlocation.Text+"','"+txtbooknumber.Text+"','库存',"+num+",'"+txtformat.Text+"','"+txtprice.Text+"','"+txtnumberofpage.Text+"',"+bitid+","+lid+",'"+txtnote.Text+"')";
             cnn.Open();
             cmd.ExecuteNonQuery();
             cnn.Close();
@@ -69,10 +70,11 @@ public partial class bookstock : System.Web.UI.Page
         txtname.Text = "";
         txtQR.Text = "";
         txtpub.Text = "";
-        txtpubdt.Text = "";
+        pub_year.Text = "";
+        pub_month.Text = "";
+        pub_day.Text = "";
         txtprice.Text = "";
         txtauthor.Text = "";
-        txtstockdt.Text = "";
         txtteacher.Text = "";
         txtlocation.Text = "";
         txtbooknumber.Text = "";

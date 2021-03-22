@@ -7,95 +7,112 @@ using System.Web.UI.WebControls;
 using System.Data;
 using System.Data.SqlClient;
 
-public partial class stockmanagement_paperstock : System.Web.UI.Page
+public partial class QueryAndModify_paperQueryAndModify : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (Session["uid"] == null || (int)Session["uid"] != 0)
+        /*if (Session["uid"] == null || (int)Session["uid"] != 0)
         {
             Response.Redirect("../login.aspx");
+        }*/
+
+        if (!IsPostBack)
+        {
+            /*ListItem pt = new ListItem();
+            pt.Value = "全部";
+            pt.Text = "全部";
+            this.papertype.Items.Add(pt);
+            ListItem major = new ListItem();
+            major.Value = "全部";
+            major.Text = "全部";
+            this.majortype.Items.Add(major);*/
+            DataSet dst = new DataSet();
+            SqlConnection cnn = new SqlConnection("Data Source=(local);Initial Catalog=档案室信息管理系统1.0;Integrated Security=True");
+            SqlDataAdapter adpt = new SqlDataAdapter("SELECT [id],[number_of_page], [dabian_dt], [xuezhi], [format],[write_dt],[zhicheng],[adviser], [location], [stock_dt], [number], [name], [ptname], [mname], [QR_code], [class_number],[shenhe],[direction], [author], [status], [note], [lname] FROM [paper] left join paper_type on paper.paper_type_id=paper_type.ptid left join major on paper.major_id=major.mid left join language on paper.language=language.lid where shenhe='待审核'", cnn);
+            adpt.Fill(dst);
+            GridView1.DataSource = dst.Tables[0];
+            GridView1.DataBind();
         }
+
+        
     }
-    protected void btok_Click(object sender, EventArgs e)
+    void ExecuteQuery()
     {
-        DataSet dst1 = new DataSet();
-        DataSet dst2 = new DataSet();
-        DataSet dst3 = new DataSet();
-        DataSet dst4 = new DataSet();
-        DataSet dst5 = new DataSet();
+        String strmajor = majortype.SelectedItem.Text.ToString();
+        String strpapertype = papertype.SelectedItem.Text.ToString();
+        String strpapername = papername.Text.ToString().Trim();
+
+        DataSet dst = new DataSet();
         SqlConnection cnn = new SqlConnection("Data Source=(local);Initial Catalog=档案室信息管理系统1.0;Integrated Security=True");
-        SqlDataAdapter adptpt = new SqlDataAdapter("select ptid from paper_type where ptname='" + papertype.SelectedItem.Text + "'", cnn);
-        SqlDataAdapter adptmajor = new SqlDataAdapter("select mid from major where mname='" + major.SelectedItem.Text + "'", cnn);
-        //SqlDataAdapter adptbindingtype = new SqlDataAdapter("select bitid from binding_type where bitname='" + bindingtype.SelectedItem.Text + "'", cnn);
-        SqlDataAdapter adptlanguage = new SqlDataAdapter("select lid from language where lname='" + language.SelectedItem.Text + "'", cnn);
-        SqlDataAdapter adptnum = new SqlDataAdapter("select number from paper where name='" + txtname.Text + "'", cnn);
+        SqlDataAdapter adpt = new SqlDataAdapter("SELECT [id],[number_of_page], [dabian_dt], [xuezhi], [format],[write_dt],[zhicheng],[adviser],  [stock_dt], [number], [name], [ptname], [mname],[shenhe],[direction], [author], [status], [note], [lname] FROM [paper] left join paper_type on paper.paper_type_id=paper_type.ptid left join major on paper.major_id=major.mid left join language on paper.language=language.lid where name like '%" + strpapername + "%' and mname like '%" + strmajor + "%' and ptname like '%" + strpapertype + "%' and shenhe='待审核'", cnn);
+        adpt.Fill(dst);
+        GridView1.DataSource = dst.Tables[0];
+        GridView1.DataBind();
+    }
+    protected void query_Click(object sender, EventArgs e)
+    {
+        ExecuteQuery();
+    }
+    protected void GridView1_RowDeleting(object sender, GridViewDeleteEventArgs e)
+    {
+        Session["paperid"] = GridView1.Rows[e.RowIndex].Cells[21].Text.ToString();
+
+        SqlConnection cnn = new SqlConnection("Data Source=(local);Initial Catalog=档案室信息管理系统1.0;Integrated Security=True");
         SqlCommand cmd = cnn.CreateCommand();
-        adptpt.Fill(dst1);
-        adptmajor.Fill(dst2);
-        //adptbindingtype.Fill(dst3);
-        adptlanguage.Fill(dst4);
-        adptnum.Fill(dst5);
-        int ptid = (int)dst1.Tables[0].Rows[0]["ptid"];
-        int majorid = (int)dst2.Tables[0].Rows[0]["mid"];
-        //int bitid = (int)dst3.Tables[0].Rows[0]["bitid"];
-        int lid = (int)dst4.Tables[0].Rows[0]["lid"];
-        int num;
-        if (dst5.Tables[0].Rows.Count > 0)
+        int id = Convert.ToInt32(Session["paperid"]);
+        try
         {
-            num = (int)dst5.Tables[0].Rows[0]["number"] + 1;
-            cmd.CommandText = "update paper set number='" + num + "' where name='" + txtname.Text + "'";
+ 	        TextBox tbqr = (TextBox)GridView1.Rows[e.RowIndex].Cells[0].FindControl("txtQR");
+            TextBox tbcn = (TextBox)GridView1.Rows[e.RowIndex].Cells[8].FindControl("txtcn");
+            TextBox tblocation = (TextBox)GridView1.Rows[e.RowIndex].Cells[13].FindControl("txtlocation");
+            String QR = tbqr.Text.ToString();
+            String cn = tbcn.Text.ToString();
+            String location = tblocation.Text.ToString();
+            cmd.CommandText = "update paper set QR_code='" + QR + "',class_number='" + cn + "',shenhe='" + "已审核" + "',location='" + location  + "' where id='" + id + "'";
             cnn.Open();
             cmd.ExecuteNonQuery();
             cnn.Close();
         }
-        else
+        catch (Exception)
         {
-            num = 1;
-        }
-        if (txtname.Text == "" || txtstockdt.Text == "" || txtQR.Text == "")
-        {
-            ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "", "alert('保存失败！');", true);
-        }
-        else
-        {
-            cmd.CommandText = "update paper set name='" + txtname.Text + "',zhicheng='" + zhicheng.SelectedItem.Text + "',shenhe='" + "已审核" + "',paper_type_id='" + ptid + "',major_id='" + majorid + "',QR_code='" + txtQR.Text + "',write_dt='" + txtwritedt.Text + "',xuezhi='" + xuezhi.SelectedItem.Text + "',dabian_dt='" + txtdabiandt.Text + "',adviser='" + txtadviser.Text + "',direction='" + txtdirection.Text + "',stock_dt='" + txtstockdt.Text + "',class_number='" + txtcn.Text + "',location='" + txtlocation.Text + "',format='" + txtformat.Text + "',number_of_page='" + int.Parse(txtnumberofpage.Text) + "',language='" + lid + "',note='" + txtnote.Text + "' where QR_code='" + txtQR.Text + "'";
-            cnn.Open();
-            cmd.ExecuteNonQuery();
-            cnn.Close();
-            ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "", "alert('保存成功！');", true);
+            ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "", "alert('审核失败！');", true);
         }
 
-        
+        ExecuteQuery();
     }
-    protected void scan_Click(object sender, EventArgs e)
+    protected void GridViewHistory_PageIndexChanging(object sender, GridViewPageEventArgs e)
     {
-        DataSet dst1 = new DataSet();
-        SqlConnection cnn = new SqlConnection("Data Source=(local);Initial Catalog=档案室信息管理系统1.0;Integrated Security=True");
-        SqlDataAdapter adpt = new SqlDataAdapter("SELECT [id],[number_of_page], [dabian_dt], [xuezhi], [format],[write_dt],[zhicheng],[adviser], [location], [stock_dt], [number], [name], [ptname], [mname], [QR_code], [class_number],[shenhe],[direction], [author], [status], [note], [lname] FROM [paper] left join paper_type on paper.paper_type_id=paper_type.ptid left join major on paper.major_id=major.mid left join language on paper.language=language.lid where QR_code='"+txtQR.Text+"'",cnn);
-        adpt.Fill(dst1);
-        txtname.Text = (string)dst1.Tables[0].Rows[0]["name"];
-        papertype.SelectedIndex = -1;
-        papertype.Items.FindByText((string)dst1.Tables[0].Rows[0]["ptname"]).Selected = true;
-        txtauthor.Text = (string)dst1.Tables[0].Rows[0]["author"];
-        xuezhi.SelectedIndex = -1;
-        xuezhi.Items.FindByText((string)dst1.Tables[0].Rows[0]["xuezhi"]).Selected = true;
-        major.SelectedIndex = -1;
-        major.Items.FindByText((string)dst1.Tables[0].Rows[0]["mname"]).Selected = true;
-        txtdirection.Text = (string)dst1.Tables[0].Rows[0]["direction"];
-        txtstockdt.Text = dst1.Tables[0].Rows[0]["stock_dt"].ToString();
-        txtQR.Text = (string)dst1.Tables[0].Rows[0]["QR_code"];
-        txtlocation.Text = (string)dst1.Tables[0].Rows[0]["location"];
-        txtadviser.Text = (string)dst1.Tables[0].Rows[0]["adviser"];
-        zhicheng.SelectedIndex = -1;
-        zhicheng.Items.FindByText((string)dst1.Tables[0].Rows[0]["zhicheng"]).Selected = true;
-        txtdabiandt.Text = dst1.Tables[0].Rows[0]["dabian_dt"].ToString();
-        txtwritedt.Text = dst1.Tables[0].Rows[0]["write_dt"].ToString();
-        language.SelectedIndex = -1;
-        language.Items.FindByText((string)dst1.Tables[0].Rows[0]["lname"]).Selected = true;
-        txtformat.Text = (string)dst1.Tables[0].Rows[0]["format"];
-        txtnumberofpage.Text = dst1.Tables[0].Rows[0]["number_of_page"].ToString();
-        txtnote.Text = (string)dst1.Tables[0].Rows[0]["note"];
-        
-
+        GridView1.PageIndex = e.NewPageIndex;
+        ExecuteQuery();
+    }
+    protected void Button_search_Click(object sender, EventArgs e)
+    {
+        ExecuteQuery();
+    }
+    protected void lb_firstpage_Click(object sender, EventArgs e)
+    {
+        this.GridView1.PageIndex = 0;
+        ExecuteQuery();
+    }
+    protected void lb_previouspage_Click(object sender, EventArgs e)
+    {
+        if (this.GridView1.PageIndex > 0)
+        {
+            this.GridView1.PageIndex--;
+            ExecuteQuery();
+        }
+    }
+    protected void lb_nextpage_Click(object sender, EventArgs e)
+    {
+        if (this.GridView1.PageIndex < this.GridView1.PageCount)
+        {
+            this.GridView1.PageIndex++;
+            ExecuteQuery();
+        }
+    }
+    protected void lb_lastpage_Click(object sender, EventArgs e)
+    {
+        this.GridView1.PageIndex = this.GridView1.PageCount;
+        ExecuteQuery();
     }
 }

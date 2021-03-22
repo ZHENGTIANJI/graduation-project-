@@ -62,12 +62,22 @@ public partial class stockmanagement_paperupload : System.Web.UI.Page
             }
             else
             {
+                String writedt = write_year.Text + "-" + write_month.Text + "-" + write_day.Text;
+                String dbdt = db_year.Text + "-" + db_month.Text + "-" + db_day.Text;
                 String QR = generate_QR_code();
-                cmd.CommandText = "INSERT INTO paper(name, adviser,paper_type_id, major_id, QR_code, direction, write_dt, author, stock_dt, shenhe, dabian_dt, xuezhi, status, number, format, number_of_page,language,note,zhicheng) VALUES ('" + txtname.Text + "','" + txtadviser.Text + "'," + ptid + "," + majorid + ",'" + QR + "','" + txtdirection.Text + "','" + txtwritedt.Text + "','" + txtauthor.Text + "','" + stockdt + "','" + "待审核" + "','" + txtdabiandt.Text + "','" + xuezhi.SelectedItem.Value + "'," + "'库存'," + num + ",'" + txtformat.Text + "','" + txtnumberofpage.Text + "'," + lid + ",'" + txtnote.Text + "','" + zhicheng.SelectedItem.Value + "')";
+                cmd.CommandText = "INSERT INTO paper(name, adviser,paper_type_id, major_id, QR_code, direction, write_dt, author, stock_dt, shenhe, dabian_dt, xuezhi, status, number, format, number_of_page,language,note,zhicheng) VALUES ('" + txtname.Text + "','" + txtadviser.Text + "'," + ptid + "," + majorid + ",'" + QR + "','" + txtdirection.Text + "','" + writedt + "','" + txtauthor.Text + "','" + stockdt + "','" + "待审核" + "','" + dbdt + "','" + xuezhi.SelectedItem.Value + "'," + "'库存'," + num + ",'" + txtformat.Text + "','" + txtnumberofpage.Text + "'," + lid + ",'" + txtnote.Text + "','" + zhicheng.SelectedItem.Value + "')";
                 cnn.Open();
                 cmd.ExecuteNonQuery();
                 cnn.Close();
-                ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "", "alert('保存成功！');", true);
+                if (UpLoadFile())
+                {
+                    ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "", "alert('保存成功！');", true);
+                }
+                else
+                {
+                    ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "", "alert('保存失败！');", true);
+                }
+                
             }
         }
         
@@ -87,5 +97,34 @@ public partial class stockmanagement_paperupload : System.Web.UI.Page
         }
         QR_code += number;
         return QR_code;
+    }
+    public bool UpLoadFile()
+    {
+        int uploaderid = 1;
+        int paperid = 1;
+        string dt = DateTime.Now.ToString("yyyy-MM-dd");
+        SqlConnection cnn = new SqlConnection("Data Source=(local);Initial Catalog=档案室信息管理系统1.0;Integrated Security=True");
+        SqlCommand cmd = cnn.CreateCommand();
+        var path = Server.MapPath("/论文");
+        FileUpload1.SaveAs(path);
+        cmd.CommandText = "INSERT INTO file_att(file_name,extension_name,file_size,uploader_id,uploaded_dt,paper_id) VALUES ('" + FileUpload1.FileName.ToString() + "','pdf','" + FileUpload1.FileBytes.Length + "','" + uploaderid + "','" + dt + "','"+paperid+"')";
+        cnn.Open();
+        cmd.ExecuteNonQuery();
+        cnn.Close();
+        return true;
+        /*try
+        { 
+            cnn.Open();
+            cmd.ExecuteNonQuery();
+            return true;
+        }
+        catch
+        {
+            return false;
+        }
+        finally
+        {
+            cnn.Close();
+        }*/
     }
 }

@@ -104,11 +104,11 @@ li.dropdown {
             width: 80px;
         }
         .auto-style48 {
-            width: 145px;
+            width: 191px;
         }
         .auto-style49 {
             height: 20px;
-            width: 145px;
+            width: 191px;
         }
         .auto-style51 {
             height: 20px;
@@ -140,7 +140,7 @@ li.dropdown {
             height: 24px;
         }
         .auto-style58 {
-            width: 145px;
+            width: 191px;
             height: 24px;
         }
         .auto-style59 {
@@ -351,7 +351,12 @@ li.dropdown {
                     <asp:Label ID="Label47" runat="server" Text="编著日期"></asp:Label>
                 </td>
                 <td class="auto-style49">
-                    <asp:TextBox ID="txtwritedt" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="write_year" runat="server" Width="40px"></asp:TextBox>
+                    <asp:Label ID="Label42" runat="server" Text="年"></asp:Label>
+                    <asp:TextBox ID="write_month" runat="server" Width="16px"></asp:TextBox>
+                    <asp:Label ID="Label63" runat="server" Text="月"></asp:Label>
+                    <asp:TextBox ID="write_day" runat="server" Width="16px"></asp:TextBox>
+                    <asp:Label ID="Label64" runat="server" Text="日"></asp:Label>
                 </td>
                 <td class="auto-style51">
                     <asp:Label ID="Label53" runat="server" Text="职称"></asp:Label>
@@ -383,7 +388,12 @@ li.dropdown {
                     <asp:Label ID="Label48" runat="server" Text="入库日期"></asp:Label>
                 </td>
                 <td class="auto-style49">
-                    <asp:TextBox ID="txtstockdt" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="stock_year" runat="server" Width="40px"></asp:TextBox>
+                    <asp:Label ID="Label60" runat="server" Text="年"></asp:Label>
+                    <asp:TextBox ID="stock_month" runat="server" Width="16px"></asp:TextBox>
+                    <asp:Label ID="Label61" runat="server" Text="月"></asp:Label>
+                    <asp:TextBox ID="stock_day" runat="server" Width="16px"></asp:TextBox>
+                    <asp:Label ID="Label62" runat="server" Text="日"></asp:Label>
                 </td>
                 <td class="auto-style51">
                     <asp:Label ID="Label54" runat="server" Text="备注"></asp:Label>
@@ -414,7 +424,12 @@ li.dropdown {
                     <asp:Label ID="Label49" runat="server" Text="答辩日期"></asp:Label>
                 </td>
                 <td class="auto-style49">
-                    <asp:TextBox ID="txtdabiandt" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="db_year" runat="server" Width="40px"></asp:TextBox>
+                    <asp:Label ID="Label65" runat="server" Text="年"></asp:Label>
+                    <asp:TextBox ID="db_month" runat="server" Width="16px"></asp:TextBox>
+                    <asp:Label ID="Label66" runat="server" Text="月"></asp:Label>
+                    <asp:TextBox ID="db_day" runat="server" Width="16px"></asp:TextBox>
+                    <asp:Label ID="Label67" runat="server" Text="日"></asp:Label>
                 </td>
                 <td class="auto-style51">&nbsp;</td>
                 <td class="auto-style6">&nbsp;</td>

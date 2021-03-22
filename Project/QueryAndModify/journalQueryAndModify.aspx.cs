@@ -15,16 +15,20 @@ public partial class QueryAndModify_journalQueryAndModify : System.Web.UI.Page
         {
             Response.Redirect("../login.aspx");
         }
-        String strmajor = "";
-        String strjournaltype = "";
-        String strjournalname = journalname.Text.ToString().Trim();
+        if (!IsPostBack)
+        {
+            String strmajor = "";
+            String strjournaltype = "";
+            String strjournalname = journalname.Text.ToString().Trim();
 
-        DataSet dst = new DataSet();
-        SqlConnection cnn = new SqlConnection("Data Source=(local);Initial Catalog=档案室信息管理系统1.0;Integrated Security=True");
-        SqlDataAdapter adpt = new SqlDataAdapter("SELECT [id],[number_of_page], [office_name], [period_type],[period_number], [address],[format], [location], [stock_dt], [number], [name],[publish_dt], [jtname], [mname], [QR_code], [class_number],[organname], [status], [note], [lname],[gradename] FROM [journal] left join journal_grade on journal.gradeid=journal_grade.gid left join organization on journal.organizationid=organization.organid left join journal_type on journal.journal_type_id=journal_type.jtid left join major on journal.major_id=major.mid left join language on journal.language=language.lid where name like '%" + strjournalname + "%' and mname like '%" + strmajor + "%' and jtname like '%" + strjournaltype + "%'", cnn);
-        adpt.Fill(dst);
-        GridView1.DataSource = dst.Tables[0];
-        GridView1.DataBind();
+            DataSet dst = new DataSet();
+            SqlConnection cnn = new SqlConnection("Data Source=(local);Initial Catalog=档案室信息管理系统1.0;Integrated Security=True");
+            SqlDataAdapter adpt = new SqlDataAdapter("SELECT [id],[number_of_page], [office_name], [period_type],[period_number], [address],[format], [location], [stock_dt], [number], [name],[publish_dt], [jtname], [mname], [QR_code], [class_number],[organname], [status], [note], [lname],[gradename] FROM [journal] left join journal_grade on journal.gradeid=journal_grade.gid left join organization on journal.organizationid=organization.organid left join journal_type on journal.journal_type_id=journal_type.jtid left join major on journal.major_id=major.mid left join language on journal.language=language.lid where name like '%" + strjournalname + "%' and mname like '%" + strmajor + "%' and jtname like '%" + strjournaltype + "%'", cnn);
+            adpt.Fill(dst);
+            GridView1.DataSource = dst.Tables[0];
+            GridView1.DataBind();
+        }
+        
     }
     void ExecuteQuery()
     {
@@ -67,7 +71,9 @@ public partial class QueryAndModify_journalQueryAndModify : System.Web.UI.Page
         int id = Convert.ToInt32(Session["journalid"]);
         try
         {
-            cmd.CommandText = "update journal set name='" + txtname.Text + "',organizationid='" + or + "',gradeid='" + gid + "',journal_type_id='" + jtid + "',major_id='" + majorid + "',QR_code='" + txtQR.Text + "',publish_dt='" + txtpubdt.Text + "',office_name='" + txtoffname.Text + "',period_number='" + txtperiod.Text + "',period_type='" + periodtype.SelectedItem.Value + "',stock_dt='" + txtstockdt.Text + "',class_number='" + txtcn.Text + "',number='" + txtnumber.Text + "',location='" + txtlocation.Text + "',status='" + status.SelectedItem.Text + "',format='" + txtformat.Text + "',number_of_page='" + int.Parse(txtnumberofpage.Text) + "',language='" + lid + "',note='" + txtnote.Text + "',address='" + txtaddress.Text + "' where id='" + id + "'";
+            String stockdt = stock_year.Text + "-" + stock_month.Text + "-" + stock_day.Text;
+            String pubdt = pub_year.Text + "-" + stock_month.Text + "-" + pub_day.Text;
+            cmd.CommandText = "update journal set name='" + txtname.Text + "',organizationid='" + or + "',gradeid='" + gid + "',journal_type_id='" + jtid + "',major_id='" + majorid + "',QR_code='" + txtQR.Text + "',publish_dt='" + pubdt + "',office_name='" + txtoffname.Text + "',period_number='" + txtperiod.Text + "',period_type='" + periodtype.SelectedItem.Value + "',stock_dt='" + stockdt + "',class_number='" + txtcn.Text + "',number='" + txtnumber.Text + "',location='" + txtlocation.Text + "',status='" + status.SelectedItem.Text + "',format='" + txtformat.Text + "',number_of_page='" + int.Parse(txtnumberofpage.Text) + "',language='" + lid + "',note='" + txtnote.Text + "',address='" + txtaddress.Text + "' where id='" + id + "'";
             cnn.Open();
             cmd.ExecuteNonQuery();
             cnn.Close();
@@ -94,8 +100,12 @@ public partial class QueryAndModify_journalQueryAndModify : System.Web.UI.Page
         major.SelectedIndex = -1;
         major.Items.FindByText(GridView1.Rows[num].Cells[3].Text.ToString()).Selected = true;
         txtQR.Text = GridView1.Rows[num].Cells[4].Text.ToString();
-        txtpubdt.Text = GridView1.Rows[num].Cells[5].Text.ToString();
-        txtstockdt.Text = GridView1.Rows[num].Cells[6].Text.ToString();
+        pub_year.Text = GridView1.Rows[num].Cells[6].Text.ToString().Substring(0, 4);
+        pub_month.Text = GridView1.Rows[num].Cells[6].Text.ToString().Substring(5, 2);
+        pub_day.Text = GridView1.Rows[num].Cells[6].Text.ToString().Substring(8, 2);
+        stock_year.Text = GridView1.Rows[num].Cells[6].Text.ToString().Substring(0, 4);
+        stock_month.Text = GridView1.Rows[num].Cells[6].Text.ToString().Substring(5, 2);
+        stock_day.Text = GridView1.Rows[num].Cells[6].Text.ToString().Substring(8, 2);
         periodtype.SelectedIndex = -1;
         periodtype.Items.FindByText(GridView1.Rows[num].Cells[7].Text.ToString()).Selected = true;
         txtoffname.Text = GridView1.Rows[num].Cells[8].Text.ToString();

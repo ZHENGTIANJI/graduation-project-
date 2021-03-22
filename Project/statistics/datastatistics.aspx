@@ -8,7 +8,7 @@
     <title></title>
     <style type="text/css">
         .auto-style1 {
-            width: 65px;
+            width: 90px;
         }
         ul {
   list-style-type: none;
@@ -61,6 +61,9 @@ li.dropdown {
 .dropdown:hover .dropdown-content {
   display: block;
 }
+        .auto-style2 {
+            width: 342px;
+        }
     </style>
 </head>
 <body>
@@ -99,6 +102,18 @@ li.dropdown {
         <table style="width:100%;">
             <tr>
                 <td class="auto-style1">
+                    &nbsp;</td>
+                <td>
+                    &nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td class="auto-style1">&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td class="auto-style1">
                     <asp:Label ID="Label1" runat="server" Text="资料总数"></asp:Label>
                 </td>
                 <td>
@@ -106,44 +121,64 @@ li.dropdown {
                 </td>
                 <td>&nbsp;</td>
             </tr>
-            <tr>
-                <td class="auto-style1">&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-            </tr>
-            <tr>
-                <td class="auto-style1">&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-            </tr>
         </table>
+        <br />
+        <table style="width:100%;">
+            <tr>
+                <td class="auto-style2">&nbsp;</td>
+                <td class="auto-style2">
         <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False">
             <Columns>
                 <asp:BoundField DataField="dtname" HeaderText="资料类型名称" />
                 <asp:BoundField DataField="number" HeaderText="数目" />
             </Columns>
         </asp:GridView>
-        <br />
+                </td>
+                <td>
+                    <asp:Chart ID="Chart1" runat="server">
+                        <Series>
+                            <asp:Series ChartType="Pie" Name="Series1">
+                            </asp:Series>
+                        </Series>
+                        <ChartAreas>
+                            <asp:ChartArea Name="ChartArea1">
+                            </asp:ChartArea>
+                        </ChartAreas>
+                    </asp:Chart>
+                </td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td class="auto-style2">&nbsp;</td>
+                <td class="auto-style2">
         <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False">
             <Columns>
                 <asp:BoundField DataField="mname" HeaderText="专业名称" />
                 <asp:BoundField DataField="number" HeaderText="数目" />
             </Columns>
         </asp:GridView>
-        <asp:Chart ID="Chart1" runat="server">
-            <Series>
-                <asp:Series ChartType="Line" Legend="Legend1" Name="Series1">
-                </asp:Series>
-            </Series>
-            <ChartAreas>
-                <asp:ChartArea Name="ChartArea1">
-                </asp:ChartArea>
-            </ChartAreas>
-            <Legends>
-                <asp:Legend Enabled="False" Name="Legend1">
-                </asp:Legend>
-            </Legends>
-        </asp:Chart>
+                </td>
+                <td>
+                    <asp:Chart ID="Chart2" runat="server">
+                        <Series>
+                            <asp:Series ChartType="Pie" Name="Series1">
+                            </asp:Series>
+                        </Series>
+                        <ChartAreas>
+                            <asp:ChartArea Name="ChartArea1">
+                            </asp:ChartArea>
+                        </ChartAreas>
+                    </asp:Chart>
+                </td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td class="auto-style2">&nbsp;</td>
+                <td class="auto-style2">&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+        </table>
     </form>
 </body>
 </html>

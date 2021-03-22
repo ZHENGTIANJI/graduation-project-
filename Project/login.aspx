@@ -109,7 +109,7 @@
                         <asp:Label ID="Label2" runat="server" Text="密码"></asp:Label>
                     </td>
                     <td class="auto-style20">
-                        <asp:TextBox ID="txtpsw" runat="server" Height="19px" style="margin-top: 0px" Width="143px"></asp:TextBox>
+                        <asp:TextBox ID="txtpsw" runat="server" Height="19px" style="margin-top: 0px" Width="143px" TextMode="Password"></asp:TextBox>
                     </td>
                 </tr>
                 <tr>

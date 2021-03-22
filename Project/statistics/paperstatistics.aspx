@@ -61,6 +61,16 @@ li.dropdown {
 .dropdown:hover .dropdown-content {
   display: block;
 }
+        .auto-style2 {
+            height: 150px;
+        }
+        .auto-style3 {
+            width: 318px;
+        }
+        .auto-style4 {
+            height: 150px;
+            width: 318px;
+        }
     </style>
 </head>
 <body>
@@ -117,35 +127,63 @@ li.dropdown {
                 <td>&nbsp;</td>
             </tr>
         </table>
+        <br />
+        <table style="width:100%;">
+            <tr>
+                <td class="auto-style3">&nbsp;</td>
+                <td class="auto-style3">
         <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" style="margin-right: 1px">
             <Columns>
                 <asp:BoundField DataField="ptname" HeaderText="论文类型名称" />
                 <asp:BoundField DataField="number" HeaderText="数目" />
             </Columns>
         </asp:GridView>
-        <br />
+                </td>
+                <td>
+                    <asp:Chart ID="Chart1" runat="server">
+                        <Series>
+                            <asp:Series ChartType="Pie" Name="Series1">
+                            </asp:Series>
+                        </Series>
+                        <ChartAreas>
+                            <asp:ChartArea Name="ChartArea1">
+                            </asp:ChartArea>
+                        </ChartAreas>
+                    </asp:Chart>
+                </td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td class="auto-style4">&nbsp;</td>
+                <td class="auto-style4">
         <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False">
             <Columns>
                 <asp:BoundField DataField="mname" HeaderText="专业名称" />
                 <asp:BoundField DataField="number" HeaderText="数目" />
             </Columns>
         </asp:GridView>
-        <p>
-            <asp:Chart ID="Chart1" runat="server">
-                <Series>
-                    <asp:Series ChartType="Line" Legend="Legend1" Name="Series1">
-                    </asp:Series>
-                </Series>
-                <ChartAreas>
-                    <asp:ChartArea Name="ChartArea1">
-                    </asp:ChartArea>
-                </ChartAreas>
-                <Legends>
-                    <asp:Legend Enabled="False" Name="Legend1">
-                    </asp:Legend>
-                </Legends>
-            </asp:Chart>
-        </p>
+                </td>
+                <td class="auto-style2">
+                    <asp:Chart ID="Chart2" runat="server">
+                        <Series>
+                            <asp:Series ChartType="Pie" Name="Series1">
+                            </asp:Series>
+                        </Series>
+                        <ChartAreas>
+                            <asp:ChartArea Name="ChartArea1">
+                            </asp:ChartArea>
+                        </ChartAreas>
+                    </asp:Chart>
+                </td>
+                <td class="auto-style2"></td>
+            </tr>
+            <tr>
+                <td class="auto-style3">&nbsp;</td>
+                <td class="auto-style3">&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+        </table>
     </form>
 </body>
 </html>

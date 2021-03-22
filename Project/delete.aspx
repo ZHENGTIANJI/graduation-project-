@@ -99,7 +99,7 @@ li.dropdown {
             <table style="width:100%;">
                 <tr>
                     <td class="auto-style1">
-                        <asp:Label ID="Label1" runat="server" Text="图书名称"></asp:Label>
+                        <asp:Label ID="Label1" runat="server" Text="剔旧日期"></asp:Label>
                     </td>
                     <td>
                         <asp:TextBox ID="txtbookname" runat="server"></asp:TextBox>
@@ -112,7 +112,6 @@ li.dropdown {
                     </td>
                     <td>
                         <asp:TextBox ID="txtQR" runat="server"></asp:TextBox>
-                        <asp:Button ID="scan" runat="server" Text="扫描" />
                     </td>
                     <td>&nbsp;</td>
                 </tr>
@@ -124,6 +123,8 @@ li.dropdown {
                     <td>&nbsp;</td>
                 </tr>
             </table>
+            <asp:GridView ID="GridView1" runat="server">
+            </asp:GridView>
         </form>
 
     </body>

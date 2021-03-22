@@ -50,13 +50,14 @@ public partial class stockmanagement_datastock : System.Web.UI.Page
         {
             num = 1;
         }
-        if (txtname.Text == "" || txtQR.Text == "" || txtstockdt.Text == "")
+        if (txtname.Text == "" || txtQR.Text == "" )
         {
             ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "", "alert('保存失败！');", true);
         }
         else
         {
-            cmd.CommandText = "INSERT INTO data(name, data_type_id, major_id, QR_code, unit, compile_dt, author, stock_dt, location, class_number, status, number, format, number_of_page,language,note) VALUES ('" + txtname.Text + "'," + dtid + "," + majorid + ",'" + txtQR.Text + "','" + txtunit.Text + "','" + txtcompiledt.Text + "','" + txtauthor.Text + "','" + txtstockdt.Text + "','" + txtlocation.Text + "','" + txtcn.Text + "','库存'," + num + ",'" + txtformat.Text + "','" + txtnumberofpage.Text + "'," + lid + ",'" + txtnote.Text + "')";
+            String stockdt = DateTime.Now.ToString("yyyy-MM-dd");
+            cmd.CommandText = "INSERT INTO data(name, data_type_id, major_id, QR_code, unit, compile_dt, author, stock_dt, location, class_number, status, number, format, number_of_page,language,note) VALUES ('" + txtname.Text + "'," + dtid + "," + majorid + ",'" + txtQR.Text + "','" + txtunit.Text + "','" + write_year.Text+"-"+write_month.Text+"-"+write_day.Text + "','" + txtauthor.Text + "','" + stockdt + "','" + txtlocation.Text + "','" + txtcn.Text + "','库存'," + num + ",'" + txtformat.Text + "','" + txtnumberofpage.Text + "'," + lid + ",'" + txtnote.Text + "')";
             cnn.Open();
             cmd.ExecuteNonQuery();
             cnn.Close();
@@ -69,9 +70,10 @@ public partial class stockmanagement_datastock : System.Web.UI.Page
         txtname.Text = "";
         txtQR.Text = "";
         txtunit.Text = "";
-        txtcompiledt.Text = "";
+        write_year.Text = "";
+        write_month.Text = "";
+        write_day.Text = "";
         txtauthor.Text = "";
-        txtstockdt.Text = "";
         txtlocation.Text = "";
         txtcn.Text = "";
         txtformat.Text = "";

@@ -100,7 +100,7 @@ li.dropdown {
             text-align: right;
         }
         .auto-style18 {
-            width: 256px;
+            width: 199px;
         }
         .auto-style23 {
             width: 79px;
@@ -111,7 +111,7 @@ li.dropdown {
             height: 23px;
         }
         .auto-style20 {
-            width: 256px;
+            width: 199px;
             height: 23px;
         }
         .auto-style24 {
@@ -125,37 +125,23 @@ li.dropdown {
             height: 31px;
         }
         .auto-style30 {
-            width: 256px;
+            width: 199px;
             height: 31px;
         }
         .auto-style32 {
             width: 79px;
             height: 31px;
         }
-        .auto-style33 {
-            height: 23px;
-            text-align: right;
-            width: 120px;
-        }
         .auto-style36 {
             height: 23px;
             text-align: left;
-            width: 28px;
+            width: 175px;
         }
         .auto-style37 {
-            width: 28px;
+            width: 175px;
         }
         .auto-style38 {
-            width: 28px;
-            height: 31px;
-        }
-        .auto-style39 {
-            width: 120px;
-            text-align: right;
-        }
-        .auto-style40 {
-            width: 120px;
-            text-align: right;
+            width: 175px;
             height: 31px;
         }
         .auto-style42 {
@@ -191,6 +177,20 @@ li.dropdown {
         .auto-style50 {
             width: 47px;
             text-align: right;
+        }
+        .auto-style51 {
+            width: 134px;
+            text-align: right;
+            height: 23px;
+        }
+        .auto-style52 {
+            width: 134px;
+            text-align: right;
+        }
+        .auto-style53 {
+            width: 134px;
+            text-align: right;
+            height: 31px;
         }
     </style>
 </head>
@@ -335,7 +335,6 @@ left join binding_type on book.binding_type_id=binding_type.bitid
                             </td>
                             <td class="auto-style20">
                                 <asp:TextBox ID="txtQR" runat="server" style="text-align: left"></asp:TextBox>
-                                <asp:Button ID="Button1" runat="server" Text="扫描" />
                             </td>
                             <td class="auto-style46">
                     <asp:Label ID="Label21" runat="server" Text="图书类别"></asp:Label>
@@ -344,12 +343,10 @@ left join binding_type on book.binding_type_id=binding_type.bitid
                     <asp:DropDownList ID="bt" runat="server" AutoPostBack="True" DataSourceID="SqlDataSource2" DataTextField="btname" DataValueField="btname">
                     </asp:DropDownList>
                             </td>
-                            <td class="auto-style33">
-                                <asp:Label ID="Label24" runat="server" Text="数目"></asp:Label>
-                            </td>
+                            <td class="auto-style51">
+                                &nbsp;</td>
                             <td class="auto-style36">
-                                <asp:TextBox ID="txtnumber" runat="server"></asp:TextBox>
-                            </td>
+                                &nbsp;</td>
                             <td class="auto-style42">&nbsp;</td>
                             <td class="auto-style22">&nbsp;</td>
                             <td class="auto-style22">&nbsp;</td>
@@ -368,14 +365,11 @@ left join binding_type on book.binding_type_id=binding_type.bitid
                     <asp:DropDownList ID="major1" runat="server" DataSourceID="SqlDataSource3" DataTextField="mname" DataValueField="mname">
                     </asp:DropDownList>
                             </td>
-                            <td class="auto-style39">
-                                <asp:Label ID="Label15" runat="server" Text="是否有光盘"></asp:Label>
+                            <td class="auto-style52">
+                                <asp:Label ID="Label24" runat="server" Text="数目"></asp:Label>
                             </td>
                             <td class="auto-style37">
-                                <asp:DropDownList ID="CD" runat="server" style="text-align: left" Width="50px">
-                                    <asp:ListItem Value="有">有</asp:ListItem>
-                                    <asp:ListItem Value="无">无</asp:ListItem>
-                                </asp:DropDownList>
+                                <asp:TextBox ID="txtnumber" runat="server"></asp:TextBox>
                             </td>
                             <td class="auto-style45">&nbsp;</td>
                             <td class="auto-style23">&nbsp;</td>
@@ -395,11 +389,14 @@ left join binding_type on book.binding_type_id=binding_type.bitid
                                 <asp:DropDownList ID="language" runat="server" DataSourceID="SqlDataSource5" DataTextField="lname" DataValueField="lname">
                                 </asp:DropDownList>
                             </td>
-                            <td class="auto-style40">
-                                <asp:Label ID="Label16" runat="server" Text="赠书老师姓名"></asp:Label>
+                            <td class="auto-style53">
+                                <asp:Label ID="Label15" runat="server" Text="是否有光盘"></asp:Label>
                             </td>
                             <td class="auto-style38">
-                                <asp:TextBox ID="txtteacher" runat="server"></asp:TextBox>
+                                <asp:DropDownList ID="CD" runat="server" style="text-align: left" Width="50px">
+                                    <asp:ListItem Value="有">有</asp:ListItem>
+                                    <asp:ListItem Value="无">无</asp:ListItem>
+                                </asp:DropDownList>
                             </td>
                             <td class="auto-style44">&nbsp;</td>
                             <td class="auto-style32">&nbsp;</td>
@@ -419,11 +416,11 @@ left join binding_type on book.binding_type_id=binding_type.bitid
                                 <asp:DropDownList ID="bindingtype" runat="server" DataSourceID="SqlDataSource4" DataTextField="bitname" DataValueField="bitname">
                                 </asp:DropDownList>
                             </td>
-                            <td class="auto-style33">
-                                <asp:Label ID="Label17" runat="server" Text="入库日期"></asp:Label>
+                            <td class="auto-style51">
+                                <asp:Label ID="Label16" runat="server" Text="赠书老师姓名"></asp:Label>
                             </td>
                             <td class="auto-style36">
-                                <asp:TextBox ID="txtstockdt" runat="server"></asp:TextBox>
+                                <asp:TextBox ID="txtteacher" runat="server"></asp:TextBox>
                             </td>
                             <td class="auto-style42">
                                 &nbsp;</td>
@@ -437,7 +434,12 @@ left join binding_type on book.binding_type_id=binding_type.bitid
                                 <asp:Label ID="Label8" runat="server" Text="出版日期"></asp:Label>
                             </td>
                             <td class="auto-style20">
-                                <asp:TextBox ID="txtpubdt" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="pub_year" runat="server" Width="40px"></asp:TextBox>
+                    <asp:Label ID="Label42" runat="server" Text="年"></asp:Label>
+                    <asp:TextBox ID="pub_month" runat="server" Width="16px"></asp:TextBox>
+                    <asp:Label ID="Label43" runat="server" Text="月"></asp:Label>
+                    <asp:TextBox ID="pub_day" runat="server" Width="16px"></asp:TextBox>
+                    <asp:Label ID="Label44" runat="server" Text="日"></asp:Label>
                             </td>
                             <td class="auto-style46">
                                 <asp:Label ID="Label23" runat="server" Text="库存状况"></asp:Label>
@@ -448,11 +450,16 @@ left join binding_type on book.binding_type_id=binding_type.bitid
                                     <asp:ListItem>借出</asp:ListItem>
                                 </asp:DropDownList>
                             </td>
-                            <td class="auto-style33">
-                                <asp:Label ID="Label18" runat="server" Text="分类号"></asp:Label>
+                            <td class="auto-style51">
+                                <asp:Label ID="Label17" runat="server" Text="入库日期"></asp:Label>
                             </td>
                             <td class="auto-style36">
-                                <asp:TextBox ID="txtclassnumber" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="stock_year" runat="server" Width="40px"></asp:TextBox>
+                    <asp:Label ID="Label45" runat="server" Text="年"></asp:Label>
+                    <asp:TextBox ID="stock_month" runat="server" Width="16px"></asp:TextBox>
+                    <asp:Label ID="Label46" runat="server" Text="月"></asp:Label>
+                    <asp:TextBox ID="stock_day" runat="server" Width="16px"></asp:TextBox>
+                    <asp:Label ID="Label47" runat="server" Text="日"></asp:Label>
                             </td>
                             <td class="auto-style42">
                                 &nbsp;</td>
@@ -474,7 +481,7 @@ left join binding_type on book.binding_type_id=binding_type.bitid
                             <td class="auto-style24">
                                 <asp:TextBox ID="txtprice" runat="server"></asp:TextBox>
                             </td>
-                            <td class="auto-style33">
+                            <td class="auto-style51">
                                 <asp:Label ID="Label19" runat="server" Text="存放位置"></asp:Label>
                             </td>
                             <td class="auto-style36">
@@ -500,7 +507,7 @@ left join binding_type on book.binding_type_id=binding_type.bitid
                             <td class="auto-style24">
                                 <asp:TextBox ID="txtnumberofpage" runat="server"></asp:TextBox>
                             </td>
-                            <td class="auto-style33">
+                            <td class="auto-style51">
                                 <asp:Label ID="Label20" runat="server" Text="备注"></asp:Label>
                             </td>
                             <td class="auto-style36">

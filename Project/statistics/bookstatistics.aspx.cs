@@ -21,7 +21,6 @@ public partial class 统计分析_bookstatistics : System.Web.UI.Page
         totalnumber();
         typenumber();
         majornumber();
-        chart();
         
     }
     protected void totalnumber()
@@ -44,6 +43,8 @@ public partial class 统计分析_bookstatistics : System.Web.UI.Page
         adptn.Fill(dst1);
         dst2.Clear();
         int i;
+        List<String> Hdop = new List<String>();//x轴
+        List<int> Vdop = new List<int>();//y轴 可以是时间各种
         for (i = 0; i < dst1.Tables[0].Rows.Count; i++)
         {
             DataSet dst = new DataSet();
@@ -54,10 +55,15 @@ public partial class 统计分析_bookstatistics : System.Web.UI.Page
             DataRow row = dst2.Tables[0].NewRow();
             row["btname"] = dst1.Tables[0].Rows[i]["btname"].ToString();
             row["number"] = dst.Tables[0].Rows[0]["btnumber"].ToString();
+            Hdop.Add(dst1.Tables[0].Rows[i]["btname"].ToString()); 
+            Vdop.Add((int)dst.Tables[0].Rows[0]["btnumber"]);
             dst2.Tables[0].Rows.InsertAt(row, i);
         }
         GridView1.DataSource = dst2.Tables[0];
         GridView1.DataBind();
+        Chart1.Series[0]["PieLabelStyle"] = "Outside";//将文字移到外侧
+        Chart1.Series[0]["PieLineColor"] = "Black";//绘制黑色的连线。
+        Chart1.Series[0].Points.DataBindXY(Hdop, Vdop);
     }
     protected void majornumber()
     {
@@ -71,11 +77,14 @@ public partial class 统计分析_bookstatistics : System.Web.UI.Page
         adptn.Fill(dst1);
         dst2.Clear();
         int i;
+        List<String> Hdop = new List<String>();//x轴
+        List<int> Vdop = new List<int>();//y轴 可以是时间各种
         for(i=0;i<dst1.Tables[0].Rows.Count;i++){
             DataSet dst = new DataSet();
             SqlDataAdapter adptmn = new SqlDataAdapter("select count(mname) as mnumber from book left join major on book.major_type_id=major.mid where mname='" + dst1.Tables[0].Rows[i]["mname"].ToString() + "'", cnn);
             adptmn.Fill(dst);
-
+            Hdop.Add(dst1.Tables[0].Rows[i]["mname"].ToString());
+            Vdop.Add((int)dst.Tables[0].Rows[0]["mnumber"]);
             int a=dst.Tables[0].Rows.Count;
             DataRow row = dst2.Tables[0].NewRow();
             row["mname"] = dst1.Tables[0].Rows[i]["mname"].ToString();
@@ -84,13 +93,8 @@ public partial class 统计分析_bookstatistics : System.Web.UI.Page
         }
         GridView2.DataSource = dst2.Tables[0];
         GridView2.DataBind();
-    }
-    protected void chart()
-    {
-        List<int> Hdop = new List<int> { 1, 2, 3, 4, 5, 6, 7 };//x轴
-        List<int> Vdop = new List<int> { 1, 2, 3, 4, 5, 6, 7 };//y轴 可以是时间各种
-        Chart1.Series[0]["PieLabelStyle"] = "Outside";//将文字移到外侧
-        Chart1.Series[0]["PieLineColor"] = "Black";//绘制黑色的连线。
-        Chart1.Series[0].Points.DataBindXY(Hdop, Vdop);
+        Chart2.Series[0]["PieLabelStyle"] = "Outside";//将文字移到外侧
+        Chart2.Series[0]["PieLineColor"] = "Black";//绘制黑色的连线。
+        Chart2.Series[0].Points.DataBindXY(Hdop, Vdop);
     }
 }

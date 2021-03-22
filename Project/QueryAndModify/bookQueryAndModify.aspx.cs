@@ -15,7 +15,7 @@ public partial class QueryAndModify_bookQueryAndModify : System.Web.UI.Page
         {
             Response.Redirect("../login.aspx");
         }
-        if (GridView1.Rows.Count == 0)
+        if (!IsPostBack)
         {
             
             String strmajor = "";
@@ -44,7 +44,9 @@ public partial class QueryAndModify_bookQueryAndModify : System.Web.UI.Page
         bt.Items.FindByText(GridView1.Rows[num].Cells[1].Text.ToString()).Selected = true;
         txtbooknumber.Text = GridView1.Rows[num].Cells[2].Text.ToString();
         txtauthor.Text = GridView1.Rows[num].Cells[3].Text.ToString();
-        txtstockdt.Text = GridView1.Rows[num].Cells[4].Text.ToString();
+        stock_year.Text = GridView1.Rows[num].Cells[4].Text.ToString().Substring(0,4);
+        stock_month.Text = GridView1.Rows[num].Cells[4].Text.ToString().Substring(5,2);
+        stock_day.Text = GridView1.Rows[num].Cells[4].Text.ToString().Substring(8,2);
         txtformat.Text = GridView1.Rows[num].Cells[5].Text.ToString();
         txtnumberofpage.Text = GridView1.Rows[num].Cells[6].Text.ToString();
         txtlocation.Text = GridView1.Rows[num].Cells[7].Text.ToString();
@@ -60,7 +62,9 @@ public partial class QueryAndModify_bookQueryAndModify : System.Web.UI.Page
         language.SelectedIndex = -1;
         language.Items.FindByText(GridView1.Rows[num].Cells[14].Text.ToString()).Selected = true;
         txtpub.Text = GridView1.Rows[num].Cells[15].Text.ToString();
-        txtpubdt.Text = GridView1.Rows[num].Cells[16].Text.ToString();
+        pub_year.Text = GridView1.Rows[num].Cells[16].Text.ToString().Substring(0, 4);
+        pub_month.Text = GridView1.Rows[num].Cells[16].Text.ToString().Substring(5, 2);
+        pub_day.Text = GridView1.Rows[num].Cells[16].Text.ToString().Substring(8, 2);
         txtprice.Text = GridView1.Rows[num].Cells[17].Text.ToString();
         bindingtype.SelectedIndex = -1;
         bindingtype.Items.FindByText(GridView1.Rows[num].Cells[18].Text.ToString()).Selected = true;
@@ -103,8 +107,10 @@ public partial class QueryAndModify_bookQueryAndModify : System.Web.UI.Page
         int bitid = (int)dst3.Tables[0].Rows[0]["bitid"];
         int lid = (int)dst4.Tables[0].Rows[0]["lid"];
         int id = Convert.ToInt32(Session["bookid"]);
-        try { 
-            cmd.CommandText = "update book set name='" + txtname.Text + "',book_type_id='"+btid+"',book_number='"+txtbooknumber.Text+"',major_type_id='"+majorid+"',QR_code='"+txtQR.Text+"',publisher='"+txtpub.Text+"',publish_dt='"+txtpubdt.Text+"',author='"+txtauthor.Text+"',stock_dt='"+txtstockdt.Text+"',teacher='"+txtteacher.Text+"',number='"+txtnumber.Text+"',CD='"+CD.SelectedItem.Text+"',location='"+txtlocation.Text+"',status='"+status.SelectedItem.Text+"',format='"+txtformat.Text+"',price='"+int.Parse(txtprice.Text)+"',number_of_page='"+int.Parse(txtnumberofpage.Text)+"',binding_type_id='"+bitid+"',language='"+lid+"',note='"+txtnote.Text+"' where id='"+id+"'";
+        try {
+            String stockdt = stock_year.Text + "-" + stock_month.Text + "-" + stock_day.Text;
+            String pubdt = pub_year.Text + "-" + stock_month.Text + "-" + pub_day.Text;
+            cmd.CommandText = "update book set name='" + txtname.Text + "',book_type_id='"+btid+"',book_number='"+txtbooknumber.Text+"',major_type_id='"+majorid+"',QR_code='"+txtQR.Text+"',publisher='"+txtpub.Text+"',publish_dt='"+pubdt+"',author='"+txtauthor.Text+"',stock_dt='"+stockdt+"',teacher='"+txtteacher.Text+"',number='"+txtnumber.Text+"',CD='"+CD.SelectedItem.Text+"',location='"+txtlocation.Text+"',status='"+status.SelectedItem.Text+"',format='"+txtformat.Text+"',price='"+int.Parse(txtprice.Text)+"',number_of_page='"+int.Parse(txtnumberofpage.Text)+"',binding_type_id='"+bitid+"',language='"+lid+"',note='"+txtnote.Text+"' where id='"+id+"'";
             cnn.Open();
             cmd.ExecuteNonQuery();
             cnn.Close();
