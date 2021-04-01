@@ -7,13 +7,13 @@ using System.Web.UI.WebControls;
 using System.Data.SqlClient;
 using System.Data;
 
-public partial class QueryAndModify_dataQueryAndModify : System.Web.UI.Page
+public partial class QueryAndModify_dataQueryAndModify : dropdownlist
 {
     protected void Page_Load(object sender, EventArgs e)
     {
         if (Session["uid"] == null || (int)Session["uid"] != 0)
         {
-            Response.Redirect("../login.aspx");
+            Response.Redirect("../login1.aspx");
         }
         if (!IsPostBack)
         {
@@ -22,41 +22,47 @@ public partial class QueryAndModify_dataQueryAndModify : System.Web.UI.Page
             String strdataname = dataname.Text.ToString().Trim();
             DataSet dst = new DataSet();
             SqlConnection cnn = new SqlConnection("Data Source=(local);Initial Catalog=档案室信息管理系统1.0;Integrated Security=True");
-            SqlDataAdapter adpt = new SqlDataAdapter("SELECT [id],[number_of_page], [compile_dt], [unit], [format], [location], [stock_dt], [number], [name], [dtname], [mname], [QR_code], [class_number], [author], [status], [note], [lname] FROM [data] left join data_type on data.data_type_id=data_type.dtid left join major on data.major_id=major.mid left join language on data.language=language.lid where name like '%" + strdataname + "%' and mname like '%" + strmajor + "%' and dtname like '%" + strdatatype + "%'", cnn);
+            SqlDataAdapter adpt = new SqlDataAdapter("SELECT [id],[number_of_page], [compile_dt], [unit], [format], [location], [stock_dt], [number], [name], [dtname], [mname], [QR_code], [class_number], [author], [status], [note], [lname] FROM [data] left join data_type on data.data_type_id=data_type.dtid left join major on data.major_id=major.mid left join language on data.language=language.lid where is_delete=0 and name like '%" + strdataname + "%' and mname like '%" + strmajor + "%' and dtname like '%" + strdatatype + "%'", cnn);
             adpt.Fill(dst);
             GridView1.DataSource = dst.Tables[0];
             GridView1.DataBind();
+            setmajordropdownlist(majortype);
+            setdatatypedropdownlist(datatype);
         }
         
     }
     protected void GridView1_RowDeleting(object sender, GridViewDeleteEventArgs e)
     {
         int num = e.RowIndex;
-        txtname.Text = GridView1.Rows[num].Cells[0].Text.ToString();
-        dt.SelectedIndex = -1;
-        dt.Items.FindByText(GridView1.Rows[num].Cells[1].Text.ToString()).Selected = true;
-        txtQR.Text = GridView1.Rows[num].Cells[2].Text.ToString();
-        txtunit.Text = GridView1.Rows[num].Cells[3].Text.ToString();
-        stock_year.Text = GridView1.Rows[num].Cells[4].Text.ToString().Substring(0, 4);
-        stock_month.Text = GridView1.Rows[num].Cells[4].Text.ToString().Substring(5, 2);
-        stock_day.Text = GridView1.Rows[num].Cells[4].Text.ToString().Substring(8, 2);
-        txtlocation.Text = GridView1.Rows[num].Cells[5].Text.ToString();
-        txtnumber.Text = GridView1.Rows[num].Cells[6].Text.ToString();
-        txtcn.Text = GridView1.Rows[num].Cells[7].Text.ToString();
-        language.SelectedIndex = -1;
-        language.Items.FindByText(GridView1.Rows[num].Cells[8].Text.ToString()).Selected = true;
-        write_year.Text = GridView1.Rows[num].Cells[9].Text.ToString().Substring(0, 4);
-        write_month.Text = GridView1.Rows[num].Cells[9].Text.ToString().Substring(5, 2);
-        write_day.Text = GridView1.Rows[num].Cells[9].Text.ToString().Substring(8, 2);
-        txtformat.Text = GridView1.Rows[num].Cells[10].Text.ToString();
-        txtnumberofpage.Text = GridView1.Rows[num].Cells[11].Text.ToString();
-        txtauthor.Text = GridView1.Rows[num].Cells[12].Text.ToString();
-        major.SelectedIndex = -1;
-        major.Items.FindByText(GridView1.Rows[num].Cells[13].Text.ToString()).Selected = true;
-        status.SelectedIndex = -1;
-        status.Items.FindByText(GridView1.Rows[num].Cells[14].Text.ToString()).Selected = true;
-        txtnote.Text = GridView1.Rows[num].Cells[15].Text.ToString();
-        Session["dataid"] = GridView1.Rows[num].Cells[16].Text.ToString();
+        if (GridView1.Rows[0].Cells[0].Text.ToString() != GridView1.Rows[0].Cells[2].Text.ToString() && GridView1.Rows[0].Cells[2].Text.ToString() != GridView1.Rows[0].Cells[1].Text.ToString())
+        {
+            txtname.Text = GridView1.Rows[num].Cells[0].Text.ToString();
+            dt.SelectedIndex = -1;
+            dt.Items.FindByText(GridView1.Rows[num].Cells[1].Text.ToString()).Selected = true;
+            txtQR.Text = GridView1.Rows[num].Cells[2].Text.ToString();
+            txtunit.Text = GridView1.Rows[num].Cells[3].Text.ToString();
+            stock_year.Text = GridView1.Rows[num].Cells[4].Text.ToString().Substring(0, 4);
+            stock_month.Text = GridView1.Rows[num].Cells[4].Text.ToString().Substring(5, 2);
+            stock_day.Text = GridView1.Rows[num].Cells[4].Text.ToString().Substring(8, 2);
+            txtlocation.Text = GridView1.Rows[num].Cells[5].Text.ToString();
+            txtnumber.Text = GridView1.Rows[num].Cells[6].Text.ToString();
+            txtcn.Text = GridView1.Rows[num].Cells[7].Text.ToString();
+            language.SelectedIndex = -1;
+            language.Items.FindByText(GridView1.Rows[num].Cells[8].Text.ToString()).Selected = true;
+            write_year.Text = GridView1.Rows[num].Cells[9].Text.ToString().Substring(0, 4);
+            write_month.Text = GridView1.Rows[num].Cells[9].Text.ToString().Substring(5, 2);
+            write_day.Text = GridView1.Rows[num].Cells[9].Text.ToString().Substring(8, 2);
+            txtformat.Text = GridView1.Rows[num].Cells[10].Text.ToString();
+            txtnumberofpage.Text = GridView1.Rows[num].Cells[11].Text.ToString();
+            txtauthor.Text = GridView1.Rows[num].Cells[12].Text.ToString();
+            major.SelectedIndex = -1;
+            major.Items.FindByText(GridView1.Rows[num].Cells[13].Text.ToString()).Selected = true;
+            status.SelectedIndex = -1;
+            status.Items.FindByText(GridView1.Rows[num].Cells[14].Text.ToString()).Selected = true;
+            txtnote.Text = GridView1.Rows[num].Cells[15].Text.ToString();
+            Session["dataid"] = GridView1.Rows[num].Cells[16].Text.ToString();
+        }
+        
     }
     protected void query_Click(object sender, EventArgs e)
     {
@@ -70,8 +76,30 @@ public partial class QueryAndModify_dataQueryAndModify : System.Web.UI.Page
 
         DataSet dst = new DataSet();
         SqlConnection cnn = new SqlConnection("Data Source=(local);Initial Catalog=档案室信息管理系统1.0;Integrated Security=True");
-        SqlDataAdapter adpt = new SqlDataAdapter("SELECT [id],[number_of_page], [compile_dt], [unit], [format], [location], [stock_dt], [number], [name], [dtname], [mname], [QR_code], [class_number], [author], [status], [note], [lname] FROM [data] left join data_type on data.data_type_id=data_type.dtid left join major on data.major_id=major.mid left join language on data.language=language.lid where name like '%" + strdataname + "%' and mname like '%" + strmajor + "%' and dtname like '%" + strdatatype + "%'", cnn);
-        adpt.Fill(dst);
+        if(datatype.SelectedItem.Value=="全部"&&majortype.SelectedItem.Value=="全部"){
+            SqlDataAdapter adpt = new SqlDataAdapter("SELECT [id],[number_of_page], [compile_dt], [unit], [format], [location], [stock_dt], [number], [name], [dtname], [mname], [QR_code], [class_number], [author], [status], [note], [lname] FROM [data] left join data_type on data.data_type_id=data_type.dtid left join major on data.major_id=major.mid left join language on data.language=language.lid where is_delete=0 and name like '%" + strdataname + "%' and mname like '%" + "" + "%' and dtname like '%" + "" + "%'", cnn);
+            adpt.Fill(dst);
+        }else if(datatype.SelectedItem.Value=="全部"){
+            SqlDataAdapter adpt = new SqlDataAdapter("SELECT [id],[number_of_page], [compile_dt], [unit], [format], [location], [stock_dt], [number], [name], [dtname], [mname], [QR_code], [class_number], [author], [status], [note], [lname] FROM [data] left join data_type on data.data_type_id=data_type.dtid left join major on data.major_id=major.mid left join language on data.language=language.lid where is_delete=0 and name like '%" + strdataname + "%' and mname like '%" + strmajor + "%' and dtname like '%" + "" + "%'", cnn);
+            adpt.Fill(dst);
+        }
+        else if (majortype.SelectedItem.Value == "全部")
+        {
+            SqlDataAdapter adpt = new SqlDataAdapter("SELECT [id],[number_of_page], [compile_dt], [unit], [format], [location], [stock_dt], [number], [name], [dtname], [mname], [QR_code], [class_number], [author], [status], [note], [lname] FROM [data] left join data_type on data.data_type_id=data_type.dtid left join major on data.major_id=major.mid left join language on data.language=language.lid where is_delete=0 and name like '%" + strdataname + "%' and mname like '%" + "" + "%' and dtname like '%" + strdatatype + "%'", cnn);
+            adpt.Fill(dst);
+        }else{
+            SqlDataAdapter adpt = new SqlDataAdapter("SELECT [id],[number_of_page], [compile_dt], [unit], [format], [location], [stock_dt], [number], [name], [dtname], [mname], [QR_code], [class_number], [author], [status], [note], [lname] FROM [data] left join data_type on data.data_type_id=data_type.dtid left join major on data.major_id=major.mid left join language on data.language=language.lid where is_delete=0 and name like '%" + strdataname + "%' and mname like '%" + strmajor + "%' and dtname like '%" + strdatatype + "%'", cnn);
+            adpt.Fill(dst);
+        }
+        if (dst.Tables[0].Rows.Count == 0)
+        {
+            DataRow row = dst.Tables[0].NewRow();
+            for (int j = 0; j < GridView1.Columns.Count - 1; j++)
+            {
+                row[j] = DBNull.Value;
+            }
+            dst.Tables[0].Rows.Add(row);
+        }
         GridView1.DataSource = dst.Tables[0];
         GridView1.DataBind();
     }
@@ -90,7 +118,7 @@ public partial class QueryAndModify_dataQueryAndModify : System.Web.UI.Page
         adptmajor.Fill(dst2);
         adptlanguage.Fill(dst4);
         int dtid = (int)dst1.Tables[0].Rows[0]["dtid"];
-        int majorid = (int)dst2.Tables[0].Rows[0]["mid"];
+        String majorid = dst2.Tables[0].Rows[0]["mid"].ToString();
         int lid = (int)dst4.Tables[0].Rows[0]["lid"];
         int id = Convert.ToInt32(Session["dataid"]);
         try
@@ -101,6 +129,7 @@ public partial class QueryAndModify_dataQueryAndModify : System.Web.UI.Page
             cnn.Open();
             cmd.ExecuteNonQuery();
             cnn.Close();
+            ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "", "alert('保存成功！');", true);
         }
         catch (Exception)
         {
@@ -142,5 +171,40 @@ public partial class QueryAndModify_dataQueryAndModify : System.Web.UI.Page
     {
         this.GridView1.PageIndex = this.GridView1.PageCount;
         ExecuteQuery();
+    }
+    private void ToExcel(Control ctl, string FileName)
+    {
+        HttpContext.Current.Response.Charset = "UTF-8";
+        HttpContext.Current.Response.ContentEncoding = System.Text.Encoding.UTF8;
+        HttpContext.Current.Response.ContentType = "application/ms-excel";
+        HttpContext.Current.Response.AppendHeader("Content-Disposition", "attachment;filename=" + "" + FileName);
+        ctl.Page.EnableViewState = false;
+        System.IO.StringWriter tw = new System.IO.StringWriter();
+        HtmlTextWriter hw = new HtmlTextWriter(tw);
+        ctl.RenderControl(hw);
+        HttpContext.Current.Response.Write(tw.ToString());
+        HttpContext.Current.Response.End();
+    }
+    protected void export_Click1(object sender, EventArgs e)
+    {
+        if (GridView1.Rows.Count > 0)
+        {
+            //调用导出方法  
+            GridView1.AllowPaging = false;
+            GridView1.AllowSorting = false;
+            ExecuteQuery();
+            ToExcel(GridView1, "OFS_Data.xls");
+            GridView1.AllowPaging = true;
+            GridView1.AllowSorting = true;
+            ExecuteQuery();
+        }
+        else
+        {
+            // obo.Common.MessageBox.Show(this, "没有数据可导出，请先查询数据!");
+        }
+    }
+    public override void VerifyRenderingInServerForm(Control control)
+    {
+        // Confirms that an HtmlForm control is rendered for
     }
 }

@@ -37,7 +37,7 @@ public partial class stockmanagement_paperupload : System.Web.UI.Page
         adptlanguage.Fill(dst4);
         adptnum.Fill(dst5);
         int ptid = (int)dst1.Tables[0].Rows[0]["ptid"];
-        int majorid = (int)dst2.Tables[0].Rows[0]["mid"];
+        String majorid = dst2.Tables[0].Rows[0]["mid"].ToString();
         //int bitid = (int)dst3.Tables[0].Rows[0]["bitid"];
         int lid = (int)dst4.Tables[0].Rows[0]["lid"];
         int num;
@@ -105,7 +105,7 @@ public partial class stockmanagement_paperupload : System.Web.UI.Page
         string dt = DateTime.Now.ToString("yyyy-MM-dd");
         SqlConnection cnn = new SqlConnection("Data Source=(local);Initial Catalog=档案室信息管理系统1.0;Integrated Security=True");
         SqlCommand cmd = cnn.CreateCommand();
-        var path = Server.MapPath("/论文");
+        var path = Server.MapPath("/论文/"+FileUpload1.FileName.ToString());
         FileUpload1.SaveAs(path);
         cmd.CommandText = "INSERT INTO file_att(file_name,extension_name,file_size,uploader_id,uploaded_dt,paper_id) VALUES ('" + FileUpload1.FileName.ToString() + "','pdf','" + FileUpload1.FileBytes.Length + "','" + uploaderid + "','" + dt + "','"+paperid+"')";
         cnn.Open();

@@ -75,8 +75,7 @@
 <body>
     <form id="form1" runat="server">
     <div>
-    
-        <asp:Panel ID="Panel1" runat="server" BackImageUrl="~/imgs/1.PNG" Height="587px" Width="1194px">
+        <asp:Panel ID="Panel1" runat="server" BackImageUrl="~/imgs/1.PNG" Height="587px" Width="1194px" >
             <table style="width:91%;">
                 <tr>
                     <td class="auto-style6"></td>

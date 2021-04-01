@@ -66,10 +66,19 @@ li.dropdown {
         }
         .auto-style3 {
             width: 318px;
+            text-align: center;
         }
         .auto-style4 {
             height: 150px;
             width: 318px;
+            text-align: center;
+        }
+        .auto-style5 {
+            width: 302px;
+        }
+        .auto-style6 {
+            height: 150px;
+            width: 302px;
         }
     </style>
 </head>
@@ -103,7 +112,15 @@ li.dropdown {
       <a href="paperstatistics.aspx">论文统计</a>
     </div>
   </li>
-    <li><a href="../delete.aspx">剔旧</a></li>
+  <li class="dropdown">
+    <a href="javascript:void(0)" class="dropbtn">剔旧管理</a>
+    <div class="dropdown-content">
+      <a href="../delete/bookdelete.aspx">图书剔旧</a>
+      <a href="../delete/journaldelete.aspx">期刊剔旧</a>
+      <a href="../delete/datadelete.aspx">资料剔旧</a>
+      <a href="../delete/paperdelete.aspx">论文剔旧</a>
+    </div>
+  </li>
 </ul>
     <form id="form1" runat="server">
         <table style="width:100%;">
@@ -130,7 +147,6 @@ li.dropdown {
         <br />
         <table style="width:100%;">
             <tr>
-                <td class="auto-style3">&nbsp;</td>
                 <td class="auto-style3">
         <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" style="margin-right: 1px">
             <Columns>
@@ -139,7 +155,7 @@ li.dropdown {
             </Columns>
         </asp:GridView>
                 </td>
-                <td>
+                <td class="auto-style5">
                     <asp:Chart ID="Chart1" runat="server">
                         <Series>
                             <asp:Series ChartType="Pie" Name="Series1">
@@ -154,7 +170,6 @@ li.dropdown {
                 <td>&nbsp;</td>
             </tr>
             <tr>
-                <td class="auto-style4">&nbsp;</td>
                 <td class="auto-style4">
         <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False">
             <Columns>
@@ -163,7 +178,7 @@ li.dropdown {
             </Columns>
         </asp:GridView>
                 </td>
-                <td class="auto-style2">
+                <td class="auto-style6">
                     <asp:Chart ID="Chart2" runat="server">
                         <Series>
                             <asp:Series ChartType="Pie" Name="Series1">
@@ -179,8 +194,7 @@ li.dropdown {
             </tr>
             <tr>
                 <td class="auto-style3">&nbsp;</td>
-                <td class="auto-style3">&nbsp;</td>
-                <td>&nbsp;</td>
+                <td class="auto-style5">&nbsp;</td>
                 <td>&nbsp;</td>
             </tr>
         </table>

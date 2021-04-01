@@ -90,7 +90,15 @@ li.dropdown {
       <a href="statistics/paperstatistics.aspx">论文统计</a>
     </div>
   </li>
-    <li><a href="/delete.aspx">剔旧</a></li>
+  <li class="dropdown">
+    <a href="javascript:void(0)" class="dropbtn">剔旧管理</a>
+    <div class="dropdown-content">
+      <a href="delete/bookdelete.aspx">图书剔旧</a>
+      <a href="delete/journaldelete.aspx">期刊剔旧</a>
+      <a href="delete/datadelete.aspx">资料剔旧</a>
+      <a href="delete/paperdelete.aspx">论文剔旧</a>
+    </div>
+  </li>
 </ul>
 
 <h1>矿业学院档案室信息管理系统</h1>

@@ -16,7 +16,7 @@ public partial class 统计分析_bookstatistics : System.Web.UI.Page
     {
         if (Session["uid"] == null || (int)Session["uid"] != 0)
         {
-            Response.Redirect("../login.aspx");
+            Response.Redirect("../login1.aspx");
         }
         totalnumber();
         typenumber();

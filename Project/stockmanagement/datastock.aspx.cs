@@ -13,7 +13,7 @@ public partial class stockmanagement_datastock : System.Web.UI.Page
     {
         if (Session["uid"] == null || (int)Session["uid"] != 0)
         {
-            Response.Redirect("../login.aspx");
+            Response.Redirect("../login1.aspx");
         }
     }
     protected void btok_Click(object sender, EventArgs e)
@@ -35,7 +35,7 @@ public partial class stockmanagement_datastock : System.Web.UI.Page
         adptlanguage.Fill(dst4);
         adptnum.Fill(dst5);
         int dtid = (int)dst1.Tables[0].Rows[0]["dtid"];
-        int majorid = (int)dst2.Tables[0].Rows[0]["mid"];
+        String majorid = dst2.Tables[0].Rows[0]["mid"].ToString();
         int lid = (int)dst4.Tables[0].Rows[0]["lid"];
         int num;
         if (dst5.Tables[0].Rows.Count > 0)

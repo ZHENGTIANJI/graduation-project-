@@ -61,12 +61,6 @@ li.dropdown {
         #form1 {
             text-align: center;
         }
-        .auto-style1 {
-            width: 336px;
-        }
-        .auto-style2 {
-            width: 600px;
-        }
         .auto-style18 {
             width: 288px;
             text-align: left;
@@ -232,18 +226,18 @@ li.dropdown {
       <a href="../statistics/paperstatistics.aspx">论文统计</a>
     </div>
   </li>
-    <li><a href="../delete.aspx">剔旧</a></li>
+    <li class="dropdown">
+    <a href="javascript:void(0)" class="dropbtn">剔旧管理</a>
+    <div class="dropdown-content">
+      <a href="../delete/bookdelete.aspx">图书剔旧</a>
+      <a href="../delete/journaldelete.aspx">期刊剔旧</a>
+      <a href="../delete/datadelete.aspx">资料剔旧</a>
+      <a href="../delete/paperdelete.aspx">论文剔旧</a>
+    </div>
+  </li>
 </ul>
     <form id="form1" runat="server">
-        <table style="width:100%;">
-            <tr>
-                <td class="auto-style1">&nbsp;</td>
-                <td class="auto-style2">
                     <asp:Label ID="矿业学院资料室图书入库管理" runat="server" style="text-align: center; font-size: xx-large" Text="矿业学院资料室图书入库管理"></asp:Label>
-                </td>
-                <td>&nbsp;</td>
-            </tr>
-            </table>
                     <table style="width: 100%; height: 190px;">
                         <tr>
                             <td class="auto-style48">
@@ -399,7 +393,7 @@ li.dropdown {
                                 <asp:Label ID="Label41" runat="server" Text="备注"></asp:Label>
                             </td>
                             <td class="auto-style36">
-                                <asp:TextBox ID="txtnote" runat="server" Width="139px"></asp:TextBox>
+                                <asp:TextBox ID="txtnote" runat="server" ></asp:TextBox>
                             </td>
                             <td class="auto-style63">
                                 <asp:Button ID="btok" runat="server" OnClick="btok_Click" Text="保存" />

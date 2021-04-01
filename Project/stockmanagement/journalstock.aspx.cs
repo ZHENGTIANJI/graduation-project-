@@ -13,7 +13,7 @@ public partial class stockmanagement_journalstock : System.Web.UI.Page
     {
         if (Session["uid"] == null || (int)Session["uid"] != 0)
         {
-            Response.Redirect("../login.aspx");
+            Response.Redirect("../login1.aspx");
         }
 
     }
@@ -43,7 +43,7 @@ public partial class stockmanagement_journalstock : System.Web.UI.Page
         adptorgan.Fill(dst6);
         adptgrade.Fill(dst7);
         int jtid = (int)dst1.Tables[0].Rows[0]["jtid"];
-        int majorid = (int)dst2.Tables[0].Rows[0]["mid"];
+        String majorid = dst2.Tables[0].Rows[0]["mid"].ToString();
         int grade1 = (int)dst3.Tables[0].Rows[0]["gid"];
         int lid = (int)dst4.Tables[0].Rows[0]["lid"];
         int organid = (int)dst6.Tables[0].Rows[0]["organid"];

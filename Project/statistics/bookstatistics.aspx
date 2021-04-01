@@ -63,7 +63,7 @@ li.dropdown {
   display: block;
 }
         .auto-style2 {
-            width: 327px;
+            width: 300px;
             text-align: center;
         }
         .auto-style3 {
@@ -75,6 +75,31 @@ li.dropdown {
         }
         .auto-style5 {
             width: 397px;
+        }
+        .auto-style6 {
+            width: 241px;
+            text-align: right;
+            height: 356px;
+        }
+        .auto-style7 {
+            width: 300px;
+            text-align: center;
+            height: 356px;
+        }
+        .auto-style8 {
+            height: 356px;
+        }
+        .auto-style9 {
+            width: 170px;
+            text-align: right;
+            height: 356px;
+        }
+        .auto-style10 {
+            width: 170px;
+            text-align: right;
+        }
+        .auto-style11 {
+            width: 170px;
         }
     </style>
 </head>
@@ -108,7 +133,15 @@ li.dropdown {
       <a href="paperstatistics.aspx">论文统计</a>
     </div>
   </li>
-    <li><a href="../delete.aspx">剔旧</a></li>
+  <li class="dropdown">
+    <a href="javascript:void(0)" class="dropbtn">剔旧管理</a>
+    <div class="dropdown-content">
+      <a href="../delete/bookdelete.aspx">图书剔旧</a>
+      <a href="../delete/journaldelete.aspx">期刊剔旧</a>
+      <a href="../delete/datadelete.aspx">资料剔旧</a>
+      <a href="../delete/paperdelete.aspx">论文剔旧</a>
+    </div>
+  </li>
 </ul>
     <form id="form1" runat="server">
         <table style="width:100%;">
@@ -136,8 +169,7 @@ li.dropdown {
         </table>
         <table style="width:100%;">
             <tr>
-                <td class="auto-style3">&nbsp;</td>
-                <td class="auto-style3">
+                <td class="auto-style9">
         <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataKeyNames="btname">
             <Columns>
                 <asp:BoundField DataField="btname" HeaderText="类别名称" InsertVisible="False" ReadOnly="True" SortExpression="btname" />
@@ -145,8 +177,8 @@ li.dropdown {
             </Columns>
         </asp:GridView>
                 </td>
-                <td class="auto-style2">
-                    <asp:Chart ID="Chart1" runat="server">
+                <td class="auto-style7">
+                    <asp:Chart ID="Chart1" runat="server" style="margin-left: 0px; margin-bottom: 0px">
                         <Series>
                             <asp:Series ChartType="Pie" Name="Series1">
                             </asp:Series>
@@ -157,12 +189,11 @@ li.dropdown {
                         </ChartAreas>
                     </asp:Chart>
                 </td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
+                <td class="auto-style8"></td>
+                <td class="auto-style8"></td>
             </tr>
             <tr>
-                <td class="auto-style3">&nbsp;</td>
-                <td class="auto-style3">
+                <td class="auto-style10">
         <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" >
             <Columns>
                 <asp:BoundField DataField="mname" HeaderText="专业名称" SortExpression="mname" />
@@ -186,8 +217,7 @@ li.dropdown {
                 <td>&nbsp;</td>
             </tr>
             <tr>
-                <td class="auto-style4">&nbsp;</td>
-                <td class="auto-style4">&nbsp;</td>
+                <td class="auto-style11">&nbsp;</td>
                 <td class="auto-style2">&nbsp;</td>
                 <td>&nbsp;</td>
                 <td>&nbsp;</td>

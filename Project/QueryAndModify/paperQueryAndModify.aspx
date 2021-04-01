@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="paperQueryAndModify.aspx.cs" Inherits="QueryAndModify_paperQueryAndModify" %>
+﻿<%@ Page Language="C#" EnableEventValidation="false" AutoEventWireup="true" CodeFile="paperQueryAndModify.aspx.cs" Inherits="QueryAndModify_paperQueryAndModify" %>
 
 <!DOCTYPE html>
 
@@ -153,8 +153,7 @@ li.dropdown {
         }
         .auto-style61 {
             width: 80px;
-            text-align: right;
-        }
+            }
     </style>
 </head>
 <body>
@@ -187,7 +186,15 @@ li.dropdown {
       <a href="../statistics/paperstatistics.aspx">论文统计</a>
     </div>
   </li>
-    <li><a href="../delete.aspx">剔旧</a></li>
+  <li class="dropdown">
+    <a href="javascript:void(0)" class="dropbtn">剔旧管理</a>
+    <div class="dropdown-content">
+      <a href="../delete/bookdelete.aspx">图书剔旧</a>
+      <a href="../delete/journaldelete.aspx">期刊剔旧</a>
+      <a href="../delete/datadelete.aspx">资料剔旧</a>
+      <a href="../delete/paperdelete.aspx">论文剔旧</a>
+    </div>
+  </li>
 </ul>
     <form id="form1" runat="server">
         <table style="width:100%;">
@@ -211,14 +218,14 @@ li.dropdown {
                     <asp:Label ID="Label56" runat="server" Text="论文类型"></asp:Label>
                 </td>
                 <td class="auto-style4">
-                    <asp:DropDownList ID="papertype" runat="server" DataSourceID="SqlDataSource1" DataTextField="ptname" DataValueField="ptname">
+                    <asp:DropDownList ID="papertype" runat="server">
                     </asp:DropDownList>
                 </td>
                 <td class="auto-style61">
                     <asp:Label ID="Label3" runat="server" Text="专业类型"></asp:Label>
                 </td>
                 <td class="auto-style5">
-                    <asp:DropDownList ID="majortype" runat="server" DataSourceID="SqlDataSource4" DataTextField="mname" DataValueField="mname">
+                    <asp:DropDownList ID="majortype" runat="server">
                     </asp:DropDownList>
                 </td>
                 <td>
@@ -226,7 +233,9 @@ li.dropdown {
                 </td>
             </tr>
             <tr>
-                <td class="auto-style61">&nbsp;</td>
+                <td class="auto-style61">
+                    <asp:Button ID="export" runat="server" OnClick="export_Click1" Text="导出excel" />
+                </td>
                 <td class="auto-style2">&nbsp;</td>
                 <td class="auto-style61">&nbsp;</td>
                 <td class="auto-style4">&nbsp;</td>
