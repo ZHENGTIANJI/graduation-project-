@@ -141,7 +141,7 @@ body {
         <div class="action">
             <div>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <asp:Button ID="btok" runat="server"  OnClick="btok_Click" Text="登录"  CssClass="transButton" Height="36px" Width="171px" Font-Size="Medium" />
+                <asp:Button ID="btok" runat="server"  OnClick="btok_Click" Text="登录" CssClass="transButton" Height="36px" Width="171px" Font-Size="Medium" />
             </div>
         </div>
     </div>

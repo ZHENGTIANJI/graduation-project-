@@ -21,10 +21,6 @@
             width: 64px;
             height: 20px;
         }
-        .auto-style10 {
-            height: 20px;
-            width: 135px;
-        }
         .auto-style1 {
             width: 80px;
             text-align: right;
@@ -34,9 +30,6 @@
         }
         .auto-style7 {
             width: 64px;
-        }
-        .auto-style11 {
-            width: 135px;
         }
         .auto-style14 {
             width: 158px;
@@ -70,16 +63,66 @@
         .auto-style21 {
             width: 191px;
         }
+
         .auto-style22 {
             height: 46px;
         }
         .auto-style23 {
             width: 309px;
         }
+        .auto-style24 {
+            height: 20px;
+            width: 100px;
+        }
+        .auto-style25 {
+            width: 100px;
+        }
+        .table-a table{border-bottom:1px solid black;border-top:1px solid black;}
+        .table-b table td{border:1px solid black}
+        .table-d table{ background:black} 
+.table-d table td{ background:#FFF}
+        .table-c table{border-right:1px solid #F00;border-bottom:1px solid #F00} 
+.table-c table td{border-left:1px solid #F00;border-top:1px solid #F00}
+                ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+            height: 80px;
+        }
+                li {
+  float: left;
+}
+                ri {
+  float: right;
+}
+        .auto-style26 {
+            font-size: xx-large;
+            color:white;
+        }
     </style>
 </head>
 <body>
     <form id="form1" runat="server">
+        <ul>
+            <div style="float:left; width:20%; height:100px; "></div>
+            <div style="float:left; width:60%; height:200px; ">
+                <div style=" margin:0px auto; height:20px; "></div>
+            <li>
+                <span class="auto-style26">矿业学院档案管理系统</span>
+            </li>
+            </div>
+            <div style="float:left; width:20%; height:100px; ">
+                <ri>
+                <asp:Label ID="Label100" runat="server" ForeColor="White" Font-Size="Medium"></asp:Label>
+            </ri>
+            </div>
+
+            
+            
+        </ul>
+            
         <table style="width:100%;">
             <tr>
                 <td class="auto-style22" style="text-align: center">
@@ -88,11 +131,9 @@
                     </h1>
                 </td>
             </tr>
-            <tr>
-                <td>&nbsp;</td>
-            </tr>
         </table>
-        <table style="width:100%;">
+        <div class="table-a">
+                    <table style="width:100%;" border="0" >
             <tr>
                 <td class="auto-style14">
                     &nbsp;</td>
@@ -113,7 +154,7 @@
                 <td class="auto-style18">
                     <asp:Label ID="Label17" runat="server" Text="语言种类"></asp:Label>
                 </td>
-                <td class="auto-style10">
+                <td class="auto-style24">
                     <asp:DropDownList ID="language" runat="server" DataSourceID="SqlDataSource3" DataTextField="lname" DataValueField="lname">
                     </asp:DropDownList>
                 </td>
@@ -143,7 +184,7 @@
                 <td class="auto-style18">
                     <asp:Label ID="Label10" runat="server" Text="学制"></asp:Label>
                 </td>
-                <td class="auto-style10">
+                <td class="auto-style24">
                     <asp:DropDownList ID="xuezhi" runat="server">
                         <asp:ListItem>四年制</asp:ListItem>
                         <asp:ListItem>三年制</asp:ListItem>
@@ -174,10 +215,10 @@
                     <asp:Label ID="Label30" runat="server" Text="日"></asp:Label>
                 </td>
                 <td class="auto-style19">
-                    <asp:Label ID="Label9" runat="server" Text="存放位置"></asp:Label>
+                    <asp:Label ID="Label18" runat="server" Text="指导教师"></asp:Label>
                 </td>
-                <td class="auto-style11">
-                    <asp:TextBox ID="txtlocation" runat="server"></asp:TextBox>
+                <td class="auto-style25">
+                    <asp:TextBox ID="txtadviser" runat="server"></asp:TextBox>
                 </td>
                 <td class="auto-style7">
                     &nbsp;</td>
@@ -198,10 +239,14 @@
                     <asp:TextBox ID="txtdirection" runat="server"></asp:TextBox>
                 </td>
                 <td class="auto-style19">
-                    <asp:Label ID="Label18" runat="server" Text="指导教师"></asp:Label>
+                    <asp:Label ID="Label19" runat="server" Text="职称"></asp:Label>
                 </td>
-                <td class="auto-style11">
-                    <asp:TextBox ID="txtadviser" runat="server"></asp:TextBox>
+                <td class="auto-style25">
+                    <asp:DropDownList ID="zhicheng" runat="server">
+                        <asp:ListItem>讲师</asp:ListItem>
+                        <asp:ListItem>副教授</asp:ListItem>
+                        <asp:ListItem>教授</asp:ListItem>
+                    </asp:DropDownList>
                 </td>
                 <td class="auto-style7">
                     &nbsp;</td>
@@ -222,40 +267,15 @@
                     <asp:TextBox ID="txtnumberofpage" runat="server"></asp:TextBox>
                 </td>
                 <td class="auto-style19">
-                    <asp:Label ID="Label19" runat="server" Text="职称"></asp:Label>
+                    <asp:Label ID="Label8" runat="server" Text="备注"></asp:Label>
                 </td>
-                <td class="auto-style11">
-                    <asp:DropDownList ID="zhicheng" runat="server">
-                        <asp:ListItem>讲师</asp:ListItem>
-                        <asp:ListItem>副教授</asp:ListItem>
-                        <asp:ListItem>教授</asp:ListItem>
-                    </asp:DropDownList>
+                <td class="auto-style25">
+                    <asp:TextBox ID="txtnote" runat="server"></asp:TextBox>
                 </td>
                 <td class="auto-style7">&nbsp;</td>
             </tr>
-            <tr>
-                <td class="auto-style15">
-                    &nbsp;</td>
-                <td class="auto-style1">
-                    &nbsp;</td>
-                <td class="auto-style5">
-                    &nbsp;</td>
-                <td class="auto-style16">
-                    &nbsp;</td>
-                <td class="auto-style21">
-                    &nbsp;</td>
-                <td class="auto-style19">
-                    <asp:Label ID="Label8" runat="server" Text="备注"></asp:Label>
-                </td>
-                <td class="auto-style11">
-                    <asp:TextBox ID="txtnote" runat="server"></asp:TextBox>
-                </td>
-                <td class="auto-style7">
-                    &nbsp;</td>
-            </tr>
-        </table>
-    <div style="height: 21px">
-    
+            </table>
+        </div>
         <table style="width:100%;">
             <tr>
                 <td class="auto-style23">
@@ -268,18 +288,11 @@
             <tr>
                 <td class="auto-style23">&nbsp;</td>
                 <td style="text-align: center">
-                    <asp:Button ID="upload" runat="server" OnClick="upload_Click" Text="提交" OnClientClick="return confirm('只允许提交一次，确定提交吗?')"/>
+                    <asp:Button ID="upload" runat="server" OnClick="upload_Click" Text="提交" OnClientClick="return confirm('只允许提交一次，确定提交吗?')" Height="27px" Width="104px"/>
                 </td>
                 <td>&nbsp;</td>
             </tr>
-            <tr>
-                <td class="auto-style23">&nbsp;</td>
-                <td>&nbsp;</td>
-                <td>&nbsp;</td>
-            </tr>
         </table>
-    
-    </div>
         <br />
         <br />
         <br />

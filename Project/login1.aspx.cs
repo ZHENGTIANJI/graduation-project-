@@ -12,24 +12,19 @@ public partial class login1 : System.Web.UI.Page
     {
         
     }
-    void login()
-    {
-        
-        
-    }
     protected void btok_Click(object sender, EventArgs e)
     {
         String uid = Request.Form["username"].ToString();
         String psw = Request.Form["password"].ToString();
         if (havethisuser(uid, psw))
         {
-            if ((int)Session["uid"] == 0)
+            if ((int)Session["class"] == 0)
             {
                 Response.Redirect("main_manager.aspx");
             }
             else
             {
-                Response.Redirect("main_user.aspx");
+                Response.Redirect("stockmanagement/paperupload.aspx");
             }
         }
         else
@@ -46,7 +41,9 @@ public partial class login1 : System.Web.UI.Page
         adpt.Fill(dst);
         if (dst.Tables[0].Rows.Count > 0)
         {
-            Session["uid"] = dst.Tables[0].Rows[0]["user_class"].ToString() == "管理员" ? 0 : 1;
+            Session["class"] = dst.Tables[0].Rows[0]["user_class"].ToString() == "管理员" ? 0 : 1;
+            Session["id"] = dst.Tables[0].Rows[0]["id"].ToString();
+            Session["name"] = dst.Tables[0].Rows[0]["name"].ToString();
         }
 
         return dst.Tables[0].Rows.Count > 0;

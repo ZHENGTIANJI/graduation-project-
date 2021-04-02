@@ -11,7 +11,7 @@ public partial class delete_journaldelete : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (Session["uid"] == null || (int)Session["uid"] != 0)
+        if (Session["class"] == null || (int)Session["class"] != 0)
         {
             Response.Redirect("../login1.aspx");
         }

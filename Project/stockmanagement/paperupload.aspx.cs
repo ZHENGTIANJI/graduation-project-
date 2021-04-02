@@ -12,10 +12,11 @@ public partial class stockmanagement_paperupload : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
 
-        if (Session["uid"] == null || (int)Session["uid"] != 1)
+        if (Session["class"] == null || (int)Session["class"] != 1)
         {
-            Response.Redirect("../login.aspx");
+            Response.Redirect("../login1.aspx");
         }
+        Label100.Text = "当前用户:"+Session["name"].ToString();
     }
     protected void upload_Click(object sender, EventArgs e)
     {
@@ -58,7 +59,11 @@ public partial class stockmanagement_paperupload : System.Web.UI.Page
             String stockdt=DateTime.Now.ToString("yyyy-MM-dd");
             if (txtname.Text == "")
             {
-                ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "", "alert('保存失败！');", true);
+                ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "", "alert('上传失败！');", true);
+            }
+            else if(FileUpload1.FileName=="")
+            {
+                ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "", "alert('请上传论文！');", true);
             }
             else
             {
