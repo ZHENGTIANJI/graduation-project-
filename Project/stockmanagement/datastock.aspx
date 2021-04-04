@@ -19,7 +19,10 @@
 li {
   float: left;
 }
-
+ri{
+    float:right;
+}
+        .table-a table{border-bottom:1px solid black;border-top:1px solid black;}
 li a, .dropbtn {
   display: inline-block;
   color: white;
@@ -72,9 +75,6 @@ li.dropdown {
             text-align: right;
             width: 100px;
         }
-        .auto-style9 {
-            width: 100px;
-        }
         .auto-style10 {
             width: 199px;
         }
@@ -85,10 +85,14 @@ li.dropdown {
         .auto-style12 {
             width: 101px;
         }
+        .auto-style14 {
+            width: 158px;
+        }
     </style>
 </head>
 <body>
      <ul>
+         <ri><asp:Label ID="user" runat="server" ForeColor="White" Font-Size="Medium"></asp:Label></ri>
   <li><a href="../main_manager.aspx">首页</a></li>
   <li class="dropdown">
       <a href="javascript:void(0)" class="dropbtn">入库管理</a>
@@ -131,7 +135,8 @@ li.dropdown {
         <h1 style="text-align: center">  
           <asp:Label ID="Label14" runat="server" Text="矿业学院资料室资料入库管理"></asp:Label>
         </h1>
-        <table style="width:100%;">
+        <div class="table-a">
+             <table style="width:100%;">
             <tr>
                 <td class="auto-style2">
                     <asp:Label ID="Label12" runat="server" Text="专业"></asp:Label>
@@ -232,27 +237,32 @@ li.dropdown {
                     <asp:TextBox ID="txtnote" runat="server"></asp:TextBox>
                 </td>
             </tr>
+            </table>
+        </div>
+       
+             <table style="width:100%;">
             <tr>
                 <td class="auto-style4">&nbsp;</td>
                 <td class="auto-style5">&nbsp;</td>
                 <td class="auto-style12">&nbsp;</td>
-                <td class="auto-style10">&nbsp;</td>
-                <td class="auto-style9" style="text-align: center">
-                    <asp:Button ID="btclear" runat="server" OnClick="btclear_Click" Text="清空" />
+                <td class="auto-style14" style="text-align: center">
+                    &nbsp;</td>
+                <td>
+                    &nbsp;</td>
+            </tr>
+            <tr>
+                <td class="auto-style4">&nbsp;</td>
+                <td class="auto-style5">&nbsp;</td>
+                <td class="auto-style12">&nbsp;</td>
+                <td class="auto-style14" style="text-align: center">
+                    <asp:Button ID="btclear" runat="server" OnClick="btclear_Click" Text="清空" Width="80px" />
                 </td>
                 <td>
-                    <asp:Button ID="btok" runat="server" OnClick="btok_Click" Text="保存" />
+                    <asp:Button ID="btok" runat="server" OnClick="btok_Click" Text="保存" Width="80px" />
                     </td>
             </tr>
-            <tr>
-                <td class="auto-style4">&nbsp;</td>
-                <td class="auto-style5">&nbsp;</td>
-                <td class="auto-style12">&nbsp;</td>
-                <td class="auto-style10">&nbsp;</td>
-                <td class="auto-style9" style="text-align: center">&nbsp;</td>
-                <td>&nbsp;</td>
-            </tr>
         </table>
+       
         <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:档案室信息管理系统ConnectionString %>" SelectCommand="SELECT * FROM [data_type]"></asp:SqlDataSource>
         <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:档案室信息管理系统ConnectionString %>" SelectCommand="SELECT * FROM [language]"></asp:SqlDataSource>
         <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:档案室信息管理系统ConnectionString %>" SelectCommand="SELECT * FROM [major]"></asp:SqlDataSource>

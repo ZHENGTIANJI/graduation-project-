@@ -15,6 +15,7 @@ public partial class QueryAndModify_paperQueryAndModify : System.Web.UI.Page
         {
             Response.Redirect("../login1.aspx");
         }
+        user.Text = "当前用户:" + Session["name"].ToString();
 
         if (!IsPostBack)
         {

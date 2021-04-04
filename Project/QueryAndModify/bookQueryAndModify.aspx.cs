@@ -31,7 +31,7 @@ public partial class QueryAndModify_bookQueryAndModify :dropdownlist
             setmajordropdownlist(major);
             setbooktypedropdownlist(booktype);
         }
-
+        user.Text = "当前用户:" + Session["name"].ToString();
     }
     protected void query_Click(object sender, EventArgs e)
     {

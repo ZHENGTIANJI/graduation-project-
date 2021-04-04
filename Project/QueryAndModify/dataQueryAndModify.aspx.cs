@@ -29,7 +29,7 @@ public partial class QueryAndModify_dataQueryAndModify : dropdownlist
             setmajordropdownlist(majortype);
             setdatatypedropdownlist(datatype);
         }
-        
+        user.Text = "当前用户:" + Session["name"].ToString();
     }
     protected void GridView1_RowDeleting(object sender, GridViewDeleteEventArgs e)
     {

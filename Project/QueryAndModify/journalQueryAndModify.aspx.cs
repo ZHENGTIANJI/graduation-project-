@@ -30,7 +30,7 @@ public partial class QueryAndModify_journalQueryAndModify : dropdownlist
             setjournaltypedropdownlist(jt);
             setmajordropdownlist(mt);
         }
-        
+        user.Text = "当前用户:" + Session["name"].ToString();
     }
     void ExecuteQuery()
     {

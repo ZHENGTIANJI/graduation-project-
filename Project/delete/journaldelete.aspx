@@ -15,11 +15,13 @@
   background-color: #333;
             height: 55px;
         }
-
+.table-a table{border-bottom:1px solid black;border-top:1px solid black;}
 li {
   float: left;
 }
-
+ri{
+    float:right;
+}
 li a, .dropbtn {
   display: inline-block;
   color: white;
@@ -76,6 +78,7 @@ li.dropdown {
 </head>
 <body>
     <ul>
+        <ri><asp:Label ID="user" runat="server" ForeColor="White" Font-Size="Medium"></asp:Label></ri>
   <li><a href="/main_manager.aspx">首页</a></li>
   <li class="dropdown">
       <a href="javascript:void(0)" class="dropbtn">入库管理</a>
@@ -115,7 +118,8 @@ li.dropdown {
   </li>
 </ul>
     <form id="form1" runat="server">
-        <table style="width:100%;">
+        <div class="table-a">
+            <table style="width:100%;">
             <tr>
                 <td class="auto-style2">
                     &nbsp;</td>
@@ -146,7 +150,11 @@ li.dropdown {
                 <td class="auto-style3"></td>
             </tr>
         </table>
-        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" style="margin-top: 0px" OnRowDeleting="GridView1_RowDeleting" AllowPaging="True" PageSize="10" onpageindexchanging="GridViewHistory_PageIndexChanging">
+        </div>
+        
+        <div style="margin:0px auto;height:20px;text-align:center;"></div>
+        <div style="margin:0px auto;height:300px;text-align:center;">
+        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" style="margin-top: 0px" OnRowDeleting="GridView1_RowDeleting" AllowPaging="True" PageSize="10" onpageindexchanging="GridViewHistory_PageIndexChanging" Width="100%">
             <Columns>
                 <asp:BoundField DataField="name" HeaderText="期刊名称" SortExpression="name" />
                 <asp:BoundField DataField="jtname" HeaderText="期刊类型" SortExpression="jtname" />
@@ -189,6 +197,9 @@ li.dropdown {
                 ID="lbl_totalpage" runat="server" Text="<%#GridView1.PageCount %>" ForeColor="#db530f"></asp:Label>页
 </PagerTemplate>
         </asp:GridView>
+            </div>
+        <div style="margin:0px auto;height:20px;text-align:center;"></div>
+        <div class="table-a">
         <table style="width:100%;">
             <tr>
                 <td>
@@ -197,9 +208,10 @@ li.dropdown {
                     </h2>
                 </td>
             </tr>
-            <tr>
-                <td>
-        <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" style="margin-top: 0px"  AllowPaging="True" PageSize="10" onpageindexchanging="GridViewHistory_PageIndexChanging2">
+           </table>
+            </div>
+        <div style="margin:0px auto;text-align:center;">
+        <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" style="margin-top: 0px"  AllowPaging="True" PageSize="10" onpageindexchanging="GridViewHistory_PageIndexChanging2" Width="100%">
             <Columns>
                 <asp:BoundField DataField="name" HeaderText="期刊名称" SortExpression="name" />
                 <asp:BoundField DataField="jtname" HeaderText="期刊类型" SortExpression="jtname" />
@@ -237,12 +249,7 @@ li.dropdown {
                 ID="lbl_totalpage2" runat="server" Text="<%#GridView2.PageCount %>" ForeColor="#db530f"></asp:Label>页
 </PagerTemplate>
         </asp:GridView>
-                </td>
-            </tr>
-            <tr>
-                <td>&nbsp;</td>
-            </tr>
-        </table>
+</div>
         </form>
 </body>
 </html>

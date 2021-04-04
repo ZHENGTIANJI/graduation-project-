@@ -15,7 +15,7 @@ public partial class stockmanagement_journalstock : System.Web.UI.Page
         {
             Response.Redirect("../login1.aspx");
         }
-
+        user.Text = "当前用户:" + Session["name"].ToString();
     }
     protected void btok_Click(object sender, EventArgs e)
     {

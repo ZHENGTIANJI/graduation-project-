@@ -15,6 +15,7 @@ public partial class delete_journaldelete : System.Web.UI.Page
         {
             Response.Redirect("../login1.aspx");
         }
+        user.Text = "当前用户:" + Session["name"].ToString();
         SqlConnection cnn = new SqlConnection("Data Source=(local);Initial Catalog=档案室信息管理系统1.0;Integrated Security=True");
         if (!IsPostBack)
         {

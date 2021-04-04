@@ -19,7 +19,9 @@
 li {
   float: left;
 }
-
+ri{
+    float:right;
+}
 li a, .dropbtn {
   display: inline-block;
   color: white;
@@ -65,9 +67,6 @@ li.dropdown {
         .auto-style4 {
             width: 100px;
         }
-        .auto-style5 {
-            width: 74px;
-        }
         .auto-style46 {
             width: 80px;
         }
@@ -75,10 +74,15 @@ li.dropdown {
             width: 80px;
             text-align: right;
         }
+        .table-a table{border-bottom:1px solid black;border-top:1px solid black;}
+        .auto-style62 {
+            width: 110px;
+        }
     </style>
 </head>
 <body>
     <ul>
+    <ri><asp:Label ID="user" runat="server" ForeColor="White" Font-Size="Medium"></asp:Label></ri>
   <li><a href="../main_manager.aspx">首页</a></li>
   <li class="dropdown">
       <a href="javascript:void(0)" class="dropbtn">入库管理</a>
@@ -92,10 +96,10 @@ li.dropdown {
   <li class="dropdown">
     <a href="javascript:void(0)" class="dropbtn">资料查改</a>
     <div class="dropdown-content">
-      <a href="bookQueryAndModify.aspx">图书查改</a>
-      <a href="journalQueryAndModify.aspx">期刊查改</a>
-      <a href="dataQueryAndModify.aspx">资料查改</a>
-      <a href="paperQueryAndModify.aspx">论文查改</a>
+      <a href="../QueryAndModify/bookQueryAndModify.aspx">图书查改</a>
+      <a href="../QueryAndModify/journalQueryAndModify.aspx">期刊查改</a>
+      <a href="../QueryAndModify/dataQueryAndModify.aspx">资料查改</a>
+      <a href="../QueryAndModify/paperQueryAndModify.aspx">论文查改</a>
     </div>
   </li>
   <li class="dropdown">
@@ -118,14 +122,15 @@ li.dropdown {
   </li>
 </ul>
     <form id="form1" runat="server">
-        <table style="width:100%;">
+        <div class="table-a">
+                    <table style="width:100%;">
             <tr>
                 <td class="auto-style46">&nbsp;</td>
                 <td class="auto-style2">&nbsp;</td>
                 <td class="auto-style61">&nbsp;</td>
                 <td class="auto-style4">&nbsp;</td>
                 <td class="auto-style61">&nbsp;</td>
-                <td class="auto-style5">&nbsp;</td>
+                <td class="auto-style62">&nbsp;</td>
                 <td>&nbsp;</td>
             </tr>
             <tr>
@@ -146,12 +151,12 @@ li.dropdown {
                 <td class="auto-style61">
                     <asp:Label ID="Label3" runat="server" Text="专业类型"></asp:Label>
                 </td>
-                <td class="auto-style5">
+                <td class="auto-style62">
                     <asp:DropDownList ID="majortype" runat="server" DataSourceID="SqlDataSource4" DataTextField="mname" DataValueField="mname">
                     </asp:DropDownList>
                 </td>
                 <td>
-                    <asp:Button ID="query" runat="server" OnClick="query_Click" Text="查询" />
+                    <asp:Button ID="query" runat="server" OnClick="query_Click" Text="查询" Width="70px" />
                 </td>
             </tr>
             <tr>
@@ -160,14 +165,18 @@ li.dropdown {
                 <td class="auto-style61">&nbsp;</td>
                 <td class="auto-style4">&nbsp;</td>
                 <td class="auto-style61">&nbsp;</td>
-                <td class="auto-style5">&nbsp;</td>
+                <td class="auto-style62">&nbsp;</td>
                 <td>&nbsp;</td>
             </tr>
         </table>
+        </div>
+
 
         <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:档案室信息管理系统ConnectionString %>" SelectCommand="SELECT * FROM [paper_type]"></asp:SqlDataSource>
-
-        <asp:GridView ID="GridView1" runat="server" ShowCellToolTip=" True"  AutoGenerateColumns="False" style="margin-top: 0px" OnRowDeleting="GridView1_RowDeleting" AllowPaging="True" onpageindexchanging="GridViewHistory_PageIndexChanging">
+        <div style=" margin:0px auto; height:50px; ">
+        </div>
+        <div style="margin:0px auto;height:300px;text-align:center;">
+        <asp:GridView ID="GridView1" runat="server" ShowCellToolTip=" True"  AutoGenerateColumns="False" style="margin-top: 0px" OnRowDeleting="GridView1_RowDeleting" AllowPaging="True" onpageindexchanging="GridViewHistory_PageIndexChanging" Width="100%">
             <Columns>
                 <asp:TemplateField HeaderText="二维码编码" SortExpression="QR_code">
                     <EditItemTemplate>
@@ -232,6 +241,7 @@ li.dropdown {
                 ID="lbl_totalpage" runat="server" Text="<%#GridView1.PageCount %>" ForeColor="#db530f"></asp:Label>页
 </PagerTemplate>
         </asp:GridView>
+            </div>
         <asp:SqlDataSource ID="SqlDataSource4" runat="server" ConnectionString="<%$ ConnectionStrings:档案室信息管理系统ConnectionString %>" SelectCommand="SELECT * FROM [major]"></asp:SqlDataSource>
         <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:档案室信息管理系统ConnectionString %>" SelectCommand="SELECT * FROM [language]"></asp:SqlDataSource>
     </form>

@@ -31,7 +31,7 @@ public partial class QueryAndModify_paperQueryAndModify : dropdownlist
             setpapertypedropdownlist(papertype);
             setmajordropdownlist(majortype);
         }
-        
+        user.Text = "当前用户:" + Session["name"].ToString();
     }
     void ExecuteQuery()
     {
@@ -120,9 +120,9 @@ public partial class QueryAndModify_paperQueryAndModify : dropdownlist
     protected void GridView1_RowDeleting(object sender, GridViewDeleteEventArgs e)
     {
         int num = e.RowIndex;
-        if (GridView1.Rows[0].Cells[0].Text.ToString() != GridView1.Rows[0].Cells[2].Text.ToString() && GridView1.Rows[0].Cells[2].Text.ToString() != GridView1.Rows[0].Cells[1].Text.ToString())
+        if (GridView1.Rows[num].Cells[0].Text.ToString() != GridView1.Rows[num].Cells[1].Text.ToString())
         {
-            txtname.Text = GridView1.Rows[num].Cells[0].Text.ToString();
+            txtname.Text = GridView1.Rows[num].Cells[0].Text;
             pt.SelectedIndex = -1;
             pt.Items.FindByText(GridView1.Rows[num].Cells[1].Text.ToString()).Selected = true;
             txtauthor.Text = GridView1.Rows[num].Cells[2].Text.ToString();
@@ -158,6 +158,11 @@ public partial class QueryAndModify_paperQueryAndModify : dropdownlist
             txtnote.Text = GridView1.Rows[num].Cells[20].Text.ToString();
             Session["paperid"] = GridView1.Rows[num].Cells[21].Text.ToString();
         }
+        else
+        {
+
+        }
+            
         
     }
     protected void GridViewHistory_PageIndexChanging(object sender, GridViewPageEventArgs e)

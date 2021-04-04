@@ -8,7 +8,8 @@
     <title></title>
     <style type="text/css">
         .auto-style1 {
-            width: 100px;
+            width: 120px;
+            text-align: right;
         }
         ul {
   list-style-type: none;
@@ -18,11 +19,13 @@
   background-color: #333;
             height: 55px;
         }
-
+ri{
+    float:right;
+}
 li {
   float: left;
 }
-
+.table-a table{border-bottom:1px solid black;border-top:1px solid black;}
 li a, .dropbtn {
   display: inline-block;
   color: white;
@@ -61,29 +64,11 @@ li.dropdown {
 .dropdown:hover .dropdown-content {
   display: block;
 }
-        .auto-style2 {
-            height: 150px;
-        }
-        .auto-style3 {
-            width: 318px;
-            text-align: center;
-        }
-        .auto-style4 {
-            height: 150px;
-            width: 318px;
-            text-align: center;
-        }
-        .auto-style5 {
-            width: 302px;
-        }
-        .auto-style6 {
-            height: 150px;
-            width: 302px;
-        }
-    </style>
+        </style>
 </head>
 <body>
     <ul>
+        <ri><asp:Label ID="user" runat="server" ForeColor="White" Font-Size="Medium"></asp:Label></ri>
   <li><a href="../main_manager.aspx">首页</a></li>
   <li class="dropdown">
       <a href="javascript:void(0)" class="dropbtn">入库管理</a>
@@ -123,19 +108,22 @@ li.dropdown {
   </li>
 </ul>
     <form id="form1" runat="server">
-        <table style="width:100%;">
+        <div class="table-a">
+            <table style="width:100%;">
             <tr>
                 <td class="auto-style1">
-                    <asp:Label ID="Label1" runat="server" Text="论文总数目"></asp:Label>
-                </td>
+                    &nbsp;</td>
                 <td>
-                    <asp:TextBox ID="papernumber" runat="server"></asp:TextBox>
-                </td>
+                    &nbsp;</td>
                 <td>&nbsp;</td>
             </tr>
             <tr>
-                <td class="auto-style1">&nbsp;</td>
-                <td>&nbsp;</td>
+                <td class="auto-style1">
+                    <asp:Label ID="Label3" runat="server" Text="论文总册数："></asp:Label>
+                </td>
+                <td style="text-align: left">
+                    <asp:Label ID="Label2" runat="server"></asp:Label>
+                </td>
                 <td>&nbsp;</td>
             </tr>
             <tr>
@@ -144,19 +132,12 @@ li.dropdown {
                 <td>&nbsp;</td>
             </tr>
         </table>
-        <br />
-        <table style="width:100%;">
-            <tr>
-                <td class="auto-style3">
-        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" style="margin-right: 1px">
-            <Columns>
-                <asp:BoundField DataField="ptname" HeaderText="论文类型名称" />
-                <asp:BoundField DataField="number" HeaderText="数目" />
-            </Columns>
-        </asp:GridView>
-                </td>
-                <td class="auto-style5">
-                    <asp:Chart ID="Chart1" runat="server">
+        </div>
+
+        <div style=" margin:0px auto; height:20px;"></div>
+        <div style="float:left;height:600px;width:25%;">
+        <div style="margin:0px auto; height:300px;">
+                        <asp:Chart ID="Chart1" runat="server">
                         <Series>
                             <asp:Series ChartType="Pie" Name="Series1">
                             </asp:Series>
@@ -166,38 +147,71 @@ li.dropdown {
                             </asp:ChartArea>
                         </ChartAreas>
                     </asp:Chart>
-                </td>
-                <td>&nbsp;</td>
-            </tr>
-            <tr>
-                <td class="auto-style4">
+        </div>
+        <div style="margin:0px auto; height:300px;">
+        <div style="float:left;width:25%; height: 300px;"></div>
+            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" style="margin-right: 1px">
+            <Columns>
+                <asp:BoundField DataField="ptname" HeaderText="论文类型名称" />
+                <asp:BoundField DataField="number" HeaderText="数目" />
+            </Columns>
+        </asp:GridView>
+                    
+        </div>
+        </div>
+        <div style="float:left;height:600px;width:25%;">
+            <div style="margin:0px auto; height:300px;">
+             <asp:Chart ID="Chart2" runat="server">
+                        <Series>
+                            <asp:Series ChartType="Pie" Name="Series1">
+                            </asp:Series>
+                        </Series>
+                        <ChartAreas>
+                            <asp:ChartArea Name="ChartArea1">
+                            </asp:ChartArea>
+                        </ChartAreas>
+                    </asp:Chart>
+                </div>
+            <div style="margin:0px auto;  height:300px;">
+                <div style="float:left;width:25%; height: 300px;"></div>
         <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False">
             <Columns>
                 <asp:BoundField DataField="mname" HeaderText="专业名称" />
                 <asp:BoundField DataField="number" HeaderText="数目" />
             </Columns>
         </asp:GridView>
-                </td>
-                <td class="auto-style6">
-                    <asp:Chart ID="Chart2" runat="server">
-                        <Series>
-                            <asp:Series ChartType="Pie" Name="Series1">
-                            </asp:Series>
-                        </Series>
-                        <ChartAreas>
-                            <asp:ChartArea Name="ChartArea1">
-                            </asp:ChartArea>
-                        </ChartAreas>
-                    </asp:Chart>
-                </td>
-                <td class="auto-style2"></td>
-            </tr>
-            <tr>
-                <td class="auto-style3">&nbsp;</td>
-                <td class="auto-style5">&nbsp;</td>
-                <td>&nbsp;</td>
-            </tr>
-        </table>
+            </div>
+                    </div>
+        <div style="float:left;width:10%;height:600px;">
+            <div style="border:1px solid;float:left;height:600px;"></div>
+            <div style="float:left;width:10%; height: 300px;"></div>
+            按年份统计
+                 <asp:GridView ID="GridView3" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#999999" BorderStyle="Solid" BorderWidth="1px" CellPadding="3" ForeColor="Black" GridLines="Vertical">
+                     <AlternatingRowStyle BackColor="#CCCCCC" />
+                <Columns>
+                    <asp:BoundField DataField="year" HeaderText="年份" />
+                    <asp:BoundField DataField="s_number" HeaderText="入库数目" />
+                </Columns>
+                     <FooterStyle BackColor="#CCCCCC" />
+                     <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" />
+                     <PagerStyle BackColor="#999999" ForeColor="Black" HorizontalAlign="Center" />
+                     <SelectedRowStyle BackColor="#000099" Font-Bold="True" ForeColor="White" />
+                     <SortedAscendingCellStyle BackColor="#F1F1F1" />
+                     <SortedAscendingHeaderStyle BackColor="#808080" />
+                     <SortedDescendingCellStyle BackColor="#CAC9C9" />
+                     <SortedDescendingHeaderStyle BackColor="#383838" />
+            </asp:GridView>
+        </div>
+        <div style="float:left;width:40%;height:500px;">
+            <asp:Chart ID="Chart3" runat="server" Width="500px">
+                <Series>
+                    <asp:Series Name="Series1" ChartType="Line"></asp:Series>
+                </Series>
+                <ChartAreas>
+                    <asp:ChartArea Name="ChartArea1"></asp:ChartArea>
+                </ChartAreas>
+            </asp:Chart>
+        </div>
     </form>
 </body>
 </html>

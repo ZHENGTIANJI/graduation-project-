@@ -15,7 +15,12 @@
   background-color: #333;
             height: 55px;
         }
-
+ .banner {
+	overflow: hidden;
+	height: 320px;
+	background: url(/imgs/图书馆.jfif) no-repeat;
+	background-size: 100% 320px;
+}
 li {
   float: left;
 }
@@ -52,15 +57,42 @@ li.dropdown {
   display: block;
   text-align: left;
 }
-
+ri{
+    float:right;
+}
 .dropdown-content a:hover {background-color: #f1f1f1;}
 
 .dropdown:hover .dropdown-content {
   display: block;
 }
-</style>
+        .auto-style1 {
+            font-size: xx-large;
+        }
+    </style>
 </head>
 <body>
+    
+    <form id="form1" runat="server">
+    
+    <div style=" margin:0px auto;width:100%; height:20px;background-color:aliceblue">
+        <div style=" float:right; width:10%; height:20px;">      
+             <asp:Label ID="user" runat="server" Font-Size="Medium"></asp:Label></div>
+    </div>
+    <div style=" margin:0px auto; height:100px;background-color:white">
+        <div style=" float:left; width:10%;height:100px;"></div>
+        <div style=" float:left; width:20%;height:100px;">
+            <img width="125" height="98" src="imgs/CUMT.jpg" />
+            <img width="100" height="100" src="imgs/\矿院.png" />
+        </div>
+        <div style=" float:right; width:70%;height:70px;">
+            <h1 class="auto-style1">矿业学院档案管理系统</h1>
+        </div> 
+    </div>
+        <div style=" margin:0px auto; height:20px;"></div>
+    <div style=" margin:0px auto; width:100%;">
+    <div style=" float:left; width:15%; height:700px;background-color:ButtonFace"></div>
+        <div style=" float:left; width:70%; height:300px;">
+                <div style=" margin:0px auto; height:55px;">
    <ul>
   <li><a href="/main_manager.aspx">首页</a></li>
   <li class="dropdown">
@@ -100,10 +132,61 @@ li.dropdown {
     </div>
   </li>
 </ul>
+</div>
+            <div class="banner">
 
-<h1>矿业学院档案室信息管理系统</h1>
+</div>
+        <div style=" margin:0px auto;width:100%; height:20px;"></div>
+        <div style=" margin:0px auto;width:100%; height:130px;">
+            <div style=" margin:0px auto;width:100%; height:30px;background-color:whitesmoke">
+                常用功能
+            </div>
+            
+            <div style=" float:left; width:25%; height:100px;">
+                <div style=" float:left; width:35%; height:100px;"></div>
+                <asp:ImageButton ID="ImageButton1" runat="server" ImageUrl="~/imgs/入库.png" OnClick="ImageButton1_Click1"/>
+
+            </div>
+            <div style=" float:left; width:25%; height:100px; ">
+                <div style=" float:left; width:35%; height:100px;"></div>
+                <asp:ImageButton ID="ImageButton2" runat="server" ImageUrl="~/imgs/搜索.png" OnClick="ImageButton2_Click1"/>
+            </div>
+            <div style=" float:left; width:25%; height:100px; ">
+                <div style=" float:left; width:35%; height:100px;"></div>
+                <asp:ImageButton ID="ImageButton3" runat="server" ImageUrl="~/imgs/删除.png" OnClick="ImageButton3_Click1"/>
+            </div>
+            <div style=" float:left; width:25%; height:100px; ">
+                <div style=" float:left; width:35%; height:100px;"></div>
+                <asp:ImageButton ID="ImageButton4" runat="server" ImageUrl="~/imgs/统计.png" OnClick="ImageButton4_Click"/>
+            </div>
+        </div>
+        <div style=" float:left; width:25%; height:20px;">
+                <div style=" float:left; width:40%; height:20px;"></div>
+            论文入库
+            </div>
+            <div style=" float:left; width:25%; height:20px; ">
+                <div style=" float:left; width:40%; height:20px;"></div>
+                论文查改
+            </div>
+            <div style=" float:left; width:25%; height:20px; ">
+                <div style=" float:left; width:40%; height:20px;"></div>
+                资料剔旧
+            </div>
+            <div style=" float:left; width:25%; height:20px; ">
+                <div style=" float:left; width:40%; height:20px;"></div>
+                图书统计
+            </div>
+        </div>
+
+        <div style=" float:right; width:15%;height:700px;background-color:ButtonFace"></div>
+    </div>
+
+        
+
 
 <p></p>
+
+    </form>
 
 </body>
 </html>

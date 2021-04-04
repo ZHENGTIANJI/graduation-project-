@@ -15,11 +15,14 @@
   background-color: #333;
             height: 55px;
         }
-
+        .table-a table{border-bottom:1px solid black;border-top:1px solid black;}
+        .table-b table{border-top:1px solid black;}
 li {
   float: left;
 }
-
+ri{
+    float:right;
+}
 li a, .dropbtn {
   display: inline-block;
   color: white;
@@ -178,6 +181,7 @@ li.dropdown {
 </head>
 <body>
     <ul>
+        <ri><asp:Label ID="user" runat="server" ForeColor="White" Font-Size="Medium"></asp:Label></ri>
   <li><a href="../main_manager.aspx">首页</a></li>
   <li class="dropdown">
       <a href="javascript:void(0)" class="dropbtn">入库管理</a>
@@ -217,6 +221,7 @@ li.dropdown {
   </li>
 </ul>
     <form id="form1" runat="server">
+        <div class="table-a">
         <table style="width:100%;">
             <tr>
                 <td class="auto-style2">&nbsp;</td>
@@ -264,8 +269,10 @@ li.dropdown {
                 <td>&nbsp;</td>
             </tr>
         </table>
-        <hr style="margin-bottom: 22px" />
-        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" style="margin-top: 0px" OnRowDeleting="GridView1_RowDeleting" AllowPaging="true" PageSize="10" onpageindexchanging="GridViewHistory_PageIndexChanging">
+            </div>
+         <div style=" margin:0px auto; height:20px;"></div>
+        <div style="margin:0px auto;height:280px;text-align:center;">
+        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" style="margin-top: 0px" OnRowDeleting="GridView1_RowDeleting" AllowPaging="true" PageSize="10" onpageindexchanging="GridViewHistory_PageIndexChanging" Width="100%">
             <Columns>
                 <asp:BoundField DataField="name" HeaderText="资料名称" SortExpression="name" />
                 <asp:BoundField DataField="dtname" HeaderText="资料类型名称" />
@@ -304,10 +311,13 @@ li.dropdown {
                 ID="lbl_totalpage" runat="server" Text="<%#GridView1.PageCount %>" ForeColor="#db530f"></asp:Label>页
 </PagerTemplate>
         </asp:GridView>
+            </div>
+         <div style=" margin:0px auto; height:20px;"></div>
         <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:档案室信息管理系统ConnectionString %>" SelectCommand="SELECT * FROM [data_type]"></asp:SqlDataSource>
         <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:档案室信息管理系统ConnectionString %>" SelectCommand="SELECT * FROM [major]"></asp:SqlDataSource>
         <asp:SqlDataSource ID="SqlDataSource4" runat="server" ConnectionString="<%$ ConnectionStrings:档案室信息管理系统ConnectionString %>" SelectCommand="SELECT * FROM [language]"></asp:SqlDataSource>
-        <table style="width:111%; margin-left: 0px;">
+        <div class="table-b">
+            <table style="width:111%; margin-left: 0px;">
             <tr>
                 <td class="auto-style17">
                     <asp:Label ID="Label6" runat="server" Text="资料类型"></asp:Label>
@@ -470,6 +480,8 @@ li.dropdown {
                     &nbsp;</td>
             </tr>
         </table>
+        </div>
+        
     </form>
 </body>
 </html>

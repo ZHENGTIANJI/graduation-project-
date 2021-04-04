@@ -15,11 +15,14 @@
   background-color: #333;
             height: 55px;
         }
-
+.table-a table{border-bottom:1px solid black;border-top:1px solid black;}
+.table-b table{border-top:1px solid black;}
 li {
   float: left;
 }
-
+ri{
+    float:right;
+}
 li a, .dropbtn {
   display: inline-block;
   color: white;
@@ -158,6 +161,7 @@ li.dropdown {
 </head>
 <body>
     <ul>
+        <ri><asp:Label ID="user" runat="server" ForeColor="White" Font-Size="Medium"></asp:Label></ri>
   <li><a href="../main_manager.aspx">首页</a></li>
   <li class="dropdown">
       <a href="javascript:void(0)" class="dropbtn">入库管理</a>
@@ -197,6 +201,7 @@ li.dropdown {
   </li>
 </ul>
     <form id="form1" runat="server">
+        <div class="table-a">
         <table style="width:100%;">
             <tr>
                 <td class="auto-style46">&nbsp;</td>
@@ -244,8 +249,10 @@ li.dropdown {
                 <td>&nbsp;</td>
             </tr>
         </table>
-        <div style="overflow-y: scroll; width: 2000px">
-        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" style="margin-top: 0px" OnRowDeleting="GridView1_RowDeleting" AllowPaging="true" PageSize="10" onpageindexchanging="GridViewHistory_PageIndexChanging">
+            </div>
+        <div style=" margin:0px auto; height:20px;"></div>
+        <div style="margin:0px auto;height:280px;text-align:center;">
+        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" style="margin-top: 0px" OnRowDeleting="GridView1_RowDeleting" AllowPaging="true" PageSize="10" onpageindexchanging="GridViewHistory_PageIndexChanging" Width="100%">
             <Columns>
                 <asp:BoundField DataField="name" HeaderText="论文名称" SortExpression="name" />
                 <asp:BoundField DataField="ptname" HeaderText="论文类型" SortExpression="ptname" />
@@ -293,26 +300,9 @@ li.dropdown {
         <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:档案室信息管理系统ConnectionString %>" SelectCommand="SELECT * FROM [paper_type]"></asp:SqlDataSource>
         <asp:SqlDataSource ID="SqlDataSource4" runat="server" ConnectionString="<%$ ConnectionStrings:档案室信息管理系统ConnectionString %>" SelectCommand="SELECT * FROM [major]"></asp:SqlDataSource>
         <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:档案室信息管理系统ConnectionString %>" SelectCommand="SELECT * FROM [language]"></asp:SqlDataSource>
-        <table style="width:100%;">
-            <tr>
-                <td class="auto-style53"></td>
-                <td class="auto-style54">
-                </td>
-                <td class="auto-style55">
-                </td>
-                <td class="auto-style56">
-                </td>
-                <td class="auto-style57">
-                </td>
-                <td class="auto-style60">
-                </td>
-                <td class="auto-style58">
-                </td>
-                <td class="auto-style59">
-                </td>
-                <td class="auto-style53">
-                </td>
-            </tr>
+        <div class="table-b">
+            <table style="width:100%;">
+          
             <tr>
                 <td>&nbsp;</td>
                 <td class="auto-style39">
@@ -465,8 +455,7 @@ li.dropdown {
                 </td>
                 <td class="auto-style51">&nbsp;</td>
                 <td class="auto-style6">
-                    <asp:Button ID="btok" runat="server" OnClick="btok_Click" style="height: 21px" Text="保存" />
-                </td>
+                    &nbsp;</td>
             </tr>
             <tr>
                 <td class="auto-style6"></td>
@@ -495,9 +484,12 @@ li.dropdown {
                     </asp:DropDownList>
                 </td>
                 <td class="auto-style51">&nbsp;</td>
-                <td class="auto-style6">&nbsp;</td>
+                <td class="auto-style6">
+                    <asp:Button ID="btok" runat="server" OnClick="btok_Click" Text="保存" Width="80px" />
+                </td>
             </tr>
         </table>
+        </div>
     </form>
 </body>
 </html>
