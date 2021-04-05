@@ -159,7 +159,7 @@ li.dropdown {
                     <asp:Label ID="Label4" runat="server" Text="日"></asp:Label>
                 </td>
                 <td class="auto-style3">
-                    <asp:Button ID="btok" runat="server" OnClick="btok_Click" Text="查询" />
+                    <asp:Button ID="btok" runat="server" OnClick="btok_Click" Text="查询" Width="60px" />
                 </td>
             </tr>
             <tr>

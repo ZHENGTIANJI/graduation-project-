@@ -24,12 +24,19 @@ public partial class login1 : System.Web.UI.Page
             }
             else
             {
-                Response.Redirect("stockmanagement/paperupload.aspx");
+                Response.Redirect("paperupload.aspx");
             }
         }
         else
         {
-            ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "", "alert('用户名或密码错误！');", true);
+            if (uid == "" || psw == "")
+            {
+                ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "", "alert('用户名或密码不能为空！');", true);
+            }
+            else
+            {
+                ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "", "alert('用户名或密码错误！');", true);
+            }
         }
     }
     bool havethisuser(string uid, string psw)

@@ -66,18 +66,18 @@ li.dropdown {
             height: 24px;
         }
         .auto-style75 {
-            width: 614px;
+            width: 691px;
         }
         .auto-style76 {
             height: 24px;
-            width: 614px;
+            width: 691px;
         }
         .auto-style77 {
-            width: 186px;
+            width: 99px;
         }
         .auto-style78 {
             height: 24px;
-            width: 186px;
+            width: 99px;
         }
         .auto-style87 {
             text-align: left;
@@ -182,7 +182,7 @@ li.dropdown {
             <tr>
                 <td style="text-align: center">
                     <h1>
-                        <asp:Label ID="Label18" runat="server" Text="学院资料室期刊入库管理"></asp:Label>
+                        <asp:Label ID="Label18" runat="server" Text="期刊入库管理"></asp:Label>
                     </h1>
                 </td>
             </tr>

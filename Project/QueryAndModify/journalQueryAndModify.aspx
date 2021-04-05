@@ -172,7 +172,7 @@ li.dropdown {
 </ul>
     <form id="form1" runat="server">
         <div>
-    
+        <div class="table-a">
         <table style="width:100%;">
             <tr>
                 <td class="auto-style22">&nbsp;</td>
@@ -220,7 +220,7 @@ li.dropdown {
                 <td>&nbsp;</td>
             </tr>
         </table>
-    
+    </div>
     </div>
         <div style=" margin:0px auto; height:20px;"></div>
         <div style="margin:0px auto;height:280px;text-align:center;">

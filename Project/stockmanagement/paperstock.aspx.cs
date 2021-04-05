@@ -69,10 +69,15 @@ public partial class QueryAndModify_paperQueryAndModify : System.Web.UI.Page
             String QR = tbqr.Text.ToString();
             String cn = tbcn.Text.ToString();
             String location = tblocation.Text.ToString();
-            cmd.CommandText = "update paper set QR_code='" + QR + "',class_number='" + cn + "',shenhe='" + "已审核" + "',location='" + location  + "' where id='" + id + "'";
-            cnn.Open();
-            cmd.ExecuteNonQuery();
-            cnn.Close();
+            if (QR == "")
+            {
+                ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "", "alert('二维码不得为空！');", true);
+            }else{
+                cmd.CommandText = "update paper set QR_code='" + QR + "',class_number='" + cn + "',shenhe='" + "已审核" + "',location='" + location + "' where id='" + id + "'";
+                cnn.Open();
+                cmd.ExecuteNonQuery();
+                cnn.Close();
+            }
         }
         catch (Exception)
         {

@@ -88,25 +88,27 @@ li.dropdown {
             height: 27px;
         }
         .auto-style81 {
-            width: 146px;
+            width: 100px;
         }
         .auto-style82 {
-            width: 615px;
+            width: 671px;
         }
         .auto-style83 {
             width: 160px;
         }
         .auto-style84 {
-            width: 615px;
+            width: 671px;
             height: 31px;
         }
         .auto-style85 {
-            width: 146px;
+            width: 100px;
             height: 31px;
+            text-align: left;
         }
         .auto-style86 {
             width: 160px;
             height: 31px;
+            text-align: left;
         }
         .auto-style87 {
             height: 31px;
@@ -196,7 +198,7 @@ li.dropdown {
 </ul>
     <form id="form1" runat="server">
                     <h1>
-                    <asp:Label ID="矿业学院资料室图书入库管理" runat="server" style="text-align: center; font-size: xx-large" Text="矿业学院资料室图书入库管理"></asp:Label>
+                    <asp:Label ID="矿业学院资料室图书入库管理" runat="server" style="text-align: center; font-size: xx-large" Text="图书入库管理"></asp:Label>
                     </h1>
         <div class="table-a">
             <table style="width: 100%; height: 190px;">

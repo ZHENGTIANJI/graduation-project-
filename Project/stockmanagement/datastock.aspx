@@ -85,10 +85,7 @@ li.dropdown {
         .auto-style12 {
             width: 101px;
         }
-        .auto-style14 {
-            width: 158px;
-        }
-    </style>
+        </style>
 </head>
 <body>
      <ul>
@@ -133,7 +130,7 @@ li.dropdown {
 </ul>
     <form id="form1" runat="server">
         <h1 style="text-align: center">  
-          <asp:Label ID="Label14" runat="server" Text="矿业学院资料室资料入库管理"></asp:Label>
+          <asp:Label ID="Label14" runat="server" Text="资料入库管理"></asp:Label>
         </h1>
         <div class="table-a">
              <table style="width:100%;">
@@ -245,7 +242,7 @@ li.dropdown {
                 <td class="auto-style4">&nbsp;</td>
                 <td class="auto-style5">&nbsp;</td>
                 <td class="auto-style12">&nbsp;</td>
-                <td class="auto-style14" style="text-align: center">
+                <td class="auto-style12" style="text-align: center">
                     &nbsp;</td>
                 <td>
                     &nbsp;</td>
@@ -254,7 +251,7 @@ li.dropdown {
                 <td class="auto-style4">&nbsp;</td>
                 <td class="auto-style5">&nbsp;</td>
                 <td class="auto-style12">&nbsp;</td>
-                <td class="auto-style14" style="text-align: center">
+                <td class="auto-style12" style="text-align: left">
                     <asp:Button ID="btclear" runat="server" OnClick="btclear_Click" Text="清空" Width="80px" />
                 </td>
                 <td>

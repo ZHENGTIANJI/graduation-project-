@@ -74,8 +74,9 @@ ri{
     
     <form id="form1" runat="server">
     
-    <div style=" margin:0px auto;width:100%; height:20px;background-color:aliceblue">
-        <div style=" float:right; width:10%; height:20px;">      
+    <div style=" margin:0px auto;width:100%; height:20px;background-color:ButtonFace">
+        你好，欢迎登陆本系统！
+        <div style=" float:right; width:10%; height:20px;background-color:ButtonFace">      
              <asp:Label ID="user" runat="server" Font-Size="Medium"></asp:Label></div>
     </div>
     <div style=" margin:0px auto; height:100px;background-color:white">
@@ -137,9 +138,11 @@ ri{
 
 </div>
         <div style=" margin:0px auto;width:100%; height:20px;"></div>
-        <div style=" margin:0px auto;width:100%; height:130px;">
-            <div style=" margin:0px auto;width:100%; height:30px;background-color:whitesmoke">
+        <div style=" margin:0px auto;width:100%; height:120px;">
+            <div style=" margin:0px auto;width:100%; height:20px;background-color:whitesmoke">
+                <p style="color:#bf7554">
                 常用功能
+                    </p>
             </div>
             
             <div style=" float:left; width:25%; height:100px;">
@@ -180,13 +183,7 @@ ri{
 
         <div style=" float:right; width:15%;height:700px;background-color:ButtonFace"></div>
     </div>
-
-        
-
-
-<p></p>
-
-    </form>
+ </form>
 
 </body>
 </html>
