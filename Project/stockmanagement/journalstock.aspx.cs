@@ -63,16 +63,26 @@ public partial class stockmanagement_journalstock : System.Web.UI.Page
         }
         if (txtname.Text == "" || txtQR.Text == "" )
         {
-            ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "", "alert('保存失败！');", true);
+            ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "", "alert('期刊名称或二维码编码不能为空！');", true);
         }
         else
         {
             String stockdt = DateTime.Now.ToString("yyyy-MM-dd");
             cmd.CommandText = "INSERT INTO journal(name, journal_type_id, major_id, QR_code, publish_dt, office_name, period_number, stock_dt, location, class_number, status, number, format, number_of_page,language,note,organizationid,period_type,address,gradeid) VALUES ('" + txtname.Text + "'," + jtid + "," + majorid + ",'" + txtQR.Text + "','" + pub_year.Text+"-"+pub_month.Text+"-"+pub_day.Text + "','" + txtoffname.Text + "','" + txtpn.Text + "','" + stockdt + "','" + txtlocation.Text + "','" + txtcn.Text + "','库存'," + num + ",'" + txtformat.Text + "','" + txtnumberofpage.Text + "'," + lid + ",'" + txtnote.Text + "','" + organid  + "','" + period.SelectedItem.Value + "','" + txtaddress.Text + "','" + gid + "')";
-            cnn.Open();
-            cmd.ExecuteNonQuery();
-            cnn.Close();
-            ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "", "alert('保存成功！');", true);
+            try
+            {
+                cnn.Open();
+                cmd.ExecuteNonQuery();
+                cnn.Close();
+                ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "", "alert('保存成功！');", true);
+            }
+            catch
+            {
+                ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "", "alert('请输入正确的日期格式或页数！');", true);
+            }
+            
+            
+            
         }
 
         

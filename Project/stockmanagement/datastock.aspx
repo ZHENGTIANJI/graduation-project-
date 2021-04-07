@@ -132,7 +132,7 @@ li.dropdown {
         <h1 style="text-align: center">  
           <asp:Label ID="Label14" runat="server" Text="资料入库管理"></asp:Label>
         </h1>
-        <div class="table-a">
+        <div class="table-a" style="background-color:ButtonFace">
              <table style="width:100%;">
             <tr>
                 <td class="auto-style2">

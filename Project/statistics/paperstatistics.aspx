@@ -108,7 +108,7 @@ li.dropdown {
   </li>
 </ul>
     <form id="form1" runat="server">
-        <div class="table-a">
+        <div class="table-a" style="background-color:ButtonFace">
             <table style="width:100%;">
             <tr>
                 <td class="auto-style1">
@@ -201,7 +201,7 @@ li.dropdown {
             </div>
                     </div>
         <div style="float:left;width:10%;height:600px;">
-            <div style="border:1px solid;float:left;height:600px;"></div>
+            <div style="border:1px solid;float:left;height:800px;"></div>
             <div style="float:left;width:10%; height: 300px;"></div>
             按年份统计
                  <asp:GridView ID="GridView3" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None">

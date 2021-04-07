@@ -200,7 +200,7 @@ li.dropdown {
                     <h1>
                     <asp:Label ID="矿业学院资料室图书入库管理" runat="server" style="text-align: center; font-size: xx-large" Text="图书入库管理"></asp:Label>
                     </h1>
-        <div class="table-a">
+        <div class="table-a" style="background-color:ButtonFace">
             <table style="width: 100%; height: 190px;">
                         <tr>
                             <td class="auto-style73">

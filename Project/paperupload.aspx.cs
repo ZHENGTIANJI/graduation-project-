@@ -71,20 +71,29 @@ public partial class 首页 : System.Web.UI.Page
                 String QR = "";
                 cmd.CommandText = "INSERT INTO paper(name, adviser,paper_type_id, major_id, QR_code, direction, write_dt, author, stock_dt, shenhe, dabian_dt, xuezhi, status, number, format, number_of_page,language,note,zhicheng) VALUES ('" + txtname.Text + "','" + txtadviser.Text + "'," + ptid + "," + majorid + ",'" + QR + "','" + txtdirection.Text + "','" + writedt + "','" + txtauthor.Text + "','" + stockdt + "','" + "待审核" + "','" + dbdt + "','" + xuezhi.SelectedItem.Value + "'," + "'库存'," + num + ",'" + txtformat.Text + "','" + txtnumberofpage.Text + "'," + lid + ",'" + "" + "','" + zhicheng.SelectedItem.Value + "')";
                 cnn.Open();
-                cmd.ExecuteNonQuery();
-                cnn.Close();
-                DataSet dst = new DataSet();
-                SqlDataAdapter adpt1 = new SqlDataAdapter("select id from paper where name='" + txtname.Text + "'", cnn);
-                adpt1.Fill(dst);
-                Session["paperid"] = (int)dst.Tables[0].Rows[0]["id"];
-                if (UpLoadFile())
+                try
                 {
-                    ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "", "alert('上传成功！');", true);
+                    cmd.ExecuteNonQuery();
+                    cnn.Close();
+                    DataSet dst = new DataSet();
+                    SqlDataAdapter adpt1 = new SqlDataAdapter("select id from paper where name='" + txtname.Text + "'", cnn);
+                    adpt1.Fill(dst);
+                    Session["paperid"] = (int)dst.Tables[0].Rows[0]["id"];
+                    if (UpLoadFile())
+                    {
+                        ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "", "alert('上传成功！');", true);
+                    }
+                    else
+                    {
+                        ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "", "alert('上传失败！');", true);
+                    }
                 }
-                else
+                catch
                 {
-                    ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "", "alert('上传失败！');", true);
+                    ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "", "alert('请输入正确的日期格式或页数！');", true);
+
                 }
+                
 
             }
         }
@@ -118,4 +127,4 @@ public partial class 首页 : System.Web.UI.Page
             cnn.Close();
         }
     }
-}
+} 

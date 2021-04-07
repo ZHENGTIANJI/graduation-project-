@@ -53,16 +53,24 @@ public partial class stockmanagement_datastock : System.Web.UI.Page
         }
         if (txtname.Text == "" || txtQR.Text == "" )
         {
-            ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "", "alert('保存失败！');", true);
+            ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "", "alert('资料名称和二维码编码不能为空！');", true);
         }
         else
         {
             String stockdt = DateTime.Now.ToString("yyyy-MM-dd");
             cmd.CommandText = "INSERT INTO data(name, data_type_id, major_id, QR_code, unit, compile_dt, author, stock_dt, location, class_number, status, number, format, number_of_page,language,note) VALUES ('" + txtname.Text + "'," + dtid + "," + majorid + ",'" + txtQR.Text + "','" + txtunit.Text + "','" + write_year.Text+"-"+write_month.Text+"-"+write_day.Text + "','" + txtauthor.Text + "','" + stockdt + "','" + txtlocation.Text + "','" + txtcn.Text + "','库存'," + num + ",'" + txtformat.Text + "','" + txtnumberofpage.Text + "'," + lid + ",'" + txtnote.Text + "')";
-            cnn.Open();
-            cmd.ExecuteNonQuery();
-            cnn.Close();
-            ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "", "alert('保存成功！');", true);
+            try
+            {
+                cnn.Open();
+                cmd.ExecuteNonQuery();
+                cnn.Close();
+                ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "", "alert('保存成功！');", true);
+            }
+            catch
+            {
+                ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "", "alert('请输入正确的日期格式或页数！');", true);
+            }
+            
         }
         
     }
