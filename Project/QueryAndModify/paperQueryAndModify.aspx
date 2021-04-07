@@ -71,9 +71,6 @@ li.dropdown {
         .auto-style5 {
             width: 74px;
         }
-        .auto-style6 {
-            height: 20px;
-        }
         .auto-style39 {
             width: 81px;
             text-align: right;
@@ -90,15 +87,6 @@ li.dropdown {
             height: 20px;
             width: 141px;
         }
-        .auto-style44 {
-            height: 20px;
-            width: 65px;
-            text-align: right;
-        }
-        .auto-style45 {
-            width: 65px;
-            text-align: right;
-        }
         .auto-style46 {
             width: 80px;
         }
@@ -113,50 +101,43 @@ li.dropdown {
             height: 20px;
             width: 191px;
         }
-        .auto-style51 {
-            height: 20px;
-            width: 68px;
-            text-align: right;
-        }
-        .auto-style52 {
-            width: 68px;
-            text-align: right;
-        }
-        .auto-style53 {
-            height: 24px;
-        }
-        .auto-style54 {
-            width: 81px;
-            text-align: right;
-            height: 24px;
-        }
-        .auto-style55 {
-            width: 141px;
-            height: 24px;
-        }
-        .auto-style56 {
-            width: 65px;
-            height: 24px;
-        }
-        .auto-style57 {
-            width: 80px;
-            height: 24px;
-        }
-        .auto-style58 {
-            width: 191px;
-            height: 24px;
-        }
-        .auto-style59 {
-            width: 68px;
-            height: 24px;
-        }
-        .auto-style60 {
-            width: 81px;
-            height: 24px;
-        }
         .auto-style61 {
             width: 80px;
             }
+        .auto-style62 {
+            width: 120px;
+            text-align: right;
+        }
+        .auto-style63 {
+            height: 20px;
+            width: 120px;
+            text-align: right;
+        }
+        .auto-style64 {
+            width: 94px;
+            text-align: right;
+        }
+        .auto-style65 {
+            height: 20px;
+            width: 94px;
+            text-align: right;
+        }
+        .auto-style66 {
+            width: 100px;
+            text-align: right;
+        }
+        .auto-style67 {
+            height: 20px;
+            width: 100px;
+            text-align: right;
+        }
+        .auto-style68 {
+            width: 176px;
+        }
+        .auto-style69 {
+            height: 20px;
+            width: 176px;
+        }
     </style>
 </head>
 <body>
@@ -251,8 +232,9 @@ li.dropdown {
         </table>
             </div>
         <div style=" margin:0px auto; height:20px;"></div>
-        <div style="margin:0px auto;height:280px;text-align:center;">
-        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" style="margin-top: 0px" OnRowDeleting="GridView1_RowDeleting" AllowPaging="true" PageSize="10" onpageindexchanging="GridViewHistory_PageIndexChanging" Width="100%">
+        <div style="margin:0px auto;height:320px;text-align:center;font-size:smaller;overflow-y: scroll;">
+        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" style="margin-top: 0px" OnRowDeleting="GridView1_RowDeleting" AllowPaging="True" onpageindexchanging="GridViewHistory_PageIndexChanging" Width="100%" CellPadding="4" ForeColor="#333333" GridLines="None">
+            <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
             <Columns>
                 <asp:BoundField DataField="name" HeaderText="论文名称" SortExpression="name" />
                 <asp:BoundField DataField="ptname" HeaderText="论文类型" SortExpression="ptname" />
@@ -286,6 +268,10 @@ li.dropdown {
                     </ItemTemplate>
                 </asp:TemplateField>
             </Columns>
+            <EditRowStyle BackColor="#999999" />
+            <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
+            <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
+            <PagerStyle BackColor="#5D7B9D" ForeColor="White" HorizontalAlign="Center" />
             <PagerTemplate>
                 <asp:LinkButton ID="lb_firstpage" runat="server" onclick="lb_firstpage_Click">首页</asp:LinkButton>
                 <asp:LinkButton ID="lb_previouspage" runat="server"
@@ -295,6 +281,12 @@ li.dropdown {
                 第<asp:Label ID="lbl_nowpage" runat="server" Text="<%#GridView1.PageIndex+1 %>" ForeColor="#db530f"></asp:Label>页/共<asp:Label
                 ID="lbl_totalpage" runat="server" Text="<%#GridView1.PageCount %>" ForeColor="#db530f"></asp:Label>页
 </PagerTemplate>
+            <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
+            <SelectedRowStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333" />
+            <SortedAscendingCellStyle BackColor="#E9E7E2" />
+            <SortedAscendingHeaderStyle BackColor="#506C8C" />
+            <SortedDescendingCellStyle BackColor="#FFFDF8" />
+            <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
         </asp:GridView>
             </div>
         <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:档案室信息管理系统ConnectionString %>" SelectCommand="SELECT * FROM [paper_type]"></asp:SqlDataSource>
@@ -304,49 +296,47 @@ li.dropdown {
             <table style="width:100%;">
           
             <tr>
-                <td>&nbsp;</td>
-                <td class="auto-style39">
+                <td class="auto-style62">
                     <asp:Label ID="Label37" runat="server" Text="论文名称"></asp:Label>
                 </td>
                 <td class="auto-style41">
                     <asp:TextBox ID="txtname" runat="server"></asp:TextBox>
                 </td>
-                <td class="auto-style45">
+                <td class="auto-style64">
                     <asp:Label ID="Label55" runat="server" Text="论文类型"></asp:Label>
                 </td>
                 <td class="auto-style46">
                     <asp:DropDownList ID="pt" runat="server" DataSourceID="SqlDataSource1" DataTextField="ptname" DataValueField="ptname" AutoPostBack="True">
                     </asp:DropDownList>
                 </td>
-                <td class="auto-style39">
+                <td class="auto-style66">
                     <asp:Label ID="Label46" runat="server" Text="分类号"></asp:Label>
                 </td>
                 <td class="auto-style48">
                     <asp:TextBox ID="txtcn" runat="server"></asp:TextBox>
                 </td>
-                <td class="auto-style52">
+                <td class="auto-style39">
                     <asp:Label ID="Label52" runat="server" Text="指导教师"></asp:Label>
                 </td>
-                <td>
+                <td class="auto-style68">
                     <asp:TextBox ID="txtadviser" runat="server"></asp:TextBox>
                 </td>
             </tr>
             <tr>
-                <td class="auto-style6"></td>
-                <td class="auto-style40">
+                <td class="auto-style63">
                     <asp:Label ID="Label38" runat="server" Text="二维码编码"></asp:Label>
                 </td>
                 <td class="auto-style42">
                     <asp:TextBox ID="txtQR" runat="server"></asp:TextBox>
                 </td>
-                <td class="auto-style44">
+                <td class="auto-style65">
                     <asp:Label ID="Label43" runat="server" Text="专业"></asp:Label>
                 </td>
                 <td class="auto-style47">
                     <asp:DropDownList ID="mj" runat="server" DataSourceID="SqlDataSource4" DataTextField="mname" DataValueField="mname" AutoPostBack="True">
                     </asp:DropDownList>
                 </td>
-                <td class="auto-style40">
+                <td class="auto-style67">
                     <asp:Label ID="Label47" runat="server" Text="编著日期"></asp:Label>
                 </td>
                 <td class="auto-style49">
@@ -357,10 +347,10 @@ li.dropdown {
                     <asp:TextBox ID="write_day" runat="server" Width="16px"></asp:TextBox>
                     <asp:Label ID="Label64" runat="server" Text="日"></asp:Label>
                 </td>
-                <td class="auto-style51">
+                <td class="auto-style40">
                     <asp:Label ID="Label53" runat="server" Text="职称"></asp:Label>
                 </td>
-                <td class="auto-style6">
+                <td class="auto-style69">
                     <asp:DropDownList ID="zhicheng" runat="server">
                         <asp:ListItem>讲师</asp:ListItem>
                         <asp:ListItem>副教授</asp:ListItem>
@@ -369,21 +359,20 @@ li.dropdown {
                 </td>
             </tr>
             <tr>
-                <td class="auto-style6">&nbsp;</td>
-                <td class="auto-style40">
+                <td class="auto-style63">
                     <asp:Label ID="Label39" runat="server" Text="作者"></asp:Label>
                 </td>
                 <td class="auto-style42">
                     <asp:TextBox ID="txtauthor" runat="server"></asp:TextBox>
                 </td>
-                <td class="auto-style44">
+                <td class="auto-style65">
                     <asp:Label ID="Label44" runat="server" Text="语言种类"></asp:Label>
                 </td>
                 <td class="auto-style47">
                     <asp:DropDownList ID="language" runat="server" DataSourceID="SqlDataSource3" DataTextField="lname" DataValueField="lname" AutoPostBack="True">
                     </asp:DropDownList>
                 </td>
-                <td class="auto-style40">
+                <td class="auto-style67">
                     <asp:Label ID="Label48" runat="server" Text="入库日期"></asp:Label>
                 </td>
                 <td class="auto-style49">
@@ -394,22 +383,21 @@ li.dropdown {
                     <asp:TextBox ID="stock_day" runat="server" Width="16px"></asp:TextBox>
                     <asp:Label ID="Label62" runat="server" Text="日"></asp:Label>
                 </td>
-                <td class="auto-style51">
+                <td class="auto-style40">
                     <asp:Label ID="Label54" runat="server" Text="备注"></asp:Label>
                 </td>
-                <td class="auto-style6">
+                <td class="auto-style69">
                     <asp:TextBox ID="txtnote" runat="server"></asp:TextBox>
                 </td>
             </tr>
             <tr>
-                <td class="auto-style6">&nbsp;</td>
-                <td class="auto-style40">
+                <td class="auto-style63">
                     <asp:Label ID="Label40" runat="server" Text="开本"></asp:Label>
                 </td>
                 <td class="auto-style42">
                     <asp:TextBox ID="txtformat" runat="server"></asp:TextBox>
                 </td>
-                <td class="auto-style44">
+                <td class="auto-style65">
                     <asp:Label ID="Label45" runat="server" Text="学制"></asp:Label>
                 </td>
                 <td class="auto-style47">
@@ -419,7 +407,7 @@ li.dropdown {
                         <asp:ListItem>四年制</asp:ListItem>
                     </asp:DropDownList>
                 </td>
-                <td class="auto-style40">
+                <td class="auto-style67">
                     <asp:Label ID="Label49" runat="server" Text="答辩日期"></asp:Label>
                 </td>
                 <td class="auto-style49">
@@ -430,51 +418,49 @@ li.dropdown {
                     <asp:TextBox ID="db_day" runat="server" Width="16px"></asp:TextBox>
                     <asp:Label ID="Label67" runat="server" Text="日"></asp:Label>
                 </td>
-                <td class="auto-style51">&nbsp;</td>
-                <td class="auto-style6">&nbsp;</td>
+                <td class="auto-style40">&nbsp;</td>
+                <td class="auto-style69">&nbsp;</td>
             </tr>
             <tr>
-                <td class="auto-style6">&nbsp;</td>
-                <td class="auto-style40">
+                <td class="auto-style63">
                     <asp:Label ID="Label41" runat="server" Text="页数"></asp:Label>
                 </td>
                 <td class="auto-style42">
                     <asp:TextBox ID="txtnumberofpage" runat="server"></asp:TextBox>
                 </td>
-                <td class="auto-style44">
-                    <asp:Label ID="Label51" runat="server" Text="存放位置"></asp:Label>
-                </td>
-                <td class="auto-style47">
-                    <asp:TextBox ID="txtlocation" runat="server"></asp:TextBox>
-                </td>
-                <td class="auto-style40">
-                    <asp:Label ID="Label50" runat="server" Text="研究方向"></asp:Label>
-                </td>
-                <td class="auto-style49">
-                    <asp:TextBox ID="txtdirection" runat="server"></asp:TextBox>
-                </td>
-                <td class="auto-style51">&nbsp;</td>
-                <td class="auto-style6">
-                    &nbsp;</td>
-            </tr>
-            <tr>
-                <td class="auto-style6"></td>
-                <td class="auto-style40">
+                <td class="auto-style65">
                     <asp:Label ID="Label57" runat="server" Text="库存状况"></asp:Label>
                 </td>
-                <td class="auto-style42">
+                <td class="auto-style47">
                     <asp:DropDownList ID="status" runat="server">
                         <asp:ListItem>库存</asp:ListItem>
                         <asp:ListItem>借出</asp:ListItem>
                     </asp:DropDownList>
                 </td>
-                <td class="auto-style44">
+                <td class="auto-style67">
+                    <asp:Label ID="Label50" runat="server" Text="研究方向"></asp:Label>
+                </td>
+                <td class="auto-style49">
+                    <asp:TextBox ID="txtdirection" runat="server"></asp:TextBox>
+                </td>
+                <td class="auto-style40">&nbsp;</td>
+                <td class="auto-style69">
+                    &nbsp;</td>
+            </tr>
+            <tr>
+                <td class="auto-style63">
+                    <asp:Label ID="Label51" runat="server" Text="存放位置"></asp:Label>
+                </td>
+                <td class="auto-style42">
+                    <asp:TextBox ID="txtlocation" runat="server"></asp:TextBox>
+                </td>
+                <td class="auto-style65">
                     <asp:Label ID="Label58" runat="server" Text="库存数目"></asp:Label>
                 </td>
                 <td class="auto-style47">
                     <asp:TextBox ID="txtnumber" runat="server"></asp:TextBox>
                 </td>
-                <td class="auto-style40">
+                <td class="auto-style67">
                     <asp:Label ID="Label59" runat="server" Text="审核状态"></asp:Label>
                 </td>
                 <td class="auto-style49">
@@ -483,8 +469,8 @@ li.dropdown {
                         <asp:ListItem>已审核</asp:ListItem>
                     </asp:DropDownList>
                 </td>
-                <td class="auto-style51">&nbsp;</td>
-                <td class="auto-style6">
+                <td class="auto-style40">&nbsp;</td>
+                <td class="auto-style69">
                     <asp:Button ID="btok" runat="server" OnClick="btok_Click" Text="保存" Width="80px" />
                 </td>
             </tr>

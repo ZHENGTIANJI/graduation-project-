@@ -156,11 +156,20 @@ li.dropdown {
         </div>
         <div style="margin:0px auto; height:300px;">
         <div style="float:left;width:25%; height: 300px;"></div>
-           <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False">
+           <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#999999" BorderStyle="Solid" BorderWidth="1px" CellPadding="3" ForeColor="Black" GridLines="Vertical">
+               <AlternatingRowStyle BackColor="#CCCCCC" />
             <Columns>
                 <asp:BoundField DataField="jtname" HeaderText="期刊类型名称" />
                 <asp:BoundField DataField="number" HeaderText="数目" />
             </Columns>
+               <FooterStyle BackColor="#CCCCCC" />
+               <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" />
+               <PagerStyle BackColor="#999999" ForeColor="Black" HorizontalAlign="Center" />
+               <SelectedRowStyle BackColor="#000099" Font-Bold="True" ForeColor="White" />
+               <SortedAscendingCellStyle BackColor="#F1F1F1" />
+               <SortedAscendingHeaderStyle BackColor="#808080" />
+               <SortedDescendingCellStyle BackColor="#CAC9C9" />
+               <SortedDescendingHeaderStyle BackColor="#383838" />
         </asp:GridView>
                     
         </div>
@@ -180,11 +189,20 @@ li.dropdown {
                 </div>
             <div style="margin:0px auto;  height:300px;">
                 <div style="float:left;width:25%; height: 300px;"></div>
-      <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False">
+      <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#999999" BorderStyle="Solid" BorderWidth="1px" CellPadding="3" ForeColor="Black" GridLines="Vertical">
+            <AlternatingRowStyle BackColor="#CCCCCC" />
             <Columns>
                 <asp:BoundField DataField="mname" HeaderText="专业名称" />
                 <asp:BoundField DataField="number" HeaderText="数目" />
             </Columns>
+            <FooterStyle BackColor="#CCCCCC" />
+            <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" />
+            <PagerStyle BackColor="#999999" ForeColor="Black" HorizontalAlign="Center" />
+            <SelectedRowStyle BackColor="#000099" Font-Bold="True" ForeColor="White" />
+            <SortedAscendingCellStyle BackColor="#F1F1F1" />
+            <SortedAscendingHeaderStyle BackColor="#808080" />
+            <SortedDescendingCellStyle BackColor="#CAC9C9" />
+            <SortedDescendingHeaderStyle BackColor="#383838" />
         </asp:GridView>
             </div>
                     </div>
@@ -192,20 +210,22 @@ li.dropdown {
             <div style="border:1px solid;float:left;height:600px;"></div>
             <div style="float:left;width:10%; height: 300px;"></div>
             按年份统计
-                 <asp:GridView ID="GridView3" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#999999" BorderStyle="Solid" BorderWidth="1px" CellPadding="3" ForeColor="Black" GridLines="Vertical">
-                     <AlternatingRowStyle BackColor="#CCCCCC" />
+                 <asp:GridView ID="GridView3" runat="server" AutoGenerateColumns="False" CellPadding="4" ForeColor="#333333" GridLines="None">
+                     <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                 <Columns>
                     <asp:BoundField DataField="year" HeaderText="年份" />
                     <asp:BoundField DataField="s_number" HeaderText="入库数目" />
                 </Columns>
-                     <FooterStyle BackColor="#CCCCCC" />
-                     <HeaderStyle BackColor="Black" Font-Bold="True" ForeColor="White" />
-                     <PagerStyle BackColor="#999999" ForeColor="Black" HorizontalAlign="Center" />
-                     <SelectedRowStyle BackColor="#000099" Font-Bold="True" ForeColor="White" />
-                     <SortedAscendingCellStyle BackColor="#F1F1F1" />
-                     <SortedAscendingHeaderStyle BackColor="#808080" />
-                     <SortedDescendingCellStyle BackColor="#CAC9C9" />
-                     <SortedDescendingHeaderStyle BackColor="#383838" />
+                     <EditRowStyle BackColor="#999999" />
+                     <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
+                     <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
+                     <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />
+                     <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
+                     <SelectedRowStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333" />
+                     <SortedAscendingCellStyle BackColor="#E9E7E2" />
+                     <SortedAscendingHeaderStyle BackColor="#506C8C" />
+                     <SortedDescendingCellStyle BackColor="#FFFDF8" />
+                     <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
             </asp:GridView>
         </div>
         <div style="float:left;width:40%;height:500px;">

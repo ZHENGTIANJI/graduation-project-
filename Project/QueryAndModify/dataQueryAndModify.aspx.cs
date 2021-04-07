@@ -189,11 +189,12 @@ public partial class QueryAndModify_dataQueryAndModify : dropdownlist
     {
         if (GridView1.Rows.Count > 0)
         {
-            //调用导出方法  
+            //调用导出方法   
             GridView1.AllowPaging = false;
             GridView1.AllowSorting = false;
             ExecuteQuery();
-            ToExcel(GridView1, "OFS_Data.xls");
+            String dt = DateTime.Now.ToString("yyyy-MM-dd");
+            ToExcel(GridView1, dt + ".xls");
             GridView1.AllowPaging = true;
             GridView1.AllowSorting = true;
             ExecuteQuery();

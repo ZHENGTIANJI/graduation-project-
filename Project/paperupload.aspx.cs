@@ -5,8 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
-using System.Data.SqlClient;
-
+using System.Data.SqlClient; 
 public partial class 首页 : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
@@ -74,13 +73,17 @@ public partial class 首页 : System.Web.UI.Page
                 cnn.Open();
                 cmd.ExecuteNonQuery();
                 cnn.Close();
+                DataSet dst = new DataSet();
+                SqlDataAdapter adpt1 = new SqlDataAdapter("select id from paper where name='" + txtname.Text + "'", cnn);
+                adpt1.Fill(dst);
+                Session["paperid"] = (int)dst.Tables[0].Rows[0]["id"];
                 if (UpLoadFile())
                 {
-                    ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "", "alert('保存成功！');", true);
+                    ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "", "alert('上传成功！');", true);
                 }
                 else
                 {
-                    ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "", "alert('保存失败！');", true);
+                    ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "", "alert('上传失败！');", true);
                 }
 
             }
@@ -89,19 +92,16 @@ public partial class 首页 : System.Web.UI.Page
     }
     public bool UpLoadFile()
     {
-        int uploaderid = 1;
-        int paperid = 1;
+        int paperid = (int)Session["paperid"];
         string dt = DateTime.Now.ToString("yyyy-MM-dd");
         SqlConnection cnn = new SqlConnection("Data Source=(local);Initial Catalog=档案室信息管理系统1.0;Integrated Security=True");
         SqlCommand cmd = cnn.CreateCommand();
+        int i = FileUpload1.FileName.ToString().LastIndexOf(".");
+        String subname = FileUpload1.FileName.ToString().Substring(i+1);
         var path = Server.MapPath("/论文/" + FileUpload1.FileName.ToString());
         FileUpload1.SaveAs(path);
-        cmd.CommandText = "INSERT INTO file_att(file_name,extension_name,file_size,uploader_id,uploaded_dt,paper_id) VALUES ('" + FileUpload1.FileName.ToString() + "','pdf','" + FileUpload1.FileBytes.Length + "','" + uploaderid + "','" + dt + "','" + paperid + "')";
-        cnn.Open();
-        cmd.ExecuteNonQuery();
-        cnn.Close();
-        return true;
-        /*try
+        cmd.CommandText = "INSERT INTO file_att(file_name,extension_name,file_size,uploaded_dt,paper_id) VALUES ('" + FileUpload1.FileName.ToString() + "','"+subname+"','" + FileUpload1.FileBytes.Length +  "','" + dt + "','" + paperid + "')";
+        try
         { 
             cnn.Open();
             cmd.ExecuteNonQuery();
@@ -109,11 +109,13 @@ public partial class 首页 : System.Web.UI.Page
         }
         catch
         {
+            cmd.CommandText = "delete from paper where name='" + txtname.Text + "'";
+            cmd.ExecuteNonQuery();
             return false;
         }
         finally
         {
             cnn.Close();
-        }*/
+        }
     }
 }

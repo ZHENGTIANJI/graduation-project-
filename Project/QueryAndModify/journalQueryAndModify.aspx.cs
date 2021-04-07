@@ -210,7 +210,8 @@ public partial class QueryAndModify_journalQueryAndModify : dropdownlist
             GridView1.AllowPaging = false;
             GridView1.AllowSorting = false;
             ExecuteQuery();
-            ToExcel(GridView1, "OFS_Data.xls");
+            String dt = DateTime.Now.ToString("yyyy-MM-dd");
+            ToExcel(GridView1, dt + ".xls");
             GridView1.AllowPaging = true;
             GridView1.AllowSorting = true;
             ExecuteQuery();

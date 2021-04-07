@@ -15,13 +15,13 @@ public partial class QueryAndModify_bookQueryAndModify :dropdownlist
         {
             Response.Redirect("../login1.aspx");
         }
+        GridView1.Attributes.Add("style", "word-break:break-all;word-wrap:break-word"); 
         if (!IsPostBack)
         {
             
             String strmajor = "";
             String strbooktype = "";
             String strbookname = bookname.Text.ToString().Trim();
-
             DataSet dst = new DataSet();
             SqlConnection cnn = new SqlConnection("Data Source=(local);Initial Catalog=档案室信息管理系统1.0;Integrated Security=True");
             SqlDataAdapter adpt = new SqlDataAdapter("SELECT [id],[number_of_page], [book_number], [CD], [format], [location], [stock_dt], [teacher], [number], [name], [btname], [mname], [QR_code], [publisher], [publish_dt], [author], [price], [status], [note], [lname], [bitname] FROM [book] left join book_type on book.book_type_id=book_type.btid left join major on book.major_type_id=major.mid left join language on book.language=language.lid left join binding_type on book.binding_type_id=binding_type.bitid where is_delete=0 and name like '%" + strbookname + "%' and mname like '%" + strmajor + "%' and btname like '%" + strbooktype + "%'", cnn);
@@ -211,7 +211,8 @@ public partial class QueryAndModify_bookQueryAndModify :dropdownlist
             GridView1.AllowPaging = false;
             GridView1.AllowSorting = false;
             ExecuteQuery();
-            ToExcel(GridView1, "OFS_Data.xls");
+            String dt = DateTime.Now.ToString("yyyy-MM-dd");
+            ToExcel(GridView1, dt + ".xls");
             GridView1.AllowPaging = true;
             GridView1.AllowSorting = true;
             ExecuteQuery();
@@ -225,4 +226,5 @@ public partial class QueryAndModify_bookQueryAndModify :dropdownlist
     {
         // Confirms that an HtmlForm control is rendered for
     }
+
 }

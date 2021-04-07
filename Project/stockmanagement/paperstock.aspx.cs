@@ -77,6 +77,7 @@ public partial class QueryAndModify_paperQueryAndModify : System.Web.UI.Page
                 cnn.Open();
                 cmd.ExecuteNonQuery();
                 cnn.Close();
+                ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "", "alert('审核成功！');", true);
             }
         }
         catch (Exception)

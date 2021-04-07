@@ -271,8 +271,9 @@ li.dropdown {
         </table>
             </div>
          <div style=" margin:0px auto; height:20px;"></div>
-        <div style="margin:0px auto;height:280px;text-align:center;">
-        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" style="margin-top: 0px" OnRowDeleting="GridView1_RowDeleting" AllowPaging="true" PageSize="10" onpageindexchanging="GridViewHistory_PageIndexChanging" Width="100%">
+        <div style="margin:0px auto;height:320px;text-align:center;font-size:small;overflow-y: scroll;">
+        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" style="margin-top: 0px" OnRowDeleting="GridView1_RowDeleting" AllowPaging="True" onpageindexchanging="GridViewHistory_PageIndexChanging" Width="100%" CellPadding="4" ForeColor="#333333" GridLines="None">
+            <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
             <Columns>
                 <asp:BoundField DataField="name" HeaderText="资料名称" SortExpression="name" />
                 <asp:BoundField DataField="dtname" HeaderText="资料类型名称" />
@@ -301,6 +302,10 @@ li.dropdown {
                     </ItemTemplate>
                 </asp:TemplateField>
             </Columns>
+            <EditRowStyle BackColor="#999999" />
+            <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
+            <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
+            <PagerStyle BackColor="#5D7B9D" ForeColor="White" HorizontalAlign="Center" />
             <PagerTemplate>
                 <asp:LinkButton ID="lb_firstpage" runat="server" onclick="lb_firstpage_Click">首页</asp:LinkButton>
                 <asp:LinkButton ID="lb_previouspage" runat="server"
@@ -310,6 +315,12 @@ li.dropdown {
                 第<asp:Label ID="lbl_nowpage" runat="server" Text="<%#GridView1.PageIndex+1 %>" ForeColor="#db530f"></asp:Label>页/共<asp:Label
                 ID="lbl_totalpage" runat="server" Text="<%#GridView1.PageCount %>" ForeColor="#db530f"></asp:Label>页
 </PagerTemplate>
+            <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
+            <SelectedRowStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333" />
+            <SortedAscendingCellStyle BackColor="#E9E7E2" />
+            <SortedAscendingHeaderStyle BackColor="#506C8C" />
+            <SortedDescendingCellStyle BackColor="#FFFDF8" />
+            <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
         </asp:GridView>
             </div>
          <div style=" margin:0px auto; height:20px;"></div>
@@ -460,7 +471,7 @@ li.dropdown {
                     <asp:TextBox ID="txtnote" runat="server"></asp:TextBox>
                 </td>
                 <td class="auto-style52">
-                    <asp:Button ID="btok" runat="server" OnClick="btok_Click" Text="保存" />
+                    <asp:Button ID="btok" runat="server" OnClick="btok_Click" Text="保存" Width="80px" />
                 </td>
             </tr>
             <tr>
