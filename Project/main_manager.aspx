@@ -76,8 +76,14 @@ ri{
     
     <div style=" margin:0px auto;width:100%; height:20px;background-color:ButtonFace">
         你好，欢迎登陆本系统！
-        <div style=" float:right; width:10%; height:20px;background-color:ButtonFace">      
-             <asp:Label ID="user" runat="server" Font-Size="Medium"></asp:Label></div>
+        
+        <div style=" float:right; width:5%; height:20px;background-color:ButtonFace">  
+            <asp:LinkButton ID="home" runat="server" OnClick="home_Click">退出系统</asp:LinkButton>
+            </div>
+                <div style=" float:right; width:8%; height:20px;background-color:ButtonFace">      
+             <asp:Label ID="user" runat="server" Font-Size="Medium"></asp:Label>
+            
+        </div>
     </div>
     <div style=" margin:0px auto; height:100px;background-color:white">
         <div style=" float:left; width:10%;height:100px;"></div>
@@ -132,6 +138,7 @@ ri{
       <a href="delete/paperdelete.aspx">论文剔旧</a>
     </div>
   </li>
+   <li><a href="/basicdata/basicdata.aspx">基础数据</a></li>
 </ul>
 </div>
             <div class="banner">

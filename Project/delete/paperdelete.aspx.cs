@@ -17,41 +17,29 @@ public partial class delete_paperdelete : System.Web.UI.Page
         }
         user.Text = "当前用户:" + Session["name"].ToString();
         SqlConnection cnn = new SqlConnection("Data Source=(local);Initial Catalog=档案室信息管理系统1.0;Integrated Security=True");
-        if (!IsPostBack)
+        ExecuteQuery();
+        ExecuteQuery2();
+        
+    }
+    void ExecuteQuery()
+    {   if(TextBox1.Text.ToString()!=""){
+        DataSet dst = new DataSet();
+        SqlConnection cnn = new SqlConnection("Data Source=(local);Initial Catalog=档案室信息管理系统1.0;Integrated Security=True");
+        SqlDataAdapter adpt = new SqlDataAdapter("SELECT [id],[number_of_page], [dabian_dt], [xuezhi], [format],[write_dt],[zhicheng],[adviser], [location], [stock_dt], [number], [name], [ptname], [mname], [QR_code], [class_number],[shenhe],[direction], [author], [status], [note], [lname] FROM [paper] left join paper_type on paper.paper_type_id=paper_type.ptid left join major on paper.major_id=major.mid left join language on paper.language=language.lid where is_delete=0 and name like '%"+TextBox1.Text.ToString()+"%'", cnn);
+        adpt.Fill(dst);
+        if (dst.Tables[0].Rows.Count == 0)
         {
-            DataSet dst=new DataSet();
-            SqlDataAdapter adpt = new SqlDataAdapter("SELECT [id],[number_of_page], [dabian_dt], [xuezhi], [format],[write_dt],[zhicheng],[adviser], [location], [stock_dt], [number], [name], [ptname], [mname], [QR_code], [class_number],[shenhe],[direction], [author], [status], [note], [lname] FROM [paper] left join paper_type on paper.paper_type_id=paper_type.ptid left join major on paper.major_id=major.mid left join language on paper.language=language.lid where is_delete=0", cnn);
-            adpt.Fill(dst);
-            if (dst.Tables[0].Rows.Count == 0)
-            {
-                DataRow row = dst.Tables[0].NewRow();
-                for (int j = 0; j < GridView1.Columns.Count - 1; j++)
-                {
-                    row[j] = DBNull.Value;
-                }
-                dst.Tables[0].Rows.Add(row);
-            }
-            GridView1.DataSource = dst.Tables[0];
-            GridView1.DataBind();
-        }
-        DataSet dst1 = new DataSet();
-        SqlDataAdapter adpt1 = new SqlDataAdapter("SELECT [id],[number_of_page], [dabian_dt], [xuezhi], [format],[write_dt],[zhicheng],[adviser], [location], [stock_dt], [number], [name], [ptname], [mname], [QR_code], [class_number],[shenhe],[direction], [author], [status], [note], [lname] FROM [paper] left join paper_type on paper.paper_type_id=paper_type.ptid left join major on paper.major_id=major.mid left join language on paper.language=language.lid where is_delete=1", cnn);
-        adpt1.Fill(dst1);
-        if (dst1.Tables[0].Rows.Count == 0)
-        {
-            DataRow row = dst1.Tables[0].NewRow();
+            DataRow row = dst.Tables[0].NewRow();
             for (int j = 0; j < GridView1.Columns.Count - 1; j++)
             {
                 row[j] = DBNull.Value;
             }
-            dst1.Tables[0].Rows.Add(row);
+            dst.Tables[0].Rows.Add(row);
         }
-        GridView2.DataSource = dst1.Tables[0];
-        GridView2.DataBind();
-    }
-    void ExecuteQuery()
-    {
-        if (day.Text == "" || month.Text == "" || year.Text == "")
+        GridView1.DataSource = dst.Tables[0];
+        GridView1.DataBind();
+        }
+        else if (day.Text == "" || month.Text == "" || year.Text == "")
         {
             // ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "", "alert('日期不得为空！');", true);
             DataSet dst = new DataSet();
@@ -76,21 +64,29 @@ public partial class delete_paperdelete : System.Web.UI.Page
             String strmonth = month.Text.ToString();
             String stryear = year.Text.ToString();
             String date = stryear + "-" + strmonth + "-" + strday;
-            DataSet dst = new DataSet();
-            SqlConnection cnn = new SqlConnection("Data Source=(local);Initial Catalog=档案室信息管理系统1.0;Integrated Security=True");
-            SqlDataAdapter adpt = new SqlDataAdapter("SELECT [id],[number_of_page], [dabian_dt], [xuezhi], [format],[write_dt],[zhicheng],[adviser], [location], [stock_dt], [number], [name], [ptname], [mname], [QR_code], [class_number],[shenhe],[direction], [author], [status], [note], [lname] FROM [paper] left join paper_type on paper.paper_type_id=paper_type.ptid left join major on paper.major_id=major.mid left join language on paper.language=language.lid where is_delete=0 and stock_dt<'"+date+"'", cnn);
-            adpt.Fill(dst);
-            if (dst.Tables[0].Rows.Count == 0)
+            try
             {
-                DataRow row = dst.Tables[0].NewRow();
-                for (int j = 0; j < GridView1.Columns.Count - 1; j++)
+                DataSet dst = new DataSet();
+                SqlConnection cnn = new SqlConnection("Data Source=(local);Initial Catalog=档案室信息管理系统1.0;Integrated Security=True");
+                SqlDataAdapter adpt = new SqlDataAdapter("SELECT [id],[number_of_page], [dabian_dt], [xuezhi], [format],[write_dt],[zhicheng],[adviser], [location], [stock_dt], [number], [name], [ptname], [mname], [QR_code], [class_number],[shenhe],[direction], [author], [status], [note], [lname] FROM [paper] left join paper_type on paper.paper_type_id=paper_type.ptid left join major on paper.major_id=major.mid left join language on paper.language=language.lid where is_delete=0 and stock_dt<='" + date + "'", cnn);
+                adpt.Fill(dst);
+                if (dst.Tables[0].Rows.Count == 0)
                 {
-                    row[j] = DBNull.Value;
+                    DataRow row = dst.Tables[0].NewRow();
+                    for (int j = 0; j < GridView1.Columns.Count - 1; j++)
+                    {
+                        row[j] = DBNull.Value;
+                    }
+                    dst.Tables[0].Rows.Add(row);
                 }
-                dst.Tables[0].Rows.Add(row);
+                GridView1.DataSource = dst.Tables[0];
+                GridView1.DataBind();
             }
-            GridView1.DataSource = dst.Tables[0];
-            GridView1.DataBind();
+            catch
+            {
+                ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "", "alert('请输入正确的日期格式！');", true);
+            }
+            
         }
     }
     protected void GridView1_RowDeleting(object sender, GridViewDeleteEventArgs e)
@@ -109,6 +105,7 @@ public partial class delete_paperdelete : System.Web.UI.Page
                 cmd.ExecuteNonQuery();
                 cnn.Close();
                 ExecuteQuery();
+                ExecuteQuery2();
             }
             catch (Exception)
             {
@@ -116,6 +113,31 @@ public partial class delete_paperdelete : System.Web.UI.Page
             }
         }
         
+    }
+    protected void GridView2_RowDeleting(object sender, GridViewDeleteEventArgs e)
+    {
+        if (GridView1.Rows[0].Cells[0].Text.ToString() != GridView1.Rows[0].Cells[1].Text.ToString() && GridView1.Rows[0].Cells[2].Text.ToString() != GridView1.Rows[0].Cells[1].Text.ToString())
+        {
+            SqlConnection cnn = new SqlConnection("Data Source=(local);Initial Catalog=档案室信息管理系统1.0;Integrated Security=True");
+            SqlCommand cmd = cnn.CreateCommand();
+
+            int num = e.RowIndex;
+            int paperid = Convert.ToInt32(GridView2.Rows[num].Cells[21].Text.ToString());
+            try
+            {
+                cmd.CommandText = "update paper set is_delete='" + 0 + "' where id=" + paperid + "";
+                cnn.Open();
+                cmd.ExecuteNonQuery();
+                cnn.Close();
+                ExecuteQuery();
+                ExecuteQuery2();
+            }
+            catch (Exception)
+            {
+                ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "", "alert('还原失败！');", true);
+            }
+        }
+
     }
     protected void GridViewHistory_PageIndexChanging(object sender, GridViewPageEventArgs e)
     {
@@ -159,11 +181,20 @@ public partial class delete_paperdelete : System.Web.UI.Page
     //1111111111111111111
     void ExecuteQuery2()
     {
-        DataSet dst = new DataSet();
+        DataSet dst1 = new DataSet();
         SqlConnection cnn = new SqlConnection("Data Source=(local);Initial Catalog=档案室信息管理系统1.0;Integrated Security=True");
-        SqlDataAdapter adpt = new SqlDataAdapter("SELECT [id],[number_of_page], [dabian_dt], [xuezhi], [format],[write_dt],[zhicheng],[adviser], [location], [stock_dt], [number], [name], [ptname], [mname], [QR_code], [class_number],[shenhe],[direction], [author], [status], [note], [lname] FROM [paper] left join paper_type on paper.paper_type_id=paper_type.ptid left join major on paper.major_id=major.mid left join language on paper.language=language.lid where is_delete=1", cnn);
-        adpt.Fill(dst);
-        GridView2.DataSource = dst.Tables[0];
+        SqlDataAdapter adpt1 = new SqlDataAdapter("SELECT [id],[number_of_page], [dabian_dt], [xuezhi], [format],[write_dt],[zhicheng],[adviser], [location], [stock_dt], [number], [name], [ptname], [mname], [QR_code], [class_number],[shenhe],[direction], [author], [status], [note], [lname] FROM [paper] left join paper_type on paper.paper_type_id=paper_type.ptid left join major on paper.major_id=major.mid left join language on paper.language=language.lid where is_delete=1 and name like '%"+TextBox2.Text.ToString()+"%'", cnn);
+        adpt1.Fill(dst1);
+        if (dst1.Tables[0].Rows.Count == 0)
+        {
+            DataRow row = dst1.Tables[0].NewRow();
+            for (int j = 0; j < GridView2.Columns.Count - 1; j++)
+            {
+                row[j] = DBNull.Value;
+            }
+            dst1.Tables[0].Rows.Add(row);
+        }
+        GridView2.DataSource = dst1.Tables[0];
         GridView2.DataBind();
     }
     protected void GridViewHistory_PageIndexChanging2(object sender, GridViewPageEventArgs e)
@@ -200,5 +231,13 @@ public partial class delete_paperdelete : System.Web.UI.Page
     {
         this.GridView2.PageIndex = this.GridView2.PageCount;
         ExecuteQuery2();
+    }
+    protected void btok2_Click(object sender, EventArgs e)
+    {
+        ExecuteQuery2();
+    }
+    protected void home_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("../login1.aspx");
     }
 }

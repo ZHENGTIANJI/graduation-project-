@@ -66,14 +66,8 @@ li.dropdown {
             width: 143px;
         }
         .auto-style2 {
-            width: 65px;
+            width: 80px;
             text-align: right;
-        }
-        .auto-style3 {
-            width: 69px;
-        }
-        .auto-style4 {
-            width: 70px;
         }
         .auto-style5 {
             width: 75px;
@@ -177,10 +171,20 @@ li.dropdown {
         .auto-style56 {
             width: 159px;
         }
+        .auto-style57 {
+            width: 80px;
+        }
+        .auto-style58 {
+            width: 42px;
+            text-align: right;
+        }
     </style>
 </head>
 <body>
+    <form id="form1" runat="server">
     <ul>
+        <ri><asp:LinkButton ID="home" runat="server" ForeColor="White" Font-Size="Medium" OnClick="home_Click">退出系统</asp:LinkButton></ri>
+        <ri>&nbsp;</ri>
         <ri><asp:Label ID="user" runat="server" ForeColor="White" Font-Size="Medium"></asp:Label></ri>
   <li><a href="../main_manager.aspx">首页</a></li>
   <li class="dropdown">
@@ -219,16 +223,17 @@ li.dropdown {
       <a href="../delete/paperdelete.aspx">论文剔旧</a>
     </div>
   </li>
+   <li><a href="../basicdata/basicdata.aspx">基础数据</a></li>
 </ul>
-    <form id="form1" runat="server">
-        <div class="table-a">
-        <table style="width:100%;">
+    
+        <div class="table-a" style="background-color:ButtonFace">
+        <table style="width:100%; height: 45px;">
             <tr>
                 <td class="auto-style2">&nbsp;</td>
                 <td class="auto-style1">&nbsp;</td>
-                <td class="auto-style3">&nbsp;</td>
+                <td class="auto-style57">&nbsp;</td>
                 <td class="auto-style5">&nbsp;</td>
-                <td class="auto-style4">&nbsp;</td>
+                <td class="auto-style58">&nbsp;</td>
                 <td class="auto-style6">&nbsp;</td>
                 <td>&nbsp;</td>
             </tr>
@@ -239,38 +244,38 @@ li.dropdown {
                 <td class="auto-style1">
                     <asp:TextBox ID="dataname" runat="server"></asp:TextBox>
                 </td>
-                <td class="auto-style3">
+                <td class="auto-style57">
                     <asp:Label ID="Label2" runat="server" Text="资料类型"></asp:Label>
                 </td>
                 <td class="auto-style5">
                     <asp:DropDownList ID="datatype" runat="server">
                     </asp:DropDownList>
                 </td>
-                <td class="auto-style4">
-                    <asp:Label ID="Label3" runat="server" Text="专业类型"></asp:Label>
+                <td class="auto-style58">
+                    <asp:Label ID="Label3" runat="server" Text="专业"></asp:Label>
                 </td>
                 <td class="auto-style6">
                     <asp:DropDownList ID="majortype" runat="server">
                     </asp:DropDownList>
                 </td>
                 <td>
-                    <asp:Button ID="query" runat="server" OnClick="query_Click" Text="查询" />
+                    <asp:Button ID="query" runat="server" OnClick="query_Click" Text="查询" Width="70px" />
                 </td>
             </tr>
             <tr>
                 <td class="auto-style2">
-                    <asp:Button ID="export" runat="server" OnClick="export_Click1" Text="导出excel" />
+                    
                 </td>
                 <td class="auto-style1">&nbsp;</td>
-                <td class="auto-style3">&nbsp;</td>
+                <td class="auto-style57">&nbsp;</td>
                 <td class="auto-style5">&nbsp;</td>
-                <td class="auto-style4">&nbsp;</td>
+                <td class="auto-style58">&nbsp;</td>
                 <td class="auto-style6">&nbsp;</td>
                 <td>&nbsp;</td>
             </tr>
         </table>
             </div>
-         <div style=" margin:0px auto; height:20px;"></div>
+         <div style=" margin:0px auto; height:30px;"><asp:Button ID="export" runat="server" OnClick="export_Click1" Text="导出excel" /></div>
         <div style="margin:0px auto;height:320px;text-align:center;font-size:small;overflow-y: scroll;">
         <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" style="margin-top: 0px" OnRowDeleting="GridView1_RowDeleting" AllowPaging="True" onpageindexchanging="GridViewHistory_PageIndexChanging" Width="100%" CellPadding="4" ForeColor="#333333" GridLines="None">
             <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
@@ -327,8 +332,8 @@ li.dropdown {
         <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:档案室信息管理系统ConnectionString %>" SelectCommand="SELECT * FROM [data_type]"></asp:SqlDataSource>
         <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:档案室信息管理系统ConnectionString %>" SelectCommand="SELECT * FROM [major]"></asp:SqlDataSource>
         <asp:SqlDataSource ID="SqlDataSource4" runat="server" ConnectionString="<%$ ConnectionStrings:档案室信息管理系统ConnectionString %>" SelectCommand="SELECT * FROM [language]"></asp:SqlDataSource>
-        <div class="table-b">
-            <table style="width:111%; margin-left: 0px;">
+        <div class="table-a">
+            <table style="width:100%; margin-left: 0px;">
             <tr>
                 <td class="auto-style17">
                     <asp:Label ID="Label6" runat="server" Text="资料类型"></asp:Label>

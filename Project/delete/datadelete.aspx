@@ -95,7 +95,10 @@ li.dropdown {
         </style>
 </head>
 <body>
+    <form id="form1" runat="server">
     <ul>
+        <ri><asp:LinkButton ID="home" runat="server" ForeColor="White" Font-Size="Medium" OnClick="home_Click">退出系统</asp:LinkButton></ri>
+        <ri>&nbsp;</ri>
         <ri><asp:Label ID="user" runat="server" ForeColor="White" Font-Size="Medium"></asp:Label></ri>
   <li><a href="/main_manager.aspx">首页</a></li>
   <li class="dropdown">
@@ -134,11 +137,16 @@ li.dropdown {
       <a href="paperdelete.aspx">论文剔旧</a>
     </div>
   </li>
+  <li><a href="../basicdata/basicdata.aspx">基础数据</a></li>
 </ul>
-    <form id="form1" runat="server">
-        <div class="table-a">
+    
+        <div class="table-a" style="background-color:ButtonFace">
             <table style="width:100%;">
             <tr>
+                <td class="auto-style2">
+                    &nbsp;</td>
+                <td class="auto-style2">
+                    &nbsp;</td>
                 <td class="auto-style2">
                     &nbsp;</td>
                 <td class="auto-style4">
@@ -147,6 +155,12 @@ li.dropdown {
                     &nbsp;</td>
             </tr>
             <tr>
+                <td class="auto-style2">
+                    <asp:Label ID="Label6" runat="server" Text="资料名称"></asp:Label>
+                </td>
+                <td class="auto-style2">
+                    <asp:TextBox ID="TextBox1" runat="server" Width="130px"></asp:TextBox>
+                </td>
                 <td class="auto-style2">
                     <asp:Label ID="Label1" runat="server" Text="入库日期"></asp:Label>
                 </td>
@@ -163,6 +177,8 @@ li.dropdown {
                 </td>
             </tr>
             <tr>
+                <td class="auto-style2">&nbsp;</td>
+                <td class="auto-style2">&nbsp;</td>
                 <td class="auto-style2"></td>
                 <td class="auto-style4">&nbsp;</td>
                 <td class="auto-style3"></td>
@@ -235,8 +251,16 @@ li.dropdown {
             </tr>
                     </table>
         </div>
+        <div style="margin:0px auto;height:20px"></div>
+        <div style="margin:0px auto;height:30px">
+            &nbsp;&nbsp;
+            <asp:Label ID="Label3" runat="server" Text="图书名称"></asp:Label>
+            <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
+            &nbsp;
+            <asp:Button ID="btok2" runat="server" Text="查询" Width="60px" OnClick="btok2_Click" />
+        </div>
         <div style="margin:0px auto;text-align:center;font-size:small;overflow-y: scroll;">
-        <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" style="margin-top: 0px" AllowPaging="True" onpageindexchanging="GridViewHistory_PageIndexChanging2" Width="100%" CellPadding="4" ForeColor="#333333" GridLines="None">
+        <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" style="margin-top: 0px" AllowPaging="True" OnRowDeleting="GridView2_RowDeleting" onpageindexchanging="GridViewHistory_PageIndexChanging2" Width="100%" CellPadding="4" ForeColor="#333333" GridLines="None">
             <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
             <Columns>
                 <asp:BoundField DataField="name" HeaderText="资料名称" SortExpression="name" />
@@ -260,6 +284,11 @@ li.dropdown {
                     <ItemStyle  CssClass="hidden" />
                     <FooterStyle CssClass="hidden" />
                 </asp:BoundField>
+                <asp:TemplateField HeaderText="操作" ShowHeader="False">
+                    <ItemTemplate>
+                        <asp:LinkButton ID="LinkButton2" runat="server" CausesValidation="False" CommandName="Delete" Text="还原" OnClientClick="return confirm('确定要还原该资料吗?')"></asp:LinkButton>
+                    </ItemTemplate>
+                </asp:TemplateField>
             </Columns>
             <EditRowStyle BackColor="#999999" />
             <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />

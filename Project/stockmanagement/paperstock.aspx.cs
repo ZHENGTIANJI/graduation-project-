@@ -29,7 +29,7 @@ public partial class QueryAndModify_paperQueryAndModify : System.Web.UI.Page
             this.majortype.Items.Add(major);*/
             DataSet dst = new DataSet();
             SqlConnection cnn = new SqlConnection("Data Source=(local);Initial Catalog=档案室信息管理系统1.0;Integrated Security=True");
-            SqlDataAdapter adpt = new SqlDataAdapter("SELECT [id],[number_of_page], [dabian_dt], [xuezhi], [format],[write_dt],[zhicheng],[adviser], [location], [stock_dt], [number], [name], [ptname], [mname], [QR_code], [class_number],[shenhe],[direction], [author], [status], [note], [lname] FROM [paper] left join paper_type on paper.paper_type_id=paper_type.ptid left join major on paper.major_id=major.mid left join language on paper.language=language.lid where shenhe='待审核'", cnn);
+            SqlDataAdapter adpt = new SqlDataAdapter("SELECT [id],[number_of_page], [dabian_dt], [xuezhi], [format],[write_dt],[zhicheng],[adviser], [location], [stock_dt], [number], [name], [ptname], [mname], [QR_code], [class_number],[shenhe],[direction], [author],  [note], [lname] FROM [paper] left join paper_type on paper.paper_type_id=paper_type.ptid left join major on paper.major_id=major.mid left join language on paper.language=language.lid where shenhe='待审核'", cnn);
             adpt.Fill(dst);
             GridView1.DataSource = dst.Tables[0];
             GridView1.DataBind();
@@ -45,7 +45,7 @@ public partial class QueryAndModify_paperQueryAndModify : System.Web.UI.Page
 
         DataSet dst = new DataSet();
         SqlConnection cnn = new SqlConnection("Data Source=(local);Initial Catalog=档案室信息管理系统1.0;Integrated Security=True");
-        SqlDataAdapter adpt = new SqlDataAdapter("SELECT [id],[number_of_page], [dabian_dt], [xuezhi], [format],[write_dt],[zhicheng],[adviser],  [stock_dt], [number], [name], [ptname], [mname],[shenhe],[direction], [author], [status], [note], [lname] FROM [paper] left join paper_type on paper.paper_type_id=paper_type.ptid left join major on paper.major_id=major.mid left join language on paper.language=language.lid where name like '%" + strpapername + "%' and mname like '%" + strmajor + "%' and ptname like '%" + strpapertype + "%' and shenhe='待审核'", cnn);
+        SqlDataAdapter adpt = new SqlDataAdapter("SELECT [id],[number_of_page], [dabian_dt], [xuezhi], [format],[write_dt],[zhicheng],[adviser], [name], [ptname], [mname],[shenhe],[direction], [author], [status], [note], [lname] FROM [paper] left join paper_type on paper.paper_type_id=paper_type.ptid left join major on paper.major_id=major.mid left join language on paper.language=language.lid where name like '%" + strpapername + "%' and mname like '%" + strmajor + "%' and ptname like '%" + strpapertype + "%' and shenhe='待审核'", cnn);
         adpt.Fill(dst);
         GridView1.DataSource = dst.Tables[0];
         GridView1.DataBind();
@@ -56,7 +56,7 @@ public partial class QueryAndModify_paperQueryAndModify : System.Web.UI.Page
     }
     protected void GridView1_RowDeleting(object sender, GridViewDeleteEventArgs e)
     {
-        Session["paperid"] = GridView1.Rows[e.RowIndex].Cells[21].Text.ToString();
+        Session["paperid"] = GridView1.Rows[e.RowIndex].Cells[18].Text.ToString();
 
         SqlConnection cnn = new SqlConnection("Data Source=(local);Initial Catalog=档案室信息管理系统1.0;Integrated Security=True");
         SqlCommand cmd = cnn.CreateCommand();
@@ -68,6 +68,7 @@ public partial class QueryAndModify_paperQueryAndModify : System.Web.UI.Page
             TextBox tblocation = (TextBox)GridView1.Rows[e.RowIndex].Cells[13].FindControl("txtlocation");
             String QR = tbqr.Text.ToString();
             String cn = tbcn.Text.ToString();
+
             String location = tblocation.Text.ToString();
             if (QR == "")
             {
@@ -121,5 +122,9 @@ public partial class QueryAndModify_paperQueryAndModify : System.Web.UI.Page
     {
         this.GridView1.PageIndex = this.GridView1.PageCount;
         ExecuteQuery();
+    }
+    protected void home_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("../login1.aspx");
     }
 }

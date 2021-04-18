@@ -67,7 +67,10 @@ li.dropdown {
         </style>
 </head>
 <body>
+    <form id="form1" runat="server">
     <ul>
+        <ri><asp:LinkButton ID="home" runat="server" ForeColor="White" Font-Size="Medium" OnClick="home_Click">退出系统</asp:LinkButton></ri>
+        <ri>&nbsp;</ri>
         <ri><asp:Label ID="user" runat="server" ForeColor="White" Font-Size="Medium"></asp:Label></ri>
   <li><a href="../main_manager.aspx">首页</a></li>
   <li class="dropdown">
@@ -106,8 +109,9 @@ li.dropdown {
       <a href="../delete/paperdelete.aspx">论文剔旧</a>
     </div>
   </li>
+    <li><a href="../basicdata/basicdata.aspx">基础数据</a></li>
 </ul>
-    <form id="form1" runat="server">
+    
         <div class="table-a" style="background-color:ButtonFace">
             <table style="width:100%;">
             <tr>
@@ -148,8 +152,9 @@ li.dropdown {
                         </ChartAreas>
                     </asp:Chart>
         </div>
-        <div style="margin:0px auto; height:300px;">
-        <div style="float:left;width:25%; height: 300px;"></div>
+        <div style="margin:0px auto; height:400px;">
+        <div style="float:left;width:25%; height: 400px;"></div>
+            <div style="float:left;width:50%; height: 400px;overflow:auto">
             <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" style="margin-right: 1px" BackColor="White" BorderColor="#999999" BorderStyle="Solid" BorderWidth="1px" CellPadding="3" ForeColor="Black" GridLines="Vertical">
                 <AlternatingRowStyle BackColor="#CCCCCC" />
             <Columns>
@@ -165,7 +170,7 @@ li.dropdown {
                 <SortedDescendingCellStyle BackColor="#CAC9C9" />
                 <SortedDescendingHeaderStyle BackColor="#383838" />
         </asp:GridView>
-                    
+        </div>  
         </div>
         </div>
         <div style="float:left;height:600px;width:25%;">
@@ -181,8 +186,9 @@ li.dropdown {
                         </ChartAreas>
                     </asp:Chart>
                 </div>
-            <div style="margin:0px auto;  height:300px;">
-                <div style="float:left;width:25%; height: 300px;"></div>
+            <div style="margin:0px auto;  height:400px;">
+                <div style="float:left;width:25%; height: 400px;"></div>
+                <div style="float:left;width:50%; height: 400px;overflow:auto">
         <asp:GridView ID="GridView2" runat="server" AutoGenerateColumns="False" BackColor="White" BorderColor="#999999" BorderStyle="Solid" BorderWidth="1px" CellPadding="3" ForeColor="Black" GridLines="Vertical">
             <AlternatingRowStyle BackColor="#CCCCCC" />
             <Columns>
@@ -199,6 +205,7 @@ li.dropdown {
             <SortedDescendingHeaderStyle BackColor="#383838" />
         </asp:GridView>
             </div>
+                </div>
                     </div>
         <div style="float:left;width:10%;height:600px;">
             <div style="border:1px solid;float:left;height:800px;"></div>

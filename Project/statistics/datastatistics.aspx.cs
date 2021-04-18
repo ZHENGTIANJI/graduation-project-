@@ -64,6 +64,7 @@ public partial class 统计分析_datastatistics : System.Web.UI.Page
         Chart1.Series[0]["PieLabelStyle"] = "Outside";//将文字移到外侧
         Chart1.Series[0]["PieLineColor"] = "Black";//绘制黑色的连线。
         Chart1.Series[0].Points.DataBindXY(Hdop, Vdop);
+        this.Chart1.ChartAreas["ChartArea1"].Area3DStyle.Enable3D = true;
     }
     protected void majornumber()
     {
@@ -98,6 +99,7 @@ public partial class 统计分析_datastatistics : System.Web.UI.Page
         Chart2.Series[0]["PieLabelStyle"] = "Outside";//将文字移到外侧
         Chart2.Series[0]["PieLineColor"] = "Black";//绘制黑色的连线。
         Chart2.Series[0].Points.DataBindXY(Hdop, Vdop);
+        this.Chart2.ChartAreas["ChartArea1"].Area3DStyle.Enable3D = true;
     }
     protected void yearnumber()
     {
@@ -139,5 +141,9 @@ public partial class 统计分析_datastatistics : System.Web.UI.Page
         Chart3.Series[0]["PieLabelStyle"] = "Outside";//将文字移到外侧
         Chart3.Series[0]["PieLineColor"] = "Black";//绘制黑色的连线。
         Chart3.Series[0].Points.DataBindXY(Hdop, Vdop);
+    }
+    protected void home_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("../login1.aspx");
     }
 }

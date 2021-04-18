@@ -32,4 +32,8 @@ public partial class 首页 : System.Web.UI.Page
     {
         Response.Redirect("statistics/bookstatistics.aspx");
     }
+    protected void home_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("login1.aspx");
+    }
 }

@@ -82,6 +82,9 @@ li.dropdown {
 </head>
 <body>
     <ul>
+        <form id="form1" runat="server">
+        <ri><asp:LinkButton ID="home" runat="server" ForeColor="White" Font-Size="Medium" OnClick="home_Click">退出系统</asp:LinkButton></ri>
+        <ri>&nbsp;</ri>
     <ri><asp:Label ID="user" runat="server" ForeColor="White" Font-Size="Medium"></asp:Label></ri>
   <li><a href="../main_manager.aspx">首页</a></li>
   <li class="dropdown">
@@ -120,8 +123,9 @@ li.dropdown {
       <a href="../delete/paperdelete.aspx">论文剔旧</a>
     </div>
   </li>
+        <li><a href="../basicdata/basicdata.aspx">基础数据</a></li>
 </ul>
-    <form id="form1" runat="server">
+    
         <div class="table-a" style="background-color:ButtonFace">
                     <table style="width:100%;">
             <tr>
@@ -193,7 +197,6 @@ li.dropdown {
                 <asp:BoundField DataField="xuezhi" HeaderText="学制" SortExpression="xuezhi" />
                 <asp:BoundField DataField="mname" HeaderText="专业类型" SortExpression="mname" />
                 <asp:BoundField DataField="direction" HeaderText="研究方向" SortExpression="direction" />
-                <asp:BoundField DataField="stock_dt" HeaderText="入库日期" SortExpression="stock_dt" DataFormatString="{0:yyyy-MM-dd}" />
                 <asp:TemplateField HeaderText="存放位置" SortExpression="location">
                     <EditItemTemplate>
                         <asp:TextBox ID="TextBox2" runat="server" Text='<%# Bind("location") %>'></asp:TextBox>
@@ -202,7 +205,6 @@ li.dropdown {
                         <asp:TextBox ID="txtlocation" runat="server" Width="50px"></asp:TextBox>
                     </ItemTemplate>
                 </asp:TemplateField>
-                <asp:BoundField DataField="status" HeaderText="库存状况" SortExpression="status" />
                 <asp:BoundField DataField="adviser" HeaderText="指导老师" SortExpression="adviser" />
                 <asp:BoundField DataField="zhicheng" HeaderText="职称" SortExpression="zhicheng" />
                 <asp:BoundField DataField="dabian_dt" HeaderText="答辩日期" SortExpression="dabian_dt" DataFormatString="{0:yyyy-MM-dd}" />
@@ -219,7 +221,6 @@ li.dropdown {
                 <asp:BoundField DataField="lname" HeaderText="语言" SortExpression="lname" />
                 <asp:BoundField DataField="format" HeaderText="开本" SortExpression="format" />
                 <asp:BoundField DataField="number_of_page" HeaderText="页数" SortExpression="number_of_page" />
-                <asp:BoundField DataField="number" HeaderText="库存数目" SortExpression="number" />
                 <asp:BoundField DataField="note" HeaderText="备注" SortExpression="note" />
                 <asp:BoundField DataField="id" HeaderText="ID" SortExpression="id" >
                     <HeaderStyle CssClass="hidden" />

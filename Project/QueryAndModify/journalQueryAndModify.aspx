@@ -87,10 +87,6 @@ li.dropdown {
             width: 94px;
             text-align: right;
         }
-        .auto-style21 {
-            width: 94px;
-            height: 25px;
-        }
         .auto-style22 {
             width: 80px;
             }
@@ -99,24 +95,7 @@ li.dropdown {
             text-align: right;
         }
         .auto-style24 {
-            width: 82px;
-            text-align: right;
-        }
-        .auto-style25 {
-            width: 160px;
-            height: 25px;
-        }
-        .auto-style29 {
-            width: 87px;
-            height: 25px;
-        }
-        .auto-style30 {
-            width: 101px;
-            height: 25px;
-        }
-        .auto-style31 {
-            width: 100px;
-            height: 25px;
+            width: 50px;
             text-align: right;
         }
         .auto-style32 {
@@ -130,7 +109,10 @@ li.dropdown {
     </style>
 </head>
 <body>
+    <form id="form1" runat="server">
     <ul>
+        <ri><asp:LinkButton ID="home" runat="server" ForeColor="White" Font-Size="Medium" OnClick="home_Click">退出系统</asp:LinkButton></ri>
+        <ri>&nbsp;</ri>
         <ri><asp:Label ID="user" runat="server" ForeColor="White" Font-Size="Medium"></asp:Label></ri>
   <li><a href="../main_manager.aspx">首页</a></li>
   <li class="dropdown">
@@ -169,10 +151,11 @@ li.dropdown {
       <a href="../delete/paperdelete.aspx">论文剔旧</a>
     </div>
   </li>
+  <li><a href="../basicdata/basicdata.aspx">基础数据</a></li>
 </ul>
-    <form id="form1" runat="server">
+    
         <div>
-        <div class="table-a">
+        <div class="table-a" style="background-color:ButtonFace">
         <table style="width:100%;">
             <tr>
                 <td class="auto-style22">&nbsp;</td>
@@ -198,19 +181,19 @@ li.dropdown {
                     </asp:DropDownList>
                 </td>
                 <td class="auto-style24">
-                    <asp:Label ID="Label3" runat="server" Text="专业类型" style="text-align: right"></asp:Label>
+                    <asp:Label ID="Label3" runat="server" Text="专业" style="text-align: right"></asp:Label>
                 </td>
                 <td class="auto-style15">
                     <asp:DropDownList ID="mt" runat="server" style="text-align: left">
                     </asp:DropDownList>
                 </td>
                 <td>
-                    <asp:Button ID="query" runat="server" OnClick="query_Click" Text="查询" />
+                    <asp:Button ID="query" runat="server" OnClick="query_Click" Text="查询" Width="70px" />
                 </td>
             </tr>
             <tr>
                 <td class="auto-style22">
-                    <asp:Button ID="export" runat="server" OnClick="export_Click1" Text="导出excel" />
+                    
                 </td>
                 <td class="auto-style2">&nbsp;</td>
                 <td class="auto-style23">&nbsp;</td>
@@ -222,7 +205,7 @@ li.dropdown {
         </table>
     </div>
     </div>
-        <div style=" margin:0px auto; height:20px;"></div>
+        <div style=" margin:0px auto; height:30px;"><asp:Button ID="export" runat="server" OnClick="export_Click1" Text="导出excel" /></div>
         <div style="margin:0px auto;height:320px;text-align:center;font-size:smaller;overflow-y: scroll;">
         <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" style="margin-top: 0px" OnRowDeleting="GridView1_RowDeleting" AllowPaging="True" onpageindexchanging="GridViewHistory_PageIndexChanging" Width="100%" CellPadding="4" ForeColor="#333333" GridLines="None">
             <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
@@ -287,7 +270,7 @@ li.dropdown {
         <asp:SqlDataSource ID="SqlDataSource6" runat="server" ConnectionString="<%$ ConnectionStrings:档案室信息管理系统ConnectionString %>" SelectCommand="SELECT * FROM [organization]"></asp:SqlDataSource>
         <asp:SqlDataSource ID="SqlDataSource5" runat="server" ConnectionString="<%$ ConnectionStrings:档案室信息管理系统ConnectionString %>" SelectCommand="SELECT * FROM [language]"></asp:SqlDataSource>
         <asp:SqlDataSource ID="SqlDataSource7" runat="server"></asp:SqlDataSource>
-        <div class="table-b">
+        <div class="table-a">
              <table style="width:100%;">
             <tr>
                 <td class="auto-style20">

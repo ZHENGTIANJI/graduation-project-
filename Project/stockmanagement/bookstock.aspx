@@ -153,10 +153,15 @@ li.dropdown {
             text-align: right;
             width: 280px;
         }
-    </style>
+        .hidden { display:none;}
+        </style>
 </head>
 <body>
+        <form id="form1" runat="server">
     <ul>
+        
+        <ri><asp:LinkButton ID="home" runat="server" ForeColor="White" Font-Size="Medium" OnClick="home_Click">退出系统</asp:LinkButton></ri>
+        <ri>&nbsp;</ri>
         <ri><asp:Label ID="user" runat="server" ForeColor="White" Font-Size="Medium"></asp:Label></ri>
   <li><a href="../main_manager.aspx">首页</a></li>
   <li class="dropdown">
@@ -195,8 +200,9 @@ li.dropdown {
       <a href="../delete/paperdelete.aspx">论文剔旧</a>
     </div>
   </li>
+        <li><a href="../basicdata/basicdata.aspx">基础数据</a></li>
 </ul>
-    <form id="form1" runat="server">
+
                     <h1>
                     <asp:Label ID="矿业学院资料室图书入库管理" runat="server" style="text-align: center; font-size: xx-large" Text="图书入库管理"></asp:Label>
                     </h1>
@@ -249,7 +255,19 @@ li.dropdown {
                                 <asp:Label ID="Label28" runat="server" Text="出版社"></asp:Label>
                             </td>
                             <td class="auto-style104">
-                                <asp:TextBox ID="txtpub" runat="server"></asp:TextBox>
+                                <div style="z-index: 0; visibility: visible; position: absolute;left:370px;top:219px">
+                                <asp:DropDownList ID="ddlModel" runat="server" Style="z-index: -1" Width="165px" Height="22px"
+                                onchange="getModelTo(this)" DataSourceID="SqlDataSource6" DataTextField="name" DataValueField="name">
+                                    </asp:DropDownList>
+                            </div>
+                        <asp:TextBox ID="txtpub" runat="server" Style="z-index: 0; position: absolute;left:370px;top:220px"
+                            Font-Size="9pt" Width="138px" Height="17px" MaxLength="50"></asp:TextBox>
+                        <script type="text/javascript">
+                                function getModelTo(e) {
+                                    document.getElementById("txtpub").value = e.options[e.selectedIndex].innerText;
+                                    document.getElementById("txtpub").select();
+                                 }
+                        </script>
                             </td>
                             <td class="auto-style75">
                                 <asp:Label ID="Label29" runat="server" Text="图书语种"></asp:Label>
@@ -343,7 +361,7 @@ li.dropdown {
                         </tr>
                         </table>
         </div>            
-        
+        <div>
                     <table style="width:100%;">
                         <tr>
                             <td class="auto-style82">&nbsp;</td>
@@ -366,11 +384,66 @@ li.dropdown {
                             <td class="auto-style83">&nbsp;</td>
                         </tr>
                     </table>
-        
+        </div>
         <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:档案室信息管理系统ConnectionString %>" SelectCommand="SELECT * FROM [book_type]"></asp:SqlDataSource>
+        <div style="margin:0px auto;height:320px;text-align:center;font-size:small;overflow-y: scroll; ">
+
+        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" Style="margin-top: 0;" AllowPaging="True" OnPageIndexChanging="GridViewHistory_PageIndexChanging" Width="100%" CellPadding="4" ForeColor="#333333" GridLines="None" >
+                <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
+
+                <Columns>
+                    <asp:BoundField DataField="name" HeaderText="图书名称" SortExpression="name" />
+                    <asp:BoundField DataField="btname" HeaderText="图书类型" SortExpression="btname" />
+                    <asp:BoundField DataField="book_number" HeaderText="书号" SortExpression="book_number" />
+                    <asp:BoundField DataField="author" HeaderText="作者" SortExpression="author" />
+                    <asp:BoundField DataField="stock_dt" HeaderText="入库时间" SortExpression="stock_dt" DataFormatString="{0:yyyy-MM-dd}" />
+                    <asp:BoundField DataField="format" HeaderText="开本" SortExpression="format" />
+                    <asp:BoundField DataField="number_of_page" HeaderText="页数" SortExpression="number_of_page" />
+                    <asp:BoundField DataField="location" HeaderText="存放位置" SortExpression="location" />
+                    <asp:BoundField DataField="CD" HeaderText="有无CD" SortExpression="CD" />
+                    <asp:BoundField DataField="status" HeaderText="库存状态" SortExpression="status" />
+                    <asp:BoundField DataField="teacher" HeaderText="赠书教师" SortExpression="teacher" />
+                    <asp:BoundField DataField="number" HeaderText="库存数目" SortExpression="number" />
+                    <asp:BoundField DataField="mname" HeaderText="专业" SortExpression="mname" />
+                    <asp:BoundField DataField="QR_code" HeaderText="二维码" SortExpression="QR_code" />
+                    <asp:BoundField DataField="lname" HeaderText="图书语种" SortExpression="lname" />
+                    <asp:BoundField DataField="publisher" HeaderText="出版社" SortExpression="publisher" />
+                    <asp:BoundField DataField="publish_dt" HeaderText="出版日期" SortExpression="publish_dt" DataFormatString="{0:yyyy-MM-dd}" />
+                    <asp:BoundField DataField="price" HeaderText="价格" SortExpression="price" />
+                    <asp:BoundField DataField="bitname" HeaderText="装订类型" SortExpression="bitname" />
+                    <asp:BoundField DataField="note" HeaderText="备注" SortExpression="note" />
+                    <asp:BoundField DataField="id" HeaderText="ID" SortExpression="id">
+                        <HeaderStyle CssClass="hidden" />
+                        <ItemStyle CssClass="hidden" />
+                        <FooterStyle CssClass="hidden" />
+                    </asp:BoundField>
+                </Columns>
+                <EditRowStyle BackColor="#999999" />
+                <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
+                <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
+                <PagerStyle BackColor="#5D7B9D" ForeColor="White" HorizontalAlign="Center" />
+                <PagerTemplate>
+                    <asp:LinkButton ID="lb_firstpage" runat="server" OnClick="lb_firstpage_Click">首页</asp:LinkButton>
+                    <asp:LinkButton ID="lb_previouspage" runat="server"
+                        OnClick="lb_previouspage_Click">上一页</asp:LinkButton>
+                    <asp:LinkButton ID="lb_nextpage" runat="server" OnClick="lb_nextpage_Click">下一页</asp:LinkButton>
+                    <asp:LinkButton ID="lb_lastpage" runat="server" OnClick="lb_lastpage_Click">尾页</asp:LinkButton>
+                    第<asp:Label ID="lbl_nowpage" runat="server" Text="<%#GridView1.PageIndex+1 %>" ForeColor="#db530f"></asp:Label>页/共<asp:Label
+                        ID="lbl_totalpage" runat="server" Text="<%#GridView1.PageCount %>" ForeColor="#db530f"></asp:Label>页
+                </PagerTemplate>
+                <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
+                <SelectedRowStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333" />
+                <SortedAscendingCellStyle BackColor="#E9E7E2" />
+                <SortedAscendingHeaderStyle BackColor="#506C8C" />
+                <SortedDescendingCellStyle BackColor="#FFFDF8" />
+                <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
+            </asp:GridView>
         <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:档案室信息管理系统ConnectionString %>" SelectCommand="SELECT * FROM [major]"></asp:SqlDataSource>
         <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:档案室信息管理系统ConnectionString %>" SelectCommand="SELECT * FROM [binding_type]"></asp:SqlDataSource>
         <asp:SqlDataSource ID="SqlDataSource4" runat="server" ConnectionString="<%$ ConnectionStrings:档案室信息管理系统ConnectionString %>" SelectCommand="SELECT * FROM [language]"></asp:SqlDataSource>
-    </form>
+            <asp:SqlDataSource ID="SqlDataSource6" runat="server" ConnectionString="<%$ ConnectionStrings:档案室信息管理系统ConnectionString %>" SelectCommand="SELECT * FROM [publisher]"></asp:SqlDataSource>
+    </div>
+
+                    </form>           
 </body>
 </html>

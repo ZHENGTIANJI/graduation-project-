@@ -24,7 +24,17 @@ public partial class QueryAndModify_journalQueryAndModify : dropdownlist
             DataSet dst = new DataSet();
             SqlConnection cnn = new SqlConnection("Data Source=(local);Initial Catalog=档案室信息管理系统1.0;Integrated Security=True");
             SqlDataAdapter adpt = new SqlDataAdapter("SELECT [id],[number_of_page], [office_name], [period_type],[period_number], [address],[format], [location], [stock_dt], [number], [name],[publish_dt], [jtname], [mname], [QR_code], [class_number],[organname], [status], [note], [lname],[gradename] FROM [journal] left join journal_grade on journal.gradeid=journal_grade.gid left join organization on journal.organizationid=organization.organid left join journal_type on journal.journal_type_id=journal_type.jtid left join major on journal.major_id=major.mid left join language on journal.language=language.lid where is_delete=0 and name like '%" + strjournalname + "%' and mname like '%" + strmajor + "%' and jtname like '%" + strjournaltype + "%'", cnn);
+            
             adpt.Fill(dst);
+            if (dst.Tables[0].Rows.Count == 0)
+            {
+                DataRow row = dst.Tables[0].NewRow();
+                for (int j = 0; j < GridView1.Columns.Count - 1; j++)
+                {
+                    row[j] = DBNull.Value;
+                }
+                dst.Tables[0].Rows.Add(row);
+            }
             GridView1.DataSource = dst.Tables[0];
             GridView1.DataBind();
             setjournaltypedropdownlist(jt);
@@ -119,37 +129,37 @@ public partial class QueryAndModify_journalQueryAndModify : dropdownlist
         int num = e.RowIndex;
         if (GridView1.Rows[0].Cells[0].Text.ToString() != GridView1.Rows[0].Cells[2].Text.ToString() && GridView1.Rows[0].Cells[2].Text.ToString() != GridView1.Rows[0].Cells[1].Text.ToString())
         {
-            txtname.Text = GridView1.Rows[num].Cells[0].Text.ToString();
+            txtname.Text = GridView1.Rows[num].Cells[0].Text.ToString() == "&nbsp;" ? "" : GridView1.Rows[num].Cells[0].Text.ToString();
             journaltype.SelectedIndex = -1;
             journaltype.Items.FindByText(GridView1.Rows[num].Cells[1].Text.ToString()).Selected = true;
             grade.SelectedIndex = -1;
             grade.Items.FindByText(GridView1.Rows[num].Cells[2].Text.ToString()).Selected = true;
             major.SelectedIndex = -1;
             major.Items.FindByText(GridView1.Rows[num].Cells[3].Text.ToString()).Selected = true;
-            txtQR.Text = GridView1.Rows[num].Cells[4].Text.ToString();
-            pub_year.Text = GridView1.Rows[num].Cells[6].Text.ToString().Substring(0, 4);
-            pub_month.Text = GridView1.Rows[num].Cells[6].Text.ToString().Substring(5, 2);
-            pub_day.Text = GridView1.Rows[num].Cells[6].Text.ToString().Substring(8, 2);
+            txtQR.Text = GridView1.Rows[num].Cells[4].Text.ToString() == "&nbsp;" ? "" : GridView1.Rows[num].Cells[4].Text.ToString();
+            pub_year.Text = GridView1.Rows[num].Cells[5].Text.ToString().Substring(0, 4);
+            pub_month.Text = GridView1.Rows[num].Cells[5].Text.ToString().Substring(5, 2);
+            pub_day.Text = GridView1.Rows[num].Cells[5].Text.ToString().Substring(8, 2);
             stock_year.Text = GridView1.Rows[num].Cells[6].Text.ToString().Substring(0, 4);
             stock_month.Text = GridView1.Rows[num].Cells[6].Text.ToString().Substring(5, 2);
             stock_day.Text = GridView1.Rows[num].Cells[6].Text.ToString().Substring(8, 2);
             periodtype.SelectedIndex = -1;
             periodtype.Items.FindByText(GridView1.Rows[num].Cells[7].Text.ToString()).Selected = true;
-            txtoffname.Text = GridView1.Rows[num].Cells[8].Text.ToString();
+            txtoffname.Text = GridView1.Rows[num].Cells[8].Text.ToString() == "&nbsp;" ? "" : GridView1.Rows[num].Cells[8].Text.ToString();
             language.SelectedIndex = -1;
             language.Items.FindByText(GridView1.Rows[num].Cells[9].Text.ToString()).Selected = true;
-            txtcn.Text = GridView1.Rows[num].Cells[10].Text.ToString();
-            txtperiod.Text = GridView1.Rows[num].Cells[11].Text.ToString();
+            txtcn.Text = GridView1.Rows[num].Cells[10].Text.ToString() == "&nbsp;" ? "" : GridView1.Rows[num].Cells[10].Text.ToString();
+            txtperiod.Text = GridView1.Rows[num].Cells[11].Text.ToString() == "&nbsp;" ? "" : GridView1.Rows[num].Cells[11].Text.ToString();
             status.SelectedIndex = -1;
             status.Items.FindByText(GridView1.Rows[num].Cells[12].Text.ToString()).Selected = true;
             organ.SelectedIndex = -1;
             organ.Items.FindByText(GridView1.Rows[num].Cells[13].Text.ToString()).Selected = true;
-            txtlocation.Text = GridView1.Rows[num].Cells[14].Text.ToString();
-            txtnumber.Text = GridView1.Rows[num].Cells[15].Text.ToString();
-            txtaddress.Text = GridView1.Rows[num].Cells[16].Text.ToString();
-            txtnumberofpage.Text = GridView1.Rows[num].Cells[17].Text.ToString();
-            txtformat.Text = GridView1.Rows[num].Cells[18].Text.ToString();
-            txtnote.Text = GridView1.Rows[num].Cells[19].Text.ToString();
+            txtlocation.Text = GridView1.Rows[num].Cells[14].Text.ToString() == "&nbsp;" ? "" : GridView1.Rows[num].Cells[14].Text.ToString();
+            txtnumber.Text = GridView1.Rows[num].Cells[15].Text.ToString() == "&nbsp;" ? "" : GridView1.Rows[num].Cells[15].Text.ToString();
+            txtaddress.Text = GridView1.Rows[num].Cells[16].Text.ToString() == "&nbsp;" ? "" : GridView1.Rows[num].Cells[16].Text.ToString();
+            txtnumberofpage.Text = GridView1.Rows[num].Cells[17].Text.ToString() == "&nbsp;" ? "" : GridView1.Rows[num].Cells[17].Text.ToString();
+            txtformat.Text = GridView1.Rows[num].Cells[18].Text.ToString() == "&nbsp;" ? "" : GridView1.Rows[num].Cells[18].Text.ToString();
+            txtnote.Text = GridView1.Rows[num].Cells[19].Text.ToString() == "&nbsp;" ? "" : GridView1.Rows[num].Cells[19].Text.ToString();
             Session["journalid"] = GridView1.Rows[num].Cells[20].Text.ToString();
         }
         
@@ -224,5 +234,9 @@ public partial class QueryAndModify_journalQueryAndModify : dropdownlist
     public override void VerifyRenderingInServerForm(Control control)
     {
         // Confirms that an HtmlForm control is rendered for
+    }
+    protected void home_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("../login1.aspx");
     }
 }

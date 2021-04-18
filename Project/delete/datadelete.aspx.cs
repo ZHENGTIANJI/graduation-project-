@@ -17,10 +17,16 @@ public partial class delete_datadelete : System.Web.UI.Page
         }
         user.Text = "当前用户:" + Session["name"].ToString();
         SqlConnection cnn = new SqlConnection("Data Source=(local);Initial Catalog=档案室信息管理系统1.0;Integrated Security=True");
-        if (!IsPostBack)
-        {
+        ExecuteQuery();
+        ExecuteQuery2();
+        
+    }
+    void ExecuteQuery()
+    {   
+        if(TextBox1.Text.ToString()!=""){
             DataSet dst = new DataSet();
-            SqlDataAdapter adpt = new SqlDataAdapter("SELECT [id],[number_of_page], [compile_dt], [unit], [format], [location], [stock_dt], [number], [name], [dtname], [mname], [QR_code], [class_number], [author], [status], [note], [lname] FROM [data] left join data_type on data.data_type_id=data_type.dtid left join major on data.major_id=major.mid left join language on data.language=language.lid where is_delete=0", cnn);
+            SqlConnection cnn = new SqlConnection("Data Source=(local);Initial Catalog=档案室信息管理系统1.0;Integrated Security=True");
+            SqlDataAdapter adpt = new SqlDataAdapter("SELECT [id],[number_of_page], [compile_dt], [unit], [format], [location], [stock_dt], [number], [name], [dtname], [mname], [QR_code], [class_number], [author], [status], [note], [lname] FROM [data] left join data_type on data.data_type_id=data_type.dtid left join major on data.major_id=major.mid left join language on data.language=language.lid where is_delete=0 and name like '%"+TextBox1.Text.ToString()+"%'", cnn);
             adpt.Fill(dst);
             if (dst.Tables[0].Rows.Count == 0)
             {
@@ -34,24 +40,7 @@ public partial class delete_datadelete : System.Web.UI.Page
             GridView1.DataSource = dst.Tables[0];
             GridView1.DataBind();
         }
-        DataSet dst1 = new DataSet();
-        SqlDataAdapter adpt1 = new SqlDataAdapter("SELECT [id],[number_of_page], [compile_dt], [unit], [format], [location], [stock_dt], [number], [name], [dtname], [mname], [QR_code], [class_number], [author], [status], [note], [lname] FROM [data] left join data_type on data.data_type_id=data_type.dtid left join major on data.major_id=major.mid left join language on data.language=language.lid where is_delete=1", cnn);
-        adpt1.Fill(dst1);
-        if (dst1.Tables[0].Rows.Count == 0)
-        {
-            DataRow row = dst1.Tables[0].NewRow();
-            for (int j = 0; j < GridView1.Columns.Count - 1; j++)
-            {
-                row[j] = DBNull.Value;
-            }
-            dst1.Tables[0].Rows.Add(row);
-        }
-        GridView2.DataSource = dst1.Tables[0];
-        GridView2.DataBind();
-    }
-    void ExecuteQuery()
-    {
-        if (day.Text == "" || month.Text == "" || year.Text == "")
+        else if (day.Text == "" || month.Text == "" || year.Text == "")
         {
             // ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "", "alert('日期不得为空！');", true);
             DataSet dst = new DataSet();
@@ -76,21 +65,29 @@ public partial class delete_datadelete : System.Web.UI.Page
             String strmonth = month.Text.ToString();
             String stryear = year.Text.ToString();
             String date = stryear + "-" + strmonth + "-" + strday;
-            DataSet dst = new DataSet();
-            SqlConnection cnn = new SqlConnection("Data Source=(local);Initial Catalog=档案室信息管理系统1.0;Integrated Security=True");
-            SqlDataAdapter adpt = new SqlDataAdapter("SELECT [id],[number_of_page], [compile_dt], [unit], [format], [location], [stock_dt], [number], [name], [dtname], [mname], [QR_code], [class_number], [author], [status], [note], [lname] FROM [data] left join data_type on data.data_type_id=data_type.dtid left join major on data.major_id=major.mid left join language on data.language=language.lid where stock_dt<'"+date+"' and is_delete=0", cnn);
-            adpt.Fill(dst);
-            if (dst.Tables[0].Rows.Count == 0)
+            try
             {
-                DataRow row = dst.Tables[0].NewRow();
-                for (int j = 0; j < GridView1.Columns.Count - 1; j++)
+                DataSet dst = new DataSet();
+                SqlConnection cnn = new SqlConnection("Data Source=(local);Initial Catalog=档案室信息管理系统1.0;Integrated Security=True");
+                SqlDataAdapter adpt = new SqlDataAdapter("SELECT [id],[number_of_page], [compile_dt], [unit], [format], [location], [stock_dt], [number], [name], [dtname], [mname], [QR_code], [class_number], [author], [status], [note], [lname] FROM [data] left join data_type on data.data_type_id=data_type.dtid left join major on data.major_id=major.mid left join language on data.language=language.lid where stock_dt<'" + date + "' and is_delete=0", cnn);
+                adpt.Fill(dst);
+                if (dst.Tables[0].Rows.Count == 0)
                 {
-                    row[j] = DBNull.Value;
+                    DataRow row = dst.Tables[0].NewRow();
+                    for (int j = 0; j < GridView1.Columns.Count - 1; j++)
+                    {
+                        row[j] = DBNull.Value;
+                    }
+                    dst.Tables[0].Rows.Add(row);
                 }
-                dst.Tables[0].Rows.Add(row);
+                GridView1.DataSource = dst.Tables[0];
+                GridView1.DataBind();
             }
-            GridView1.DataSource = dst.Tables[0];
-            GridView1.DataBind();
+            catch
+            {
+                ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "", "alert(请填写正确的日期格式！');", true);
+            }
+           
         }
     }
     protected void GridView1_RowDeleting(object sender, GridViewDeleteEventArgs e)
@@ -108,10 +105,34 @@ public partial class delete_datadelete : System.Web.UI.Page
                 cmd.ExecuteNonQuery();
                 cnn.Close();
                 ExecuteQuery();
+                ExecuteQuery2();
             }
             catch (Exception)
             {
                 ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "", "alert('剔旧失败！');", true);
+            }
+        }
+    }
+    protected void GridView2_RowDeleting(object sender, GridViewDeleteEventArgs e)
+    {
+        if (GridView1.Rows[0].Cells[0].Text.ToString() != GridView1.Rows[0].Cells[1].Text.ToString() && GridView1.Rows[0].Cells[2].Text.ToString() != GridView1.Rows[0].Cells[1].Text.ToString())
+        {
+            SqlConnection cnn = new SqlConnection("Data Source=(local);Initial Catalog=档案室信息管理系统1.0;Integrated Security=True");
+            SqlCommand cmd = cnn.CreateCommand();
+            int num = e.RowIndex;
+            int dataid = Convert.ToInt32(GridView2.Rows[num].Cells[16].Text.ToString());
+            try
+            {
+                cmd.CommandText = "update data set is_delete='" + 0 + "' where id=" + dataid + "";
+                cnn.Open();
+                cmd.ExecuteNonQuery();
+                cnn.Close();
+                ExecuteQuery();
+                ExecuteQuery2();
+            }
+            catch (Exception)
+            {
+                ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "", "alert('还原失败！');", true);
             }
         }
     }
@@ -159,8 +180,17 @@ public partial class delete_datadelete : System.Web.UI.Page
     {
         DataSet dst1 = new DataSet();
         SqlConnection cnn = new SqlConnection("Data Source=(local);Initial Catalog=档案室信息管理系统1.0;Integrated Security=True");
-        SqlDataAdapter adpt1 = new SqlDataAdapter("SELECT [id],[number_of_page], [compile_dt], [unit], [format], [location], [stock_dt], [number], [name], [dtname], [mname], [QR_code], [class_number], [author], [status], [note], [lname] FROM [data] left join data_type on data.data_type_id=data_type.dtid left join major on data.major_id=major.mid left join language on data.language=language.lid where is_delete=1", cnn);
+        SqlDataAdapter adpt1 = new SqlDataAdapter("SELECT [id],[number_of_page], [compile_dt], [unit], [format], [location], [stock_dt], [number], [name], [dtname], [mname], [QR_code], [class_number], [author], [status], [note], [lname] FROM [data] left join data_type on data.data_type_id=data_type.dtid left join major on data.major_id=major.mid left join language on data.language=language.lid where is_delete=1 and name like '%"+TextBox2.Text.ToString()+"%'", cnn);
         adpt1.Fill(dst1);
+        if (dst1.Tables[0].Rows.Count == 0)
+        {
+            DataRow row = dst1.Tables[0].NewRow();
+            for (int j = 0; j < GridView1.Columns.Count - 1; j++)
+            {
+                row[j] = DBNull.Value;
+            }
+            dst1.Tables[0].Rows.Add(row);
+        }
         GridView2.DataSource = dst1.Tables[0];
         GridView2.DataBind();
     }
@@ -198,5 +228,13 @@ public partial class delete_datadelete : System.Web.UI.Page
     {
         this.GridView2.PageIndex = this.GridView2.PageCount;
         ExecuteQuery2();
+    }
+    protected void btok2_Click(object sender, EventArgs e)
+    {
+        ExecuteQuery2();
+    }
+    protected void home_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("../login1.aspx");
     }
 }

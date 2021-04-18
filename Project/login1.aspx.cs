@@ -51,6 +51,8 @@ public partial class login1 : System.Web.UI.Page
             Session["class"] = dst.Tables[0].Rows[0]["user_class"].ToString() == "管理员" ? 0 : 1;
             Session["id"] = dst.Tables[0].Rows[0]["id"].ToString();
             Session["name"] = dst.Tables[0].Rows[0]["name"].ToString();
+            Session["majorid"] = dst.Tables[0].Rows[0]["major"].ToString();
+
         }
 
         return dst.Tables[0].Rows.Count > 0;

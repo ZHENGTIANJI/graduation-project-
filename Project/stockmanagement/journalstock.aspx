@@ -133,10 +133,14 @@ li.dropdown {
             width: 270px;
             height: 27px;
         }
-    </style>
+        .hidden { display:none;}
+        </style>
 </head>
 <body>
+    <form id="form1" runat="server">
      <ul>
+         <ri><asp:LinkButton ID="home" runat="server" ForeColor="White" Font-Size="Medium" OnClick="home_Click">退出系统</asp:LinkButton></ri>
+        <ri>&nbsp;</ri>
          <ri><asp:Label ID="user" runat="server" ForeColor="White" Font-Size="Medium"></asp:Label></ri>
   <li><a href="../main_manager.aspx">首页</a></li>
   <li class="dropdown">
@@ -175,8 +179,9 @@ li.dropdown {
       <a href="../delete/paperdelete.aspx">论文剔旧</a>
     </div>
   </li>
+         <li><a href="../basicdata/basicdata.aspx">基础数据</a></li>
 </ul>
-    <form id="form1" runat="server">
+    
         <div>
               <table style="width:100%;">
             <tr>
@@ -359,6 +364,57 @@ li.dropdown {
         </table>
 
         <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:档案室信息管理系统ConnectionString %>" SelectCommand="SELECT * FROM [journal_type]"></asp:SqlDataSource>
+        <div style="margin:0px auto;height:320px;text-align:center;font-size:small;overflow-y: scroll; ">
+        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" style="margin-top: 0px" AllowPaging="True" onpageindexchanging="GridViewHistory_PageIndexChanging" Width="100%" CellPadding="4" ForeColor="#333333" GridLines="None">
+            <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
+            <Columns>
+                <asp:BoundField DataField="name" HeaderText="期刊名称" SortExpression="name" />
+                <asp:BoundField DataField="jtname" HeaderText="期刊类型" SortExpression="jtname" />
+                <asp:BoundField DataField="gradename" HeaderText="期刊等级" SortExpression="gradename" />
+                <asp:BoundField DataField="mname" HeaderText="专业" SortExpression="mname" />
+                <asp:BoundField DataField="QR_code" HeaderText="二维码编码" SortExpression="QR_code" />
+                <asp:BoundField DataField="publish_dt" HeaderText="出版日期" SortExpression="publish_dt" DataFormatString="{0:yyyy-MM-dd}" />
+                <asp:BoundField DataField="stock_dt" HeaderText="入库日期" SortExpression="stock_dt" DataFormatString="{0:yyyy-MM-dd}" />
+                <asp:BoundField DataField="period_type" HeaderText="期刊周期" SortExpression="period_type" />
+                <asp:BoundField DataField="office_name" HeaderText="杂志社名称" SortExpression="office_name" />
+                <asp:BoundField DataField="lname" HeaderText="期刊语种" SortExpression="lname" />
+                <asp:BoundField DataField="class_number" HeaderText="分类号" SortExpression="class_number" />
+                <asp:BoundField DataField="period_number" HeaderText="周期数" SortExpression="period_number" />
+                <asp:BoundField DataField="status" HeaderText="库存状况" SortExpression="status" />
+                <asp:BoundField DataField="organname" HeaderText="检索机构" SortExpression="organname" />
+                <asp:BoundField DataField="location" HeaderText="存放位置" SortExpression="location" />
+                <asp:BoundField DataField="number" HeaderText="数量" SortExpression="number" />
+                <asp:BoundField DataField="address" HeaderText="杂志社地址" SortExpression="address" />
+                <asp:BoundField DataField="number_of_page" HeaderText="页数" />
+                <asp:BoundField DataField="format" HeaderText="开本" />
+                <asp:BoundField DataField="note" HeaderText="备注" SortExpression="note" />
+                <asp:BoundField DataField="id" HeaderText="ID" SortExpression="id" >
+                    <HeaderStyle CssClass="hidden" />
+                    <ItemStyle  CssClass="hidden" />
+                    <FooterStyle CssClass="hidden" />
+                </asp:BoundField>
+            </Columns>
+            <EditRowStyle BackColor="#999999" />
+            <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
+            <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
+            <PagerStyle BackColor="#5D7B9D" ForeColor="White" HorizontalAlign="Center" />
+            <PagerTemplate>
+                <asp:LinkButton ID="lb_firstpage" runat="server" onclick="lb_firstpage_Click">首页</asp:LinkButton>
+                <asp:LinkButton ID="lb_previouspage" runat="server"
+                onclick="lb_previouspage_Click">上一页</asp:LinkButton>
+                <asp:LinkButton ID="lb_nextpage" runat="server" onclick="lb_nextpage_Click">下一页</asp:LinkButton>
+                <asp:LinkButton ID="lb_lastpage" runat="server" onclick="lb_lastpage_Click">尾页</asp:LinkButton>
+                第<asp:Label ID="lbl_nowpage" runat="server" Text="<%#GridView1.PageIndex+1 %>" ForeColor="#db530f"></asp:Label>页/共<asp:Label
+                ID="lbl_totalpage" runat="server" Text="<%#GridView1.PageCount %>" ForeColor="#db530f"></asp:Label>页
+</PagerTemplate>
+            <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
+            <SelectedRowStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333" />
+            <SortedAscendingCellStyle BackColor="#E9E7E2" />
+            <SortedAscendingHeaderStyle BackColor="#506C8C" />
+            <SortedDescendingCellStyle BackColor="#FFFDF8" />
+            <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
+        </asp:GridView>
+            </div>
         <asp:SqlDataSource ID="SqlDataSource2" runat="server" ConnectionString="<%$ ConnectionStrings:档案室信息管理系统ConnectionString %>" SelectCommand="SELECT * FROM [major]"></asp:SqlDataSource>
         <asp:SqlDataSource ID="SqlDataSource3" runat="server" ConnectionString="<%$ ConnectionStrings:档案室信息管理系统ConnectionString %>" SelectCommand="SELECT * FROM [language]"></asp:SqlDataSource>
         <asp:SqlDataSource ID="SqlDataSource4" runat="server" ConnectionString="<%$ ConnectionStrings:档案室信息管理系统ConnectionString %>" SelectCommand="SELECT * FROM [journal_grade]"></asp:SqlDataSource>

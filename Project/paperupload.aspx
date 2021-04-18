@@ -89,8 +89,11 @@ ri{
     
     <div style=" margin:0px auto;width:100%; height:20px;background-color:ButtonFace">
         你好，欢迎登陆本系统！
-        <div style=" float:right; width:10%; height:20px;background-color:ButtonFace">      
-             <asp:Label ID="user" runat="server" Font-Size="Medium"></asp:Label></div>
+        <div style=" float:right; width:14%; height:20px;background-color:ButtonFace">      
+             <asp:Label ID="user" runat="server" Font-Size="Medium"></asp:Label>
+            <asp:LinkButton ID="home" runat="server"  Font-Size="Medium" OnClick="home_Click">退出系统</asp:LinkButton>
+
+        </div>
     </div>
     <div style=" margin:0px auto; height:100px;background-color:white">
         <div style=" float:left; width:10%;height:100px;"></div>
@@ -124,17 +127,20 @@ ri{
                     </asp:DropDownList>
                 </td>
                 <td class="auto-style2">
-                    <asp:Label ID="Label12" runat="server" Text="专业"></asp:Label>
+                    <asp:Label ID="Label17" runat="server" Text="语言种类"></asp:Label>
                 </td>
                 <td class="auto-style20">
-                    <asp:DropDownList ID="major" runat="server" DataSourceID="SqlDataSource2" DataTextField="mname" DataValueField="mname">
+                    <asp:DropDownList ID="language" runat="server" DataSourceID="SqlDataSource3" DataTextField="lname" DataValueField="lname">
                     </asp:DropDownList>
                 </td>
                 <td class="auto-style18">
-                    <asp:Label ID="Label17" runat="server" Text="语言种类"></asp:Label>
+                    <asp:Label ID="Label10" runat="server" Text="学制"></asp:Label>
                 </td>
                 <td class="auto-style24">
-                    <asp:DropDownList ID="language" runat="server" DataSourceID="SqlDataSource3" DataTextField="lname" DataValueField="lname">
+                    <asp:DropDownList ID="xuezhi" runat="server">
+                        <asp:ListItem>四年制</asp:ListItem>
+                        <asp:ListItem>三年制</asp:ListItem>
+                        <asp:ListItem>二年制</asp:ListItem>
                     </asp:DropDownList>
                 </td>
                 <td class="auto-style6">
@@ -161,14 +167,10 @@ ri{
                     <asp:Label ID="Label27" runat="server" Text="日"></asp:Label>
                 </td>
                 <td class="auto-style18">
-                    <asp:Label ID="Label10" runat="server" Text="学制"></asp:Label>
+                    <asp:Label ID="Label18" runat="server" Text="指导教师"></asp:Label>
                 </td>
                 <td class="auto-style24">
-                    <asp:DropDownList ID="xuezhi" runat="server">
-                        <asp:ListItem>四年制</asp:ListItem>
-                        <asp:ListItem>三年制</asp:ListItem>
-                        <asp:ListItem>二年制</asp:ListItem>
-                    </asp:DropDownList>
+                    <asp:TextBox ID="txtadviser" runat="server"></asp:TextBox>
                 </td>
                 <td class="auto-style6">
                     &nbsp;</td>
@@ -177,10 +179,10 @@ ri{
                 <td class="auto-style15">
                     &nbsp;</td>
                 <td class="auto-style15">
-                    <asp:Label ID="Label5" runat="server" Text="作者"></asp:Label>
+                    <asp:Label ID="Label15" runat="server" Text="研究方向"></asp:Label>
                 </td>
                 <td class="auto-style5">
-                    <asp:TextBox ID="txtauthor" runat="server"></asp:TextBox>
+                    <asp:TextBox ID="txtdirection" runat="server"></asp:TextBox>
                 </td>
                 <td class="auto-style2">
                     <asp:Label ID="Label6" runat="server" Text="答辩日期"></asp:Label>
@@ -194,10 +196,14 @@ ri{
                     <asp:Label ID="Label30" runat="server" Text="日"></asp:Label>
                 </td>
                 <td class="auto-style19">
-                    <asp:Label ID="Label18" runat="server" Text="指导教师"></asp:Label>
+                    <asp:Label ID="Label19" runat="server" Text="职称"></asp:Label>
                 </td>
                 <td class="auto-style25">
-                    <asp:TextBox ID="txtadviser" runat="server"></asp:TextBox>
+                    <asp:DropDownList ID="zhicheng" runat="server">
+                        <asp:ListItem>讲师</asp:ListItem>
+                        <asp:ListItem>副教授</asp:ListItem>
+                        <asp:ListItem>教授</asp:ListItem>
+                    </asp:DropDownList>
                 </td>
                 <td class="auto-style7">
                     &nbsp;</td>
@@ -218,14 +224,10 @@ ri{
                     <asp:TextBox ID="txtnumberofpage" runat="server"></asp:TextBox>
                 </td>
                 <td class="auto-style19">
-                    <asp:Label ID="Label19" runat="server" Text="职称"></asp:Label>
+                    <asp:Label ID="Label31" runat="server" Text="备注"></asp:Label>
                 </td>
                 <td class="auto-style25">
-                    <asp:DropDownList ID="zhicheng" runat="server">
-                        <asp:ListItem>讲师</asp:ListItem>
-                        <asp:ListItem>副教授</asp:ListItem>
-                        <asp:ListItem>教授</asp:ListItem>
-                    </asp:DropDownList>
+                    <asp:TextBox ID="txtnote" runat="server"></asp:TextBox>
                 </td>
                 <td class="auto-style7">
                     &nbsp;</td>
@@ -234,11 +236,9 @@ ri{
                 <td class="auto-style15">
                     &nbsp;</td>
                 <td class="auto-style15">
-                    <asp:Label ID="Label15" runat="server" Text="研究方向"></asp:Label>
-                </td>
+                    &nbsp;</td>
                 <td class="auto-style5">
-                    <asp:TextBox ID="txtdirection" runat="server"></asp:TextBox>
-                </td>
+                    &nbsp;</td>
                 <td class="auto-style2">
                     &nbsp;</td>
                 <td class="auto-style21">
@@ -252,13 +252,19 @@ ri{
             </table>
         </div>
         </div>
+            <div style="margin:auto 0px;height:30px">
+                &nbsp;&nbsp;<asp:FileUpload ID="FileUpload1" runat="server" />
+            </div>
+            <div style="margin:auto 0px;height:30px;font-size:small">
+                &nbsp;&nbsp;<asp:Label ID="Label1" runat="server" Text="只允许上传PDF(限制50MB以内)"></asp:Label>
+                </div>
         <div style=" margin:0px auto; width:100%; height:30px;">
             <table style="width:100%;">
             <tr>
                 <td class="auto-style23">
                     &nbsp;</td>
                 <td>
-                    <asp:FileUpload ID="FileUpload1" runat="server" />
+                    
                 </td>
                 <td>&nbsp;</td>
             </tr>
