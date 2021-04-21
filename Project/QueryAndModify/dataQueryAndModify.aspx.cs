@@ -22,7 +22,7 @@ public partial class QueryAndModify_dataQueryAndModify : dropdownlist
             String strdataname = dataname.Text.ToString().Trim();
             DataSet dst = new DataSet();
             SqlConnection cnn = new SqlConnection("Data Source=(local);Initial Catalog=档案室信息管理系统1.0;Integrated Security=True");
-            SqlDataAdapter adpt = new SqlDataAdapter("SELECT [id],[number_of_page], [compile_dt], [unit], [format], [location], [stock_dt], [number], [name], [dtname], [mname], [QR_code], [class_number], [author], [status], [note], [lname] FROM [data] left join data_type on data.data_type_id=data_type.dtid left join major on data.major_id=major.mid left join language on data.language=language.lid where is_delete=0 and name like '%" + strdataname + "%' and mname like '%" + strmajor + "%' and dtname like '%" + strdatatype + "%'", cnn);
+            SqlDataAdapter adpt = new SqlDataAdapter("SELECT [id],[number_of_page], [compile_dt], [unit], [format], [location], [stock_dt], [number], [name], [dtname], [mname], [QR_code], [class_number], [author], case when [status]=0 then '库存' when [status]=0 then '预约' else '借出' end status, [note], [lname] FROM [data] left join data_type on data.data_type_id=data_type.dtid left join major on data.major_id=major.mid left join language on data.language=language.lid where is_delete=0 and name like '%" + strdataname + "%' and mname like '%" + strmajor + "%' and dtname like '%" + strdatatype + "%'", cnn);
             
             adpt.Fill(dst);
             if (dst.Tables[0].Rows.Count == 0)
@@ -34,6 +34,7 @@ public partial class QueryAndModify_dataQueryAndModify : dropdownlist
                 }
                 dst.Tables[0].Rows.Add(row);
             }
+           
             GridView1.DataSource = dst.Tables[0];
             GridView1.DataBind();
             setmajordropdownlist(majortype);
@@ -87,18 +88,18 @@ public partial class QueryAndModify_dataQueryAndModify : dropdownlist
         DataSet dst = new DataSet();
         SqlConnection cnn = new SqlConnection("Data Source=(local);Initial Catalog=档案室信息管理系统1.0;Integrated Security=True");
         if(datatype.SelectedItem.Value=="全部"&&majortype.SelectedItem.Value=="全部"){
-            SqlDataAdapter adpt = new SqlDataAdapter("SELECT [id],[number_of_page], [compile_dt], [unit], [format], [location], [stock_dt], [number], [name], [dtname], [mname], [QR_code], [class_number], [author], [status], [note], [lname] FROM [data] left join data_type on data.data_type_id=data_type.dtid left join major on data.major_id=major.mid left join language on data.language=language.lid where is_delete=0 and name like '%" + strdataname + "%' and mname like '%" + "" + "%' and dtname like '%" + "" + "%'", cnn);
+            SqlDataAdapter adpt = new SqlDataAdapter("SELECT [id],[number_of_page], [compile_dt], [unit], [format], [location], [stock_dt], [number], [name], [dtname], [mname], [QR_code], [class_number], [author], case when [status]=0 then '库存' when [status]=0 then '预约' else '借出' end status, [note], [lname] FROM [data] left join data_type on data.data_type_id=data_type.dtid left join major on data.major_id=major.mid left join language on data.language=language.lid where is_delete=0 and name like '%" + strdataname + "%' and mname like '%" + "" + "%' and dtname like '%" + "" + "%'", cnn);
             adpt.Fill(dst);
         }else if(datatype.SelectedItem.Value=="全部"){
-            SqlDataAdapter adpt = new SqlDataAdapter("SELECT [id],[number_of_page], [compile_dt], [unit], [format], [location], [stock_dt], [number], [name], [dtname], [mname], [QR_code], [class_number], [author], [status], [note], [lname] FROM [data] left join data_type on data.data_type_id=data_type.dtid left join major on data.major_id=major.mid left join language on data.language=language.lid where is_delete=0 and name like '%" + strdataname + "%' and mname like '%" + strmajor + "%' and dtname like '%" + "" + "%'", cnn);
+            SqlDataAdapter adpt = new SqlDataAdapter("SELECT [id],[number_of_page], [compile_dt], [unit], [format], [location], [stock_dt], [number], [name], [dtname], [mname], [QR_code], [class_number], [author], case when [status]=0 then '库存' when [status]=0 then '预约' else '借出' end status, [note], [lname] FROM [data] left join data_type on data.data_type_id=data_type.dtid left join major on data.major_id=major.mid left join language on data.language=language.lid where is_delete=0 and name like '%" + strdataname + "%' and mname like '%" + strmajor + "%' and dtname like '%" + "" + "%'", cnn);
             adpt.Fill(dst);
         }
         else if (majortype.SelectedItem.Value == "全部")
         {
-            SqlDataAdapter adpt = new SqlDataAdapter("SELECT [id],[number_of_page], [compile_dt], [unit], [format], [location], [stock_dt], [number], [name], [dtname], [mname], [QR_code], [class_number], [author], [status], [note], [lname] FROM [data] left join data_type on data.data_type_id=data_type.dtid left join major on data.major_id=major.mid left join language on data.language=language.lid where is_delete=0 and name like '%" + strdataname + "%' and mname like '%" + "" + "%' and dtname like '%" + strdatatype + "%'", cnn);
+            SqlDataAdapter adpt = new SqlDataAdapter("SELECT [id],[number_of_page], [compile_dt], [unit], [format], [location], [stock_dt], [number], [name], [dtname], [mname], [QR_code], [class_number], [author], case when [status]=0 then '库存' when [status]=0 then '预约' else '借出' end status, [note], [lname] FROM [data] left join data_type on data.data_type_id=data_type.dtid left join major on data.major_id=major.mid left join language on data.language=language.lid where is_delete=0 and name like '%" + strdataname + "%' and mname like '%" + "" + "%' and dtname like '%" + strdatatype + "%'", cnn);
             adpt.Fill(dst);
         }else{
-            SqlDataAdapter adpt = new SqlDataAdapter("SELECT [id],[number_of_page], [compile_dt], [unit], [format], [location], [stock_dt], [number], [name], [dtname], [mname], [QR_code], [class_number], [author], [status], [note], [lname] FROM [data] left join data_type on data.data_type_id=data_type.dtid left join major on data.major_id=major.mid left join language on data.language=language.lid where is_delete=0 and name like '%" + strdataname + "%' and mname like '%" + strmajor + "%' and dtname like '%" + strdatatype + "%'", cnn);
+            SqlDataAdapter adpt = new SqlDataAdapter("SELECT [id],[number_of_page], [compile_dt], [unit], [format], [location], [stock_dt], [number], [name], [dtname], [mname], [QR_code], [class_number], [author], case when [status]=0 then '库存' when [status]=0 then '预约' else '借出' end status, [note], [lname] FROM [data] left join data_type on data.data_type_id=data_type.dtid left join major on data.major_id=major.mid left join language on data.language=language.lid where is_delete=0 and name like '%" + strdataname + "%' and mname like '%" + strmajor + "%' and dtname like '%" + strdatatype + "%'", cnn);
             adpt.Fill(dst);
         }
         if (dst.Tables[0].Rows.Count == 0)
@@ -110,6 +111,7 @@ public partial class QueryAndModify_dataQueryAndModify : dropdownlist
             }
             dst.Tables[0].Rows.Add(row);
         }
+       
         GridView1.DataSource = dst.Tables[0];
         GridView1.DataBind();
     }
@@ -133,9 +135,22 @@ public partial class QueryAndModify_dataQueryAndModify : dropdownlist
         int id = Convert.ToInt32(Session["dataid"]);
         try
         {
+            int zt;
+            if (status.SelectedItem.Value == "库存")
+            {
+                zt = 0;
+            }
+            else if (status.SelectedItem.Value == "预约")
+            {
+                zt = 1;
+            }
+            else
+            {
+                zt = 2;
+            }
             String stockdt = stock_year.Text + "-" + stock_month.Text + "-" + stock_day.Text;
             String writekdt = write_year.Text + "-" + write_month.Text + "-" + write_day.Text;
-            cmd.CommandText = "update data set name='" + txtname.Text + "',data_type_id='" + dtid + "',major_id='" + majorid + "',QR_code='" + txtQR.Text + "',unit='" + txtunit.Text + "',compile_dt='" + writekdt + "',author='" + txtauthor.Text + "',stock_dt='" + stockdt + "',class_number='" + txtcn.Text + "',number='" + txtnumber.Text + "',location='" + txtlocation.Text + "',status='" + status.SelectedItem.Text + "',format='" + txtformat.Text + "',number_of_page='" + int.Parse(txtnumberofpage.Text) + "',language='" + lid + "',note='" + txtnote.Text + "' where id='" + id + "'";
+            cmd.CommandText = "update data set name='" + txtname.Text + "',data_type_id='" + dtid + "',major_id='" + majorid + "',QR_code='" + txtQR.Text + "',unit='" + txtunit.Text + "',compile_dt='" + writekdt + "',author='" + txtauthor.Text + "',stock_dt='" + stockdt + "',class_number='" + txtcn.Text + "',number='" + txtnumber.Text + "',location='" + txtlocation.Text + "',status='" + zt + "',format='" + txtformat.Text + "',number_of_page='" + int.Parse(txtnumberofpage.Text) + "',language='" + lid + "',note='" + txtnote.Text + "' where id='" + id + "'";
             cnn.Open();
             cmd.ExecuteNonQuery();
             cnn.Close();

@@ -447,6 +447,7 @@ left join binding_type on book.binding_type_id=binding_type.bitid
                             <td class="auto-style54">
                                 <asp:DropDownList ID="status" runat="server">
                                     <asp:ListItem>库存</asp:ListItem>
+                                    <asp:ListItem>预约</asp:ListItem>
                                     <asp:ListItem>借出</asp:ListItem>
                                 </asp:DropDownList>
                             </td>

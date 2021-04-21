@@ -77,7 +77,7 @@ public partial class bookstock : System.Web.UI.Page
             ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "", "alert('图书名称或二维码不能为空！');", true);
         }else{
             String stockdt = DateTime.Now.ToString("yyyy-MM-dd");
-            cmd.CommandText = "INSERT INTO book(name, book_type_id, major_type_id, QR_code, publisher, publish_dt, author, stock_dt, teacher, CD, location, book_number, status, number, format, price, number_of_page, binding_type_id,language,note) VALUES ('" + txtname.Text + "'," + btid + "," + majorid + ",'"+txtQR.Text+"','"+txtpub.Text.ToString()+"','"+pub_year.Text+"-"+pub_month.Text+"-"+pub_day.Text+"','"+txtauthor.Text+"','"+stockdt+"','"+txtteacher.Text+"','"+CD.SelectedItem.Text+"','"+txtlocation.Text+"','"+txtbooknumber.Text+"','库存',"+num+",'"+txtformat.Text+"','"+txtprice.Text+"','"+txtnumberofpage.Text+"',"+bitid+","+lid+",'"+txtnote.Text+"')";
+            cmd.CommandText = "INSERT INTO book(name, book_type_id, major_type_id, QR_code, publisher, publish_dt, author, stock_dt, teacher, CD, location, book_number, status, number, format, price, number_of_page, binding_type_id,language,note) VALUES ('" + txtname.Text + "'," + btid + "," + majorid + ",'"+txtQR.Text+"','"+txtpub.Text.ToString()+"','"+pub_year.Text+"-"+pub_month.Text+"-"+pub_day.Text+"','"+txtauthor.Text+"','"+stockdt+"','"+txtteacher.Text+"','"+CD.SelectedItem.Text+"','"+txtlocation.Text+"','"+txtbooknumber.Text+"',0,"+num+",'"+txtformat.Text+"','"+txtprice.Text+"','"+txtnumberofpage.Text+"',"+bitid+","+lid+",'"+txtnote.Text+"')";
             try {
                 cnn.Open();
                 cmd.ExecuteNonQuery();

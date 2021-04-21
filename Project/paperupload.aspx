@@ -254,6 +254,7 @@ ri{
         </div>
             <div style="margin:auto 0px;height:30px">
                 &nbsp;&nbsp;<asp:FileUpload ID="FileUpload1" runat="server" />
+                <asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButton1_Click" ForeColor="Black" Font-Size="Medium"></asp:LinkButton>
             </div>
             <div style="margin:auto 0px;height:30px;font-size:small">
                 &nbsp;&nbsp;<asp:Label ID="Label1" runat="server" Text="只允许上传PDF(限制50MB以内)"></asp:Label>

@@ -450,6 +450,7 @@ li.dropdown {
                 <td class="auto-style47">
                     <asp:DropDownList ID="status" runat="server">
                         <asp:ListItem>库存</asp:ListItem>
+                        <asp:ListItem>预约</asp:ListItem>
                         <asp:ListItem>借出</asp:ListItem>
                     </asp:DropDownList>
                 </td>

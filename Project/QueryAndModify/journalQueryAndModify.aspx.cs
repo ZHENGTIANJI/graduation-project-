@@ -23,7 +23,7 @@ public partial class QueryAndModify_journalQueryAndModify : dropdownlist
 
             DataSet dst = new DataSet();
             SqlConnection cnn = new SqlConnection("Data Source=(local);Initial Catalog=档案室信息管理系统1.0;Integrated Security=True");
-            SqlDataAdapter adpt = new SqlDataAdapter("SELECT [id],[number_of_page], [office_name], [period_type],[period_number], [address],[format], [location], [stock_dt], [number], [name],[publish_dt], [jtname], [mname], [QR_code], [class_number],[organname], [status], [note], [lname],[gradename] FROM [journal] left join journal_grade on journal.gradeid=journal_grade.gid left join organization on journal.organizationid=organization.organid left join journal_type on journal.journal_type_id=journal_type.jtid left join major on journal.major_id=major.mid left join language on journal.language=language.lid where is_delete=0 and name like '%" + strjournalname + "%' and mname like '%" + strmajor + "%' and jtname like '%" + strjournaltype + "%'", cnn);
+            SqlDataAdapter adpt = new SqlDataAdapter("SELECT [id],[number_of_page], [office_name], [period_type],[period_number], [address],[format], [location], [stock_dt], [number], [name],[publish_dt], [jtname], [mname], [QR_code], [class_number],[organname], case when [status]=0 then '库存' when [status]=0 then '预约' else '借出' end status, [note], [lname],[gradename] FROM [journal] left join journal_grade on journal.gradeid=journal_grade.gid left join organization on journal.organizationid=organization.organid left join journal_type on journal.journal_type_id=journal_type.jtid left join major on journal.major_id=major.mid left join language on journal.language=language.lid where is_delete=0 and name like '%" + strjournalname + "%' and mname like '%" + strmajor + "%' and jtname like '%" + strjournaltype + "%'", cnn);
             
             adpt.Fill(dst);
             if (dst.Tables[0].Rows.Count == 0)
@@ -35,6 +35,7 @@ public partial class QueryAndModify_journalQueryAndModify : dropdownlist
                 }
                 dst.Tables[0].Rows.Add(row);
             }
+           
             GridView1.DataSource = dst.Tables[0];
             GridView1.DataBind();
             setjournaltypedropdownlist(jt);
@@ -51,18 +52,18 @@ public partial class QueryAndModify_journalQueryAndModify : dropdownlist
         DataSet dst = new DataSet();
         SqlConnection cnn = new SqlConnection("Data Source=(local);Initial Catalog=档案室信息管理系统1.0;Integrated Security=True");
         if(jt.SelectedItem.Value=="全部"&&mt.SelectedItem.Value=="全部"){
-            SqlDataAdapter adpt = new SqlDataAdapter("SELECT [id],[number_of_page], [office_name], [period_type],[period_number], [address],[format], [location], [stock_dt], [number], [name],[publish_dt], [jtname], [mname], [QR_code], [class_number],[organname], [status], [note], [lname],[gradename] FROM [journal] left join journal_grade on journal.gradeid=journal_grade.gid left join organization on journal.organizationid=organization.organid left join journal_type on journal.journal_type_id=journal_type.jtid left join major on journal.major_id=major.mid left join language on journal.language=language.lid where is_delete=0 and name like '%" + strjournalname + "%' and mname like '%" + "" + "%' and jtname like '%" + "" + "%'", cnn);
+            SqlDataAdapter adpt = new SqlDataAdapter("SELECT [id],[number_of_page], [office_name], [period_type],[period_number], [address],[format], [location], [stock_dt], [number], [name],[publish_dt], [jtname], [mname], [QR_code], [class_number],[organname], case when [status]=0 then '库存' when [status]=0 then '预约' else '借出' end status, [note], [lname],[gradename] FROM [journal] left join journal_grade on journal.gradeid=journal_grade.gid left join organization on journal.organizationid=organization.organid left join journal_type on journal.journal_type_id=journal_type.jtid left join major on journal.major_id=major.mid left join language on journal.language=language.lid where is_delete=0 and name like '%" + strjournalname + "%' and mname like '%" + "" + "%' and jtname like '%" + "" + "%'", cnn);
             adpt.Fill(dst);
         }else if(jt.SelectedItem.Value=="全部"){
-            SqlDataAdapter adpt = new SqlDataAdapter("SELECT [id],[number_of_page], [office_name], [period_type],[period_number], [address],[format], [location], [stock_dt], [number], [name],[publish_dt], [jtname], [mname], [QR_code], [class_number],[organname], [status], [note], [lname],[gradename] FROM [journal] left join journal_grade on journal.gradeid=journal_grade.gid left join organization on journal.organizationid=organization.organid left join journal_type on journal.journal_type_id=journal_type.jtid left join major on journal.major_id=major.mid left join language on journal.language=language.lid where is_delete=0 and name like '%" + strjournalname + "%' and mname like '%" + strmajor + "%' and jtname like '%" + "" + "%'", cnn);
+            SqlDataAdapter adpt = new SqlDataAdapter("SELECT [id],[number_of_page], [office_name], [period_type],[period_number], [address],[format], [location], [stock_dt], [number], [name],[publish_dt], [jtname], [mname], [QR_code], [class_number],[organname], case when [status]=0 then '库存' when [status]=0 then '预约' else '借出' end status, [note], [lname],[gradename] FROM [journal] left join journal_grade on journal.gradeid=journal_grade.gid left join organization on journal.organizationid=organization.organid left join journal_type on journal.journal_type_id=journal_type.jtid left join major on journal.major_id=major.mid left join language on journal.language=language.lid where is_delete=0 and name like '%" + strjournalname + "%' and mname like '%" + strmajor + "%' and jtname like '%" + "" + "%'", cnn);
             adpt.Fill(dst);
         }
         else if (mt.SelectedItem.Value == "全部")
         {
-            SqlDataAdapter adpt = new SqlDataAdapter("SELECT [id],[number_of_page], [office_name], [period_type],[period_number], [address],[format], [location], [stock_dt], [number], [name],[publish_dt], [jtname], [mname], [QR_code], [class_number],[organname], [status], [note], [lname],[gradename] FROM [journal] left join journal_grade on journal.gradeid=journal_grade.gid left join organization on journal.organizationid=organization.organid left join journal_type on journal.journal_type_id=journal_type.jtid left join major on journal.major_id=major.mid left join language on journal.language=language.lid where is_delete=0 and name like '%" + strjournalname + "%' and mname like '%" + "" + "%' and jtname like '%" + strjournaltype + "%'", cnn);
+            SqlDataAdapter adpt = new SqlDataAdapter("SELECT [id],[number_of_page], [office_name], [period_type],[period_number], [address],[format], [location], [stock_dt], [number], [name],[publish_dt], [jtname], [mname], [QR_code], [class_number],[organname], case when [status]=0 then '库存' when [status]=0 then '预约' else '借出' end status, [note], [lname],[gradename] FROM [journal] left join journal_grade on journal.gradeid=journal_grade.gid left join organization on journal.organizationid=organization.organid left join journal_type on journal.journal_type_id=journal_type.jtid left join major on journal.major_id=major.mid left join language on journal.language=language.lid where is_delete=0 and name like '%" + strjournalname + "%' and mname like '%" + "" + "%' and jtname like '%" + strjournaltype + "%'", cnn);
             adpt.Fill(dst);
         }else{
-            SqlDataAdapter adpt = new SqlDataAdapter("SELECT [id],[number_of_page], [office_name], [period_type],[period_number], [address],[format], [location], [stock_dt], [number], [name],[publish_dt], [jtname], [mname], [QR_code], [class_number],[organname], [status], [note], [lname],[gradename] FROM [journal] left join journal_grade on journal.gradeid=journal_grade.gid left join organization on journal.organizationid=organization.organid left join journal_type on journal.journal_type_id=journal_type.jtid left join major on journal.major_id=major.mid left join language on journal.language=language.lid where is_delete=0 and name like '%" + strjournalname + "%' and mname like '%" + strmajor + "%' and jtname like '%" + strjournaltype + "%'", cnn);
+            SqlDataAdapter adpt = new SqlDataAdapter("SELECT [id],[number_of_page], [office_name], [period_type],[period_number], [address],[format], [location], [stock_dt], [number], [name],[publish_dt], [jtname], [mname], [QR_code], [class_number],[organname], case when [status]=0 then '库存' when [status]=0 then '预约' else '借出' end status, [note], [lname],[gradename] FROM [journal] left join journal_grade on journal.gradeid=journal_grade.gid left join organization on journal.organizationid=organization.organid left join journal_type on journal.journal_type_id=journal_type.jtid left join major on journal.major_id=major.mid left join language on journal.language=language.lid where is_delete=0 and name like '%" + strjournalname + "%' and mname like '%" + strmajor + "%' and jtname like '%" + strjournaltype + "%'", cnn);
             adpt.Fill(dst);
         }
         if (dst.Tables[0].Rows.Count == 0)
@@ -105,9 +106,22 @@ public partial class QueryAndModify_journalQueryAndModify : dropdownlist
         int id = Convert.ToInt32(Session["journalid"]);
         try
         {
+            int zt;
+            if (status.SelectedItem.Value == "库存")
+            {
+                zt = 0;
+            }
+            else if (status.SelectedItem.Value == "预约")
+            {
+                zt = 1;
+            }
+            else
+            {
+                zt = 2;
+            }
             String stockdt = stock_year.Text + "-" + stock_month.Text + "-" + stock_day.Text;
             String pubdt = pub_year.Text + "-" + stock_month.Text + "-" + pub_day.Text;
-            cmd.CommandText = "update journal set name='" + txtname.Text + "',organizationid='" + or + "',gradeid='" + gid + "',journal_type_id='" + jtid + "',major_id='" + majorid + "',QR_code='" + txtQR.Text + "',publish_dt='" + pubdt + "',office_name='" + txtoffname.Text + "',period_number='" + txtperiod.Text + "',period_type='" + periodtype.SelectedItem.Value + "',stock_dt='" + stockdt + "',class_number='" + txtcn.Text + "',number='" + txtnumber.Text + "',location='" + txtlocation.Text + "',status='" + status.SelectedItem.Text + "',format='" + txtformat.Text + "',number_of_page='" + int.Parse(txtnumberofpage.Text) + "',language='" + lid + "',note='" + txtnote.Text + "',address='" + txtaddress.Text + "' where id='" + id + "'";
+            cmd.CommandText = "update journal set name='" + txtname.Text + "',organizationid='" + or + "',gradeid='" + gid + "',journal_type_id='" + jtid + "',major_id='" + majorid + "',QR_code='" + txtQR.Text + "',publish_dt='" + pubdt + "',office_name='" + txtoffname.Text + "',period_number='" + txtperiod.Text + "',period_type='" + periodtype.SelectedItem.Value + "',stock_dt='" + stockdt + "',class_number='" + txtcn.Text + "',number='" + txtnumber.Text + "',location='" + txtlocation.Text + "',status='" + zt + "',format='" + txtformat.Text + "',number_of_page='" + int.Parse(txtnumberofpage.Text) + "',language='" + lid + "',note='" + txtnote.Text + "',address='" + txtaddress.Text + "' where id='" + id + "'";
             cnn.Open();
             cmd.ExecuteNonQuery();
             cnn.Close();

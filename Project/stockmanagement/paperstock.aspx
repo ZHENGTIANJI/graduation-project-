@@ -180,7 +180,7 @@ li.dropdown {
         <div style=" margin:0px auto; height:50px; ">
         </div>
         <div style="margin:0px auto;height:360px;text-align:center;font-size:smaller;overflow-y: scroll;">
-        <asp:GridView ID="GridView1" runat="server" ShowCellToolTip=" True"  AutoGenerateColumns="False" style="margin-top: 0px" OnRowDeleting="GridView1_RowDeleting" AllowPaging="True" onpageindexchanging="GridViewHistory_PageIndexChanging" Width="100%" CellPadding="4" ForeColor="#333333" GridLines="None">
+        <asp:GridView ID="GridView1" runat="server" ShowCellToolTip=" True"  AutoGenerateColumns="False" style="margin-top: 1px" OnRowDeleting="GridView1_RowDeleting" AllowPaging="True" onpageindexchanging="GridViewHistory_PageIndexChanging" Width="100%" CellPadding="4" ForeColor="#333333" GridLines="None">
             <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
             <Columns>
                 <asp:TemplateField HeaderText="二维码编码" SortExpression="QR_code">
@@ -227,6 +227,11 @@ li.dropdown {
                     <ItemStyle  CssClass="hidden" />
                     <FooterStyle CssClass="hidden" />
                 </asp:BoundField>
+                <asp:TemplateField HeaderText="PDF" ShowHeader="False">
+                    <ItemTemplate>
+                        <asp:LinkButton ID="LinkButton2" runat="server" CausesValidation="False" CommandName="Select" OnClick="LinkButton2_Click" Text="pdf"></asp:LinkButton>
+                    </ItemTemplate>
+                </asp:TemplateField>
                 <asp:TemplateField HeaderText="操作" ShowHeader="False">
                     <ItemTemplate>
                         <asp:LinkButton ID="LinkButton1" runat="server" CausesValidation="False" CommandName="Delete" Text="审核"></asp:LinkButton>

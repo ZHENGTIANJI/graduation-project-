@@ -127,4 +127,17 @@ public partial class QueryAndModify_paperQueryAndModify : System.Web.UI.Page
     {
         Response.Redirect("../login1.aspx");
     }
+    protected void LinkButton2_Click(object sender, EventArgs e)
+    {
+        LinkButton lb = sender as LinkButton;
+        GridViewRow row = lb.NamingContainer as GridViewRow;
+        int num = row.RowIndex;
+        int id = Convert.ToInt32(GridView1.Rows[num].Cells[18].Text.ToString());
+        DataSet dst = new DataSet();
+        SqlConnection cnn = new SqlConnection("Data Source=(local);Initial Catalog=档案室信息管理系统1.0;Integrated Security=True");
+        SqlDataAdapter adpt = new SqlDataAdapter("select file_name from paper left join file_att on paper.id=file_att.paper_id where paper.id='" + id + "'", cnn);
+        adpt.Fill(dst);
+        string name = dst.Tables[0].Rows[0][0].ToString();
+        Response.Redirect("../论文/" + name);
+    }
 }

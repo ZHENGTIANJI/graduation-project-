@@ -24,7 +24,7 @@ public partial class QueryAndModify_bookQueryAndModify :dropdownlist
             String strbookname = bookname.Text.ToString().Trim();
             DataSet dst = new DataSet();
             SqlConnection cnn = new SqlConnection("Data Source=(local);Initial Catalog=档案室信息管理系统1.0;Integrated Security=True");
-            SqlDataAdapter adpt = new SqlDataAdapter("SELECT [id],[number_of_page], [book_number], [CD], [format], [location], [stock_dt], [teacher], [number], [name], [btname], [mname], [QR_code], [publisher], [publish_dt], [author], [price], [status], [note], [lname], [bitname] FROM [book] left join book_type on book.book_type_id=book_type.btid left join major on book.major_type_id=major.mid left join language on book.language=language.lid left join binding_type on book.binding_type_id=binding_type.bitid where is_delete=0 and name like '%" + strbookname + "%' and mname like '%" + strmajor + "%' and btname like '%" + strbooktype + "%'", cnn);
+            SqlDataAdapter adpt = new SqlDataAdapter("SELECT [id],[number_of_page], [book_number], [CD], [format], [location], [stock_dt], [teacher], [number], [name], [btname], [mname], [QR_code], [publisher], [publish_dt], [author], [price], case when [status]=0 then '库存' when [status]=0 then '预约' else '借出' end status, [note], [lname], [bitname] FROM [book] left join book_type on book.book_type_id=book_type.btid left join major on book.major_type_id=major.mid left join language on book.language=language.lid left join binding_type on book.binding_type_id=binding_type.bitid where is_delete=0 and name like '%" + strbookname + "%' and mname like '%" + strmajor + "%' and btname like '%" + strbooktype + "%'", cnn);
             
             adpt.Fill(dst);
             if (dst.Tables[0].Rows.Count == 0)
@@ -96,21 +96,21 @@ public partial class QueryAndModify_bookQueryAndModify :dropdownlist
         SqlConnection cnn = new SqlConnection("Data Source=(local);Initial Catalog=档案室信息管理系统1.0;Integrated Security=True");
         if (booktype.SelectedItem.Value == "全部"&&major.SelectedItem.Value=="全部")
         {
-            SqlDataAdapter adpt = new SqlDataAdapter("SELECT [id],[number_of_page], [book_number], [CD], [format], [location], [stock_dt], [teacher], [number], [name], [btname], [mname], [QR_code], [publisher], [publish_dt], [author], [price], [status], [note], [lname], [bitname] FROM [book] left join book_type on book.book_type_id=book_type.btid left join major on book.major_type_id=major.mid left join language on book.language=language.lid left join binding_type on book.binding_type_id=binding_type.bitid where is_delete=0 and name like '%" + strbookname + "%' and mname like '%" + "" + "%' and btname like '%" + "" + "%'", cnn);
+            SqlDataAdapter adpt = new SqlDataAdapter("SELECT [id],[number_of_page], [book_number], [CD], [format], [location], [stock_dt], [teacher], [number], [name], [btname], [mname], [QR_code], [publisher], [publish_dt], [author], [price], case when [status]=0 then '库存' when [status]=0 then '预约' else '借出' end status, [note], [lname], [bitname] FROM [book] left join book_type on book.book_type_id=book_type.btid left join major on book.major_type_id=major.mid left join language on book.language=language.lid left join binding_type on book.binding_type_id=binding_type.bitid where is_delete=0 and name like '%" + strbookname + "%' and mname like '%" + "" + "%' and btname like '%" + "" + "%'", cnn);
             adpt.Fill(dst);
         }
         else if (booktype.SelectedItem.Value == "全部")
-        { 
-            SqlDataAdapter adpt = new SqlDataAdapter("SELECT [id],[number_of_page], [book_number], [CD], [format], [location], [stock_dt], [teacher], [number], [name], [btname], [mname], [QR_code], [publisher], [publish_dt], [author], [price], [status], [note], [lname], [bitname] FROM [book] left join book_type on book.book_type_id=book_type.btid left join major on book.major_type_id=major.mid left join language on book.language=language.lid left join binding_type on book.binding_type_id=binding_type.bitid where is_delete=0 and name like '%" + strbookname + "%' and mname like '%" + strmajor + "%' and btname like '%" + "" + "%'", cnn);
+        {
+            SqlDataAdapter adpt = new SqlDataAdapter("SELECT [id],[number_of_page], [book_number], [CD], [format], [location], [stock_dt], [teacher], [number], [name], [btname], [mname], [QR_code], [publisher], [publish_dt], [author], [price], case when [status]=0 then '库存' when [status]=0 then '预约' else '借出' end status, [note], [lname], [bitname] FROM [book] left join book_type on book.book_type_id=book_type.btid left join major on book.major_type_id=major.mid left join language on book.language=language.lid left join binding_type on book.binding_type_id=binding_type.bitid where is_delete=0 and name like '%" + strbookname + "%' and mname like '%" + strmajor + "%' and btname like '%" + "" + "%'", cnn);
             adpt.Fill(dst);
         }
         else if(major.SelectedItem.Value=="全部")
         {
-            SqlDataAdapter adpt = new SqlDataAdapter("SELECT [id],[number_of_page], [book_number], [CD], [format], [location], [stock_dt], [teacher], [number], [name], [btname], [mname], [QR_code], [publisher], [publish_dt], [author], [price], [status], [note], [lname], [bitname] FROM [book] left join book_type on book.book_type_id=book_type.btid left join major on book.major_type_id=major.mid left join language on book.language=language.lid left join binding_type on book.binding_type_id=binding_type.bitid where is_delete=0 and name like '%" + strbookname + "%' and mname like '%" + "" + "%' and btname like '%" + strbooktype + "%'", cnn);
+            SqlDataAdapter adpt = new SqlDataAdapter("SELECT [id],[number_of_page], [book_number], [CD], [format], [location], [stock_dt], [teacher], [number], [name], [btname], [mname], [QR_code], [publisher], [publish_dt], [author], [price], case when [status]=0 then '库存' when [status]=0 then '预约' else '借出' end status, [note], [lname], [bitname] FROM [book] left join book_type on book.book_type_id=book_type.btid left join major on book.major_type_id=major.mid left join language on book.language=language.lid left join binding_type on book.binding_type_id=binding_type.bitid where is_delete=0 and name like '%" + strbookname + "%' and mname like '%" + "" + "%' and btname like '%" + strbooktype + "%'", cnn);
             adpt.Fill(dst);
         }
         else{
-            SqlDataAdapter adpt = new SqlDataAdapter("SELECT [id],[number_of_page], [book_number], [CD], [format], [location], [stock_dt], [teacher], [number], [name], [btname], [mname], [QR_code], [publisher], [publish_dt], [author], [price], [status], [note], [lname], [bitname] FROM [book] left join book_type on book.book_type_id=book_type.btid left join major on book.major_type_id=major.mid left join language on book.language=language.lid left join binding_type on book.binding_type_id=binding_type.bitid where is_delete=0 and name like '%" + strbookname + "%' and mname like '%" + strmajor + "%' and btname like '%" + strbooktype + "%'", cnn);
+            SqlDataAdapter adpt = new SqlDataAdapter("SELECT [id],[number_of_page], [book_number], [CD], [format], [location], [stock_dt], [teacher], [number], [name], [btname], [mname], [QR_code], [publisher], [publish_dt], [author], [price], case when [status]=0 then '库存' when [status]=0 then '预约' else '借出' end status, [note], [lname], [bitname] FROM [book] left join book_type on book.book_type_id=book_type.btid left join major on book.major_type_id=major.mid left join language on book.language=language.lid left join binding_type on book.binding_type_id=binding_type.bitid where is_delete=0 and name like '%" + strbookname + "%' and mname like '%" + strmajor + "%' and btname like '%" + strbooktype + "%'", cnn);
             adpt.Fill(dst);
         }
         if (dst.Tables[0].Rows.Count == 0)
@@ -160,9 +160,22 @@ public partial class QueryAndModify_bookQueryAndModify :dropdownlist
             cnn.Close();
         }
         try {
+            int zt;
+            if (status.SelectedItem.Value == "库存")
+            {
+                zt = 0;
+            }
+            else if (status.SelectedItem.Value == "预约")
+            {
+                zt = 1;
+            }
+            else
+            {
+                zt = 2;
+            }
             String stockdt = stock_year.Text + "-" + stock_month.Text + "-" + stock_day.Text;
             String pubdt = pub_year.Text + "-" + stock_month.Text + "-" + pub_day.Text;
-            cmd.CommandText = "update book set name='" + txtname.Text + "',book_type_id='"+btid+"',book_number='"+txtbooknumber.Text+"',major_type_id='"+majorid+"',QR_code='"+txtQR.Text+"',publisher='"+txtpub.Text+"',publish_dt='"+pubdt+"',author='"+txtauthor.Text+"',stock_dt='"+stockdt+"',teacher='"+txtteacher.Text+"',number='"+txtnumber.Text+"',CD='"+CD.SelectedItem.Text+"',location='"+txtlocation.Text+"',status='"+status.SelectedItem.Text+"',format='"+txtformat.Text+"',price='"+int.Parse(txtprice.Text)+"',number_of_page='"+int.Parse(txtnumberofpage.Text)+"',binding_type_id='"+bitid+"',language='"+lid+"',note='"+txtnote.Text+"' where id='"+id+"'";
+            cmd.CommandText = "update book set name='" + txtname.Text + "',book_type_id='"+btid+"',book_number='"+txtbooknumber.Text+"',major_type_id='"+majorid+"',QR_code='"+txtQR.Text+"',publisher='"+txtpub.Text+"',publish_dt='"+pubdt+"',author='"+txtauthor.Text+"',stock_dt='"+stockdt+"',teacher='"+txtteacher.Text+"',number='"+txtnumber.Text+"',CD='"+CD.SelectedItem.Text+"',location='"+txtlocation.Text+"',status="+zt+",format='"+txtformat.Text+"',price='"+int.Parse(txtprice.Text)+"',number_of_page='"+int.Parse(txtnumberofpage.Text)+"',binding_type_id='"+bitid+"',language='"+lid+"',note='"+txtnote.Text+"' where id='"+id+"'";
             cnn.Open();
             cmd.ExecuteNonQuery();
             cnn.Close();

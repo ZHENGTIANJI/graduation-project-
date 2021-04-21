@@ -24,13 +24,13 @@ public partial class QueryAndModify_paperQueryAndModify : dropdownlist
 
             DataSet dst = new DataSet();
             SqlConnection cnn = new SqlConnection("Data Source=(local);Initial Catalog=档案室信息管理系统1.0;Integrated Security=True");
-            SqlDataAdapter adpt = new SqlDataAdapter("SELECT [id],[number_of_page], [dabian_dt], [xuezhi], [format],[write_dt],[zhicheng],[adviser], [location], [stock_dt], [name], [ptname], [mname], [QR_code], [class_number],[shenhe],[direction], [author], [status], [note], [lname] FROM [paper] left join paper_type on paper.paper_type_id=paper_type.ptid left join major on paper.major_id=major.mid left join language on paper.language=language.lid where is_delete=0 and name like '%" + strpapername + "%' and mname like '%" + strmajor + "%' and ptname like '%" + strpapertype + "%' and shenhe='已审核'", cnn);
+            SqlDataAdapter adpt = new SqlDataAdapter("SELECT [id],[number_of_page], [dabian_dt], [xuezhi], [format],[write_dt],[zhicheng],[adviser], [location], [stock_dt], [name], [ptname], [mname], [QR_code], [class_number],[shenhe],[direction], [author], case when [status]=0 then '库存' when [status]=0 then '预约' else '借出' end status, [note], [lname] FROM [paper] left join paper_type on paper.paper_type_id=paper_type.ptid left join major on paper.major_id=major.mid left join language on paper.language=language.lid where is_delete=0 and name like '%" + strpapername + "%' and mname like '%" + strmajor + "%' and ptname like '%" + strpapertype + "%' and shenhe='已审核'", cnn);
             
             adpt.Fill(dst);
             if (dst.Tables[0].Rows.Count == 0)
             {
                 DataRow row = dst.Tables[0].NewRow();
-                for (int j = 0; j < GridView1.Columns.Count - 1; j++)
+                for (int j = 0; j < GridView1.Columns.Count - 2; j++)
                 {
                     row[j] = DBNull.Value;
                 }
@@ -52,30 +52,31 @@ public partial class QueryAndModify_paperQueryAndModify : dropdownlist
         DataSet dst = new DataSet();
         SqlConnection cnn = new SqlConnection("Data Source=(local);Initial Catalog=档案室信息管理系统1.0;Integrated Security=True");
         if(papertype.SelectedItem.Value=="全部"&&majortype.SelectedItem.Value=="全部"){
-            SqlDataAdapter adpt = new SqlDataAdapter("SELECT [id],[number_of_page], [dabian_dt], [xuezhi], [format],[write_dt],[zhicheng],[adviser], [location], [stock_dt], [name], [ptname], [mname], [QR_code], [class_number],[shenhe],[direction], [author], [status], [note], [lname] FROM [paper] left join paper_type on paper.paper_type_id=paper_type.ptid left join major on paper.major_id=major.mid left join language on paper.language=language.lid where is_delete=0 and name like '%" + strpapername + "%' and mname like '%" + "" + "%' and ptname like '%" + "" + "%' and shenhe='已审核'", cnn);
+            SqlDataAdapter adpt = new SqlDataAdapter("SELECT [id],[number_of_page], [dabian_dt], [xuezhi], [format],[write_dt],[zhicheng],[adviser], [location], [stock_dt], [name], [ptname], [mname], [QR_code], [class_number],[shenhe],[direction], [author],case when [status]=0 then '库存' when [status]=0 then '预约' else '借出' end status, [note], [lname] FROM [paper] left join paper_type on paper.paper_type_id=paper_type.ptid left join major on paper.major_id=major.mid left join language on paper.language=language.lid where is_delete=0 and name like '%" + strpapername + "%' and mname like '%" + "" + "%' and ptname like '%" + "" + "%' and shenhe='已审核'", cnn);
             adpt.Fill(dst);
         }else if(papertype.SelectedItem.Value=="全部"){
-            SqlDataAdapter adpt = new SqlDataAdapter("SELECT [id],[number_of_page], [dabian_dt], [xuezhi], [format],[write_dt],[zhicheng],[adviser], [location], [stock_dt], [name], [ptname], [mname], [QR_code], [class_number],[shenhe],[direction], [author], [status], [note], [lname] FROM [paper] left join paper_type on paper.paper_type_id=paper_type.ptid left join major on paper.major_id=major.mid left join language on paper.language=language.lid where is_delete=0 and name like '%" + strpapername + "%' and mname like '%" + strmajor + "%' and ptname like '%" + "" + "%' and shenhe='已审核'", cnn);
+            SqlDataAdapter adpt = new SqlDataAdapter("SELECT [id],[number_of_page], [dabian_dt], [xuezhi], [format],[write_dt],[zhicheng],[adviser], [location], [stock_dt], [name], [ptname], [mname], [QR_code], [class_number],[shenhe],[direction], [author], case when [status]=0 then '库存' when [status]=0 then '预约' else '借出' end status, [note], [lname] FROM [paper] left join paper_type on paper.paper_type_id=paper_type.ptid left join major on paper.major_id=major.mid left join language on paper.language=language.lid where is_delete=0 and name like '%" + strpapername + "%' and mname like '%" + strmajor + "%' and ptname like '%" + "" + "%' and shenhe='已审核'", cnn);
             adpt.Fill(dst);
         }
         else if (majortype.SelectedItem.Value == "全部")
         {
-            SqlDataAdapter adpt = new SqlDataAdapter("SELECT [id],[number_of_page], [dabian_dt], [xuezhi], [format],[write_dt],[zhicheng],[adviser], [location], [stock_dt], [name], [ptname], [mname], [QR_code], [class_number],[shenhe],[direction], [author], [status], [note], [lname] FROM [paper] left join paper_type on paper.paper_type_id=paper_type.ptid left join major on paper.major_id=major.mid left join language on paper.language=language.lid where is_delete=0 and name like '%" + strpapername + "%' and mname like '%" + "" + "%' and ptname like '%" + strpapertype + "%' and shenhe='已审核'", cnn);
+            SqlDataAdapter adpt = new SqlDataAdapter("SELECT [id],[number_of_page], [dabian_dt], [xuezhi], [format],[write_dt],[zhicheng],[adviser], [location], [stock_dt], [name], [ptname], [mname], [QR_code], [class_number],[shenhe],[direction], [author],case when [status]=0 then '库存' when [status]=0 then '预约' else '借出' end status, [note], [lname] FROM [paper] left join paper_type on paper.paper_type_id=paper_type.ptid left join major on paper.major_id=major.mid left join language on paper.language=language.lid where is_delete=0 and name like '%" + strpapername + "%' and mname like '%" + "" + "%' and ptname like '%" + strpapertype + "%' and shenhe='已审核'", cnn);
             adpt.Fill(dst);
 
         }else{
-            SqlDataAdapter adpt = new SqlDataAdapter("SELECT [id],[number_of_page], [dabian_dt], [xuezhi], [format],[write_dt],[zhicheng],[adviser], [location], [stock_dt], [name], [ptname], [mname], [QR_code], [class_number],[shenhe],[direction], [author], [status], [note], [lname] FROM [paper] left join paper_type on paper.paper_type_id=paper_type.ptid left join major on paper.major_id=major.mid left join language on paper.language=language.lid where is_delete=0 and name like '%" + strpapername + "%' and mname like '%" + strmajor + "%' and ptname like '%" + strpapertype + "%' and shenhe='已审核'", cnn);
+            SqlDataAdapter adpt = new SqlDataAdapter("SELECT [id],[number_of_page], [dabian_dt], [xuezhi], [format],[write_dt],[zhicheng],[adviser], [location], [stock_dt], [name], [ptname], [mname], [QR_code], [class_number],[shenhe],[direction], [author], case when [status]=0 then '库存' when [status]=0 then '预约' else '借出' end status, [note], [lname] FROM [paper] left join paper_type on paper.paper_type_id=paper_type.ptid left join major on paper.major_id=major.mid left join language on paper.language=language.lid where is_delete=0 and name like '%" + strpapername + "%' and mname like '%" + strmajor + "%' and ptname like '%" + strpapertype + "%' and shenhe='已审核'", cnn);
             adpt.Fill(dst);
         }
         if (dst.Tables[0].Rows.Count == 0)
         {
             DataRow row = dst.Tables[0].NewRow();
-            for (int j = 0; j < GridView1.Columns.Count - 1; j++)
+            for (int j = 0; j < GridView1.Columns.Count - 2; j++)
             {
                 row[j] = DBNull.Value;
             }
             dst.Tables[0].Rows.Add(row);
         }
+
         GridView1.DataSource = dst.Tables[0];
         GridView1.DataBind();
     }
@@ -111,10 +112,23 @@ public partial class QueryAndModify_paperQueryAndModify : dropdownlist
         int id = Convert.ToInt32(Session["paperid"]);
         try
         {
+            int zt;
+            if (status.SelectedItem.Value == "库存")
+            {
+                zt = 0;
+            }
+            else if (status.SelectedItem.Value == "预约")
+            {
+                zt = 1;
+            }
+            else
+            {
+                zt = 2;
+            }
             String stockdt = stock_year.Text + "-" + stock_month.Text + "-" + stock_day.Text;
             String writedt = write_year.Text + "-" + write_month.Text + "-" + write_day.Text;
             String dbdt = db_year.Text + "-" + db_month.Text + "-" + db_day.Text;
-            cmd.CommandText = "update paper set name='" + txtname.Text + "',zhicheng='" + zhicheng.SelectedItem.Text + "',shenhe='" + shenhe.SelectedItem.Text + "',paper_type_id='" + ptid + "',major_id='" + majorid + "',QR_code='" + txtQR.Text + "',write_dt='" + writedt + "',xuezhi='" + xuezhi.SelectedItem.Text + "',dabian_dt='" + dbdt + "',adviser='" + txtadviser.Text + "',direction='" + txtdirection.Text + "',stock_dt='" + stockdt + "',class_number='" + txtcn.Text + "',number='" + txtnumber.Text + "',location='" + txtlocation.Text + "',status='" + status.SelectedItem.Text + "',format='" + txtformat.Text + "',number_of_page='" + int.Parse(txtnumberofpage.Text) + "',language='" + lid + "',note='" + txtnote.Text + "' where id='" + id + "'";
+            cmd.CommandText = "update paper set name='" + txtname.Text + "',zhicheng='" + zhicheng.SelectedItem.Text + "',shenhe='" + shenhe.SelectedItem.Text + "',paper_type_id='" + ptid + "',major_id='" + majorid + "',QR_code='" + txtQR.Text + "',write_dt='" + writedt + "',xuezhi='" + xuezhi.SelectedItem.Text + "',dabian_dt='" + dbdt + "',adviser='" + txtadviser.Text + "',direction='" + txtdirection.Text + "',stock_dt='" + stockdt + "',class_number='" + txtcn.Text + "',number='" + txtnumber.Text + "',location='" + txtlocation.Text + "',status='" + zt + "',format='" + txtformat.Text + "',number_of_page='" + int.Parse(txtnumberofpage.Text) + "',language='" + lid + "',note='" + txtnote.Text + "' where id='" + id + "'";
             cnn.Open();
             cmd.ExecuteNonQuery();
             cnn.Close();
