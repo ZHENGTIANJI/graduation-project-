@@ -128,7 +128,7 @@ public partial class QueryAndModify_paperQueryAndModify : dropdownlist
             String stockdt = stock_year.Text + "-" + stock_month.Text + "-" + stock_day.Text;
             String writedt = write_year.Text + "-" + write_month.Text + "-" + write_day.Text;
             String dbdt = db_year.Text + "-" + db_month.Text + "-" + db_day.Text;
-            cmd.CommandText = "update paper set name='" + txtname.Text + "',zhicheng='" + zhicheng.SelectedItem.Text + "',shenhe='" + shenhe.SelectedItem.Text + "',paper_type_id='" + ptid + "',major_id='" + majorid + "',QR_code='" + txtQR.Text + "',write_dt='" + writedt + "',xuezhi='" + xuezhi.SelectedItem.Text + "',dabian_dt='" + dbdt + "',adviser='" + txtadviser.Text + "',direction='" + txtdirection.Text + "',stock_dt='" + stockdt + "',class_number='" + txtcn.Text + "',number='" + txtnumber.Text + "',location='" + txtlocation.Text + "',status='" + zt + "',format='" + txtformat.Text + "',number_of_page='" + int.Parse(txtnumberofpage.Text) + "',language='" + lid + "',note='" + txtnote.Text + "' where id='" + id + "'";
+            cmd.CommandText = "update paper set name='" + txtname.Text + "',zhicheng='" + zhicheng.SelectedItem.Text + "',shenhe='" + shenhe.SelectedItem.Text + "',paper_type_id='" + ptid + "',major_id='" + majorid + "',QR_code='" + txtQR.Text + "',write_dt='" + writedt + "',xuezhi='" + xuezhi.SelectedItem.Text + "',dabian_dt='" + dbdt + "',adviser='" + txtadviser.Text + "',direction='" + txtdirection.Text + "',stock_dt='" + stockdt + "',class_number='" + txtcn.Text + "',location='" + txtlocation.Text + "',status='" + zt + "',format='" + txtformat.Text + "',number_of_page='" + int.Parse(txtnumberofpage.Text) + "',language='" + lid + "',note='" + txtnote.Text + "' where id='" + id + "'";
             cnn.Open();
             cmd.ExecuteNonQuery();
             cnn.Close();
@@ -258,16 +258,20 @@ public partial class QueryAndModify_paperQueryAndModify : dropdownlist
 
     protected void LinkButton2_Click1(object sender, EventArgs e)
     {
-        LinkButton lb = sender as LinkButton;
-        GridViewRow row = lb.NamingContainer as GridViewRow;
-        int num = row.RowIndex;
-        int id = Convert.ToInt32(GridView1.Rows[num].Cells[20].Text.ToString());
-        DataSet dst = new DataSet();
-        SqlConnection cnn = new SqlConnection("Data Source=(local);Initial Catalog=档案室信息管理系统1.0;Integrated Security=True");
-        SqlDataAdapter adpt = new SqlDataAdapter("select file_name from paper left join file_att on paper.id=file_att.paper_id where paper.id='" + id + "'", cnn);
-        adpt.Fill(dst);
-        string name = dst.Tables[0].Rows[0][0].ToString();
-        Response.Redirect("../论文/" + name);
+        if (GridView1.Rows[0].Cells[1].Text.ToString() != "&nbsp;")
+        {
+            LinkButton lb = sender as LinkButton;
+            GridViewRow row = lb.NamingContainer as GridViewRow;
+            int num = row.RowIndex;
+            int id = Convert.ToInt32(GridView1.Rows[num].Cells[20].Text.ToString());
+            DataSet dst = new DataSet();
+            SqlConnection cnn = new SqlConnection("Data Source=(local);Initial Catalog=档案室信息管理系统1.0;Integrated Security=True");
+            SqlDataAdapter adpt = new SqlDataAdapter("select file_name from paper left join file_att on paper.id=file_att.paper_id where paper.id='" + id + "'", cnn);
+            adpt.Fill(dst);
+            string name = dst.Tables[0].Rows[0][0].ToString();
+            Response.Redirect("../论文/" + name);
+        }
+        
     }
     protected void home_Click(object sender, EventArgs e)
     {

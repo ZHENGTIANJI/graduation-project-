@@ -1,0 +1,528 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="ds1" targetNamespace="http://tempuri.org/ds1.xsd" xmlns:mstns="http://tempuri.org/ds1.xsd" xmlns="http://tempuri.org/ds1.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="dtcnn" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="dtcnn (Web.config)" ParameterPrefix="@" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.dtcnn.ConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="StatusTableAdapter" GeneratorDataComponentClassName="StatusTableAdapter" Name="Status" UserDataComponentName="StatusTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="dtcnn (Web.config)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>select '' id,'' name,'' QR_code,'' status,'' borrower_id,'' borrow_dt,'' deadline</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="id" DataSetColumn="id" />
+              <Mapping SourceColumn="name" DataSetColumn="name" />
+              <Mapping SourceColumn="QR_code" DataSetColumn="QR_code" />
+              <Mapping SourceColumn="status" DataSetColumn="status" />
+              <Mapping SourceColumn="borrower_id" DataSetColumn="borrower_id" />
+              <Mapping SourceColumn="borrow_dt" DataSetColumn="borrow_dt" />
+              <Mapping SourceColumn="deadline" DataSetColumn="deadline" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="ReaderBorrowTableAdapter" GeneratorDataComponentClassName="ReaderBorrowTableAdapter" Name="ReaderBorrow" UserDataComponentName="ReaderBorrowTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="dtcnn (Web.config)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>select '' id,'' name,'' QR_code,'' is_return,'' borrower_id,'' borrow_dt,'' deadline</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="id" DataSetColumn="id" />
+              <Mapping SourceColumn="name" DataSetColumn="name" />
+              <Mapping SourceColumn="QR_code" DataSetColumn="QR_code" />
+              <Mapping SourceColumn="is_return" DataSetColumn="is_return" />
+              <Mapping SourceColumn="borrower_id" DataSetColumn="borrower_id" />
+              <Mapping SourceColumn="borrow_dt" DataSetColumn="borrow_dt" />
+              <Mapping SourceColumn="deadline" DataSetColumn="deadline" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="BookBorrowTimesTableAdapter" GeneratorDataComponentClassName="BookBorrowTimesTableAdapter" Name="BookBorrowTimes" UserDataComponentName="BookBorrowTimesTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="dtcnn (Web.config)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>select '' QR_code,'' QR_code,'' name,'' num</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="QR_code" DataSetColumn="QR_code" />
+              <Mapping SourceColumn="QR_code1" DataSetColumn="QR_code1" />
+              <Mapping SourceColumn="name" DataSetColumn="name" />
+              <Mapping SourceColumn="num" DataSetColumn="num" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="BBT2TableAdapter" GeneratorDataComponentClassName="BBT2TableAdapter" Name="BBT2" UserDataComponentName="BBT2TableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="dtcnn (Web.config)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>select '' name,'' num</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="name" DataSetColumn="name" />
+              <Mapping SourceColumn="num" DataSetColumn="num" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="unreturnTableAdapter" GeneratorDataComponentClassName="unreturnTableAdapter" Name="unreturn" UserDataComponentName="unreturnTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="dtcnn (Web.config)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>select '' QR_code,'' name,'' borrow_dt,'' deadline,'' name,'' mname</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="QR_code" DataSetColumn="QR_code" />
+              <Mapping SourceColumn="name" DataSetColumn="name" />
+              <Mapping SourceColumn="borrow_dt" DataSetColumn="borrow_dt" />
+              <Mapping SourceColumn="deadline" DataSetColumn="deadline" />
+              <Mapping SourceColumn="name1" DataSetColumn="name1" />
+              <Mapping SourceColumn="mname" DataSetColumn="mname" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="users_informationTableAdapter" GeneratorDataComponentClassName="users_informationTableAdapter" Name="users_information" UserDataComponentName="users_informationTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="dtcnn (Web.config)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>select '' id,'' psw,'' user_class,'' name,'' sex,'' cn,'' mname,'' telephone,'' email,'' grade,'' class</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="id" DataSetColumn="id" />
+              <Mapping SourceColumn="psw" DataSetColumn="psw" />
+              <Mapping SourceColumn="user_class" DataSetColumn="user_class" />
+              <Mapping SourceColumn="name" DataSetColumn="name" />
+              <Mapping SourceColumn="sex" DataSetColumn="sex" />
+              <Mapping SourceColumn="cn" DataSetColumn="cn" />
+              <Mapping SourceColumn="mname" DataSetColumn="mname" />
+              <Mapping SourceColumn="telephone" DataSetColumn="telephone" />
+              <Mapping SourceColumn="email" DataSetColumn="email" />
+              <Mapping SourceColumn="grade" DataSetColumn="grade" />
+              <Mapping SourceColumn="class" DataSetColumn="class" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="ReserveTableAdapter" GeneratorDataComponentClassName="ReserveTableAdapter" Name="Reserve" UserDataComponentName="ReserveTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="dtcnn (Web.config)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>select '' id,'' no,'' name,'' name1,'' QR_code,'' reserve_time,'' deadline,'' status</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="id" DataSetColumn="id" />
+              <Mapping SourceColumn="no" DataSetColumn="no" />
+              <Mapping SourceColumn="name" DataSetColumn="name" />
+              <Mapping SourceColumn="name1" DataSetColumn="name1" />
+              <Mapping SourceColumn="QR_code" DataSetColumn="QR_code" />
+              <Mapping SourceColumn="reserve_time" DataSetColumn="reserve_time" />
+              <Mapping SourceColumn="deadline" DataSetColumn="deadline" />
+              <Mapping SourceColumn="status" DataSetColumn="status" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="ds1" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_DataSetName="ds1" msprop:Generator_UserDSName="ds1">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="Status" msprop:Generator_TableClassName="StatusDataTable" msprop:Generator_TableVarName="tableStatus" msprop:Generator_TablePropName="Status" msprop:Generator_RowDeletingName="StatusRowDeleting" msprop:Generator_RowChangingName="StatusRowChanging" msprop:Generator_RowEvHandlerName="StatusRowChangeEventHandler" msprop:Generator_RowDeletedName="StatusRowDeleted" msprop:Generator_UserTableName="Status" msprop:Generator_RowChangedName="StatusRowChanged" msprop:Generator_RowEvArgName="StatusRowChangeEvent" msprop:Generator_RowClassName="StatusRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="id" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="name" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnname" msprop:Generator_ColumnPropNameInRow="name" msprop:Generator_ColumnPropNameInTable="nameColumn" msprop:Generator_UserColumnName="name" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="QR_code" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnQR_code" msprop:Generator_ColumnPropNameInRow="QR_code" msprop:Generator_ColumnPropNameInTable="QR_codeColumn" msprop:Generator_UserColumnName="QR_code" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="status" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnstatus" msprop:Generator_ColumnPropNameInRow="status" msprop:Generator_ColumnPropNameInTable="statusColumn" msprop:Generator_UserColumnName="status" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="borrower_id" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnborrower_id" msprop:Generator_ColumnPropNameInRow="borrower_id" msprop:Generator_ColumnPropNameInTable="borrower_idColumn" msprop:Generator_UserColumnName="borrower_id" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="borrow_dt" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnborrow_dt" msprop:Generator_ColumnPropNameInRow="borrow_dt" msprop:Generator_ColumnPropNameInTable="borrow_dtColumn" msprop:Generator_UserColumnName="borrow_dt" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="deadline" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columndeadline" msprop:Generator_ColumnPropNameInRow="deadline" msprop:Generator_ColumnPropNameInTable="deadlineColumn" msprop:Generator_UserColumnName="deadline" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="ReaderBorrow" msprop:Generator_TableClassName="ReaderBorrowDataTable" msprop:Generator_TableVarName="tableReaderBorrow" msprop:Generator_RowChangedName="ReaderBorrowRowChanged" msprop:Generator_TablePropName="ReaderBorrow" msprop:Generator_RowDeletingName="ReaderBorrowRowDeleting" msprop:Generator_RowChangingName="ReaderBorrowRowChanging" msprop:Generator_RowEvHandlerName="ReaderBorrowRowChangeEventHandler" msprop:Generator_RowDeletedName="ReaderBorrowRowDeleted" msprop:Generator_RowClassName="ReaderBorrowRow" msprop:Generator_UserTableName="ReaderBorrow" msprop:Generator_RowEvArgName="ReaderBorrowRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="id" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="name" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnname" msprop:Generator_ColumnPropNameInRow="name" msprop:Generator_ColumnPropNameInTable="nameColumn" msprop:Generator_UserColumnName="name" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="QR_code" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnQR_code" msprop:Generator_ColumnPropNameInRow="QR_code" msprop:Generator_ColumnPropNameInTable="QR_codeColumn" msprop:Generator_UserColumnName="QR_code" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="is_return" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnis_return" msprop:Generator_ColumnPropNameInRow="is_return" msprop:Generator_ColumnPropNameInTable="is_returnColumn" msprop:Generator_UserColumnName="is_return" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="borrower_id" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnborrower_id" msprop:Generator_ColumnPropNameInRow="borrower_id" msprop:Generator_ColumnPropNameInTable="borrower_idColumn" msprop:Generator_UserColumnName="borrower_id" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="borrow_dt" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnborrow_dt" msprop:Generator_ColumnPropNameInRow="borrow_dt" msprop:Generator_ColumnPropNameInTable="borrow_dtColumn" msprop:Generator_UserColumnName="borrow_dt" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="deadline" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columndeadline" msprop:Generator_ColumnPropNameInRow="deadline" msprop:Generator_ColumnPropNameInTable="deadlineColumn" msprop:Generator_UserColumnName="deadline" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="BookBorrowTimes" msprop:Generator_TableClassName="BookBorrowTimesDataTable" msprop:Generator_TableVarName="tableBookBorrowTimes" msprop:Generator_RowChangedName="BookBorrowTimesRowChanged" msprop:Generator_TablePropName="BookBorrowTimes" msprop:Generator_RowDeletingName="BookBorrowTimesRowDeleting" msprop:Generator_RowChangingName="BookBorrowTimesRowChanging" msprop:Generator_RowEvHandlerName="BookBorrowTimesRowChangeEventHandler" msprop:Generator_RowDeletedName="BookBorrowTimesRowDeleted" msprop:Generator_RowClassName="BookBorrowTimesRow" msprop:Generator_UserTableName="BookBorrowTimes" msprop:Generator_RowEvArgName="BookBorrowTimesRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="QR_code" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnQR_code" msprop:Generator_ColumnPropNameInRow="QR_code" msprop:Generator_ColumnPropNameInTable="QR_codeColumn" msprop:Generator_UserColumnName="QR_code" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="QR_code1" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnQR_code1" msprop:Generator_ColumnPropNameInRow="QR_code1" msprop:Generator_ColumnPropNameInTable="QR_code1Column" msprop:Generator_UserColumnName="QR_code1" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="name" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnname" msprop:Generator_ColumnPropNameInRow="name" msprop:Generator_ColumnPropNameInTable="nameColumn" msprop:Generator_UserColumnName="name" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="num" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnnum" msprop:Generator_ColumnPropNameInRow="num" msprop:Generator_ColumnPropNameInTable="numColumn" msprop:Generator_UserColumnName="num" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="BBT2" msprop:Generator_TableClassName="BBT2DataTable" msprop:Generator_TableVarName="tableBBT2" msprop:Generator_RowChangedName="BBT2RowChanged" msprop:Generator_TablePropName="BBT2" msprop:Generator_RowDeletingName="BBT2RowDeleting" msprop:Generator_RowChangingName="BBT2RowChanging" msprop:Generator_RowEvHandlerName="BBT2RowChangeEventHandler" msprop:Generator_RowDeletedName="BBT2RowDeleted" msprop:Generator_RowClassName="BBT2Row" msprop:Generator_UserTableName="BBT2" msprop:Generator_RowEvArgName="BBT2RowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="name" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnname" msprop:Generator_ColumnPropNameInRow="name" msprop:Generator_ColumnPropNameInTable="nameColumn" msprop:Generator_UserColumnName="name" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="num" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnnum" msprop:Generator_ColumnPropNameInRow="num" msprop:Generator_ColumnPropNameInTable="numColumn" msprop:Generator_UserColumnName="num" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="unreturn" msprop:Generator_TableClassName="unreturnDataTable" msprop:Generator_TableVarName="tableunreturn" msprop:Generator_RowChangedName="unreturnRowChanged" msprop:Generator_TablePropName="unreturn" msprop:Generator_RowDeletingName="unreturnRowDeleting" msprop:Generator_RowChangingName="unreturnRowChanging" msprop:Generator_RowEvHandlerName="unreturnRowChangeEventHandler" msprop:Generator_RowDeletedName="unreturnRowDeleted" msprop:Generator_RowClassName="unreturnRow" msprop:Generator_UserTableName="unreturn" msprop:Generator_RowEvArgName="unreturnRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="QR_code" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnQR_code" msprop:Generator_ColumnPropNameInRow="QR_code" msprop:Generator_ColumnPropNameInTable="QR_codeColumn" msprop:Generator_UserColumnName="QR_code" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="name" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnname" msprop:Generator_ColumnPropNameInRow="name" msprop:Generator_ColumnPropNameInTable="nameColumn" msprop:Generator_UserColumnName="name" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="borrow_dt" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnborrow_dt" msprop:Generator_ColumnPropNameInRow="borrow_dt" msprop:Generator_ColumnPropNameInTable="borrow_dtColumn" msprop:Generator_UserColumnName="borrow_dt" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="deadline" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columndeadline" msprop:Generator_ColumnPropNameInRow="deadline" msprop:Generator_ColumnPropNameInTable="deadlineColumn" msprop:Generator_UserColumnName="deadline" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="name1" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnname1" msprop:Generator_ColumnPropNameInRow="name1" msprop:Generator_ColumnPropNameInTable="name1Column" msprop:Generator_UserColumnName="name1" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="mname" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnmname" msprop:Generator_ColumnPropNameInRow="mname" msprop:Generator_ColumnPropNameInTable="mnameColumn" msprop:Generator_UserColumnName="mname" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="users_information" msprop:Generator_TableClassName="users_informationDataTable" msprop:Generator_TableVarName="tableusers_information" msprop:Generator_RowChangedName="users_informationRowChanged" msprop:Generator_TablePropName="users_information" msprop:Generator_RowDeletingName="users_informationRowDeleting" msprop:Generator_RowChangingName="users_informationRowChanging" msprop:Generator_RowEvHandlerName="users_informationRowChangeEventHandler" msprop:Generator_RowDeletedName="users_informationRowDeleted" msprop:Generator_RowClassName="users_informationRow" msprop:Generator_UserTableName="users_information" msprop:Generator_RowEvArgName="users_informationRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="id" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="psw" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnpsw" msprop:Generator_ColumnPropNameInRow="psw" msprop:Generator_ColumnPropNameInTable="pswColumn" msprop:Generator_UserColumnName="psw" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="user_class" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnuser_class" msprop:Generator_ColumnPropNameInRow="user_class" msprop:Generator_ColumnPropNameInTable="user_classColumn" msprop:Generator_UserColumnName="user_class" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="name" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnname" msprop:Generator_ColumnPropNameInRow="name" msprop:Generator_ColumnPropNameInTable="nameColumn" msprop:Generator_UserColumnName="name" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="sex" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnsex" msprop:Generator_ColumnPropNameInRow="sex" msprop:Generator_ColumnPropNameInTable="sexColumn" msprop:Generator_UserColumnName="sex" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="cn" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columncn" msprop:Generator_ColumnPropNameInRow="cn" msprop:Generator_ColumnPropNameInTable="cnColumn" msprop:Generator_UserColumnName="cn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="mname" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnmname" msprop:Generator_ColumnPropNameInRow="mname" msprop:Generator_ColumnPropNameInTable="mnameColumn" msprop:Generator_UserColumnName="mname" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="telephone" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columntelephone" msprop:Generator_ColumnPropNameInRow="telephone" msprop:Generator_ColumnPropNameInTable="telephoneColumn" msprop:Generator_UserColumnName="telephone" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="email" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnemail" msprop:Generator_ColumnPropNameInRow="email" msprop:Generator_ColumnPropNameInTable="emailColumn" msprop:Generator_UserColumnName="email" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="grade" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columngrade" msprop:Generator_ColumnPropNameInRow="grade" msprop:Generator_ColumnPropNameInTable="gradeColumn" msprop:Generator_UserColumnName="grade" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="class" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnclass" msprop:Generator_ColumnPropNameInRow="_class" msprop:Generator_ColumnPropNameInTable="classColumn" msprop:Generator_UserColumnName="class" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Reserve" msprop:Generator_TableClassName="ReserveDataTable" msprop:Generator_TableVarName="tableReserve" msprop:Generator_RowChangedName="ReserveRowChanged" msprop:Generator_TablePropName="Reserve" msprop:Generator_RowDeletingName="ReserveRowDeleting" msprop:Generator_RowChangingName="ReserveRowChanging" msprop:Generator_RowEvHandlerName="ReserveRowChangeEventHandler" msprop:Generator_RowDeletedName="ReserveRowDeleted" msprop:Generator_RowClassName="ReserveRow" msprop:Generator_UserTableName="Reserve" msprop:Generator_RowEvArgName="ReserveRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="id" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnid" msprop:Generator_ColumnPropNameInRow="id" msprop:Generator_ColumnPropNameInTable="idColumn" msprop:Generator_UserColumnName="id" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="no" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnno" msprop:Generator_ColumnPropNameInRow="no" msprop:Generator_ColumnPropNameInTable="noColumn" msprop:Generator_UserColumnName="no" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="name" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnname" msprop:Generator_ColumnPropNameInRow="name" msprop:Generator_ColumnPropNameInTable="nameColumn" msprop:Generator_UserColumnName="name" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="name1" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnname1" msprop:Generator_ColumnPropNameInRow="name1" msprop:Generator_ColumnPropNameInTable="name1Column" msprop:Generator_UserColumnName="name1" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="QR_code" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnQR_code" msprop:Generator_ColumnPropNameInRow="QR_code" msprop:Generator_ColumnPropNameInTable="QR_codeColumn" msprop:Generator_UserColumnName="QR_code" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="reserve_time" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnreserve_time" msprop:Generator_ColumnPropNameInRow="reserve_time" msprop:Generator_ColumnPropNameInTable="reserve_timeColumn" msprop:Generator_UserColumnName="reserve_time" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="deadline" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columndeadline" msprop:Generator_ColumnPropNameInRow="deadline" msprop:Generator_ColumnPropNameInTable="deadlineColumn" msprop:Generator_UserColumnName="deadline" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="status" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnstatus" msprop:Generator_ColumnPropNameInRow="status" msprop:Generator_ColumnPropNameInTable="statusColumn" msprop:Generator_UserColumnName="status" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

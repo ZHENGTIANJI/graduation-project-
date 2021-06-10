@@ -31,6 +31,16 @@ public partial class QueryAndModify_paperQueryAndModify : System.Web.UI.Page
             SqlConnection cnn = new SqlConnection("Data Source=(local);Initial Catalog=档案室信息管理系统1.0;Integrated Security=True");
             SqlDataAdapter adpt = new SqlDataAdapter("SELECT [id],[number_of_page], [dabian_dt], [xuezhi], [format],[write_dt],[zhicheng],[adviser], [location], [stock_dt], [number], [name], [ptname], [mname], [QR_code], [class_number],[shenhe],[direction], [author],  [note], [lname] FROM [paper] left join paper_type on paper.paper_type_id=paper_type.ptid left join major on paper.major_id=major.mid left join language on paper.language=language.lid where shenhe='待审核'", cnn);
             adpt.Fill(dst);
+            if (dst.Tables[0].Rows.Count == 0)
+            {
+                DataRow row = dst.Tables[0].NewRow();
+                for (int j = 0; j < GridView1.Columns.Count - 4; j++)
+                {
+                    row[j] = DBNull.Value;
+                }
+                dst.Tables[0].Rows.Add(row);
+            }
+            
             GridView1.DataSource = dst.Tables[0];
             GridView1.DataBind();
         }
@@ -47,6 +57,16 @@ public partial class QueryAndModify_paperQueryAndModify : System.Web.UI.Page
         SqlConnection cnn = new SqlConnection("Data Source=(local);Initial Catalog=档案室信息管理系统1.0;Integrated Security=True");
         SqlDataAdapter adpt = new SqlDataAdapter("SELECT [id],[number_of_page], [dabian_dt], [xuezhi], [format],[write_dt],[zhicheng],[adviser], [name], [ptname], [mname],[shenhe],[direction], [author], [status], [note], [lname] FROM [paper] left join paper_type on paper.paper_type_id=paper_type.ptid left join major on paper.major_id=major.mid left join language on paper.language=language.lid where name like '%" + strpapername + "%' and mname like '%" + strmajor + "%' and ptname like '%" + strpapertype + "%' and shenhe='待审核'", cnn);
         adpt.Fill(dst);
+        if (dst.Tables[0].Rows.Count == 0)
+        {
+            DataRow row = dst.Tables[0].NewRow();
+            for (int j = 0; j < GridView1.Columns.Count - 4; j++)
+            {
+                row[j] = DBNull.Value;
+            }
+            dst.Tables[0].Rows.Add(row);
+        }
+        
         GridView1.DataSource = dst.Tables[0];
         GridView1.DataBind();
     }
@@ -56,37 +76,44 @@ public partial class QueryAndModify_paperQueryAndModify : System.Web.UI.Page
     }
     protected void GridView1_RowDeleting(object sender, GridViewDeleteEventArgs e)
     {
-        Session["paperid"] = GridView1.Rows[e.RowIndex].Cells[18].Text.ToString();
-
-        SqlConnection cnn = new SqlConnection("Data Source=(local);Initial Catalog=档案室信息管理系统1.0;Integrated Security=True");
-        SqlCommand cmd = cnn.CreateCommand();
-        int id = Convert.ToInt32(Session["paperid"]);
-        try
+        string s = GridView1.Rows[0].Cells[1].Text.ToString();
+        if (GridView1.Rows[0].Cells[1].Text.ToString() != "&nbsp;")
         {
- 	        TextBox tbqr = (TextBox)GridView1.Rows[e.RowIndex].Cells[0].FindControl("txtQR");
-            TextBox tbcn = (TextBox)GridView1.Rows[e.RowIndex].Cells[8].FindControl("txtcn");
-            TextBox tblocation = (TextBox)GridView1.Rows[e.RowIndex].Cells[13].FindControl("txtlocation");
-            String QR = tbqr.Text.ToString();
-            String cn = tbcn.Text.ToString();
+            Session["paperid"] = GridView1.Rows[e.RowIndex].Cells[18].Text.ToString();
 
-            String location = tblocation.Text.ToString();
-            if (QR == "")
+            SqlConnection cnn = new SqlConnection("Data Source=(local);Initial Catalog=档案室信息管理系统1.0;Integrated Security=True");
+            SqlCommand cmd = cnn.CreateCommand();
+            int id = Convert.ToInt32(Session["paperid"]);
+            try
             {
-                ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "", "alert('二维码不得为空！');", true);
-            }else{
-                cmd.CommandText = "update paper set QR_code='" + QR + "',class_number='" + cn + "',shenhe='" + "已审核" + "',location='" + location + "' where id='" + id + "'";
-                cnn.Open();
-                cmd.ExecuteNonQuery();
-                cnn.Close();
-                ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "", "alert('审核成功！');", true);
-            }
-        }
-        catch (Exception)
-        {
-            ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "", "alert('审核失败！');", true);
-        }
+                TextBox tbqr = (TextBox)GridView1.Rows[e.RowIndex].Cells[0].FindControl("txtQR");
+                TextBox tbcn = (TextBox)GridView1.Rows[e.RowIndex].Cells[8].FindControl("txtcn");
+                TextBox tblocation = (TextBox)GridView1.Rows[e.RowIndex].Cells[13].FindControl("txtlocation");
+                String QR = tbqr.Text.ToString();
+                String cn = tbcn.Text.ToString();
 
-        ExecuteQuery();
+                String location = tblocation.Text.ToString();
+                if (QR == "")
+                {
+                    ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "", "alert('二维码不得为空！');", true);
+                }
+                else
+                {
+                    cmd.CommandText = "update paper set QR_code='" + QR + "',class_number='" + cn + "',shenhe='" + "已审核" + "',location='" + location + "' where id='" + id + "'";
+                    cnn.Open();
+                    cmd.ExecuteNonQuery();
+                    cnn.Close();
+                    ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "", "alert('审核成功！');", true);
+                }
+            }
+            catch (Exception)
+            {
+                ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "", "alert('审核失败！');", true);
+            }
+
+            ExecuteQuery();
+        }
+        
     }
     protected void GridViewHistory_PageIndexChanging(object sender, GridViewPageEventArgs e)
     {
@@ -129,15 +156,19 @@ public partial class QueryAndModify_paperQueryAndModify : System.Web.UI.Page
     }
     protected void LinkButton2_Click(object sender, EventArgs e)
     {
-        LinkButton lb = sender as LinkButton;
-        GridViewRow row = lb.NamingContainer as GridViewRow;
-        int num = row.RowIndex;
-        int id = Convert.ToInt32(GridView1.Rows[num].Cells[18].Text.ToString());
-        DataSet dst = new DataSet();
-        SqlConnection cnn = new SqlConnection("Data Source=(local);Initial Catalog=档案室信息管理系统1.0;Integrated Security=True");
-        SqlDataAdapter adpt = new SqlDataAdapter("select file_name from paper left join file_att on paper.id=file_att.paper_id where paper.id='" + id + "'", cnn);
-        adpt.Fill(dst);
-        string name = dst.Tables[0].Rows[0][0].ToString();
-        Response.Redirect("../论文/" + name);
+        if (GridView1.Rows[0].Cells[1].Text.ToString() != "&nbsp;")
+        {
+            LinkButton lb = sender as LinkButton;
+            GridViewRow row = lb.NamingContainer as GridViewRow;
+            int num = row.RowIndex;
+            int id = Convert.ToInt32(GridView1.Rows[num].Cells[18].Text.ToString());
+            DataSet dst = new DataSet();
+            SqlConnection cnn = new SqlConnection("Data Source=(local);Initial Catalog=档案室信息管理系统1.0;Integrated Security=True");
+            SqlDataAdapter adpt = new SqlDataAdapter("select file_name from paper left join file_att on paper.id=file_att.paper_id where paper.id='" + id + "'", cnn);
+            adpt.Fill(dst);
+            string name = dst.Tables[0].Rows[0][0].ToString();
+            Response.Redirect("../论文/" + name);
+        }
+        
     }
 }

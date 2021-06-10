@@ -25,7 +25,7 @@ public partial class delete_paperdelete : System.Web.UI.Page
     {   if(TextBox1.Text.ToString()!=""){
         DataSet dst = new DataSet();
         SqlConnection cnn = new SqlConnection("Data Source=(local);Initial Catalog=档案室信息管理系统1.0;Integrated Security=True");
-        SqlDataAdapter adpt = new SqlDataAdapter("SELECT [id],[number_of_page], [dabian_dt], [xuezhi], [format],[write_dt],[zhicheng],[adviser], [location], [stock_dt], [number], [name], [ptname], [mname], [QR_code], [class_number],[shenhe],[direction], [author], [status], [note], [lname] FROM [paper] left join paper_type on paper.paper_type_id=paper_type.ptid left join major on paper.major_id=major.mid left join language on paper.language=language.lid where is_delete=0 and name like '%"+TextBox1.Text.ToString()+"%'", cnn);
+        SqlDataAdapter adpt = new SqlDataAdapter("SELECT [id],[number_of_page], [dabian_dt], [xuezhi], [format],[write_dt],[zhicheng],[adviser], [location], [stock_dt], [number], [name], [ptname], [mname], [QR_code], [class_number],[shenhe],[direction], [author], [status], [note], [lname] FROM [paper] left join paper_type on paper.paper_type_id=paper_type.ptid left join major on paper.major_id=major.mid left join language on paper.language=language.lid where is_delete=0 and shenhe='已审核' and name like '%"+TextBox1.Text.ToString()+"%'", cnn);
         adpt.Fill(dst);
         if (dst.Tables[0].Rows.Count == 0)
         {
@@ -44,7 +44,7 @@ public partial class delete_paperdelete : System.Web.UI.Page
             // ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "", "alert('日期不得为空！');", true);
             DataSet dst = new DataSet();
             SqlConnection cnn = new SqlConnection("Data Source=(local);Initial Catalog=档案室信息管理系统1.0;Integrated Security=True");
-            SqlDataAdapter adpt = new SqlDataAdapter("SELECT [id],[number_of_page], [dabian_dt], [xuezhi], [format],[write_dt],[zhicheng],[adviser], [location], [stock_dt], [number], [name], [ptname], [mname], [QR_code], [class_number],[shenhe],[direction], [author], [status], [note], [lname] FROM [paper] left join paper_type on paper.paper_type_id=paper_type.ptid left join major on paper.major_id=major.mid left join language on paper.language=language.lid where is_delete=0", cnn);
+            SqlDataAdapter adpt = new SqlDataAdapter("SELECT [id],[number_of_page], [dabian_dt], [xuezhi], [format],[write_dt],[zhicheng],[adviser], [location], [stock_dt], [number], [name], [ptname], [mname], [QR_code], [class_number],[shenhe],[direction], [author], [status], [note], [lname] FROM [paper] left join paper_type on paper.paper_type_id=paper_type.ptid left join major on paper.major_id=major.mid left join language on paper.language=language.lid where is_delete=0 and shenhe='已审核'", cnn);
             adpt.Fill(dst);
             if (dst.Tables[0].Rows.Count == 0)
             {
@@ -68,7 +68,7 @@ public partial class delete_paperdelete : System.Web.UI.Page
             {
                 DataSet dst = new DataSet();
                 SqlConnection cnn = new SqlConnection("Data Source=(local);Initial Catalog=档案室信息管理系统1.0;Integrated Security=True");
-                SqlDataAdapter adpt = new SqlDataAdapter("SELECT [id],[number_of_page], [dabian_dt], [xuezhi], [format],[write_dt],[zhicheng],[adviser], [location], [stock_dt], [number], [name], [ptname], [mname], [QR_code], [class_number],[shenhe],[direction], [author], [status], [note], [lname] FROM [paper] left join paper_type on paper.paper_type_id=paper_type.ptid left join major on paper.major_id=major.mid left join language on paper.language=language.lid where is_delete=0 and stock_dt<='" + date + "'", cnn);
+                SqlDataAdapter adpt = new SqlDataAdapter("SELECT [id],[number_of_page], [dabian_dt], [xuezhi], [format],[write_dt],[zhicheng],[adviser], [location], [stock_dt], [number], [name], [ptname], [mname], [QR_code], [class_number],[shenhe],[direction], [author], [status], [note], [lname] FROM [paper] left join paper_type on paper.paper_type_id=paper_type.ptid left join major on paper.major_id=major.mid left join language on paper.language=language.lid where is_delete=0 and shenhe='已审核' and stock_dt<='" + date + "'", cnn);
                 adpt.Fill(dst);
                 if (dst.Tables[0].Rows.Count == 0)
                 {
@@ -116,7 +116,7 @@ public partial class delete_paperdelete : System.Web.UI.Page
     }
     protected void GridView2_RowDeleting(object sender, GridViewDeleteEventArgs e)
     {
-        if (GridView1.Rows[0].Cells[0].Text.ToString() != GridView1.Rows[0].Cells[1].Text.ToString() && GridView1.Rows[0].Cells[2].Text.ToString() != GridView1.Rows[0].Cells[1].Text.ToString())
+        if (GridView2.Rows[0].Cells[0].Text.ToString() != GridView2.Rows[0].Cells[1].Text.ToString() && GridView2.Rows[0].Cells[1].Text.ToString() != GridView2.Rows[0].Cells[2].Text.ToString())
         {
             SqlConnection cnn = new SqlConnection("Data Source=(local);Initial Catalog=档案室信息管理系统1.0;Integrated Security=True");
             SqlCommand cmd = cnn.CreateCommand();

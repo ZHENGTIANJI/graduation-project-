@@ -129,7 +129,7 @@ public partial class 统计分析_paperstatistics : System.Web.UI.Page
         }
         GridView3.DataSource = dst2.Tables[0];
         GridView3.DataBind();
-        Chart3.Series[0].Color = Color.Blue;
+        Chart3.Series[0].Color = Color.Black;
         Chart3.Series[0].MarkerColor = Color.Black;
         Chart3.Series[0].BorderWidth = 1;
         Chart3.Series[0].MarkerBorderWidth = 3;

@@ -92,24 +92,28 @@ public partial class delete_bookdelete : System.Web.UI.Page
     }
     protected void GridView2_RowDeleting(object sender, GridViewDeleteEventArgs e)
     {
-        SqlConnection cnn = new SqlConnection("Data Source=(local);Initial Catalog=档案室信息管理系统1.0;Integrated Security=True");
-        SqlCommand cmd = cnn.CreateCommand();
+        if (GridView2.Rows[0].Cells[0].Text.ToString() != GridView2.Rows[0].Cells[1].Text.ToString() && GridView2.Rows[0].Cells[1].Text.ToString() != GridView2.Rows[0].Cells[2].Text.ToString())
+        {
+            SqlConnection cnn = new SqlConnection("Data Source=(local);Initial Catalog=档案室信息管理系统1.0;Integrated Security=True");
+            SqlCommand cmd = cnn.CreateCommand();
 
-        int num = e.RowIndex;
-        int bookid = Convert.ToInt32(GridView2.Rows[num].Cells[20].Text.ToString());
-        try
-        {
-            cmd.CommandText = "update book set is_delete='" + 0 + "' where id=" + bookid + "";
-            cnn.Open();
-            cmd.ExecuteNonQuery();
-            cnn.Close(); 
-            ExecuteQuery();
-            ExecuteQuery2();
+            int num = e.RowIndex;
+            int bookid = Convert.ToInt32(GridView2.Rows[num].Cells[20].Text.ToString());
+            try
+            {
+                cmd.CommandText = "update book set is_delete='" + 0 + "' where id=" + bookid + "";
+                cnn.Open();
+                cmd.ExecuteNonQuery();
+                cnn.Close();
+                ExecuteQuery();
+                ExecuteQuery2();
+            }
+            catch (Exception)
+            {
+                ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "", "alert('还原失败！');", true);
+            }
         }
-        catch (Exception)
-        {
-            ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "", "alert('还原失败！');", true);
-        }
+        
     }
     protected void GridView1_RowDeleting(object sender, GridViewDeleteEventArgs e)
     {

@@ -51,7 +51,7 @@ public partial class QueryAndModify_bookQueryAndModify :dropdownlist
     protected void GridView1_RowDeleting(object sender, GridViewDeleteEventArgs e)
     {
         int num = e.RowIndex;
-        if (GridView1.Rows[0].Cells[0].Text.ToString() != GridView1.Rows[0].Cells[2].Text.ToString() && GridView1.Rows[0].Cells[2].Text.ToString() != GridView1.Rows[0].Cells[1].Text.ToString())
+        if (GridView1.Rows[0].Cells[0].Text.ToString() != GridView1.Rows[0].Cells[1].Text.ToString() && GridView1.Rows[0].Cells[1].Text.ToString() != GridView1.Rows[0].Cells[2].Text.ToString())
         {
             txtname.Text = GridView1.Rows[num].Cells[0].Text.ToString() == "&nbsp;" ? "" : GridView1.Rows[num].Cells[0].Text.ToString();
             bt.SelectedIndex = -1;
@@ -159,7 +159,8 @@ public partial class QueryAndModify_bookQueryAndModify :dropdownlist
             cmd.ExecuteNonQuery();
             cnn.Close();
         }
-        try {
+
+       try {
             int zt;
             if (status.SelectedItem.Value == "库存")
             {
@@ -185,7 +186,7 @@ public partial class QueryAndModify_bookQueryAndModify :dropdownlist
         {
             ScriptManager.RegisterStartupScript(this.Page, this.Page.GetType(), "", "alert('保存失败！');", true);
         }
-        
+       
         ExecuteQuery();
     }
     protected void GridViewHistory_PageIndexChanging(object sender, GridViewPageEventArgs e)

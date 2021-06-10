@@ -279,7 +279,7 @@ li.dropdown {
                     <asp:TextBox ID="txtcn" runat="server"></asp:TextBox>
                 </td>
                 <td class="auto-style103">
-                    <asp:Label ID="Label5" runat="server" Text="出版社名称"></asp:Label>
+                    <asp:Label ID="Label5" runat="server" Text="杂志社名称"></asp:Label>
                 </td>
                 <td class="auto-style104">
                     <asp:TextBox ID="txtoffname" runat="server"></asp:TextBox>

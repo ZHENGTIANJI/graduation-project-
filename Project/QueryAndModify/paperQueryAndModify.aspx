@@ -472,20 +472,18 @@ li.dropdown {
                     <asp:TextBox ID="txtlocation" runat="server"></asp:TextBox>
                 </td>
                 <td class="auto-style65">
-                    <asp:Label ID="Label58" runat="server" Text="库存数目"></asp:Label>
-                </td>
-                <td class="auto-style47">
-                    <asp:TextBox ID="txtnumber" runat="server"></asp:TextBox>
-                </td>
-                <td class="auto-style67">
                     <asp:Label ID="Label59" runat="server" Text="审核状态"></asp:Label>
                 </td>
-                <td class="auto-style49">
+                <td class="auto-style47">
                     <asp:DropDownList ID="shenhe" runat="server">
                         <asp:ListItem>待审核</asp:ListItem>
                         <asp:ListItem>已审核</asp:ListItem>
                     </asp:DropDownList>
                 </td>
+                <td class="auto-style67">
+                    &nbsp;</td>
+                <td class="auto-style49">
+                    &nbsp;</td>
                 <td class="auto-style40">&nbsp;</td>
                 <td class="auto-style69">
                     <asp:Button ID="btok" runat="server" OnClick="btok_Click" Text="保存" Width="80px" />

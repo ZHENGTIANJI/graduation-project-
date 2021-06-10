@@ -117,7 +117,7 @@ public partial class delete_journaldelete : System.Web.UI.Page
     }
     protected void GridView2_RowDeleting(object sender, GridViewDeleteEventArgs e)
     {
-        if (GridView1.Rows[0].Cells[0].Text.ToString() != GridView1.Rows[0].Cells[1].Text.ToString() && GridView1.Rows[0].Cells[2].Text.ToString() != GridView1.Rows[0].Cells[1].Text.ToString())
+        if (GridView2.Rows[0].Cells[0].Text.ToString() != GridView2.Rows[0].Cells[1].Text.ToString() && GridView2.Rows[0].Cells[1].Text.ToString() != GridView2.Rows[0].Cells[2].Text.ToString())
         {
             SqlConnection cnn = new SqlConnection("Data Source=(local);Initial Catalog=档案室信息管理系统1.0;Integrated Security=True");
             SqlCommand cmd = cnn.CreateCommand();

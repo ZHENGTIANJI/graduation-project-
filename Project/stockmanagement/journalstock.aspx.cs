@@ -92,7 +92,7 @@ public partial class stockmanagement_journalstock : System.Web.UI.Page
         else
         {
             String stockdt = DateTime.Now.ToString("yyyy-MM-dd");
-            cmd.CommandText = "INSERT INTO journal(name, journal_type_id, major_id, QR_code, publish_dt, office_name, period_number, stock_dt, location, class_number, status, number, format, number_of_page,language,note,organizationid,period_type,address,gradeid) VALUES ('" + txtname.Text + "'," + jtid + "," + majorid + ",'" + txtQR.Text + "','" + pub_year.Text+"-"+pub_month.Text+"-"+pub_day.Text + "','" + txtoffname.Text + "','" + txtpn.Text + "','" + stockdt + "','" + txtlocation.Text + "','" + txtcn.Text + "',0," + num + ",'" + txtformat.Text + "','" + txtnumberofpage.Text + "'," + lid + ",'" + txtnote.Text + "','" + organid  + "','" + period.SelectedItem.Value + "','" + txtaddress.Text + "','" + gid + "')";
+            cmd.CommandText = "INSERT INTO journal(name, journal_type_id, major_id, QR_code, publish_dt, office_name, period_number, stock_dt, location, class_number, status, number, format, number_of_page,language,note,organizationid,period_type,address,gradeid) VALUES ('" + txtname.Text + "'," + jtid + ",'" + majorid + "','" + txtQR.Text + "','" + pub_year.Text+"-"+pub_month.Text+"-"+pub_day.Text + "','" + txtoffname.Text + "','" + txtpn.Text + "','" + stockdt + "','" + txtlocation.Text + "','" + txtcn.Text + "',0," + num + ",'" + txtformat.Text + "','" + txtnumberofpage.Text + "'," + lid + ",'" + txtnote.Text + "','" + organid  + "','" + period.SelectedItem.Value + "','" + txtaddress.Text + "','" + gid + "')";
             try
             {
                 cnn.Open();

@@ -277,7 +277,7 @@ li.dropdown {
                 </asp:BoundField>
                 <asp:TemplateField HeaderText="操作" ShowHeader="False">
                     <ItemTemplate>
-                        <asp:LinkButton ID="LinkButton1" runat="server" CausesValidation="False" CommandName="Delete" Text="还原" OnClientClick="return confirm('确定要还原该论文吗?')"></asp:LinkButton>
+                        <asp:LinkButton ID="LinkButton2" runat="server" CausesValidation="False" CommandName="Delete" Text="还原" OnClientClick="return confirm('确定要还原该论文吗?')"></asp:LinkButton>
                     </ItemTemplate>
                 </asp:TemplateField>
             </Columns>

@@ -6,6 +6,7 @@
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
+    <script src="../DateBox.js"></script>
     <style>
         ul {
   list-style-type: none;
@@ -18,7 +19,7 @@
  .banner {
 	overflow: hidden;
 	height: 200px;
-	background: url(/imgs/上传.png) no-repeat;
+	background: url(imgs/上传.png) no-repeat;
 	background-size: 100% 200px;
 }
  .table-a table{border-bottom:1px solid black;border-top:1px solid black;}
@@ -66,9 +67,6 @@ ri{
 .dropdown:hover .dropdown-content {
   display: block;
 }
-        .auto-style1 {
-            font-size: xx-large;
-        }
         .auto-style2 {
             text-align: right;
         }
@@ -87,24 +85,6 @@ ri{
     
     <form id="form1" runat="server">
     
-    <div style=" margin:0px auto;width:100%; height:20px;background-color:ButtonFace">
-        你好，欢迎登陆本系统！
-        <div style=" float:right; width:14%; height:20px;background-color:ButtonFace">      
-             <asp:Label ID="user" runat="server" Font-Size="Medium"></asp:Label>
-            <asp:LinkButton ID="home" runat="server"  Font-Size="Medium" OnClick="home_Click">退出系统</asp:LinkButton>
-
-        </div>
-    </div>
-    <div style=" margin:0px auto; height:100px;background-color:white">
-        <div style=" float:left; width:10%;height:100px;"></div>
-        <div style=" float:left; width:20%;height:100px;">
-            <img width="125" height="98" src="imgs/CUMT.jpg" />
-            <img width="100" height="100" src="imgs/\矿院.png" />
-        </div>
-        <div style=" float:right; width:70%;height:70px;">
-            <h1 class="auto-style1">矿业学院档案管理系统</h1>
-        </div> 
-    </div>
     <div style=" margin:0px auto; width:100%;">
     <div style=" float:left; width:15%; height:700px;background-color:ButtonFace"></div>
         <div style=" float:left; width:70%; height:300px;">
@@ -123,7 +103,7 @@ ri{
                     <asp:Label ID="Label3" runat="server" Text="论文类别"></asp:Label>
                 </td>
                 <td class="auto-style4">
-                    <asp:DropDownList ID="papertype" runat="server" DataSourceID="SqlDataSource1" DataTextField="ptname" DataValueField="ptname">
+                    <asp:DropDownList ID="papertype" runat="server">
                     </asp:DropDownList>
                 </td>
                 <td class="auto-style2">
@@ -159,12 +139,7 @@ ri{
                     <asp:Label ID="Label11" runat="server" Text="编著日期"></asp:Label>
                 </td>
                 <td class="auto-style20">
-                    <asp:TextBox ID="write_year" runat="server" Width="40px"></asp:TextBox>
-                    <asp:Label ID="Label25" runat="server" Text="年"></asp:Label>
-                    <asp:TextBox ID="write_month" runat="server" Width="16px"></asp:TextBox>
-                    <asp:Label ID="Label26" runat="server" Text="月"></asp:Label>
-                    <asp:TextBox ID="write_day" runat="server" Width="16px"></asp:TextBox>
-                    <asp:Label ID="Label27" runat="server" Text="日"></asp:Label>
+                    <asp:TextBox ID="txtbzdt" runat="server" onclick='setdayFirst(this,2,1);'></asp:TextBox>
                 </td>
                 <td class="auto-style18">
                     <asp:Label ID="Label18" runat="server" Text="指导教师"></asp:Label>
@@ -185,15 +160,10 @@ ri{
                     <asp:TextBox ID="txtdirection" runat="server"></asp:TextBox>
                 </td>
                 <td class="auto-style2">
-                    <asp:Label ID="Label6" runat="server" Text="答辩日期"></asp:Label>
+                    <asp:Label ID="Label6" runat="server" Text="答辩日期" ></asp:Label>
                 </td>
                 <td class="auto-style21">
-                    <asp:TextBox ID="db_year" runat="server" Width="40px"></asp:TextBox>
-                    <asp:Label ID="Label28" runat="server" Text="年"></asp:Label>
-                    <asp:TextBox ID="db_month" runat="server" Width="16px"></asp:TextBox>
-                    <asp:Label ID="Label29" runat="server" Text="月"></asp:Label>
-                    <asp:TextBox ID="db_day" runat="server" Width="16px"></asp:TextBox>
-                    <asp:Label ID="Label30" runat="server" Text="日"></asp:Label>
+                    <asp:TextBox ID="txtdbdt" runat="server" onclick='setdayFirst(this,2,1);'></asp:TextBox>
                 </td>
                 <td class="auto-style19">
                     <asp:Label ID="Label19" runat="server" Text="职称"></asp:Label>
@@ -254,7 +224,7 @@ ri{
         </div>
             <div style="margin:auto 0px;height:30px">
                 &nbsp;&nbsp;<asp:FileUpload ID="FileUpload1" runat="server" />
-                <asp:LinkButton ID="LinkButton1" runat="server" OnClick="LinkButton1_Click" ForeColor="Black" Font-Size="Medium"></asp:LinkButton>
+                <asp:LinkButton ID="LinkButton1" runat="server" Font-Size="Medium" ForeColor="Black" OnClick="LinkButton1_Click"></asp:LinkButton>
             </div>
             <div style="margin:auto 0px;height:30px;font-size:small">
                 &nbsp;&nbsp;<asp:Label ID="Label1" runat="server" Text="只允许上传PDF(限制50MB以内)"></asp:Label>
@@ -272,7 +242,7 @@ ri{
             <tr>
                 <td class="auto-style23">&nbsp;</td>
                 <td style="text-align: center">
-                    <asp:Button ID="upload" runat="server" OnClick="upload_Click" Text="上传" OnClientClick="return confirm('只允许提交一次，确定提交吗?')" Height="27px" Width="104px"/>
+                    <asp:Button ID="upload" runat="server" OnClick="upload_Click" Text="上传" OnClientClick="return confirm('确定提交吗?')" Height="27px" Width="104px"/>
                 </td>
                 <td>&nbsp;</td>
             </tr>
